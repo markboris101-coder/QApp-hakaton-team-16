@@ -1,0 +1,145 @@
+import React, { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import type { DegreeLevel, ProgramField, UniversityProgram } from "../mockData";
+
+export type ProgramRow = {
+  program: UniversityProgram;
+  score: number;
+  englishWarning?: string;
+};
+
+type Props = {
+  rows: ProgramRow[];
+};
+
+const FIELDS: Array<ProgramField | "all"> = [
+  "all",
+  "Engineering",
+  "Business",
+  "Science",
+  "Law",
+  "Humanities",
+  "Social Sciences",
+  "Medicine",
+];
+
+const DEGREES: Array<DegreeLevel | "all"> = ["all", "Bachelor", "Master", "PhD"];
+
+export function ProgramGrid({ rows }: Props) {
+  const [fieldFilter, setFieldFilter] = useState<ProgramField | "all">("all");
+  const [degreeFilter, setDegreeFilter] = useState<DegreeLevel | "all">("all");
+  const [query, setQuery] = useState("");
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return rows.filter(({ program }) => {
+      if (fieldFilter !== "all" && program.field !== fieldFilter) return false;
+      if (degreeFilter !== "all" && program.degree !== degreeFilter) return false;
+      if (
+        q &&
+        !program.name.toLowerCase().includes(q) &&
+        !program.id.toLowerCase().includes(q)
+      ) {
+        return false;
+      }
+      return true;
+    });
+  }, [rows, fieldFilter, degreeFilter, query]);
+
+  return (
+    <section id="program-grid">
+      <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
+        <div>
+          <h2 className="text-lg font-semibold text-slate-900">Program grid</h2>
+          <p className="mt-1 text-sm text-slate-600">
+            Filter by field and degree; each card shows your live fit score.
+          </p>
+        </div>
+        <div className="flex w-full flex-col gap-3 sm:w-auto sm:min-w-[240px]">
+          <label className="sr-only" htmlFor="program-search">
+            Search programs
+          </label>
+          <input
+            id="program-search"
+            type="search"
+            placeholder="Search by program name…"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+          />
+        </div>
+      </div>
+
+      <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs font-medium uppercase tracking-wide text-slate-500">Field</span>
+          {FIELDS.map((f) => (
+            <button
+              key={f}
+              type="button"
+              onClick={() => setFieldFilter(f)}
+              className={`rounded-full px-3 py-1 text-xs font-medium transition ${
+                fieldFilter === f
+                  ? "bg-indigo-600 text-white shadow-sm"
+                  : "bg-slate-100 text-slate-700 ring-1 ring-slate-200 hover:bg-slate-200/80"
+              }`}
+            >
+              {f === "all" ? "All" : f}
+            </button>
+          ))}
+        </div>
+        <div className="flex flex-wrap items-center gap-2 sm:ml-2">
+          <span className="text-xs font-medium uppercase tracking-wide text-slate-500">Degree</span>
+          {DEGREES.map((d) => (
+            <button
+              key={d}
+              type="button"
+              onClick={() => setDegreeFilter(d)}
+              className={`rounded-full px-3 py-1 text-xs font-medium transition ${
+                degreeFilter === d
+                  ? "bg-violet-600 text-white shadow-sm"
+                  : "bg-slate-100 text-slate-700 ring-1 ring-slate-200 hover:bg-slate-200/80"
+              }`}
+            >
+              {d === "all" ? "All" : d}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {filtered.length === 0 ? (
+        <p className="mt-8 rounded-2xl border border-dashed border-slate-200 bg-white px-4 py-8 text-center text-sm text-slate-600">
+          No programs match these filters. Try clearing search or switching field/degree.
+        </p>
+      ) : (
+        <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+          {filtered.map(({ program, score, englishWarning }) => (
+            <li key={program.id}>
+              <Link
+                to={`/program/${program.id}`}
+                className="block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:border-indigo-200 hover:shadow-md active:scale-[0.99]"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <h3 className="font-semibold text-slate-900">{program.name}</h3>
+                    <p className="mt-1 text-sm text-slate-500">
+                      {program.field} · {program.degree} · {program.durationYears} yrs · {program.language}
+                    </p>
+                  </div>
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-slate-900 text-sm font-bold text-white tabular-nums">
+                    {score}
+                  </div>
+                </div>
+                <p className="mt-3 text-sm text-slate-600">{program.matchReason}</p>
+                {englishWarning && (
+                  <p className="mt-2 text-sm font-medium text-amber-800">{englishWarning}</p>
+                )}
+                <p className="mt-3 text-xs font-medium text-indigo-600">View details →</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  );
+}

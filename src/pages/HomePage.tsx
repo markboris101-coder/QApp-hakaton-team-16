@@ -1,0 +1,305 @@
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+import { calculateFitScore } from "../calculateFitScore";
+import { AdmissionChecklist } from "../components/AdmissionChecklist";
+import { DeadlinesTimeline } from "../components/DeadlinesTimeline";
+import { ScholarshipsSection } from "../components/ScholarshipsSection";
+import { AiFitCard } from "../components/AiFitCard";
+import { ProgramGrid } from "../components/ProgramGrid";
+import { TextSkeleton } from "../components/TextSkeleton";
+import { useSmartAdvisor } from "../hooks/useSmartAdvisor";
+import { isAiConfigured } from "../services/aiProvider";
+import * as documentStorage from "../lib/documentStorage";
+import { validateDocumentFile } from "../lib/documentUploadPolicy";
+import { useProfile } from "../context/ProfileContext";
+import type { StudentDocuments } from "../mockData";
+
+function formatShortDate(iso: string): string {
+  const d = new Date(iso + (iso.includes("T") ? "" : "T12:00:00"));
+  return d.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+}
+
+function FitRing({ value, gradientId = "heroFitGradient" }: { value: number; gradientId?: string }) {
+  const r = 52;
+  const c = 2 * Math.PI * r;
+  const offset = c - (value / 100) * c;
+  return (
+    <div className="relative flex h-40 w-40 items-center justify-center">
+      <svg className="h-40 w-40 -rotate-90" viewBox="0 0 120 120" aria-hidden>
+        <circle cx="60" cy="60" r={r} fill="none" stroke="#e2e8f0" strokeWidth="10" />
+        <circle
+          cx="60"
+          cy="60"
+          r={r}
+          fill="none"
+          stroke={`url(#${gradientId})`}
+          strokeWidth="10"
+          strokeLinecap="round"
+          strokeDasharray={c}
+          strokeDashoffset={offset}
+          className="transition-[stroke-dashoffset] duration-300 ease-out"
+        />
+        <defs>
+          <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#6366f1" />
+            <stop offset="100%" stopColor="#8b5cf6" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <div className="absolute text-center">
+        <p className="text-2xl font-bold text-slate-900 tabular-nums">{value}</p>
+        <p className="text-xs font-medium uppercase tracking-wide text-slate-500">AI fit</p>
+      </div>
+    </div>
+  );
+}
+
+export function HomePage() {
+  const location = useLocation();
+  const { student, setStudent, setEditorOpen, universityData } = useProfile();
+  const { getGeneralFitAdvice } = useSmartAdvisor();
+
+  const [execSummary, setExecSummary] = useState("");
+  const [execLoading, setExecLoading] = useState(true);
+  const [execError, setExecError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    setExecLoading(true);
+    setExecError(null);
+    setExecSummary("");
+
+    if (!isAiConfigured()) {
+      setExecSummary(
+        "Подключите `VITE_API_KEY` в `.env.local` и перезапустите dev-сервер, чтобы Qwen 2.5 сформировал вердикт «Why you match»."
+      );
+      setExecLoading(false);
+      return;
+    }
+
+    (async () => {
+      try {
+        const text = await getGeneralFitAdvice();
+        if (!cancelled) setExecSummary(text);
+      } catch (e) {
+        if (!cancelled) setExecError(e instanceof Error ? e.message : "Ошибка ИИ");
+      } finally {
+        if (!cancelled) setExecLoading(false);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [getGeneralFitAdvice]);
+
+  useEffect(() => {
+    if (location.hash === "#admission-checklist" || location.hash === "#program-grid") {
+      const el = document.querySelector(location.hash);
+      el?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [location.pathname, location.hash]);
+
+  const programResults = useMemo(
+    () =>
+      universityData.programs.map((program) => {
+        const { score, englishWarning } = calculateFitScore(student, program);
+        return { program, score, englishWarning };
+      }),
+    [student]
+  );
+
+  const averageFit = useMemo(() => {
+    if (programResults.length === 0) return 0;
+    const sum = programResults.reduce((acc, p) => acc + p.score, 0);
+    return Math.round(sum / programResults.length);
+  }, [programResults]);
+
+  const instructionLanguages = universityData.languagesOfInstruction.join(" · ");
+
+  const handleDocumentSelectFile = useCallback(
+    async (key: keyof StudentDocuments, file: File) => {
+      const v = validateDocumentFile(file);
+      if (!v.ok) {
+        window.alert(v.message);
+        return;
+      }
+      if (typeof indexedDB === "undefined") {
+        window.alert("Your browser does not support local file storage (IndexedDB).");
+        return;
+      }
+
+      setStudent((s) => ({
+        ...s,
+        documents: { ...s.documents, [key]: "PENDING" },
+      }));
+
+      try {
+        const meta = await documentStorage.putDocument(key, file);
+        setStudent((s) => ({
+          ...s,
+          documents: { ...s.documents, [key]: "READY" },
+          documentUploads: { ...(s.documentUploads ?? {}), [key]: meta },
+        }));
+      } catch (e) {
+        console.error(e);
+        setStudent((s) => ({
+          ...s,
+          documents: { ...s.documents, [key]: "MISSING" },
+        }));
+        window.alert("Could not save the file locally. Please try again.");
+      }
+    },
+    [setStudent]
+  );
+
+  const handleDocumentRemoveFile = useCallback(
+    async (key: keyof StudentDocuments) => {
+      try {
+        if (typeof indexedDB !== "undefined") {
+          await documentStorage.deleteDocument(key);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+      setStudent((s) => {
+        const nextUploads = { ...(s.documentUploads ?? {}) };
+        delete nextUploads[key];
+        return {
+          ...s,
+          documents: { ...s.documents, [key]: "MISSING" },
+          documentUploads: nextUploads,
+        };
+      });
+    },
+    [setStudent]
+  );
+
+  const handleDocumentDownload = useCallback(
+    async (key: keyof StudentDocuments) => {
+      const file = await documentStorage.getDocumentFile(key);
+      if (!file) {
+        window.alert("File not found in local storage.");
+        return;
+      }
+      const url = URL.createObjectURL(file);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = file.name;
+      a.click();
+      URL.revokeObjectURL(url);
+    },
+    []
+  );
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.22, ease: "easeOut" }}
+      className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 text-slate-900"
+    >
+      <header className="border-b border-slate-200/80 bg-white/80 backdrop-blur">
+        <div className="mx-auto flex max-w-5xl flex-col gap-8 px-4 py-10 lg:flex-row lg:items-start lg:justify-between">
+          <div className="min-w-0 flex-1 space-y-5">
+            <div>
+              <p className="text-sm font-medium text-indigo-600">Smart University Profile · QApp MVP</p>
+              <h1 className="mt-1 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+                {universityData.name}
+              </h1>
+              <p className="mt-2 text-slate-600">{universityData.city}</p>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              <span className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-800 ring-1 ring-slate-200/90 shadow-sm">
+                Language: {instructionLanguages}
+              </span>
+              <span className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-800 ring-1 ring-slate-200/90 shadow-sm">
+                Type: {universityData.type}
+              </span>
+              <span className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-medium text-violet-900 ring-1 ring-violet-200 shadow-sm">
+                Apply by {formatShortDate(universityData.applicationDeadline)}
+              </span>
+            </div>
+
+            <div className="flex flex-wrap gap-2 border-t border-slate-100 pt-4">
+              <span className="inline-flex items-center rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-800 ring-1 ring-inset ring-indigo-100">
+                GPA {student.academic.gpa.toFixed(1)}
+              </span>
+              <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-800 ring-1 ring-slate-200/80">
+                SAT {student.academic.sat}
+              </span>
+              <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-800 ring-1 ring-slate-200/80">
+                UNT {student.academic.untScore}/140
+              </span>
+              <span className="inline-flex items-center rounded-full bg-violet-50 px-3 py-1 text-xs font-medium text-violet-800 ring-1 ring-inset ring-violet-100">
+                IELTS {student.academic.ielts.toFixed(1)}
+              </span>
+              {student.preferences.interests.map((i) => (
+                <span
+                  key={i}
+                  className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-700 ring-1 ring-inset ring-slate-200/60"
+                >
+                  {i}
+                </span>
+              ))}
+            </div>
+
+            <div className="rounded-2xl border border-indigo-100 bg-indigo-50/35 p-4 ring-1 ring-indigo-100/90">
+              <p className="text-xs font-semibold uppercase tracking-wide text-indigo-700">Why you match</p>
+              <p className="mt-0.5 text-[11px] text-slate-500">Qwen 2.5 · общая оценка шансов</p>
+              {execLoading ? (
+                <div className="mt-3">
+                  <TextSkeleton lines={3} />
+                </div>
+              ) : execError ? (
+                <p className="mt-3 text-sm text-red-700">{execError}</p>
+              ) : (
+                <p className="mt-3 text-sm leading-relaxed text-slate-800">{execSummary}</p>
+              )}
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start lg:flex-col lg:items-end">
+            <FitRing value={averageFit} />
+            <button
+              type="button"
+              onClick={() => setEditorOpen(true)}
+              className="w-full max-w-xs rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 sm:w-auto"
+            >
+              Edit profile
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main className="mx-auto max-w-5xl space-y-14 px-4 py-10">
+        <AiFitCard
+          universityName={universityData.name}
+          averageFitPercent={averageFit}
+          student={student}
+          executiveSummary={execSummary}
+          executiveLoading={execLoading}
+          executiveError={execError}
+        />
+        <ProgramGrid rows={programResults} />
+
+        <div className="space-y-14">
+          <DeadlinesTimeline
+            applicationDeadlineIso={universityData.applicationDeadline}
+            documents={student.documents}
+          />
+          <AdmissionChecklist
+            documents={student.documents}
+            documentUploads={student.documentUploads ?? {}}
+            onSelectFile={handleDocumentSelectFile}
+            onRemoveFile={handleDocumentRemoveFile}
+            onDownloadFile={handleDocumentDownload}
+          />
+          <ScholarshipsSection />
+        </div>
+      </main>
+    </motion.div>
+  );
+}

@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Build
+dist/
+
+# Local env (ключи API — только у вас на машине)
+.env
+.env.local
+.env.*.local
+
+# Vite cache (pre-bundled deps)
+.vite/
+
+# Logs / IDE
+*.log
+.DS_Store
