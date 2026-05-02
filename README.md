@@ -133,14 +133,23 @@ npm run preview
 
 ## 8. Screenshots — скриншоты интерфейса
 
-Добавьте **2–3 скриншота** в каталог **`docs/screenshots/`** (см. [docs/screenshots/README.md](./docs/screenshots/README.md)). После этого вставьте ссылки в README, например:
+Сохраните файлы в **`docs/screenshots/`** (локально после `npm run dev`), закоммитьте вместе с README:
 
-```markdown
-![Лендинг](docs/screenshots/landing.png)
-![Дашборд](docs/screenshots/dashboard.png)
-```
+| Файл | Что показать |
+|------|----------------|
+| `landing.png` | Лендинг / анкета |
+| `dashboard.png` | Дашборд вуза (AI Fit + программы) |
+| `profile.png` *(опционально)* | Страница профиля или каталог |
 
-*В текущей версии репозитория файлы-изображения нужно добавить вручную после снятия скринов с локального `npm run dev`.*
+Вставка в README (картинки появятся в GitHub после добавления файлов):
+
+![Лендинг и анкета](docs/screenshots/landing.png)
+
+![Дашборд: AI Fit и программы](docs/screenshots/dashboard.png)
+
+![Профиль или каталог](docs/screenshots/profile.png)
+
+*Пока файлов нет в репозитории, превью в GitHub может быть пустым — после добавления PNG всё отобразится.*
 
 ---
 
