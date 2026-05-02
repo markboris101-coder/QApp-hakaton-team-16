@@ -1,7 +1,8 @@
 import type { UniversityTemplate } from "../../mockData";
+import { FIVE_MORE_KAZAKHSTAN_UNIVERSITIES } from "./fiveMoreUniversities";
 
 /**
- * Пять дополнительных вузов РК для каталога QApp.
+ * Дополнительные вузы РК для каталога QApp (ENU, Satbayev, KazNPU Abai, KazNARU, NKzu + ещё пять городов).
  * Факультеты и описания ориентированы на открытые разделы «Структура / институты» официальных сайтов.
  */
 
@@ -740,4 +741,5 @@ export const ADDITIONAL_KAZAKHSTAN_UNIVERSITIES: UniversityTemplate[] = [
       },
     ],
   },
+  ...FIVE_MORE_KAZAKHSTAN_UNIVERSITIES,
 ];

@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState, type Dispatch, type SetStateAction } from "react";
+import { useTranslation } from "react-i18next";
 import type { FinancialSituation, StudentProfile } from "../mockData";
 import { AchievementNarrativeBlock } from "./AchievementNarrativeBlock";
 import { mergeAwardsWithTiers, resolveAchievementProfile } from "../lib/achievementProfile";
@@ -70,7 +71,17 @@ function readFileAsDataUrl(file: File): Promise<string> {
   });
 }
 
+function financialLabel(
+  t: (key: string) => string,
+  opt: FinancialSituation
+): string {
+  if (opt === "Need Full Scholarship") return t("financial.needFull");
+  if (opt === "Partial Scholarship") return t("financial.partial");
+  return t("financial.selfFunded");
+}
+
 export function ProfileEditorForm({ student, onStudentChange }: Props) {
+  const { t } = useTranslation();
   const [achievementNarrative, setAchievementNarrative] = useState(
     () => student.achievementProfile?.narrative ?? ""
   );
@@ -173,7 +184,7 @@ export function ProfileEditorForm({ student, onStudentChange }: Props) {
       await afterAchievementMutate();
     } catch (err) {
       console.error(err);
-      window.alert("Не удалось сохранить файл.");
+      window.alert(t("profileEditor.alertSaveFail"));
     }
   };
 
@@ -183,13 +194,13 @@ export function ProfileEditorForm({ student, onStudentChange }: Props) {
       await afterAchievementMutate();
     } catch (err) {
       console.error(err);
-      window.alert("Не удалось удалить файл.");
+      window.alert(t("profileEditor.alertDeleteFail"));
     }
   };
 
   const handleVerifyAchievement = async (row: AchievementStored) => {
     if (!isAiConfigured()) {
-      window.alert("Добавьте VITE_API_KEY (локально или на хостинге), чтобы Qwen проверил сертификат.");
+      window.alert(t("profileEditor.alertVerifyNoKey"));
       return;
     }
     setVerifyBusyId(row.id);
@@ -201,13 +212,11 @@ export function ProfileEditorForm({ student, onStudentChange }: Props) {
       await afterAchievementMutate();
       const verdict = parseAchievementVerdict(text);
       if (verdict === "unknown") {
-        window.alert(
-          "Модель ответила без строки VERDICT. Проверьте текст вердикта в карточке — при необходимости нажмите «Проверить» ещё раз."
-        );
+        window.alert(t("profileEditor.alertVerdictUnknown"));
       }
     } catch (err) {
       console.error(err);
-      window.alert(err instanceof Error ? err.message : "Ошибка проверки");
+      window.alert(err instanceof Error ? err.message : t("scholarships.aiError"));
     } finally {
       setVerifyBusyId(null);
     }
@@ -218,14 +227,19 @@ export function ProfileEditorForm({ student, onStudentChange }: Props) {
   const fieldClass =
     "mt-2 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-slate-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200";
 
+  const interestMap = t("profileEditor.interestLabels", { returnObjects: true }) as Record<string, string>;
+  const awardMap = t("profileEditor.awardLabels", { returnObjects: true }) as Record<string, string>;
+  const interestText = (option: (typeof INTEREST_OPTIONS)[number]) => interestMap[option] ?? option;
+  const awardText = (option: (typeof AWARD_OPTIONS)[number]) => awardMap[option] ?? option;
+
   return (
     <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
       <div className="rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm lg:col-span-5">
-        <h3 className="text-sm font-semibold uppercase tracking-wide text-indigo-700">Академические показатели</h3>
+        <h3 className="text-sm font-semibold uppercase tracking-wide text-indigo-700">{t("profileEditor.academicTitle")}</h3>
         <div className="mt-6 space-y-6">
           <section>
             <label className="block text-sm font-medium text-slate-700" htmlFor="gpa-input">
-              GPA (out of 5.0)
+              {t("profileEditor.gpaLabel")}
             </label>
             <input
               id="gpa-input"
@@ -240,9 +254,9 @@ export function ProfileEditorForm({ student, onStudentChange }: Props) {
           </section>
           <section>
             <label className="block text-sm font-medium text-slate-700" htmlFor="sat-input">
-              SAT ({SAT_MIN}–{SAT_MAX}, 0 = не сдавали)
+              {t("profileEditor.satLabel", { min: SAT_MIN, max: SAT_MAX })}
             </label>
-            <p className="mb-1.5 text-xs text-slate-500">Для казахстанской подачи часто достаточно UNT; SAT опционален.</p>
+            <p className="mb-1.5 text-xs text-slate-500">{t("profileEditor.satHint")}</p>
             <input
               id="sat-input"
               type="number"
@@ -256,7 +270,7 @@ export function ProfileEditorForm({ student, onStudentChange }: Props) {
           </section>
           <section>
             <label className="block text-sm font-medium text-slate-700" htmlFor="unt-input">
-              UNT / ЕНТ ({UNT_MIN}–{UNT_MAX})
+              {t("profileEditor.untLabel", { min: UNT_MIN, max: UNT_MAX })}
             </label>
             <input
               id="unt-input"
@@ -271,7 +285,7 @@ export function ProfileEditorForm({ student, onStudentChange }: Props) {
           </section>
           <section>
             <label className="block text-sm font-medium text-slate-700" htmlFor="ielts-select">
-              IELTS (шаг 0.5)
+              {t("profileEditor.ieltsLabel")}
             </label>
             <select
               id="ielts-select"
@@ -286,9 +300,7 @@ export function ProfileEditorForm({ student, onStudentChange }: Props) {
               ))}
             </select>
             {student.academic.ielts < 6.5 && (
-              <p className="mt-2 text-sm text-amber-700">
-                Warning: low English level — program fit is heavily reduced.
-              </p>
+              <p className="mt-2 text-sm text-amber-700">{t("profileEditor.englishWarn")}</p>
             )}
           </section>
         </div>
@@ -296,8 +308,8 @@ export function ProfileEditorForm({ student, onStudentChange }: Props) {
 
       <div className="space-y-8 lg:col-span-7">
         <div className="rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-indigo-700">Финансы и интересы</h3>
-          <p className="mt-2 text-sm font-medium text-slate-700">Financial situation</p>
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-indigo-700">{t("profileEditor.financeTitle")}</h3>
+          <p className="mt-2 text-sm font-medium text-slate-700">{t("profileEditor.financialLabel")}</p>
           <div className="mt-3 space-y-2">
             {FINANCIAL_OPTIONS.map((opt) => (
               <label
@@ -311,12 +323,12 @@ export function ProfileEditorForm({ student, onStudentChange }: Props) {
                   checked={student.preferences.financialStatus === opt}
                   onChange={() => setFinancial(opt)}
                 />
-                <span className="text-sm text-slate-800">{opt}</span>
+                <span className="text-sm text-slate-800">{financialLabel(t, opt)}</span>
               </label>
             ))}
           </div>
-          <p className="mt-8 text-sm font-medium text-slate-700">Interests</p>
-          <p className="mt-1 text-xs text-slate-500">Сопоставляются с полем программы (Engineering, Business и т.д.).</p>
+          <p className="mt-8 text-sm font-medium text-slate-700">{t("profileEditor.interestsTitle")}</p>
+          <p className="mt-1 text-xs text-slate-500">{t("profileEditor.interestsHint")}</p>
           <ul className="mt-3 grid gap-2 sm:grid-cols-2">
             {INTEREST_OPTIONS.map((option) => {
               const checked = student.preferences.interests.includes(option);
@@ -329,7 +341,7 @@ export function ProfileEditorForm({ student, onStudentChange }: Props) {
                       checked={checked}
                       onChange={(e) => toggleInterest(option, e.target.checked)}
                     />
-                    <span className="text-sm text-slate-800">{option}</span>
+                    <span className="text-sm text-slate-800">{interestText(option)}</span>
                   </label>
                 </li>
               );
@@ -338,7 +350,7 @@ export function ProfileEditorForm({ student, onStudentChange }: Props) {
         </div>
 
         <div className="rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-indigo-700">Награды и сертификаты</h3>
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-indigo-700">{t("profileEditor.awardsTitle")}</h3>
           <div className="mt-4 border-b border-slate-100 pb-6">
             <AchievementNarrativeBlock
               variant="profile"
@@ -364,9 +376,7 @@ export function ProfileEditorForm({ student, onStudentChange }: Props) {
               }}
             />
           </div>
-          <p className="mt-2 text-xs text-slate-500">
-            Дополнительно: бонус олимпиады по PNG максимален при VERDICT: ACCEPT от Qwen VL; текст выше даёт базовые уровни без файла.
-          </p>
+          <p className="mt-2 text-xs text-slate-500">{t("profileEditor.awardsExtraHint")}</p>
           <ul className="mt-4 grid gap-2 sm:grid-cols-2">
             {AWARD_OPTIONS.map((option) => {
               const checked = student.awards.includes(option);
@@ -379,7 +389,7 @@ export function ProfileEditorForm({ student, onStudentChange }: Props) {
                       checked={checked}
                       onChange={(e) => toggleAward(option, e.target.checked)}
                     />
-                    <span className="text-sm text-slate-800">{option}</span>
+                    <span className="text-sm text-slate-800">{awardText(option)}</span>
                   </label>
                 </li>
               );
@@ -393,21 +403,19 @@ export function ProfileEditorForm({ student, onStudentChange }: Props) {
                   : "bg-amber-50 text-amber-950 ring-1 ring-amber-200"
               }`}
             >
-              {student.olympiadVerified
-                ? "Олимпиада подтверждена AI — бонус к Fit активен."
-                : "Загрузите PNG и нажмите «Проверить через Qwen» (VERDICT: ACCEPT)."}
+              {student.olympiadVerified ? t("profileEditor.olympiadVerifiedBonus") : t("profileEditor.olympiadUploadPrompt")}
             </p>
           )}
 
-          <p className="mt-8 text-sm font-medium text-slate-700">Сертификаты (PNG)</p>
+          <p className="mt-8 text-sm font-medium text-slate-700">{t("profileEditor.certTitle")}</p>
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <select
               value={uploadCategory}
               onChange={(e) => setUploadCategory(e.target.value as AchievementCategory)}
               className="rounded-lg border border-slate-200 bg-white px-2 py-2 text-sm text-slate-800"
             >
-              <option value="olympiad">Олимпиада</option>
-              <option value="other">Другое достижение</option>
+              <option value="olympiad">{t("profileEditor.certOlympiad")}</option>
+              <option value="other">{t("profileEditor.certOther")}</option>
             </select>
             <input
               ref={fileInputRef}
@@ -421,7 +429,7 @@ export function ProfileEditorForm({ student, onStudentChange }: Props) {
               onClick={() => fileInputRef.current?.click()}
               className="rounded-xl border border-indigo-200 bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-800 hover:bg-indigo-100"
             >
-              Загрузить PNG
+              {t("profileEditor.uploadPng")}
             </button>
           </div>
           <ul className="mt-4 grid gap-4 lg:grid-cols-2">
@@ -434,7 +442,7 @@ export function ProfileEditorForm({ student, onStudentChange }: Props) {
                   <div className="min-w-0">
                     <p className="truncate font-medium text-slate-900">{row.meta.fileName}</p>
                     <p className="text-xs text-slate-500">
-                      {row.category === "olympiad" ? "Олимпиада" : "Другое"} ·{" "}
+                      {row.category === "olympiad" ? t("profileEditor.certOlympiad") : t("profileEditor.certOther")} ·{" "}
                       {(row.meta.sizeBytes / 1024).toFixed(0)} KB
                     </p>
                   </div>
@@ -443,15 +451,15 @@ export function ProfileEditorForm({ student, onStudentChange }: Props) {
                     onClick={() => handleDeleteAchievement(row.id)}
                     className="shrink-0 text-xs font-medium text-red-600 hover:text-red-800"
                   >
-                    Удалить
+                    {t("profileEditor.delete")}
                   </button>
                 </div>
                 {row.aiVerdict ? (
                   <div className="mt-2 rounded-lg bg-white px-2 py-2 text-xs leading-relaxed text-slate-700 ring-1 ring-slate-100">
-                    <p className="font-medium text-slate-800">Вердикт модели</p>
+                    <p className="font-medium text-slate-800">{t("profileEditor.modelVerdict")}</p>
                     <p className="mt-1 max-h-32 overflow-y-auto whitespace-pre-wrap">{row.aiVerdict}</p>
                     <p className="mt-2 text-[11px] uppercase text-slate-400">
-                      Разбор:{" "}
+                      {t("profileEditor.parseVerdict")}{" "}
                       <span className="font-semibold text-slate-700">
                         {parseAchievementVerdict(row.aiVerdict)}
                       </span>
@@ -464,13 +472,13 @@ export function ProfileEditorForm({ student, onStudentChange }: Props) {
                   onClick={() => handleVerifyAchievement(row)}
                   className="mt-3 w-full rounded-lg bg-indigo-600 px-3 py-2 text-xs font-semibold text-white hover:bg-indigo-700 disabled:opacity-60"
                 >
-                  {verifyBusyId === row.id ? "Проверка…" : "Проверить через Qwen (vision)"}
+                  {verifyBusyId === row.id ? t("profileEditor.verifyBusy") : t("profileEditor.verifyBtn")}
                 </button>
               </li>
             ))}
           </ul>
           {achievements.length === 0 && (
-            <p className="mt-3 text-xs text-slate-400">Пока нет загруженных файлов.</p>
+            <p className="mt-3 text-xs text-slate-400">{t("profileEditor.noFiles")}</p>
           )}
         </div>
       </div>

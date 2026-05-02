@@ -9,6 +9,7 @@ import {
   type UniversityProgram,
   type UniversityTemplate,
 } from "../mockData";
+import { getFacultyDisplayName } from "../lib/universityLabels";
 
 export type ProgramRow = {
   program: UniversityProgram;
@@ -154,7 +155,7 @@ export function ProgramGrid({ rows, university }: Props) {
             <option value="all">{t("programGrid.allFaculties")}</option>
             {university.faculties.map((f) => (
               <option key={f.id} value={f.id}>
-                {f.name}
+                {getFacultyDisplayName(f, i18n.language)}
               </option>
             ))}
           </select>
@@ -229,7 +230,8 @@ export function ProgramGrid({ rows, university }: Props) {
                     <div className="min-w-0">
                       <h3 className="font-semibold text-slate-900">{program.name}</h3>
                       <p className="mt-1 text-sm text-slate-500">
-                        {fac?.name ?? program.facultyId} · {program.field} · {program.degree} · {yearsLabel} · {program.language}
+                        {fac ? getFacultyDisplayName(fac, i18n.language) : program.facultyId} · {program.field} ·{" "}
+                        {program.degree} · {yearsLabel} · {program.language}
                       </p>
                       <p className="mt-1 text-xs font-medium text-emerald-900 tabular-nums">
                         {formatTuitionKzt(program.annualTuitionKzt)}

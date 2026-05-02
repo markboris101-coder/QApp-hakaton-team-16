@@ -112,8 +112,14 @@ export type DegreeLevel = "Bachelor" | "Master" | "PhD";
 /** Факультет / школа внутри вуза (mock для карточек и страницы программы) */
 export interface UniversityFaculty {
   id: string;
+  /** Каноническое англоязычное имя (поиск, ключи) */
   name: string;
   description: string;
+  /** Локализованные подписи для интерфейса (опционально) */
+  nameRu?: string;
+  nameKk?: string;
+  descriptionRu?: string;
+  descriptionKk?: string;
 }
 
 /** Ориентир стоимости обучения по вузу (тенге в год, демо QApp — не официальный прайс) */
@@ -169,6 +175,8 @@ export interface UniversityTemplate {
   /** Стабильный ключ для выбора вуза в MVP */
   id: string;
   name: string;
+  nameRu?: string;
+  nameKk?: string;
   city: string;
   foundedYear: number;
   type: UniversityType;
@@ -1264,7 +1272,7 @@ const BASE_KAZAKHSTAN_UNIVERSITIES: UniversityTemplate[] = [
 ];
 
 /**
- * 10 вузов РК: 5 базовых (с расширенным каталогом факультетов из open data) + 5 из `newInstitutions`.
+ * 15 вузов РК: 5 базовых (с расширенным каталогом факультетов из open data) + 10 из `newInstitutions` / `fiveMoreUniversities`.
  * Единая «база» для поиска, дашборда и рекомендаций.
  */
 export const UNIVERSITIES: UniversityTemplate[] = [

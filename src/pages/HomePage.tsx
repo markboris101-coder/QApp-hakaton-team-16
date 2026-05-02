@@ -21,6 +21,7 @@ import { formatTuitionBand, type StudentDocuments } from "../mockData";
 import { getTopUniversityRecommendation } from "../lib/recommendUniversity";
 import { useAssistantIntake } from "../hooks/useAssistantIntake";
 import { formatSatForDisplay } from "../lib/academicInput";
+import { getUniversityDisplayName } from "../lib/universityLabels";
 
 function FitRing({
   value,
@@ -287,7 +288,7 @@ export function HomePage() {
             <div>
               <p className="text-sm font-medium text-indigo-600">{t("home.tagline")}</p>
               <h1 className="mt-1 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-                {universityData.name}
+                {getUniversityDisplayName(universityData, i18n.language)}
               </h1>
               <p className="mt-2 text-slate-600">{universityData.city}</p>
             </div>
@@ -430,7 +431,7 @@ export function HomePage() {
           >
             <AssistantDashboardNudge
               recommendation={assistantTop}
-              currentUniversityName={universityData.name}
+              currentUniversityName={getUniversityDisplayName(universityData, i18n.language)}
               onSwitchToRecommended={() => setSelectedUniversityId(assistantTop.universityId)}
             />
           </motion.div>
@@ -439,7 +440,7 @@ export function HomePage() {
         <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start lg:gap-10">
           <div className="min-w-0 space-y-14">
             <AiFitCard
-              universityName={universityData.name}
+              universityName={getUniversityDisplayName(universityData, i18n.language)}
               averageFitPercent={averageFit}
               student={student}
               executiveSummary={execSummary}
@@ -453,7 +454,7 @@ export function HomePage() {
             <div className="space-y-14">
               <ThisWeekPanel
                 universityId={universityData.id}
-                universityName={universityData.name}
+                universityName={getUniversityDisplayName(universityData, i18n.language)}
                 applicationDeadlineIso={universityData.applicationDeadline}
                 documents={student.documents}
                 shortlistCount={shortlist.length}
@@ -462,6 +463,8 @@ export function HomePage() {
               <DeadlinesTimeline
                 applicationDeadlineIso={universityData.applicationDeadline}
                 documents={student.documents}
+                shortlistCount={shortlist.length}
+                student={student}
               />
               <AdmissionChecklist
                 documents={student.documents}
@@ -475,7 +478,7 @@ export function HomePage() {
           </div>
           <div className="mt-10 hidden lg:mt-0 lg:block">
             <DashboardStickySidebar
-              universityName={universityData.name}
+              universityName={getUniversityDisplayName(universityData, i18n.language)}
               city={universityData.city}
               averageFitPercent={averageFit}
               programCount={universityData.programs.length}

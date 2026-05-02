@@ -10,6 +10,7 @@ import {
   type UniversityCompareSnapshot,
 } from "../lib/universityCompareFacts";
 import { useProfile } from "../context/ProfileContext";
+import { getUniversityDisplayName, universitySearchBlob } from "../lib/universityLabels";
 
 export type PriceBand = "all" | "budget" | "mid" | "premium";
 
@@ -39,7 +40,7 @@ export function UniversitySearchPanel({
   onPickUniversity,
   recommendedUniversityId,
 }: Props) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { isFavoriteUniversity, toggleFavoriteUniversity } = useProfile();
 
   const typeOptions: Array<{ id: UniversityType | "all"; label: string }> = useMemo(
@@ -146,16 +147,7 @@ export function UniversitySearchPanel({
       if (cityFilter !== "all" && !u.city.toLowerCase().startsWith(cityFilter.toLowerCase())) return false;
       if (priceFilter !== "all" && bandForUniversity(u) !== priceFilter) return false;
       if (!t) return true;
-      const blob = [
-        u.name,
-        u.city,
-        u.type,
-        u.scholarshipBlurb,
-        u.languagesOfInstruction.join(" "),
-        String(u.foundedYear),
-      ]
-        .join(" ")
-        .toLowerCase();
+      const blob = universitySearchBlob(u).toLowerCase();
       return blob.includes(t);
     });
   }, [universities, q, typeFilter, cityFilter, priceFilter]);
@@ -361,7 +353,7 @@ export function UniversitySearchPanel({
                       checked={checked}
                       onChange={() => toggleCompare(u.id)}
                       className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
-                      aria-label={t("search.compareAria", { name: u.name })}
+                      aria-label={t("search.compareAria", { name: getUniversityDisplayName(u, i18n.language) })}
                     />
                     <span className="hidden max-w-[3.5rem] text-center leading-tight sm:inline">
                       {t("search.compare")}
@@ -375,7 +367,9 @@ export function UniversitySearchPanel({
                 >
                   <div className="min-w-0 flex-1">
                     <span className="flex flex-wrap items-center gap-2">
-                      <span className="text-lg font-semibold leading-snug text-slate-900">{u.name}</span>
+                      <span className="text-lg font-semibold leading-snug text-slate-900">
+                        {getUniversityDisplayName(u, i18n.language)}
+                      </span>
                       {recommendedUniversityId === u.id && (
                         <span className="rounded-full bg-gradient-to-r from-amber-400 to-orange-400 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-slate-900 shadow-sm">
                           {t("search.matchBadge")}
@@ -502,7 +496,9 @@ export function UniversitySearchPanel({
                 {comparedUniversities.map((u) => (
                   <th key={u.id} className="min-w-[190px] px-2 py-3 align-bottom">
                     <div className="flex flex-col gap-2">
-                      <span className="font-semibold leading-snug text-indigo-900">{u.name}</span>
+                      <span className="font-semibold leading-snug text-indigo-900">
+                        {getUniversityDisplayName(u, i18n.language)}
+                      </span>
                       <button
                         type="button"
                         onClick={() => {

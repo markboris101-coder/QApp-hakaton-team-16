@@ -2,10 +2,11 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useProfile } from "../context/ProfileContext";
+import { getUniversityDisplayName } from "../lib/universityLabels";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function MainNav() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const location = useLocation();
   const { universityData, student } = useProfile();
 
@@ -87,7 +88,9 @@ export function MainNav() {
           <LanguageSwitcher />
           {!isLanding && (
             <div className="hidden min-w-0 max-w-[200px] truncate text-right text-xs text-slate-600 sm:block">
-              <span className="font-medium text-slate-800">{universityData.name}</span>
+              <span className="font-medium text-slate-800">
+                {getUniversityDisplayName(universityData, i18n.language)}
+              </span>
               <span className="text-slate-500"> · {universityData.city.split(",")[0].trim()}</span>
             </div>
           )}

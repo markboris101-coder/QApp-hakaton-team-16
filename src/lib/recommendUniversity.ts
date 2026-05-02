@@ -43,7 +43,7 @@ function budgetFitScore(student: StudentProfile, u: UniversityTemplate): number 
 function cityBoostPoints(student: StudentProfile, u: UniversityTemplate): number {
   const pref = student.preferences.city?.trim().toLowerCase() ?? "";
   if (pref.length < 2) return 0;
-  const blob = `${u.city} ${u.name}`.toLowerCase();
+  const blob = `${u.city} ${u.name} ${u.nameRu ?? ""} ${u.nameKk ?? ""}`.toLowerCase();
   if (blob.includes(pref)) return 12;
   const words = pref.split(/\s+/).filter((w) => w.length > 2);
   if (words.some((w) => blob.includes(w))) return 8;

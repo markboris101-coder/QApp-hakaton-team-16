@@ -3,12 +3,14 @@ import { useProfile } from "../context/ProfileContext";
 import { askQwen, askQwenMessages, type QwenChatTurn } from "../services/aiProvider";
 import { getProgramBySlug } from "../mockData";
 import type { StudentProfile } from "../mockData";
+import i18n from "../i18n/config";
+import { getUniversityDisplayName } from "../lib/universityLabels";
 
 /**
  * Системный промпт для всех сценариев QApp.
  * Явно снимаем «смещение к NU»: модели часто перетягивают ответы к Nazarbayev University без оснований.
  */
-export const ADVISOR_SYSTEM_PROMPT = `Ты — эксперт QApp по поступлению в вузы Казахстана (полный каталог в приложении — десятки вузов).
+export const ADVISOR_SYSTEM_PROMPT = `Ты — эксперт QApp по поступлению в вузы Казахстана (в каталоге QApp — более десятка вузов с разными городами).
 
 Правила контекста:
 - Не предполагай по умолчанию, что абитуриент целится в Nazarbayev University (NU). Упоминай NU только если пользователь или контекст явно называют этот вуз.
@@ -43,7 +45,8 @@ export function useSmartAdvisor() {
         student.academic.sat > 0
           ? `SAT ${student.academic.sat} и `
           : "";
-      const prompt = `Программа «${program.name}» в вузе «${university.name}» (${university.city}; поле: ${program.field}). Все рекомендации — только для этого вуза; не переноси требования Nazarbayev University сюда без нужды.
+      const uniLabel = getUniversityDisplayName(university, i18n.language);
+      const prompt = `Программа «${program.name}» в вузе «${uniLabel}» (${university.city}; поле: ${program.field}). Все рекомендации — только для этого вуза; не переноси требования Nazarbayev University сюда без нужды.
 
 Проанализируй ${satLine}ЕНТ ${student.academic.untScore} для этой программы (в РК SAT часто не указывают — не требуй его, если в профиле нет). Дай совет из 2 предложений. Учти GPA ${student.academic.gpa.toFixed(1)} и IELTS ${student.academic.ielts.toFixed(1)}.`;
       return askQwen(prompt, ADVISOR_SYSTEM_PROMPT);
@@ -52,7 +55,8 @@ export function useSmartAdvisor() {
   );
 
   const getGeneralFitAdvice = useCallback(async (): Promise<string> => {
-    const prompt = `Оценка только для вуза «${universityData.name}» (${universityData.city}), id=${universityData.id}. Не переключайся на Nazarbayev University, если это другой вуз.
+    const un = getUniversityDisplayName(universityData, i18n.language);
+    const prompt = `Оценка только для вуза «${un}» (${universityData.city}), id=${universityData.id}. Не переключайся на Nazarbayev University, если это другой вуз.
 
 Дай общую оценку шансов поступления именно туда для абитуриента:
 
@@ -67,7 +71,8 @@ ${summarizeStudentBlock(student)}
     async (scholarshipName: string): Promise<string> => {
       const s = universityData.scholarships.find((x) => x.name === scholarshipName);
       const reqText = s?.requirements ?? "";
-      const prompt = `Стипендия «${scholarshipName}» в вузе «${universityData.name}» (${universityData.city}). Не относись к ней как к стипендии NU, если это другой вуз.
+      const un = getUniversityDisplayName(universityData, i18n.language);
+      const prompt = `Стипендия «${scholarshipName}» в вузе «${un}» (${universityData.city}). Не относись к ней как к стипендии NU, если это другой вуз.
 
 Объясни, как награда «Olympiad Winner» (олимпиада) может усилить заявку на эту стипендию.
 
@@ -91,11 +96,12 @@ ${summarizeStudentBlock(student)}
           ? favoriteUniversityIds
               .map((id) => universities.find((u) => u.id === id))
               .filter(Boolean)
-              .map((u) => `«${u!.name}»`)
+              .map((u) => `«${getUniversityDisplayName(u!, i18n.language)}»`)
               .join(", ")
           : "не отмечены";
 
-      const context = `ТЕКУЩИЙ ВЫБОР В ИНТЕРФЕЙСЕ (дашборд QApp): id=${selectedUniversityId}, вуз «${universityData.name}», ${universityData.city}.
+      const curUn = getUniversityDisplayName(universityData, i18n.language);
+      const context = `ТЕКУЩИЙ ВЫБОР В ИНТЕРФЕЙСЕ (дашборд QApp): id=${selectedUniversityId}, вуз «${curUn}», ${universityData.city}.
 Это переключатель «активного вуза» для карточек на сайте — НЕ утверждение, что пользователь подаёт документы только сюда. В каталоге QApp сейчас ${universities.length} вузов Казахстана; абитуриент может подавать в несколько.
 
 Важно: не отвечай так, будто заявка только в Nazarbayev University, если в строке выше другой вуз. По общим вопросам (ЕНТ, портал, документы) будь нейтрален к конкретному вузу.

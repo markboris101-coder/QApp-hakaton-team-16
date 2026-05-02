@@ -9,6 +9,7 @@ import { useSmartAdvisor } from "../hooks/useSmartAdvisor";
 import { TextSkeleton } from "../components/TextSkeleton";
 import { isAiConfigured } from "../services/aiProvider";
 import { formatSatForDisplay } from "../lib/academicInput";
+import { getFacultyDescription, getFacultyDisplayName, getUniversityDisplayName } from "../lib/universityLabels";
 
 const APPLY_URLS: Record<string, string> = {
   nu: "https://nu.edu.kz/en/admissions",
@@ -21,10 +22,15 @@ const APPLY_URLS: Record<string, string> = {
   abaikaznpu: "https://kaznpu.kz/",
   kaznaru: "https://kaznaru.kz/",
   nkzu: "https://nkzu.kz/",
+  buketov: "https://buketov.edu.kz/",
+  "zhubanov-aru": "https://zhubanov.edu.kz/",
+  yessenov: "https://yu.edu.kz/",
+  shakarim: "https://shakarim.university/",
+  toraighyrov: "https://tou.edu.kz/",
 };
 
 export function ProgramDetailsPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { student, toggleShortlist, isShortlisted, setSelectedUniversityId } = useProfile();
@@ -136,7 +142,7 @@ export function ProgramDetailsPage() {
             {t("program.breadcrumbHome")}
           </Link>
           <span className="mx-2">/</span>
-          <span className="text-slate-600">{programUniversity.name}</span>
+          <span className="text-slate-600">{getUniversityDisplayName(programUniversity, i18n.language)}</span>
           <span className="mx-2">/</span>
           <span className="text-slate-800">{program.name}</span>
         </nav>
@@ -153,7 +159,7 @@ export function ProgramDetailsPage() {
         <div className="min-w-0 space-y-8">
           <header className="overflow-hidden rounded-3xl border border-slate-200/90 bg-gradient-to-br from-white to-indigo-50/50 p-6 shadow-sm sm:p-10">
             <p className="text-xs font-semibold uppercase tracking-wider text-indigo-600">
-              {programUniversity.name} · {programUniversity.city}
+              {getUniversityDisplayName(programUniversity, i18n.language)} · {programUniversity.city}
             </p>
             <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{program.name}</h1>
             <p className="mt-2 text-slate-600">
@@ -167,7 +173,7 @@ export function ProgramDetailsPage() {
             {faculty && (
               <p className="mt-1 text-sm text-slate-700">
                 <span className="font-medium text-slate-900">{t("program.faculty")} </span>
-                {faculty.name}
+                {getFacultyDisplayName(faculty, i18n.language)}
               </p>
             )}
             <p className="mt-2 text-sm font-medium text-emerald-900 tabular-nums">
@@ -190,7 +196,9 @@ export function ProgramDetailsPage() {
           {faculty && (
             <section className="rounded-2xl border border-slate-200/90 bg-slate-50/80 p-5">
               <h2 className="text-lg font-semibold text-slate-900">{t("program.aboutFaculty")}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">{faculty.description}</p>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                {getFacultyDescription(faculty, i18n.language)}
+              </p>
               <p className="mt-3 text-xs text-slate-500">
                 Вилка по вузу: {programUniversity.tuitionOverview.note}
               </p>

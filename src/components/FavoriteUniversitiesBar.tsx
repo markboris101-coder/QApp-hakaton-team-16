@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useProfile } from "../context/ProfileContext";
+import { getUniversityDisplayName } from "../lib/universityLabels";
 
 export function FavoriteUniversitiesBar() {
   const { t } = useTranslation();
@@ -55,7 +56,7 @@ export function FavoriteUniversitiesBar() {
                     : "bg-white text-slate-800 ring-1 ring-slate-200 hover:bg-slate-50"
                 }`}
               >
-                {u.name.split("(")[0].trim()}
+                {getUniversityDisplayName(u, i18n.language).split("(")[0].trim()}
                 {active ? ` · ${t("favoritesBar.current")}` : ""}
               </button>
               <button
@@ -63,7 +64,9 @@ export function FavoriteUniversitiesBar() {
                 onClick={() => toggleFavoriteUniversity(u.id)}
                 className="rounded-lg px-2 py-1 text-xs font-medium text-slate-500 hover:bg-red-50 hover:text-red-700"
                 title={t("favoritesBar.removeTitle")}
-                aria-label={t("favoritesBar.removeAria", { name: u.name })}
+                aria-label={t("favoritesBar.removeAria", {
+                  name: getUniversityDisplayName(u, i18n.language),
+                })}
               >
                 ✕
               </button>

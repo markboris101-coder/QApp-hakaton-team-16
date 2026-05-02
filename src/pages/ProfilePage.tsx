@@ -3,11 +3,12 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { useProfile } from "../context/ProfileContext";
 import { ProfileEditorForm } from "../components/ProfileEditorForm";
+import { getUniversityDisplayName } from "../lib/universityLabels";
 
 const SHELL = "mx-auto w-full max-w-[min(100%,1400px)] px-4 sm:px-6";
 
 export function ProfilePage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const {
     student,
@@ -35,7 +36,9 @@ export function ProfilePage() {
             >
               {t("profile.backHome")}
             </Link>
-            <span className="text-sm text-slate-500">{universityData.name}</span>
+            <span className="text-sm text-slate-500">
+              {getUniversityDisplayName(universityData, i18n.language)}
+            </span>
           </div>
           <p className="text-xs text-slate-500">{t("profile.autosave")}</p>
         </div>
@@ -62,7 +65,9 @@ export function ProfilePage() {
                     key={id}
                     className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-amber-200/80 bg-white px-3 py-2.5"
                   >
-                    <span className="text-sm font-medium text-slate-900">{u.name}</span>
+                    <span className="text-sm font-medium text-slate-900">
+                      {getUniversityDisplayName(u, i18n.language)}
+                    </span>
                     <div className="flex flex-wrap gap-2">
                       <button
                         type="button"

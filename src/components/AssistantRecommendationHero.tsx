@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import type { UniversityRecommendation } from "../lib/recommendUniversity";
+import { useProfile } from "../context/ProfileContext";
+import { getUniversityDisplayName } from "../lib/universityLabels";
 
 type Props = {
   recommendation: UniversityRecommendation;
@@ -13,7 +15,12 @@ export function AssistantRecommendationHero({
   onOpenRecommended,
   onScrollToCatalog,
 }: Props) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const { universities } = useProfile();
+  const recName = useMemo(() => {
+    const u = universities.find((x) => x.id === recommendation.universityId);
+    return u ? getUniversityDisplayName(u, i18n.language) : recommendation.universityName;
+  }, [universities, recommendation.universityId, recommendation.universityName, i18n.language]);
   return (
     <section className="relative overflow-hidden rounded-3xl border-2 border-indigo-300/80 bg-gradient-to-br from-indigo-600 via-violet-600 to-indigo-800 p-6 text-white shadow-xl shadow-indigo-300/30 sm:p-8">
       <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/10 blur-3xl" aria-hidden />
@@ -24,7 +31,7 @@ export function AssistantRecommendationHero({
         </h2>
         <p className="mt-3 max-w-2xl text-base leading-relaxed text-indigo-50">
           {t("heroRec.lead")}{" "}
-          <span className="font-semibold text-white">{recommendation.universityName}</span>.
+          <span className="font-semibold text-white">{recName}</span>.
         </p>
 
         <div className="mt-5 flex flex-wrap items-center gap-3">

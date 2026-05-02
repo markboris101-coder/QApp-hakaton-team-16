@@ -1,8 +1,9 @@
 import type { UniversityFaculty } from "../../mockData";
 
 /**
- * Дополнительные факультеты / школы / институты из открытых структур вузов (официальные сайты, разделы «Структура»).
- * Источники сведений обобщены для демо QApp — перед подачей уточняйте актуальный учебный план на сайте вуза.
+ * Дополнительные факультеты / школы / институты из открытых структур вузов (официальные сайты).
+ * NU — nu.edu.kz/academics/schools; KBTU — kbtu.edu.kz/en/schools; КазНУ/SDU/AITU — обобщение по разделам «Schools/Faculties» и без дублирования id с базой mockData.
+ * Перед подачей уточняйте актуальный состав подразделений на сайте вуза.
  */
 export const EXTRA_FACULTIES_BY_UNIVERSITY_ID: Record<string, UniversityFaculty[]> = {
   nu: [
@@ -42,6 +43,24 @@ export const EXTRA_FACULTIES_BY_UNIVERSITY_ID: Record<string, UniversityFaculty[
       description:
         "Связка кампуса с лабораторными школами и проектами STEM/outreach — как контекст для педагогических и социальных исследований (описательно для каталога QApp).",
     },
+    {
+      id: "nu-cps",
+      name: "Center for Preparatory Studies (NU CPS)",
+      description:
+        "Подготовительный год и программы Foundation Year с аккредитацией BALEAP; английский для академических целей и мост в бакалавриат NU или зарубежные вузы.",
+    },
+    {
+      id: "nu-cenms",
+      name: "Center for Energy and New Materials Science",
+      description:
+        "Исследования в области энергетики, материаловедения и ИТ для «чистой» энергии; международные партнёрства и прикладные лаборатории кампуса NU.",
+    },
+    {
+      id: "nu-nurce",
+      name: "Nazarbayev University Research Centre for Entrepreneurship (NURCE)",
+      description:
+        "Исследовательский центр предпринимательства при Graduate School of Business: стартапы, инновационная экосистема и политика поддержки МСП.",
+    },
   ],
   kbtu: [
     {
@@ -80,14 +99,38 @@ export const EXTRA_FACULTIES_BY_UNIVERSITY_ID: Record<string, UniversityFaculty[
       description:
         "Технология продуктов питания, качество и безопасность пищевых цепочек; биотехнологические процессы для переработки сырья.",
     },
+    {
+      id: "kbtu-matsci-green",
+      name: "School of Materials Science and Green Technologies",
+      description:
+        "Материаловедение, устойчивые технологии и «зелёная» химия; лаборатории синтеза и экспериментальные установки по данным открытых страниц KBTU.",
+    },
+    {
+      id: "kbtu-applied-math",
+      name: "School of Applied Mathematics",
+      description:
+        "Прикладная математика, моделирование процессов и вычислительные методы для инженерных и экономических задач добывающего региона.",
+    },
+    {
+      id: "kbtu-ite",
+      name: "School of Information Technology and Engineering",
+      description:
+        "Инженерия информационных систем, робототехника и смежные направления — официальная школа KBTU рядом с ИТ-направлениями (по структуре сайта вуза).",
+    },
+    {
+      id: "kbtu-ise",
+      name: "International School of Economics and Social Sciences (ISE)",
+      description:
+        "Партнёрские программы с University of London (LSE track): экономика, финансы, data science и социальные науки в англоязычной среде.",
+    },
+    {
+      id: "kbtu-natural-social",
+      name: "School of Natural and Social Sciences",
+      description:
+        "Естественнонаучная и социогуманитарная подготовка в инженерном контексте; междисциплинарные курсы и исследовательские семинары.",
+    },
   ],
   aitu: [
-    {
-      id: "aitu-cyber",
-      name: "Institute of Information Security and Cyber Defense",
-      description:
-        "Кибербезопасность сетей и приложений, анализ угроз, криптография и практики SOC — стажировки и хакатоны по защите инфраструктуры.",
-    },
     {
       id: "aitu-iot",
       name: "Institute of Smart Systems and IoT",
@@ -111,6 +154,24 @@ export const EXTRA_FACULTIES_BY_UNIVERSITY_ID: Record<string, UniversityFaculty[
       name: "Center for IT Infrastructure Resilience (учебный блок)",
       description:
         "Облака, отказоустойчивость, DevOps-практики и эксплуатация больших систем — как дополнительный трек для инженеров платформы.",
+    },
+    {
+      id: "aitu-digital-mining",
+      name: "Institute of Digital Mining, Geoinformatics and Subsurface Data",
+      description:
+        "Геоинформатика, цифровые двойники месторождений и аналитика добывающих данных — трек для казахстанского нефтегазово-горного сектора.",
+    },
+    {
+      id: "aitu-fintech",
+      name: "Institute of Financial Technologies, Blockchain and RegTech",
+      description:
+        "Финтех, распределённые реестры, комплаенс и цифровые платежи; лаборатории с банками и IT-регуляторикой (учебные кейсы).",
+    },
+    {
+      id: "aitu-edtech",
+      name: "Institute of Educational Technologies and Learning Analytics",
+      description:
+        "LMS, адаптивное обучение, аналитика успеваемости и дизайн цифровых курсов; связка с EdTech-стартапами Астаны.",
     },
   ],
   kaznu: [
@@ -156,6 +217,30 @@ export const EXTRA_FACULTIES_BY_UNIVERSITY_ID: Record<string, UniversityFaculty[
       description:
         "Фундаментальные медицинские дисциплины и клинические базы (по контракту года набора); интеграция с университетской клиникой — уточняйте на сайте КазНУ.",
     },
+    {
+      id: "kaznu-radio-engineering",
+      name: "Faculty of Radio Engineering and Electronics",
+      description:
+        "Радиотехника, микроэлектроника, схемотехника и телеком; НИР и стажировки в отрасли связи (по открытым разделам КазНУ).",
+    },
+    {
+      id: "kaznu-mechanical-engineering",
+      name: "Faculty of Mechanics and Technology",
+      description:
+        "Прикладная механика, машиностроение и технологические процессы; подготовка инженеров для промышленности Алматы и регионов.",
+    },
+    {
+      id: "kaznu-information-systems",
+      name: "Faculty of Information Systems and Cybersecurity",
+      description:
+        "Информационные системы, сети и информационная безопасность на базе классического университета; проектные семестры и хакатоны.",
+    },
+    {
+      id: "kaznu-space-engineering",
+      name: "Faculty / Institute Cluster — Aerospace and Space Technologies",
+      description:
+        "Подготовка и НИР в области космических технологий и инженерии (организационные единицы КазНУ — уточняйте актуальный состав на kaznu.kz).",
+    },
   ],
   sdu: [
     {
@@ -187,6 +272,24 @@ export const EXTRA_FACULTIES_BY_UNIVERSITY_ID: Record<string, UniversityFaculty[
       name: "Faculty of Physical Culture and Sports Management",
       description:
         "Тренерская подготовка, спортивная медицина основ и управление спортивными объектами; партнёрства с федерациями.",
+    },
+    {
+      id: "sdu-foundation",
+      name: "Center for Foundation Studies and Academic English",
+      description:
+        "Подготовительные программы, академический английский и мост в бакалавриат SDU для международных и внутренних абитуриентов.",
+    },
+    {
+      id: "sdu-research-innovation",
+      name: "Research Institute of Innovation and Smart Systems",
+      description:
+        "Прикладные исследования в робототехнике, умном кампусе и устойчивой инфраструктуре; гранты и проекты с индустрией.",
+    },
+    {
+      id: "sdu-intl-programs",
+      name: "Office of International Programs and Academic Mobility",
+      description:
+        "Двойные дипломы, обмены Erasmus+ и партнёрские сети; координация англоязычных треков и летних школ.",
     },
   ],
 };

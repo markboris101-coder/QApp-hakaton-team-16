@@ -5,3 +5,4 @@
 export { mergeCatalogIntoUniversities } from "./mergeCatalog";
 export { EXTRA_FACULTIES_BY_UNIVERSITY_ID } from "./extraFaculties";
 export { ADDITIONAL_KAZAKHSTAN_UNIVERSITIES } from "./newInstitutions";
+export { FIVE_MORE_KAZAKHSTAN_UNIVERSITIES } from "./fiveMoreUniversities";
