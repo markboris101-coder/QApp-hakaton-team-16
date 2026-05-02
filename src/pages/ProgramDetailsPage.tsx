@@ -38,7 +38,7 @@ export function ProgramDetailsPage() {
 
     if (!isAiConfigured()) {
       setInsight(
-        "Добавьте ключ `VITE_API_KEY` в файл `.env.local` и перезапустите `npm run dev`, чтобы получить персональный совет от модели Qwen 2.5."
+        "Добавьте `VITE_API_KEY` в `.env.local` или в переменные окружения деплоя и пересоберите проект — тогда Qwen 2.5 сможет дать персональный совет по программе."
       );
       setInsightLoading(false);
       return;

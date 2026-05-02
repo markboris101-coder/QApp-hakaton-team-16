@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useProfile } from "../context/ProfileContext";
 
-export function StudentQuickSidebar() {
+type SidebarVariant = "dashboard" | "program";
+
+export function StudentQuickSidebar({ variant = "program" }: { variant?: SidebarVariant }) {
   const { student, setEditorOpen } = useProfile();
   const a = student.academic;
 
@@ -51,12 +53,14 @@ export function StudentQuickSidebar() {
         >
           All programs
         </Link>
-        <Link
-          to="/"
-          className="w-full text-center text-sm font-medium text-indigo-600 hover:text-indigo-800"
-        >
-          ← Back to dashboard
-        </Link>
+        {variant === "program" && (
+          <Link
+            to="/"
+            className="w-full text-center text-sm font-medium text-indigo-600 hover:text-indigo-800"
+          >
+            ← Back to dashboard
+          </Link>
+        )}
       </div>
     </aside>
   );

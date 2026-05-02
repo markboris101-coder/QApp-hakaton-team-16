@@ -19,7 +19,7 @@ function ScholarshipAiNote({ scholarship }: { scholarship: ScholarshipInfo }) {
 
     if (!isAiConfigured()) {
       setText(
-        "Добавьте `VITE_API_KEY` в `.env.local`, чтобы Qwen объяснил связь олимпиады со стипендией."
+        "Добавьте `VITE_API_KEY` локально или в env деплоя — тогда Qwen объяснит связь олимпиады со стипендией."
       );
       setLoading(false);
       return;

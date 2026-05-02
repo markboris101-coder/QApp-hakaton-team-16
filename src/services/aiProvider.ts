@@ -51,7 +51,7 @@ export async function askQwen(userPrompt: string, systemPrompt: string): Promise
   const apiKey = getApiKey();
   if (!apiKey) {
     throw new AiProviderError(
-      "Не задан API-ключ. Добавьте VITE_API_KEY в .env.local и перезапустите dev-сервер."
+      "Не задан API-ключ. Укажите VITE_API_KEY в `.env.local` (dev) или в переменных окружения хостинга (production) и пересоберите приложение."
     );
   }
 

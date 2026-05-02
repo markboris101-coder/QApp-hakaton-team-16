@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { calculateFitScore } from "../calculateFitScore";
 import { AdmissionChecklist } from "../components/AdmissionChecklist";
@@ -7,6 +7,7 @@ import { DeadlinesTimeline } from "../components/DeadlinesTimeline";
 import { ScholarshipsSection } from "../components/ScholarshipsSection";
 import { AiFitCard } from "../components/AiFitCard";
 import { ProgramGrid } from "../components/ProgramGrid";
+import { StudentQuickSidebar } from "../components/StudentQuickSidebar";
 import { TextSkeleton } from "../components/TextSkeleton";
 import { useSmartAdvisor } from "../hooks/useSmartAdvisor";
 import { isAiConfigured } from "../services/aiProvider";
@@ -72,7 +73,7 @@ export function HomePage() {
 
     if (!isAiConfigured()) {
       setExecSummary(
-        "Подключите `VITE_API_KEY` в `.env.local` и перезапустите dev-сервер, чтобы Qwen 2.5 сформировал вердикт «Why you match»."
+        "Добавьте переменную `VITE_API_KEY` в `.env.local` (локально) или в настройках хостинга (production), затем перезапустите dev-сервер или передеплойте — чтобы Qwen 2.5 сформировал вердикт «Why you match»."
       );
       setExecLoading(false);
       return;
@@ -200,8 +201,16 @@ export function HomePage() {
       transition={{ duration: 0.22, ease: "easeOut" }}
       className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 text-slate-900"
     >
-      <header className="border-b border-slate-200/80 bg-white/80 backdrop-blur">
-        <div className="mx-auto flex max-w-5xl flex-col gap-8 px-4 py-10 lg:flex-row lg:items-start lg:justify-between">
+      <header className="relative overflow-hidden border-b border-slate-200/80">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "linear-gradient(105deg, rgba(255,255,255,0.93) 0%, rgba(248,250,252,0.9) 42%, rgba(238,242,255,0.85) 100%), url(https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1800&q=72)",
+          }}
+          aria-hidden
+        />
+        <div className="relative mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 backdrop-blur-[1px] lg:flex-row lg:items-start lg:justify-between">
           <div className="min-w-0 flex-1 space-y-5">
             <div>
               <p className="text-sm font-medium text-indigo-600">Smart University Profile · QApp MVP</p>
@@ -263,41 +272,57 @@ export function HomePage() {
 
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start lg:flex-col lg:items-end">
             <FitRing value={averageFit} />
-            <button
-              type="button"
-              onClick={() => setEditorOpen(true)}
-              className="w-full max-w-xs rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 sm:w-auto"
-            >
-              Edit profile
-            </button>
+            <div className="flex w-full max-w-xs flex-col gap-2 sm:flex-row sm:justify-end lg:flex-col lg:items-stretch">
+              <button
+                type="button"
+                onClick={() => setEditorOpen(true)}
+                className="w-full rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 sm:w-auto lg:w-full"
+              >
+                Edit profile
+              </button>
+              <Link
+                to="/#program-grid"
+                className="w-full rounded-xl border border-slate-200 bg-white/90 px-4 py-2.5 text-center text-sm font-semibold text-slate-800 shadow-sm ring-1 ring-slate-200/80 transition hover:bg-slate-50 sm:w-auto lg:w-full"
+              >
+                Browse programs
+              </Link>
+            </div>
           </div>
         </div>
       </header>
 
-      <main className="mx-auto max-w-5xl space-y-14 px-4 py-10">
-        <AiFitCard
-          universityName={universityData.name}
-          averageFitPercent={averageFit}
-          student={student}
-          executiveSummary={execSummary}
-          executiveLoading={execLoading}
-          executiveError={execError}
-        />
-        <ProgramGrid rows={programResults} />
+      <main className="mx-auto max-w-6xl px-4 py-10">
+        <div className="lg:grid lg:grid-cols-[1fr_minmax(260px,300px)] lg:gap-10 lg:items-start">
+          <div className="min-w-0 space-y-14">
+            <AiFitCard
+              universityName={universityData.name}
+              averageFitPercent={averageFit}
+              student={student}
+              executiveSummary={execSummary}
+              executiveLoading={execLoading}
+              executiveError={execError}
+            />
+            <ProgramGrid rows={programResults} />
 
-        <div className="space-y-14">
-          <DeadlinesTimeline
-            applicationDeadlineIso={universityData.applicationDeadline}
-            documents={student.documents}
-          />
-          <AdmissionChecklist
-            documents={student.documents}
-            documentUploads={student.documentUploads ?? {}}
-            onSelectFile={handleDocumentSelectFile}
-            onRemoveFile={handleDocumentRemoveFile}
-            onDownloadFile={handleDocumentDownload}
-          />
-          <ScholarshipsSection />
+            <div className="space-y-14">
+              <DeadlinesTimeline
+                applicationDeadlineIso={universityData.applicationDeadline}
+                documents={student.documents}
+              />
+              <AdmissionChecklist
+                documents={student.documents}
+                documentUploads={student.documentUploads ?? {}}
+                onSelectFile={handleDocumentSelectFile}
+                onRemoveFile={handleDocumentRemoveFile}
+                onDownloadFile={handleDocumentDownload}
+              />
+              <ScholarshipsSection />
+            </div>
+          </div>
+
+          <div className="mt-10 hidden lg:mt-0 lg:block">
+            <StudentQuickSidebar variant="dashboard" />
+          </div>
         </div>
       </main>
     </motion.div>
