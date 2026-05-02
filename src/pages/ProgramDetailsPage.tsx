@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { calculateFitScore } from "../calculateFitScore";
-import { getProgramBySlug } from "../mockData";
+import { formatTuitionKzt, getFaculty, getProgramBySlug } from "../mockData";
 import { useProfile } from "../context/ProfileContext";
 import { useSmartAdvisor } from "../hooks/useSmartAdvisor";
 import { TextSkeleton } from "../components/TextSkeleton";
@@ -12,6 +12,8 @@ const APPLY_URLS: Record<string, string> = {
   nu: "https://nu.edu.kz/en/admissions",
   kbtu: "https://www.kbtu.kz/",
   aitu: "https://astanait.edu.kz/",
+  kaznu: "https://www.kaznu.kz/",
+  sdu: "https://sdu.edu.kz/",
 };
 
 export function ProgramDetailsPage() {
@@ -78,6 +80,7 @@ export function ProgramDetailsPage() {
   );
   const shortlisted = isShortlisted(program.id);
   const applyHref = APPLY_URLS[programUniversity.id] ?? "https://www.gov.kz";
+  const faculty = getFaculty(programUniversity, program.facultyId);
 
   return (
     <motion.div
@@ -148,7 +151,16 @@ export function ProgramDetailsPage() {
             <p className="mt-2 text-slate-600">
               {program.field} · {program.degree} · {program.durationYears} years · {program.language}
             </p>
-            <p className="mt-3 text-sm text-slate-500">{program.matchReason}</p>
+            {faculty && (
+              <p className="mt-1 text-sm text-slate-700">
+                <span className="font-medium text-slate-900">Факультет: </span>
+                {faculty.name}
+              </p>
+            )}
+            <p className="mt-2 text-sm font-medium text-emerald-900 tabular-nums">
+              Стоимость (mock): {formatTuitionKzt(program.annualTuitionKzt)}
+            </p>
+            <p className="mt-1 text-sm text-slate-500">{program.matchReason}</p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <div className="inline-flex items-center gap-2 rounded-2xl bg-slate-900 px-4 py-2 text-white shadow-md">
                 <span className="text-xs font-medium uppercase tracking-wide text-slate-300">AI fit</span>
@@ -161,6 +173,16 @@ export function ProgramDetailsPage() {
               )}
             </div>
           </header>
+
+          {faculty && (
+            <section className="rounded-2xl border border-slate-200/90 bg-slate-50/80 p-5">
+              <h2 className="text-lg font-semibold text-slate-900">О факультете</h2>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">{faculty.description}</p>
+              <p className="mt-3 text-xs text-slate-500">
+                Вилка по вузу: {programUniversity.tuitionOverview.note}
+              </p>
+            </section>
+          )}
 
           <section>
             <h2 className="text-lg font-semibold text-slate-900">About this program</h2>

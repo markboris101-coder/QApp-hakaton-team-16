@@ -13,7 +13,7 @@ import { isAiConfigured } from "../services/aiProvider";
 import * as documentStorage from "../lib/documentStorage";
 import { validateDocumentFile } from "../lib/documentUploadPolicy";
 import { useProfile } from "../context/ProfileContext";
-import type { StudentDocuments } from "../mockData";
+import { formatTuitionBand, type StudentDocuments } from "../mockData";
 
 function formatShortDate(iso: string): string {
   const d = new Date(iso + (iso.includes("T") ? "" : "T12:00:00"));
@@ -233,6 +233,12 @@ export function HomePage() {
               <span className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-medium text-violet-900 ring-1 ring-violet-200 shadow-sm">
                 Дедлайн {formatShortDate(universityData.applicationDeadline)}
               </span>
+              <span
+                className="inline-flex max-w-full items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-900 ring-1 ring-emerald-200/80 shadow-sm"
+                title={universityData.tuitionOverview.note}
+              >
+                Контракт (ориентир): {formatTuitionBand(universityData.tuitionOverview)}
+              </span>
             </div>
 
             <div className="flex flex-wrap gap-2 border-t border-slate-100 pt-4">
@@ -337,7 +343,7 @@ export function HomePage() {
               onRequestExecutiveSummary={requestExecutive}
               admissionExpectations={universityData.admissionExpectations}
             />
-            <ProgramGrid rows={programResults} />
+            <ProgramGrid rows={programResults} university={universityData} />
 
             <div className="space-y-14">
               <DeadlinesTimeline

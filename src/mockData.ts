@@ -82,11 +82,29 @@ export type ProgramField =
 
 export type DegreeLevel = "Bachelor" | "Master" | "PhD";
 
+/** Факультет / школа внутри вуза (mock для карточек и страницы программы) */
+export interface UniversityFaculty {
+  id: string;
+  name: string;
+  description: string;
+}
+
+/** Ориентир стоимости обучения по вузу (тенге в год, демо QApp — не официальный прайс) */
+export interface TuitionOverview {
+  minKzt: number;
+  maxKzt: number;
+  note: string;
+}
+
 /** Учебная программа вуза */
 export interface UniversityProgram {
   /** Slug для URL `/program/:id` */
   id: string;
   name: string;
+  /** Ссылка на `UniversityTemplate.faculties[].id` */
+  facultyId: string;
+  /** Ориентировочная стоимость за учебный год, ₸ (mock) */
+  annualTuitionKzt: number;
   field: ProgramField;
   degree: DegreeLevel;
   durationYears: number;
@@ -133,12 +151,30 @@ export interface UniversityTemplate {
   scholarshipBlurb: string;
   /** Фон hero (Unsplash и т.п.) */
   heroImageUrl: string;
+  /** Диапазон стоимости и пояснение (mock) */
+  tuitionOverview: TuitionOverview;
+  faculties: UniversityFaculty[];
   scholarships: ScholarshipInfo[];
   programs: UniversityProgram[];
   admissionExpectations: UniversityAdmissionExpectations;
 }
 
 export type ProgramLookup = { university: UniversityTemplate; program: UniversityProgram };
+
+/** Форматирование суммы в тенге для UI */
+export function formatTuitionKzt(n: number): string {
+  return `${new Intl.NumberFormat("ru-RU").format(Math.round(n))} ₸ / год`;
+}
+
+export function formatTuitionBand(t: TuitionOverview): string {
+  const a = new Intl.NumberFormat("ru-RU").format(t.minKzt);
+  const b = new Intl.NumberFormat("ru-RU").format(t.maxKzt);
+  return `${a}–${b} ₸/год (ориентир)`;
+}
+
+export function getFaculty(u: UniversityTemplate, facultyId: string): UniversityFaculty | undefined {
+  return u.faculties.find((f) => f.id === facultyId);
+}
 
 // -----------------------------------------------------------------------------
 // Мок студента
@@ -188,6 +224,31 @@ const UNIVERSITY_NU: UniversityTemplate = {
     "Merit-based NU Scholarship, need-based financial aid, STEM/Olympiad recognition and regional talent grants (mock summary for QApp demo).",
   heroImageUrl:
     "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1800&q=72",
+  tuitionOverview: {
+    minKzt: 9_200_000,
+    maxKzt: 12_800_000,
+    note: "Ориентир по бакалавриату (английский), без учёта общежития. Точные суммы — в оферте приёма; mock QApp.",
+  },
+  faculties: [
+    {
+      id: "nu-seds",
+      name: "School of Engineering and Digital Sciences",
+      description:
+        "Инженерные и цифровые направления: от робототехники и Data Science до вычислительной физики. Акцент на лаборатории, международные стандарты ABET-ориентира и исследовательские группы.",
+    },
+    {
+      id: "nu-science",
+      name: "School of Sciences and Humanities",
+      description:
+        "Естественные науки и междисциплинарные гуманитарные треки: биология, химия, математика; поддержка undergraduate research и публикаций.",
+    },
+    {
+      id: "nu-ssh",
+      name: "School of Social Sciences",
+      description:
+        "Экономика, политология и смежные социальные дисциплины в англоязычной среде; кейсы, политический анализ и подготовка к глобальным магистратурам.",
+    },
+  ],
   admissionExpectations: {
     gpaScaleMax: 5.0,
     strongGpa: 4.5,
@@ -236,6 +297,8 @@ const UNIVERSITY_NU: UniversityTemplate = {
     {
       id: "nu-bsc-computer-science",
       name: "BSc in Computer Science",
+      facultyId: "nu-seds",
+      annualTuitionKzt: 12_800_000,
       field: "Engineering",
       degree: "Bachelor",
       durationYears: 4,
@@ -257,6 +320,8 @@ const UNIVERSITY_NU: UniversityTemplate = {
     {
       id: "nu-bsc-robotics-mechatronics",
       name: "BSc in Robotics and Mechatronics",
+      facultyId: "nu-seds",
+      annualTuitionKzt: 11_500_000,
       field: "Engineering",
       degree: "Bachelor",
       durationYears: 4,
@@ -278,6 +343,8 @@ const UNIVERSITY_NU: UniversityTemplate = {
     {
       id: "nu-bsc-data-science",
       name: "BSc in Data Science",
+      facultyId: "nu-seds",
+      annualTuitionKzt: 12_200_000,
       field: "Science",
       degree: "Bachelor",
       durationYears: 4,
@@ -299,6 +366,8 @@ const UNIVERSITY_NU: UniversityTemplate = {
     {
       id: "nu-ba-economics",
       name: "B.A. in Economics",
+      facultyId: "nu-ssh",
+      annualTuitionKzt: 10_800_000,
       field: "Business",
       degree: "Bachelor",
       durationYears: 4,
@@ -320,6 +389,8 @@ const UNIVERSITY_NU: UniversityTemplate = {
     {
       id: "nu-bsc-biological-sciences",
       name: "BSc in Biological Sciences",
+      facultyId: "nu-science",
+      annualTuitionKzt: 11_000_000,
       field: "Science",
       degree: "Bachelor",
       durationYears: 4,
@@ -341,6 +412,8 @@ const UNIVERSITY_NU: UniversityTemplate = {
     {
       id: "nu-ba-political-science-ir",
       name: "B.A. in Political Science and International Relations",
+      facultyId: "nu-ssh",
+      annualTuitionKzt: 10_200_000,
       field: "Social Sciences",
       degree: "Bachelor",
       durationYears: 4,
@@ -378,6 +451,31 @@ const UNIVERSITY_KBTU: UniversityTemplate = {
     "Academic excellence scholarships, STEM achievement awards and partial tuition support for strong applicants (mock).",
   heroImageUrl:
     "https://images.unsplash.com/photo-1564981797829-6f5d176d8e31?auto=format&fit=crop&w=1800&q=72",
+  tuitionOverview: {
+    minKzt: 3_200_000,
+    maxKzt: 5_200_000,
+    note: "Смешанные EN/RU потоки; в mock указана вилка бакалавриата. Магистратура и грант-контракты считаются отдельно.",
+  },
+  faculties: [
+    {
+      id: "kbtu-fit",
+      name: "Faculty of Information Technologies & Digital Engineering",
+      description:
+        "Прикладной IT, автоматизация, цифровой инжиниринг: связка программирования, электроники и промышленных стандартов; стажировки в отраслевых компаниях региона.",
+    },
+    {
+      id: "kbtu-energy",
+      name: "Faculty of Energy, Oil and Gas",
+      description:
+        "Классическое сильное направление KBTU: добыча, бурение, нефтегазовая механика, экология и безопасность; лаборатории с отраслевым оборудованием (иллюстративно).",
+    },
+    {
+      id: "kbtu-business",
+      name: "Business School",
+      description:
+        "Менеджмент, экономика и предпринимательство в контексте инженерного вуза; кейсы и международные партнёрские программы.",
+    },
+  ],
   admissionExpectations: {
     gpaScaleMax: 5.0,
     strongGpa: 4.4,
@@ -420,6 +518,8 @@ const UNIVERSITY_KBTU: UniversityTemplate = {
     {
       id: "kbtu-bsc-information-systems",
       name: "BSc in Information Systems",
+      facultyId: "kbtu-fit",
+      annualTuitionKzt: 4_200_000,
       field: "Engineering",
       degree: "Bachelor",
       durationYears: 4,
@@ -441,6 +541,8 @@ const UNIVERSITY_KBTU: UniversityTemplate = {
     {
       id: "kbtu-bsc-automation-control",
       name: "BSc in Automation and Control",
+      facultyId: "kbtu-energy",
+      annualTuitionKzt: 3_600_000,
       field: "Engineering",
       degree: "Bachelor",
       durationYears: 4,
@@ -457,6 +559,8 @@ const UNIVERSITY_KBTU: UniversityTemplate = {
     {
       id: "kbtu-bsc-oil-gas-engineering",
       name: "BSc in Oil and Gas Engineering",
+      facultyId: "kbtu-energy",
+      annualTuitionKzt: 4_800_000,
       field: "Engineering",
       degree: "Bachelor",
       durationYears: 4,
@@ -473,6 +577,8 @@ const UNIVERSITY_KBTU: UniversityTemplate = {
     {
       id: "kbtu-ba-business-administration",
       name: "B.A. in Business Administration",
+      facultyId: "kbtu-business",
+      annualTuitionKzt: 3_900_000,
       field: "Business",
       degree: "Bachelor",
       durationYears: 4,
@@ -488,6 +594,8 @@ const UNIVERSITY_KBTU: UniversityTemplate = {
     {
       id: "kbtu-msc-computer-science",
       name: "MSc in Computer Science",
+      facultyId: "kbtu-fit",
+      annualTuitionKzt: 5_100_000,
       field: "Engineering",
       degree: "Master",
       durationYears: 2,
@@ -507,6 +615,8 @@ const UNIVERSITY_KBTU: UniversityTemplate = {
     {
       id: "kbtu-bsc-digital-engineering",
       name: "BSc in Digital Engineering",
+      facultyId: "kbtu-fit",
+      annualTuitionKzt: 4_000_000,
       field: "Engineering",
       degree: "Bachelor",
       durationYears: 4,
@@ -538,6 +648,31 @@ const UNIVERSITY_AITU: UniversityTemplate = {
     "Tech-talent grants, digital innovation stipends and partner-company co-funding for strong computing applicants (mock).",
   heroImageUrl:
     "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1800&q=72",
+  tuitionOverview: {
+    minKzt: 5_000_000,
+    maxKzt: 6_500_000,
+    note: "IT-бакалавриат в Astana IT U.; partner-треки и лаборатории могут менять стоимость (mock).",
+  },
+  faculties: [
+    {
+      id: "aitu-computing",
+      name: "School of Digital Technologies & Computing",
+      description:
+        "Базовый контур AITU: computer science, software engineering, data и робототехника с практикой в продуктовых командах и хакатонах.",
+    },
+    {
+      id: "aitu-cyber",
+      name: "Institute of Cybersecurity & Digital Resilience",
+      description:
+        "Защита информации, криптография, SOC-практики и безопасная разработка; сценарии red/blue team и compliance.",
+    },
+    {
+      id: "aitu-digital-econ",
+      name: "School of Digital Economy & Innovation",
+      description:
+        "Цифровой бизнес, продукт, аналитика и инновационное предпринимательство на стыке менеджмента и tech.",
+    },
+  ],
   admissionExpectations: {
     gpaScaleMax: 5.0,
     strongGpa: 4.5,
@@ -580,6 +715,8 @@ const UNIVERSITY_AITU: UniversityTemplate = {
     {
       id: "aitu-bsc-computer-science",
       name: "BSc in Computer Science",
+      facultyId: "aitu-computing",
+      annualTuitionKzt: 5_800_000,
       field: "Engineering",
       degree: "Bachelor",
       durationYears: 4,
@@ -596,6 +733,8 @@ const UNIVERSITY_AITU: UniversityTemplate = {
     {
       id: "aitu-bsc-big-data",
       name: "BSc in Big Data Analytics",
+      facultyId: "aitu-computing",
+      annualTuitionKzt: 5_600_000,
       field: "Science",
       degree: "Bachelor",
       durationYears: 4,
@@ -609,6 +748,8 @@ const UNIVERSITY_AITU: UniversityTemplate = {
     {
       id: "aitu-bsc-cybersecurity",
       name: "BSc in Cybersecurity",
+      facultyId: "aitu-cyber",
+      annualTuitionKzt: 6_000_000,
       field: "Engineering",
       degree: "Bachelor",
       durationYears: 4,
@@ -622,6 +763,8 @@ const UNIVERSITY_AITU: UniversityTemplate = {
     {
       id: "aitu-ba-digital-business",
       name: "B.A. in Digital Business",
+      facultyId: "aitu-digital-econ",
+      annualTuitionKzt: 5_200_000,
       field: "Business",
       degree: "Bachelor",
       durationYears: 4,
@@ -635,6 +778,8 @@ const UNIVERSITY_AITU: UniversityTemplate = {
     {
       id: "aitu-bsc-software-engineering",
       name: "BSc in Software Engineering",
+      facultyId: "aitu-computing",
+      annualTuitionKzt: 6_100_000,
       field: "Engineering",
       degree: "Bachelor",
       durationYears: 4,
@@ -650,6 +795,8 @@ const UNIVERSITY_AITU: UniversityTemplate = {
     {
       id: "aitu-bsc-robotics-ai",
       name: "BSc in Robotics and Intelligent Systems",
+      facultyId: "aitu-computing",
+      annualTuitionKzt: 5_900_000,
       field: "Engineering",
       degree: "Bachelor",
       durationYears: 4,
@@ -663,8 +810,427 @@ const UNIVERSITY_AITU: UniversityTemplate = {
   ],
 };
 
+// -----------------------------------------------------------------------------
+// al-Farabi Kazakh National University (KazNU) — mock
+// -----------------------------------------------------------------------------
+
+const UNIVERSITY_KAZNU: UniversityTemplate = {
+  id: "kaznu",
+  name: "al-Farabi Kazakh National University",
+  city: "Almaty, Kazakhstan",
+  foundedYear: 1934,
+  type: "Comprehensive",
+  languagesOfInstruction: ["Kazakh", "Russian", "English"],
+  applicationDeadline: "2026-08-01",
+  scholarshipBlurb:
+    "Государственные гранты, стипендии для лучших по UNT, целевые квоты и социальные категории (иллюстративно для QApp; уточняйте в приёмной комиссии).",
+  heroImageUrl:
+    "https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?auto=format&fit=crop&w=1800&q=72",
+  tuitionOverview: {
+    minKzt: 1_200_000,
+    maxKzt: 2_800_000,
+    note: "Вилка для контрактного обучения (грант = 0 ₸); цифры ориентировочные по крупным факультетам, mock.",
+  },
+  faculties: [
+    {
+      id: "kaznu-physmath",
+      name: "Faculty of Mechanics and Mathematics",
+      description:
+        "Фундаментальная подготовка в математике, механике и математическом моделировании; сильные кафедры анализа, дифференциальных уравнений и прикладной механики.",
+    },
+    {
+      id: "kaznu-bio",
+      name: "Faculty of Biology and Biotechnology",
+      description:
+        "Современная биология, молекулярная генетика, экология и биотех: лаборатории, полевые практики и выход в науку Республики.",
+    },
+    {
+      id: "kaznu-law",
+      name: "Faculty of Law",
+      description:
+        "Классическое юридическое образование с уклоном в гражданское, уголовное и международное право; мoot-courts и договорная работа.",
+    },
+    {
+      id: "kaznu-journ",
+      name: "Faculty of Journalism",
+      description:
+        "Медиа, цифровой контент, расследовательская журналистика и дизайн коммуникаций; учебные студии и проекты с отраслевыми партнёрами.",
+    },
+    {
+      id: "kaznu-chem",
+      name: "Faculty of Chemistry and Chemical Technology",
+      description:
+        "Синтез, аналитическая химия, катализ и зелёная химия; мост к фармацевтике, материаловедению и нефтехимии.",
+    },
+    {
+      id: "kaznu-phil",
+      name: "Faculty of Philology",
+      description:
+        "Лингвистика, перевод, литературоведение трёх языков; гуманитарный костяк национального университета.",
+    },
+    {
+      id: "kaznu-hseb",
+      name: "Higher School of Economics and Business",
+      description:
+        "Финансы, менеджмент и экономическая аналитика: микро- и макроэкономика, инвестиции, корпоративные финансы в бакалавриате и магистратуре.",
+    },
+  ],
+  admissionExpectations: {
+    gpaScaleMax: 5.0,
+    strongGpa: 4.2,
+    competitiveGpa: 3.6,
+    competitiveSat: 1100,
+    targetSat: 1280,
+    competitiveUnt: 90,
+    targetUnt: 110,
+    minIelts: 5.5,
+    modelNote:
+      "КазНУ — крупный классический вуз: конкуренция на бюджет высокая; для mock Fit мягче SAT, сильнее UNT/школьный GPA. EN-программы встречаются точечно.",
+  },
+  scholarships: [
+    {
+      name: "State educational grant (Kazakhstan)",
+      requirements: "Competitive UNT + school portfolio; full tuition on grant track for citizens (policy varies by year).",
+      aiRelevance: "High",
+    },
+    {
+      name: "Rector’s merit list",
+      requirements: "Top cohort GPA; may include partial contract discount in selected faculties — mock label.",
+      aiRelevance: "Medium",
+    },
+    {
+      name: "Regional youth support (mock)",
+      requirements: "Documented residence in priority regions as per annual government lists.",
+      aiRelevance: "Low",
+    },
+  ],
+  programs: [
+    {
+      id: "kaznu-bsc-mathematics",
+      name: "BSc in Mathematics",
+      facultyId: "kaznu-physmath",
+      annualTuitionKzt: 1_450_000,
+      field: "Science",
+      degree: "Bachelor",
+      durationYears: 4,
+      language: "Russian / Kazakh",
+      fitScore: 78,
+      matchReason:
+        "Фундаментальная математика для тех, кто хочет ML/финансовую математику и академическую траекторию.",
+      detailedDescription: [
+        "Анализ, алгебра, дифференциальные уравнения и дискретная математика с исследовательскими семинарами.",
+        "Мосты в магистратуру по прикладной математике, data science и преподаванию; конкурсы и олимпиадная подготовка.",
+        "Смежные кафедры позволяют подобрать минор по информатике или экономике.",
+      ],
+      entryRequirements: ["UNT или эквивалент по профилю", "Школьная математика высокого уровня", "Собеседование на некоторые потоки"],
+    },
+    {
+      id: "kaznu-bsc-molecular-biology",
+      name: "BSc in Molecular Biology",
+      facultyId: "kaznu-bio",
+      annualTuitionKzt: 1_680_000,
+      field: "Science",
+      degree: "Bachelor",
+      durationYears: 4,
+      language: "Russian",
+      fitScore: 74,
+      matchReason:
+        "Лабораторная биология и генетика — для абитуриентов с сильной химией и интересом к R&D.",
+      detailedDescription: [
+        "Клеточная биология, генетика, биохимия и микробиология с проектами в кампусных лабораториях.",
+        "Практики в институтах и клиниках-партнёрах (иллюстративно); выход в магистратуру биомед.",
+      ],
+      entryRequirements: ["Биология и химия в школьном аттестате", "UNT профильный или внутренние экзамены", "Медицинская книжка по запросу практик"],
+    },
+    {
+      id: "kaznu-llb-law",
+      name: "LL.B. in Law",
+      facultyId: "kaznu-law",
+      annualTuitionKzt: 1_900_000,
+      field: "Law",
+      degree: "Bachelor",
+      durationYears: 4,
+      language: "Kazakh / Russian",
+      fitScore: 72,
+      matchReason:
+        "Классическое юридическое образование в крупнейшем правовом факультете страны (по репутации).",
+      detailedDescription: [
+        "Гражданское, уголовное, конституционное и административное право; процессуальные дисциплины и клиники.",
+        "Судебные и ADR-модули, стажировки в госорганах и компаниях (описательно).",
+      ],
+      entryRequirements: ["Сильные гуманитарные оценки", "Истории и обществознание", "Конкурс портфолио/эссе — по годам"],
+    },
+    {
+      id: "kaznu-ba-journalism",
+      name: "B.A. in Journalism and Mass Communications",
+      facultyId: "kaznu-journ",
+      annualTuitionKzt: 1_720_000,
+      field: "Humanities",
+      degree: "Bachelor",
+      durationYears: 4,
+      language: "Kazakh / Russian",
+      fitScore: 70,
+      matchReason:
+        "Медиа, креатив и цифровой сторителлинг — для пишущих и визуально сильных кандидатов.",
+      detailedDescription: [
+        "Репортаж, радио, ТВ, цифровые платформы; этика, медиаправо и аналитика контента.",
+        "Учебные студии, макетное мастерство, соцсети и data-journalism вводные курсы.",
+      ],
+      entryRequirements: ["Творческий конкурс / портфолио", "Сочинение на вступительных (если предусмотрено)", "UNT и внутр. испытания"],
+    },
+    {
+      id: "kaznu-bsc-chemistry",
+      name: "BSc in Chemistry",
+      facultyId: "kaznu-chem",
+      annualTuitionKzt: 1_550_000,
+      field: "Science",
+      degree: "Bachelor",
+      durationYears: 4,
+      language: "Russian",
+      fitScore: 76,
+      matchReason:
+        "Органика, неорганика, аналитика — база для фармы, материалов и нефтехимии в Казахстане.",
+      detailedDescription: [
+        "Лабораторный трек с инструментальными методами: спектроскопия, хроматография, синтез.",
+        "Связи с научно-исследовательскими лабораториями и отраслевыми стажировками.",
+      ],
+      entryRequirements: ["Химия в аттестате", "Конкурс UNT", "Вступительные по химии — уточнять в год"],
+    },
+    {
+      id: "kaznu-ba-translation",
+      name: "B.A. in Translation Studies",
+      facultyId: "kaznu-phil",
+      annualTuitionKzt: 1_380_000,
+      field: "Humanities",
+      degree: "Bachelor",
+      durationYears: 4,
+      language: "Kazakh / Russian / English",
+      fitScore: 69,
+      matchReason:
+        "Перевод и межкультурная коммуникация — трёхъязычные компетенции для дипломатии и бизнеса.",
+      detailedDescription: [
+        "Теория и практика последовательного и письменного перевода, терминология, CAT-tools вводно.",
+        "Смежные курсы культурологии и деловой коммуникации; мосты в магистратуру лингвистики.",
+      ],
+      entryRequirements: ["Высокий уровень языка (внутр. тесты)", "ESH/олимпиады — плюс", "Портфолио эссе"],
+    },
+    {
+      id: "kaznu-msc-finance",
+      name: "MSc in Finance",
+      facultyId: "kaznu-hseb",
+      annualTuitionKzt: 2_800_000,
+      field: "Business",
+      degree: "Master",
+      durationYears: 2,
+      language: "English / Russian",
+      fitScore: 75,
+      matchReason:
+        "Корпоративные финансы и инвестиции для выпускников бакалавриата экономики и смежных полей.",
+      detailedDescription: [
+        "DCF, рынки капитала, риск-менеджмент, финансовое моделирование в Excel/Python.",
+        "Кейсы с эмитентами KASE и международными стандартами отчётности — учебные симуляции.",
+      ],
+      entryRequirements: ["Релевантный бакалавр", "GMAT/внутренний экзамен — по году", "IELTS 6.0+ для англоязычного потока"],
+    },
+  ],
+};
+
+// -----------------------------------------------------------------------------
+// Suleyman Demirel University (SDU) — mock
+// -----------------------------------------------------------------------------
+
+const UNIVERSITY_SDU: UniversityTemplate = {
+  id: "sdu",
+  name: "Suleyman Demirel University",
+  city: "Kaskelen, Almaty Region, Kazakhstan",
+  foundedYear: 1996,
+  type: "Comprehensive",
+  languagesOfInstruction: ["English", "Kazakh", "Russian"],
+  applicationDeadline: "2026-07-20",
+  scholarshipBlurb:
+    "Академические стипендии SDU, партнёрские гранты IT-компаний и социальные скидки на контракт (mock-описание для демо).",
+  heroImageUrl:
+    "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1800&q=72",
+  tuitionOverview: {
+    minKzt: 2_400_000,
+    maxKzt: 4_100_000,
+    note: "Кампус в Каскелене; стоимость зависит от факультета и языка обучения (mock).",
+  },
+  faculties: [
+    {
+      id: "sdu-eng",
+      name: "Faculty of Engineering and Natural Sciences",
+      description:
+        "Инженерия, IT и естественные науки в современном кампусе: проектное обучение, лаборатории и хакатоны с индустрией.",
+    },
+    {
+      id: "sdu-law-soc",
+      name: "Faculty of Law and Social Sciences",
+      description:
+        "Право, международные отношения, социология и публичная политика — с модульными стажировками.",
+    },
+    {
+      id: "sdu-bus",
+      name: "Faculty of Business and Economics",
+      description:
+        "Бизнес-администрирование, финансы, маркетинг и предпринимательство; аккредитации и двойные дипломы — по партнёрским программам.",
+    },
+    {
+      id: "sdu-arch",
+      name: "Faculty of Architecture and Design",
+      description:
+        "Архитектура города и ландшафта, дизайн среды; студии макетирования, BIM-ввод и урбанистические проекты.",
+    },
+  ],
+  admissionExpectations: {
+    gpaScaleMax: 5.0,
+    strongGpa: 4.3,
+    competitiveGpa: 3.75,
+    competitiveSat: 1180,
+    targetSat: 1360,
+    competitiveUnt: 95,
+    targetUnt: 115,
+    minIelts: 6.0,
+    modelNote:
+      "SDU — частный кампусный вуз; Fit учитывает англоязычные программы и конкуренцию по контракту.",
+  },
+  scholarships: [
+    {
+      name: "SDU Academic Scholarship",
+      requirements: "High GPA and admission ranking; partial tuition waiver — illustrative.",
+      aiRelevance: "High",
+    },
+    {
+      name: "Women in STEM grant (mock)",
+      requirements: "Merit + motivation letter for selected engineering tracks.",
+      aiRelevance: "Medium",
+    },
+    {
+      name: "Sibling discount policy (mock)",
+      requirements: "Family with two or more siblings enrolled — marketing placeholder.",
+      aiRelevance: "Low",
+    },
+  ],
+  programs: [
+    {
+      id: "sdu-bsc-computer-engineering",
+      name: "BSc in Computer Engineering",
+      facultyId: "sdu-eng",
+      annualTuitionKzt: 3_950_000,
+      field: "Engineering",
+      degree: "Bachelor",
+      durationYears: 4,
+      language: "English",
+      fitScore: 83,
+      matchReason:
+        "Аппаратно-программный стек: от микропроцессоров до embedded и backend — для hardware-curious разработчиков.",
+      detailedDescription: [
+        "Цифровая схемотехника, архитектура компьютеров, ОС, сети и проектные семестры с индустриальными менторами.",
+        "Лаборатории IoT и робототехники; выход в стажировки у партнёров в Алматы (описательно).",
+      ],
+      entryRequirements: ["Математика и физика", "IELTS 6.0+ для EN-track", "UNT/SAT для конкурса"],
+    },
+    {
+      id: "sdu-bba-management",
+      name: "B.B.A. in Management",
+      facultyId: "sdu-bus",
+      annualTuitionKzt: 3_400_000,
+      field: "Business",
+      degree: "Bachelor",
+      durationYears: 4,
+      language: "English",
+      fitScore: 79,
+      matchReason:
+        "Операции, HR и стратегия с кейсами кампусных стартапов и международными стажировками.",
+      detailedDescription: [
+        "Бизнес-модели, управление проектами, переговоры и лидерство; консалтинг-проекты для местных МСП.",
+        "Элективы по digital marketing и продуктовому менеджменту.",
+      ],
+      entryRequirements: ["Математика в аттестате", "IELTS 6.0+", "Мотивационное эссе"],
+    },
+    {
+      id: "sdu-llb-law-international",
+      name: "LL.B. in International Law",
+      facultyId: "sdu-law-soc",
+      annualTuitionKzt: 3_100_000,
+      field: "Law",
+      degree: "Bachelor",
+      durationYears: 4,
+      language: "English",
+      fitScore: 71,
+      matchReason:
+        "Международное право и трейд-лай — для поступающих с сильными гуманитарными навыками и английским.",
+      detailedDescription: [
+        "Публичное и частное международное право, инвестиционные споры, модели международных организаций.",
+        "Moot courts на английском; языковая поддержка Legal Writing.",
+      ],
+      entryRequirements: ["IELTS 6.5+", "История / обществознание", "Внутренний экзамен или SAT Reading"],
+    },
+    {
+      id: "sdu-barch-architecture",
+      name: "B.Arch in Architecture",
+      facultyId: "sdu-arch",
+      annualTuitionKzt: 4_100_000,
+      field: "Engineering",
+      degree: "Bachelor",
+      durationYears: 5,
+      language: "Russian / English",
+      fitScore: 77,
+      matchReason:
+        "Пятилетка с проектными ателье, урбанистикой и устойчивым строительством.",
+      detailedDescription: [
+        "Архитектурный дизайн, конструкции, BIM, история архитектуры Центральной Азии и Европы.",
+        "Регулярные ревю портфолио и летние практики в бюро.",
+      ],
+      entryRequirements: ["Творческий конкурс / портфолио", "Математика и черчение", "Собеседование"],
+    },
+    {
+      id: "sdu-ba-psychology",
+      name: "B.A. in Psychology",
+      facultyId: "sdu-law-soc",
+      annualTuitionKzt: 2_650_000,
+      field: "Social Sciences",
+      degree: "Bachelor",
+      durationYears: 4,
+      language: "Russian",
+      fitScore: 73,
+      matchReason:
+        "Когнитивная и социальная психология с практикой опросов и HR/коучинг-модулями.",
+      detailedDescription: [
+        "Статистика для психологов, психометрия, клиническое введение и организационная психология.",
+        "Этика работы с клиентами; мост в магистратуру клинической и образовательной психологии.",
+      ],
+      entryRequirements: ["Биология и обществознание", "UNT", "Интервью на некоторые места"],
+    },
+    {
+      id: "sdu-msc-digital-innovation",
+      name: "MSc in Digital Innovation and Entrepreneurship",
+      facultyId: "sdu-bus",
+      annualTuitionKzt: 3_800_000,
+      field: "Business",
+      degree: "Master",
+      durationYears: 2,
+      language: "English",
+      fitScore: 80,
+      matchReason:
+        "Для тех, кто хочет связать продукт, данные и запуск стартапа в одном магистерском треке.",
+      detailedDescription: [
+        "Lean startup, unit-экономика, инвестиционные питчи, работа с VC-симуляциями.",
+        "Совместные проекты с IT-факультетом: MVP и go-to-market.",
+      ],
+      entryRequirements: ["Бакалавр любого профиля с конкурсным GPA", "IELTS 6.5+", "Интервью и мотивация"],
+    },
+  ],
+};
+
 /** Все мок-вузы Казахстана для MVP (переключатель и поиск). */
-export const UNIVERSITIES: UniversityTemplate[] = [UNIVERSITY_NU, UNIVERSITY_KBTU, UNIVERSITY_AITU];
+export const UNIVERSITIES: UniversityTemplate[] = [
+  UNIVERSITY_NU,
+  UNIVERSITY_KBTU,
+  UNIVERSITY_AITU,
+  UNIVERSITY_KAZNU,
+  UNIVERSITY_SDU,
+];
 
 /** Обратная совместимость: первый вуз по умолчанию. */
 export const universityData: UniversityTemplate = UNIVERSITY_NU;

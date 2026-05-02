@@ -1,6 +1,13 @@
 import React, { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import type { DegreeLevel, ProgramField, UniversityProgram } from "../mockData";
+import {
+  formatTuitionKzt,
+  getFaculty,
+  type DegreeLevel,
+  type ProgramField,
+  type UniversityProgram,
+  type UniversityTemplate,
+} from "../mockData";
 
 export type ProgramRow = {
   program: UniversityProgram;
@@ -10,6 +17,7 @@ export type ProgramRow = {
 
 type Props = {
   rows: ProgramRow[];
+  university: UniversityTemplate;
 };
 
 const FIELDS: Array<ProgramField | "all"> = [
@@ -25,7 +33,7 @@ const FIELDS: Array<ProgramField | "all"> = [
 
 const DEGREES: Array<DegreeLevel | "all"> = ["all", "Bachelor", "Master", "PhD"];
 
-export function ProgramGrid({ rows }: Props) {
+export function ProgramGrid({ rows, university }: Props) {
   const [fieldFilter, setFieldFilter] = useState<ProgramField | "all">("all");
   const [degreeFilter, setDegreeFilter] = useState<DegreeLevel | "all">("all");
   const [query, setQuery] = useState("");
@@ -113,7 +121,9 @@ export function ProgramGrid({ rows }: Props) {
         </p>
       ) : (
         <ul className="mt-6 grid gap-4 sm:grid-cols-2">
-          {filtered.map(({ program, score, englishWarning }) => (
+          {filtered.map(({ program, score, englishWarning }) => {
+            const fac = getFaculty(university, program.facultyId);
+            return (
             <li key={program.id}>
               <Link
                 to={`/program/${program.id}`}
@@ -123,7 +133,11 @@ export function ProgramGrid({ rows }: Props) {
                   <div className="min-w-0">
                     <h3 className="font-semibold text-slate-900">{program.name}</h3>
                     <p className="mt-1 text-sm text-slate-500">
-                      {program.field} · {program.degree} · {program.durationYears} yrs · {program.language}
+                      {fac?.name ?? program.facultyId} · {program.field} · {program.degree} · {program.durationYears}{" "}
+                      yrs · {program.language}
+                    </p>
+                    <p className="mt-1 text-xs font-medium text-emerald-900 tabular-nums">
+                      {formatTuitionKzt(program.annualTuitionKzt)}
                     </p>
                   </div>
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-slate-900 text-sm font-bold text-white tabular-nums">
@@ -137,7 +151,8 @@ export function ProgramGrid({ rows }: Props) {
                 <p className="mt-3 text-xs font-medium text-indigo-600">View details →</p>
               </Link>
             </li>
-          ))}
+          );
+          })}
         </ul>
       )}
     </section>

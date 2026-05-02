@@ -1,54 +1,30 @@
 # Smart University Profile · QApp MVP
 
-Умная студенческая карточка для QApp: подбор программ, дедлайны, чек-лист документов и советы от модели (OpenRouter / Qwen).
+Умная студенческая карточка для QApp: несколько вузов Казахстана (мок), подбор программ, дедлайны, чек-лист документов, стипендии и советы Qwen (OpenRouter). Express API для профиля и прокси ИИ — опционально в проде.
 
-## Публичный деплой (ссылка для всех)
-
-Подойдёт любой статический хостинг для Vite (`dist/`). Рекомендуется **Vercel** или **Netlify** — в репозитории уже есть конфиги:
-
-| Платформа | Файл | Назначение |
-|-----------|------|------------|
-| **Vercel** | [`vercel.json`](./vercel.json) | SPA fallback: все пути → `index.html` (нужно для `/program/:id`) |
-| **Netlify** | [`netlify.toml`](./netlify.toml), [`public/_redirects`](./public/_redirects) | То же для Netlify |
-
-### Vercel (кратко)
-
-1. Зайдите на [vercel.com](https://vercel.com), **Import** репозитория GitHub `QApp-hakaton-team-16`.
-2. Framework: **Vite** (или Other), Build: `npm run build`, Output: `dist`.
-3. В **Settings → Environment Variables** добавьте для **Production** (и при желании Preview):
-   - `VITE_API_KEY` = ваш ключ OpenRouter (см. ниже про ИИ).
-4. **Redeploy** после добавления переменных.
-
-Публичная ссылка вида `https://….vercel.app` появится после первого успешного деплоя.
-
-### ИИ-ассистент на продакшене
-
-Запросы к модели идут **из браузера** напрямую в OpenRouter (`fetch` в [`src/services/aiProvider.ts`](./src/services/aiProvider.ts)).
-
-- **Чтобы ИИ работал на задеплоенном сайте**, при сборке должен быть задан **`VITE_API_KEY`** в переменных окружения хостинга (как выше). Vite подставляет `import.meta.env.VITE_*` на этапе **build** — после изменения ключа нужен **новый деплой**.
-- **Важно:** ключ попадает в клиентский JS-бандл (это норма для фронт-only MVP; для продакшена «по уму» нужен backend-прокси — см. опциональные пункты ТЗ).
-
-Локально ключ храните только в **`.env.local`** (файл в `.gitignore`, в Git не попадает).
-
-## Интерфейс
-
-Скриншот собран из production preview (`npm run preview`) — соответствует виду после `npm run dev`.
-
-![Интерфейс приложения — главная страница](./docs/ui-preview.png)
-
-## Запуск локально
+## Быстрый старт (только фронт)
 
 ```bash
 npm install
 ```
 
-Создайте `.env.local` по образцу [`.env.example`](./.env.example) и укажите `VITE_API_KEY`.
+Скопируйте `.env.example` в `.env.local` и укажите `VITE_API_KEY` (OpenRouter), если вызываете ИИ **из браузера**.
 
 ```bash
 npm run dev
 ```
 
-Откройте адрес из терминала (обычно `http://localhost:5173`).
+Откройте `http://localhost:5173`.
+
+### Фронт + API локально
+
+В одном терминале:
+
+```bash
+npm run dev:full
+```
+
+Или два процесса: `npm run dev:server` (порт **8787**) и `npm run dev` (Vite проксирует `/api` на бэкенд).
 
 ## Сборка
 
@@ -57,22 +33,58 @@ npm run build
 npm run preview
 ```
 
----
+## Продакшен: фронт + бэкенд
+
+Кратко:
+
+1. **Web Service (Render / Railway и т.д.)** — тот же репозиторий, **Start:** `npm run start:server`, на сервере `API_KEY` = OpenRouter.
+2. **Статика (Vercel / Netlify / Render Static Site)** — `npm run build`, папка **`dist`**.
+
+На фронте в переменных сборки:
+
+| Переменная | Назначение |
+|------------|------------|
+| `VITE_API_BASE_URL` | URL API **без** слэша в конце, напр. `https://qapp-hakaton-team-16.onrender.com` |
+| `VITE_USE_AI_PROXY` | `true` — текстовый Qwen через `POST /api/ai/chat`, ключ только на сервере |
+| `VITE_API_KEY` | Прямой вызов OpenRouter из браузера **или** проверка PNG (vision), если не через прокси |
+
+Подробные шаги: **[`DEPLOY.md`](./DEPLOY.md)**.
+
+| Платформа | Файл |
+|-----------|------|
+| Vercel | [`vercel.json`](./vercel.json) — SPA fallback для React Router |
+| Netlify | [`netlify.toml`](./netlify.toml), [`public/_redirects`](./public/_redirects) |
+
+Корень **`/`** у API не отдаёт HTML — это норма; проверка: `GET /api/health`.
+
+## Структура
+
+| Путь | Описание |
+|------|----------|
+| `src/` | React (Vite), маршруты `/`, `/program/:id`, `/profile` |
+| `server/` | Express: `/api/profile`, `/api/universities`, `/api/ai/chat`, … |
+| `src/mockData.ts` | Мок вузов и программ (SSOT для фронта; сервер импортирует те же данные) |
 
 ## Соответствие MVP (обязательный scope)
 
 | Требование | Статус |
 |------------|--------|
-| Responsive university profile (desktop + mobile) | ✅ Tailwind breakpoints (`sm`, `lg`), адаптивная сетка |
-| Hero: название, город, фото/фон, badges, CTA | ✅ Фон campus (Unsplash) + градиент, badges, **Edit profile** + **Browse programs** |
-| Блок AI Fit / Your Match | ✅ Кольцо AI fit, блок «Why you match», секция `AiFitCard` |
-| Список программ с поиском и фильтрами | ✅ `ProgramGrid` |
+| Responsive профиль / дашборд | ✅ Tailwind (`sm` / `lg`) |
+| Hero: вуз, город, фон, бейджи, CTA | ✅ + выбор вуза |
+| AI Fit / Your Match | ✅ `AiFitCard`, обзор Qwen по кнопке |
+| Программы: поиск и фильтры | ✅ `ProgramGrid` |
 | Admission checklist + прогресс | ✅ `AdmissionChecklist` |
 | Deadlines timeline | ✅ `DeadlinesTimeline` |
-| Scholarships + AI-инсайт | ✅ `ScholarshipsSection` |
-| Sticky sidebar на desktop | ✅ `StudentQuickSidebar` на главной и странице программы (`lg:sticky`) |
-| Профиль студента (mock) | ✅ `mockData` + `ProfileContext`, редактор профиля |
-| Персонализация по профилю | ✅ `calculateFitScore`, ИИ-промпты с данными студента |
-| Clean modern UI (QApp-стиль) | ✅ Tailwind, карточки, типографика |
+| Scholarships + AI | ✅ `ScholarshipsSection`, разбор по кнопке |
+| Sticky sidebar (desktop) | ✅ `DashboardStickySidebar` |
+| Профиль студента | ✅ `/profile`, mock + IndexedDB + опционально API |
+| Персонализация | ✅ `calculateFitScore`, промпты с данными студента |
+| Backend (опционально по ТЗ) | ✅ Express + файл профиля + прокси ИИ |
 
-Опциональные пункты ТЗ (backend, серверное хранилище, БД по Казахстану, отдельный AI backend, авторизация) в текущей версии **не реализованы** — только клиент и mock-данные.
+Секреты не коммитьте: `.env.local`, `.env.server` в `.gitignore`. Образцы переменных — **`.env.example`**, **`env.example`**.
+
+## Интерфейс
+
+![Главная страница](./docs/ui-preview.png)
+
+*(При необходимости обновите скриншот после изменений UI.)*
