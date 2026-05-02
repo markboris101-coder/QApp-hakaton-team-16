@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState, type Dispatch, type SetStateAction } from "react";
 import type { FinancialSituation, StudentProfile } from "../mockData";
+import { AchievementNarrativeBlock } from "./AchievementNarrativeBlock";
+import { mergeAwardsWithTiers, resolveAchievementProfile } from "../lib/achievementProfile";
 import {
   clampGpa,
   clampSat,
@@ -69,10 +71,17 @@ function readFileAsDataUrl(file: File): Promise<string> {
 }
 
 export function ProfileEditorForm({ student, onStudentChange }: Props) {
+  const [achievementNarrative, setAchievementNarrative] = useState(
+    () => student.achievementProfile?.narrative ?? ""
+  );
   const [achievements, setAchievements] = useState<AchievementStored[]>([]);
   const [verifyBusyId, setVerifyBusyId] = useState<string | null>(null);
   const [uploadCategory, setUploadCategory] = useState<AchievementCategory>("olympiad");
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    setAchievementNarrative(student.achievementProfile?.narrative ?? "");
+  }, [student.achievementProfile?.narrative, student.achievementProfile?.parsedAt]);
 
   const refreshAchievements = useCallback(async () => {
     try {
@@ -330,8 +339,33 @@ export function ProfileEditorForm({ student, onStudentChange }: Props) {
 
         <div className="rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm">
           <h3 className="text-sm font-semibold uppercase tracking-wide text-indigo-700">Награды и сертификаты</h3>
+          <div className="mt-4 border-b border-slate-100 pb-6">
+            <AchievementNarrativeBlock
+              variant="profile"
+              narrative={achievementNarrative}
+              onNarrativeChange={setAchievementNarrative}
+              savedProfile={student.achievementProfile}
+              onNarrativeBlur={() => {
+                onStudentChange((prev) => ({
+                  ...prev,
+                  achievementProfile: {
+                    ...resolveAchievementProfile(prev),
+                    narrative: achievementNarrative,
+                  },
+                }));
+              }}
+              onParsed={(p, sourceText) => {
+                onStudentChange((prev) => ({
+                  ...prev,
+                  achievementProfile: { ...p, narrative: sourceText },
+                  awards: mergeAwardsWithTiers(prev.awards, p),
+                }));
+                setAchievementNarrative(sourceText);
+              }}
+            />
+          </div>
           <p className="mt-2 text-xs text-slate-500">
-            Бонус «Olympiad» в Fit только при PNG и VERDICT: ACCEPT от Qwen VL.
+            Дополнительно: бонус олимпиады по PNG максимален при VERDICT: ACCEPT от Qwen VL; текст выше даёт базовые уровни без файла.
           </p>
           <ul className="mt-4 grid gap-2 sm:grid-cols-2">
             {AWARD_OPTIONS.map((option) => {

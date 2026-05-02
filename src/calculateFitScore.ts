@@ -1,4 +1,5 @@
 import type { ProgramField, StudentProfile, UniversityAdmissionExpectations, UniversityProgram } from "./mockData";
+import { clampAchievementTier, clampOtherMerit, resolveAchievementProfile } from "./lib/achievementProfile";
 
 /** @deprecated Используйте `universityData.admissionExpectations.strongGpa` в UI. */
 export const GPA_FIT_THRESHOLD = 4.5;
@@ -31,6 +32,29 @@ function hasOlympiadAward(awards: string[]): boolean {
   return awards.some((a) => /olympiad/i.test(a));
 }
 
+function hasSportsAward(awards: string[]): boolean {
+  return awards.some((a) => /sports/i.test(a));
+}
+
+/** Учитываем и новый achievementProfile, и старые чекбоксы без профиля. */
+function effectiveOlympiadTier(student: StudentProfile): number {
+  const a = resolveAchievementProfile(student);
+  let t = a.olympiadTier;
+  if (t === 0 && hasOlympiadAward(student.awards)) t = 1;
+  return clampAchievementTier(t);
+}
+
+function effectiveSportsTier(student: StudentProfile): number {
+  const a = resolveAchievementProfile(student);
+  let t = a.sportsTier;
+  if (t === 0 && hasSportsAward(student.awards)) t = 1;
+  return clampAchievementTier(t);
+}
+
+function effectiveOtherMerit(student: StudentProfile): number {
+  return clampOtherMerit(resolveAchievementProfile(student).otherMerit);
+}
+
 function olympiadAppliesToField(field: ProgramField): boolean {
   return field === "Science" || field === "Engineering";
 }
@@ -53,7 +77,7 @@ function gpaPortfolioFactor(gpa: number, exp: UniversityAdmissionExpectations): 
 function gpaAbsoluteCeiling(
   gpa: number,
   exp: UniversityAdmissionExpectations,
-  olympiadVerified: boolean
+  student: StudentProfile
 ): number {
   let cap: number;
   if (gpa >= exp.strongGpa) cap = 96;
@@ -63,9 +87,21 @@ function gpaAbsoluteCeiling(
   else if (gpa >= 3.5) cap = 44;
   else if (gpa >= 3.0) cap = 32;
   else cap = 22;
-  if (olympiadVerified && gpa < exp.competitiveGpa) {
+
+  if (gpa >= exp.competitiveGpa) return cap;
+
+  const ach = resolveAchievementProfile(student);
+  const oTier = effectiveOlympiadTier(student);
+  const verified = student.olympiadVerified === true;
+
+  if (verified && oTier >= 1) {
     cap = Math.min(100, cap + 8);
+  } else if (oTier >= 3) {
+    cap = Math.min(100, cap + 5);
+  } else if (oTier >= 1 && ach.narrative?.trim()) {
+    cap = Math.min(100, cap + 3);
   }
+
   return cap;
 }
 
@@ -116,15 +152,27 @@ export function calculateFitScore(
   score *= satMultiplier(student.academic.sat, exp);
   score *= untMultiplier(student.academic.untScore, exp);
 
-  if (
-    hasOlympiadAward(student.awards) &&
-    student.olympiadVerified === true &&
-    olympiadAppliesToField(program.field)
-  ) {
-    score *= 1.07;
+  const oTier = effectiveOlympiadTier(student);
+  const sTier = effectiveSportsTier(student);
+  const other = effectiveOtherMerit(student);
+  const verified = student.olympiadVerified === true;
+
+  if (olympiadAppliesToField(program.field) && oTier > 0) {
+    const inc = 0.018 * oTier;
+    const trust = verified ? 1 : 0.88;
+    score *= Math.min(1.1, 1 + inc * trust);
   }
 
-  const ceiling = gpaAbsoluteCeiling(student.academic.gpa, exp, student.olympiadVerified === true);
+  if (sTier > 0) {
+    const inc = 0.014 * sTier;
+    score *= Math.min(1.06, 1 + inc * 0.92);
+  }
+
+  if (other > 0) {
+    score *= Math.min(1.035, 1 + 0.009 * other);
+  }
+
+  const ceiling = gpaAbsoluteCeiling(student.academic.gpa, exp, student);
   const rounded = Math.round(Math.min(100, Math.max(0, score)));
   const clamped = Math.min(ceiling, rounded);
   return { score: clamped, englishWarning };

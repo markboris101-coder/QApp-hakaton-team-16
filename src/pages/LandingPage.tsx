@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { AssistantIntakeForm } from "../components/AssistantIntakeForm";
 import { AssistantRecommendationHero } from "../components/AssistantRecommendationHero";
@@ -11,13 +12,14 @@ import { getTopUniversityRecommendation } from "../lib/recommendUniversity";
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export function LandingPage() {
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { student, universities, setSelectedUniversityId } = useProfile();
   const { hydrated, intakeDone, markIntakeComplete } = useAssistantIntake();
 
   const recommendation = useMemo(
     () => (intakeDone ? getTopUniversityRecommendation(student, universities) : null),
-    [student, universities, intakeDone]
+    [student, universities, intakeDone, i18n.language]
   );
 
   const scrollToCatalog = () => {
@@ -47,7 +49,7 @@ export function LandingPage() {
                 animate={{ rotate: 360 }}
                 transition={{ duration: 0.85, repeat: Infinity, ease: "linear" }}
               />
-              <p className="text-sm text-slate-500">Загрузка профиля…</p>
+              <p className="text-sm text-slate-500">{t("landing.loadingProfile")}</p>
             </motion.div>
           ) : !intakeDone ? (
             <motion.div
@@ -59,14 +61,13 @@ export function LandingPage() {
             >
               <div className="mb-10 text-center">
                 <p className="text-sm font-semibold uppercase tracking-wide text-indigo-600">
-                  QApp · Помощник поступления
+                  {t("landing.badge")}
                 </p>
                 <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-                  Сначала — анкета
+                  {t("landing.intakeTitle")}
                 </h1>
                 <p className="mx-auto mt-4 max-w-xl text-lg text-slate-600">
-                  Рекомендация вуза строится на ваших оценках, языке и целях. Заполните поля ниже — затем откроется
-                  персональный совет и каталог.
+                  {t("landing.intakeSubtitle")}
                 </p>
               </div>
               <AssistantIntakeForm onComplete={markIntakeComplete} />
@@ -86,14 +87,13 @@ export function LandingPage() {
                 transition={{ delay: 0.05, duration: 0.4, ease: easeOut }}
               >
                 <p className="text-sm font-semibold uppercase tracking-wide text-indigo-600">
-                  QApp · Помощник поступления
+                  {t("landing.badge")}
                 </p>
                 <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-                  Персональный выбор вуза
+                  {t("landing.mainTitle")}
                 </h1>
                 <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
-                  Ниже — рекомендация по вашей анкете и каталог для сравнения. Дальше откроются fit, документы и
-                  чек-листы.
+                  {t("landing.mainSubtitle")}
                 </p>
               </motion.div>
 
@@ -122,9 +122,9 @@ export function LandingPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.42, ease: easeOut }}
               >
-                <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">Каталог и сравнение</h2>
+                <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">{t("landing.catalogTitle")}</h2>
                 <p className="mt-2 text-sm text-slate-600">
-                  Фильтры, поиск и избранное — если хотите сравнить вузы вручную или отложить решение ассистента.
+                  {t("landing.catalogSubtitle")}
                 </p>
                 <div className="mt-8">
                   <UniversitySearchPanel
@@ -144,15 +144,15 @@ export function LandingPage() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.35, duration: 0.35 }}
               >
-                Уже выбирали вуз?{" "}
+                {t("landing.alreadyPrompt")}{" "}
                 <button
                   type="button"
                   onClick={() => navigate("/dashboard")}
                   className="font-semibold text-indigo-600 underline-offset-2 hover:underline"
                 >
-                  Перейти в дашборд
+                  {t("landing.goDashboard")}
                 </button>{" "}
-                с последним сохранённым вузом.
+                {t("landing.withSavedUniversity")}
               </motion.p>
             </motion.div>
           )}

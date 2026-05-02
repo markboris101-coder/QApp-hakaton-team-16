@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { useProfile } from "../context/ProfileContext";
 import { ProfileEditorForm } from "../components/ProfileEditorForm";
@@ -6,6 +7,7 @@ import { ProfileEditorForm } from "../components/ProfileEditorForm";
 const SHELL = "mx-auto w-full max-w-[min(100%,1400px)] px-4 sm:px-6";
 
 export function ProfilePage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const {
     student,
@@ -31,25 +33,25 @@ export function ProfilePage() {
               to="/"
               className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-800 shadow-sm transition hover:bg-slate-50"
             >
-              ← На главную
+              {t("profile.backHome")}
             </Link>
             <span className="text-sm text-slate-500">{universityData.name}</span>
           </div>
-          <p className="text-xs text-slate-500">Изменения сохраняются автоматически</p>
+          <p className="text-xs text-slate-500">{t("profile.autosave")}</p>
         </div>
       </header>
 
       <div className={`${SHELL} py-10`}>
-        <h1 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">Профиль абитуриента</h1>
+        <h1 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">{t("profile.title")}</h1>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
-          Все поля влияют на расчёт AI Fit, стипендий и советов Qwen. Разметка — на всю ширину окна (до 1400px).
+          {t("profile.subtitle")}
         </p>
 
         {favoriteUniversityIds.length > 0 && (
           <section className="mt-10 rounded-2xl border border-amber-200/90 bg-amber-50/50 p-5 ring-1 ring-amber-100/80">
-            <h2 className="text-sm font-semibold uppercase tracking-wide text-amber-900">Избранные вузы</h2>
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-amber-900">{t("profile.favoritesHeading")}</h2>
             <p className="mt-1 text-sm text-amber-950/80">
-              Сохраняются в этом браузере. Это не то же самое, что избранные программы (шорт-лист).
+              {t("profile.favoritesHint")}
             </p>
             <ul className="mt-4 space-y-2">
               {favoriteUniversityIds.map((id) => {
@@ -70,14 +72,14 @@ export function ProfilePage() {
                         }}
                         className="rounded-lg bg-indigo-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-indigo-700"
                       >
-                        Дашборд
+                        {t("profile.dashboardBtn")}
                       </button>
                       <button
                         type="button"
                         onClick={() => toggleFavoriteUniversity(u.id)}
                         className="rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50"
                       >
-                        Убрать
+                        {t("profile.removeBtn")}
                       </button>
                     </div>
                   </li>
@@ -85,7 +87,7 @@ export function ProfilePage() {
               })}
             </ul>
             <Link to="/" className="mt-3 inline-block text-sm font-medium text-indigo-700 hover:underline">
-              Каталог вузов →
+              {t("profile.catalogLink")}
             </Link>
           </section>
         )}

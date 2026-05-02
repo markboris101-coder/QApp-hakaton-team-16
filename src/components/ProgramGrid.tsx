@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import {
   formatTuitionKzt,
@@ -41,13 +42,8 @@ function programPriceBand(kzt: number): Exclude<PriceBand, "all"> {
   return "high";
 }
 
-const PRICE_LABELS: Record<Exclude<PriceBand, "all">, string> = {
-  low: "до ~4M ₸",
-  mid: "~4–8M ₸",
-  high: "от ~8M ₸",
-};
-
 export function ProgramGrid({ rows, university }: Props) {
+  const { t, i18n } = useTranslation();
   const [fieldFilter, setFieldFilter] = useState<ProgramField | "all">("all");
   const [degreeFilter, setDegreeFilter] = useState<DegreeLevel | "all">("all");
   const [facultyFilter, setFacultyFilter] = useState<string | "all">("all");
@@ -57,8 +53,18 @@ export function ProgramGrid({ rows, university }: Props) {
 
   const languageOptions = useMemo(() => {
     const s = new Set(rows.map((r) => r.program.language));
-    return ["all" as const, ...[...s].sort((a, b) => a.localeCompare(b, "ru"))];
-  }, [rows]);
+    const loc = i18n.language.startsWith("kk") ? "kk" : i18n.language.startsWith("ru") ? "ru" : "en";
+    return ["all" as const, ...[...s].sort((a, b) => a.localeCompare(b, loc))];
+  }, [rows, i18n.language]);
+
+  const priceLabels = useMemo(
+    (): Record<Exclude<PriceBand, "all">, string> => ({
+      low: t("programGrid.priceLow"),
+      mid: t("programGrid.priceMid"),
+      high: t("programGrid.priceHigh"),
+    }),
+    [t, i18n.language]
+  );
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -83,20 +89,17 @@ export function ProgramGrid({ rows, university }: Props) {
     <section id="program-grid">
       <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
         <div>
-          <h2 className="text-lg font-semibold text-slate-900">Сетка программ</h2>
-          <p className="mt-1 text-sm text-slate-600">
-            Фильтры по факультету, языку и цене — в дополнение к направлению и степени. Карточки показывают актуальный AI
-            fit.
-          </p>
+          <h2 className="text-lg font-semibold text-slate-900">{t("programGrid.title")}</h2>
+          <p className="mt-1 text-sm text-slate-600">{t("programGrid.subtitle")}</p>
         </div>
         <div className="flex w-full flex-col gap-3 sm:w-auto sm:min-w-[240px]">
           <label className="sr-only" htmlFor="program-search">
-            Поиск программ
+            {t("programGrid.searchLabel")}
           </label>
           <input
             id="program-search"
             type="search"
-            placeholder="Поиск по названию программы…"
+            placeholder={t("programGrid.searchPlaceholder")}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
@@ -106,7 +109,7 @@ export function ProgramGrid({ rows, university }: Props) {
 
       <div className="mt-4 flex flex-col gap-4">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs font-medium uppercase tracking-wide text-slate-500">Направление</span>
+          <span className="text-xs font-medium uppercase tracking-wide text-slate-500">{t("programGrid.fieldLabel")}</span>
           {FIELDS.map((f) => (
             <button
               key={f}
@@ -118,13 +121,13 @@ export function ProgramGrid({ rows, university }: Props) {
                   : "bg-slate-100 text-slate-700 ring-1 ring-slate-200 hover:bg-slate-200/80"
               }`}
             >
-              {f === "all" ? "Все" : f}
+              {f === "all" ? t("programGrid.all") : f}
             </button>
           ))}
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs font-medium uppercase tracking-wide text-slate-500">Степень</span>
+          <span className="text-xs font-medium uppercase tracking-wide text-slate-500">{t("programGrid.degreeLabel")}</span>
           {DEGREES.map((d) => (
             <button
               key={d}
@@ -136,19 +139,19 @@ export function ProgramGrid({ rows, university }: Props) {
                   : "bg-slate-100 text-slate-700 ring-1 ring-slate-200 hover:bg-slate-200/80"
               }`}
             >
-              {d === "all" ? "Все" : d}
+              {d === "all" ? t("programGrid.all") : d}
             </button>
           ))}
         </div>
 
         <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
-          <span className="text-xs font-medium uppercase tracking-wide text-slate-500">Факультет</span>
+          <span className="text-xs font-medium uppercase tracking-wide text-slate-500">{t("programGrid.facultyLabel")}</span>
           <select
             value={facultyFilter}
             onChange={(e) => setFacultyFilter(e.target.value as typeof facultyFilter)}
             className="max-w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 sm:max-w-xs"
           >
-            <option value="all">Все факультеты</option>
+            <option value="all">{t("programGrid.allFaculties")}</option>
             {university.faculties.map((f) => (
               <option key={f.id} value={f.id}>
                 {f.name}
@@ -158,7 +161,7 @@ export function ProgramGrid({ rows, university }: Props) {
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs font-medium uppercase tracking-wide text-slate-500">Язык программы</span>
+          <span className="text-xs font-medium uppercase tracking-wide text-slate-500">{t("programGrid.languageLabel")}</span>
           <div className="flex flex-wrap gap-2">
             {languageOptions.map((lang) => (
               <button
@@ -171,14 +174,14 @@ export function ProgramGrid({ rows, university }: Props) {
                     : "bg-slate-100 text-slate-700 ring-1 ring-slate-200 hover:bg-slate-200/80"
                 }`}
               >
-                {lang === "all" ? "Все языки" : lang}
+                {lang === "all" ? t("programGrid.allLanguages") : lang}
               </button>
             ))}
           </div>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs font-medium uppercase tracking-wide text-slate-500">Цена (год)</span>
+          <span className="text-xs font-medium uppercase tracking-wide text-slate-500">{t("programGrid.priceLabel")}</span>
           <button
             type="button"
             onClick={() => setPriceBand("all")}
@@ -188,7 +191,7 @@ export function ProgramGrid({ rows, university }: Props) {
                 : "bg-slate-100 text-slate-700 ring-1 ring-slate-200 hover:bg-slate-200/80"
             }`}
           >
-            Любая
+            {t("programGrid.anyPrice")}
           </button>
           {(["low", "mid", "high"] as const).map((b) => (
             <button
@@ -201,7 +204,7 @@ export function ProgramGrid({ rows, university }: Props) {
                   : "bg-slate-100 text-slate-700 ring-1 ring-slate-200 hover:bg-slate-200/80"
               }`}
             >
-              {PRICE_LABELS[b]}
+              {priceLabels[b]}
             </button>
           ))}
         </div>
@@ -209,12 +212,13 @@ export function ProgramGrid({ rows, university }: Props) {
 
       {filtered.length === 0 ? (
         <p className="mt-8 rounded-2xl border border-dashed border-slate-200 bg-white px-4 py-8 text-center text-sm text-slate-600">
-          Нет программ по этим фильтрам. Сбросьте часть условий или очистите поиск.
+          {t("programGrid.emptyState")}
         </p>
       ) : (
         <ul className="mt-6 grid gap-4 sm:grid-cols-2">
           {filtered.map(({ program, score, englishWarning }) => {
             const fac = getFaculty(university, program.facultyId);
+            const yearsLabel = t("programMeta.years", { count: program.durationYears });
             return (
               <li key={program.id}>
                 <Link
@@ -225,8 +229,7 @@ export function ProgramGrid({ rows, university }: Props) {
                     <div className="min-w-0">
                       <h3 className="font-semibold text-slate-900">{program.name}</h3>
                       <p className="mt-1 text-sm text-slate-500">
-                        {fac?.name ?? program.facultyId} · {program.field} · {program.degree} · {program.durationYears}{" "}
-                        лет · {program.language}
+                        {fac?.name ?? program.facultyId} · {program.field} · {program.degree} · {yearsLabel} · {program.language}
                       </p>
                       <p className="mt-1 text-xs font-medium text-emerald-900 tabular-nums">
                         {formatTuitionKzt(program.annualTuitionKzt)}
@@ -240,7 +243,7 @@ export function ProgramGrid({ rows, university }: Props) {
                   {englishWarning && (
                     <p className="mt-2 text-sm font-medium text-amber-800">{englishWarning}</p>
                   )}
-                  <p className="mt-3 text-xs font-medium text-indigo-600">Подробнее →</p>
+                  <p className="mt-3 text-xs font-medium text-indigo-600">{t("programGrid.detailsLink")}</p>
                 </Link>
               </li>
             );

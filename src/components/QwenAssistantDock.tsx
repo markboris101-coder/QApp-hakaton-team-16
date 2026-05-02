@@ -1,15 +1,12 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { useSmartAdvisor } from "../hooks/useSmartAdvisor";
 import { isAiConfigured, type QwenChatTurn } from "../services/aiProvider";
 
-const SUGGESTIONS = [
-  "Что успеть до дедлайна заявок?",
-  "Как мои баллы соотносятся с конкурсом?",
-  "Чем грант отличается от контракта в общих чертах?",
-];
-
 export function QwenAssistantDock() {
+  const { t } = useTranslation();
+  const suggestions = useMemo(() => [t("qwen.sugg1"), t("qwen.sugg2"), t("qwen.sugg3")], [t]);
   const { sendAdmissionChat } = useSmartAdvisor();
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
@@ -28,7 +25,7 @@ export function QwenAssistantDock() {
       const trimmed = text.trim();
       if (!trimmed || loading) return;
       if (!isAiConfigured()) {
-        setError("Добавьте VITE_API_KEY или включите прокси VITE_USE_AI_PROXY — иначе Qwen недоступен.");
+        setError(t("qwen.errNoKey"));
         return;
       }
       setError(null);
@@ -40,14 +37,14 @@ export function QwenAssistantDock() {
         const reply = await sendAdmissionChat(priorTurns, trimmed);
         setTurns((prev) => [...prev, { role: "assistant", content: reply }]);
       } catch (e) {
-        const msg = e instanceof Error ? e.message : "Ошибка запроса";
+        const msg = e instanceof Error ? e.message : t("qwen.requestError");
         setError(msg);
         setTurns((prev) => prev.slice(0, -1));
       } finally {
         setLoading(false);
       }
     },
-    [loading, sendAdmissionChat, turns]
+    [loading, sendAdmissionChat, turns, t]
   );
 
   const onFormSubmit = (e: React.FormEvent) => {
@@ -60,7 +57,7 @@ export function QwenAssistantDock() {
       <button
         type="button"
         aria-expanded={open}
-        aria-label={open ? "Закрыть чат с Qwen" : "Открыть чат с Qwen"}
+        aria-label={open ? t("qwen.fabClose") : t("qwen.fabOpen")}
         onClick={() => setOpen((o) => !o)}
         className="fixed bottom-5 right-5 z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-indigo-600 text-white shadow-lg ring-2 ring-white/90 transition hover:bg-indigo-700 focus:outline-none focus-visible:ring-4 focus-visible:ring-indigo-300"
       >
@@ -78,27 +75,27 @@ export function QwenAssistantDock() {
           >
             <div className="flex items-center justify-between border-b border-slate-100 bg-gradient-to-r from-indigo-600 to-indigo-700 px-4 py-3 text-white">
               <div>
-                <p className="text-sm font-semibold">Qwen · чат</p>
-                <p className="text-xs text-indigo-100">Поступление в вузы Казахстана</p>
+                <p className="text-sm font-semibold">{t("qwen.title")}</p>
+                <p className="text-xs text-indigo-100">{t("qwen.subtitle")}</p>
               </div>
               <div className="flex items-center gap-1">
                 <button
                   type="button"
-                  title="Очистить историю"
+                  title={t("qwen.clear")}
                   onClick={() => {
                     setTurns([]);
                     setError(null);
                   }}
                   className="rounded-lg px-2 py-1 text-xs text-indigo-100 hover:bg-white/10"
                 >
-                  Очистить
+                  {t("qwen.clear")}
                 </button>
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
                   className="rounded-lg px-2 py-1 text-sm text-indigo-100 hover:bg-white/10"
                 >
-                  ✕
+                  {t("qwen.close")}
                 </button>
               </div>
             </div>
@@ -107,10 +104,10 @@ export function QwenAssistantDock() {
               {turns.length === 0 && !loading && (
                 <div className="space-y-2">
                   <p className="text-sm text-slate-600">
-                    Спросите про сроки, документы, баллы или выбранный вуз — ответит Qwen 2.5 с учётом вашего профиля.
+                    {t("qwen.intro")}
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {SUGGESTIONS.map((s) => (
+                    {suggestions.map((s) => (
                       <button
                         key={s}
                         type="button"
@@ -125,19 +122,19 @@ export function QwenAssistantDock() {
                 </div>
               )}
 
-              {turns.map((t, i) => (
+              {turns.map((turn, i) => (
                 <div
-                  key={`${t.role}-${i}`}
-                  className={`flex ${t.role === "user" ? "justify-end" : "justify-start"}`}
+                  key={`${turn.role}-${i}`}
+                  className={`flex ${turn.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
                     className={`max-w-[90%] rounded-2xl px-3 py-2 text-sm leading-relaxed ${
-                      t.role === "user"
+                      turn.role === "user"
                         ? "bg-indigo-600 text-white"
                         : "border border-slate-200 bg-white text-slate-800 shadow-sm"
                     }`}
                   >
-                    {t.content}
+                    {turn.content}
                   </div>
                 </div>
               ))}
@@ -145,7 +142,7 @@ export function QwenAssistantDock() {
               {loading && (
                 <div className="flex justify-start">
                   <div className="rounded-2xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-500 shadow-sm">
-                    Печатает…
+                    {t("qwen.typing")}
                   </div>
                 </div>
               )}
@@ -158,7 +155,7 @@ export function QwenAssistantDock() {
 
               {!isAiConfigured() && (
                 <p className="text-xs text-slate-500">
-                  Укажите ключ в `.env.local` или серверный прокси — см. README.
+                  {t("qwen.envHint")}
                 </p>
               )}
             </div>
@@ -168,7 +165,7 @@ export function QwenAssistantDock() {
                 <input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ваш вопрос…"
+                  placeholder={t("qwen.placeholder")}
                   disabled={loading}
                   className="min-w-0 flex-1 rounded-xl border border-slate-200 px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 disabled:bg-slate-50"
                 />
@@ -177,7 +174,7 @@ export function QwenAssistantDock() {
                   disabled={loading || !input.trim()}
                   className="shrink-0 rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700 disabled:opacity-50"
                 >
-                  Отпр.
+                  {t("qwen.send")}
                 </button>
               </div>
             </form>

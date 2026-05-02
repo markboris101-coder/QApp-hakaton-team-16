@@ -1,3 +1,5 @@
+import i18n from "../i18n/config";
+
 /** Ограничения и нормализация полей профиля (защита от «бесконечных» значений и дробей IELTS). */
 
 export const SAT_MIN = 0;
@@ -17,9 +19,9 @@ export function clampSat(n: number): number {
   return Math.min(SAT_MAX, Math.max(SAT_MIN, Math.round(n)));
 }
 
-/** Для подписей в UI: `0` трактуем как «не указан». */
+/** Для подписей в UI: `0` трактуем как «не указан» (язык — из i18n). */
 export function formatSatForDisplay(sat: number): string {
-  return sat > 0 ? String(sat) : "не указан";
+  return sat > 0 ? String(sat) : i18n.t("common.satNotSpecified");
 }
 
 export function clampUnt(n: number): number {

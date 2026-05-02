@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { calculateFitScore } from "../calculateFitScore";
 import { formatTuitionKzt, getFaculty, getProgramBySlug } from "../mockData";
@@ -23,6 +24,7 @@ const APPLY_URLS: Record<string, string> = {
 };
 
 export function ProgramDetailsPage() {
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { student, toggleShortlist, isShortlisted, setSelectedUniversityId } = useProfile();
@@ -51,9 +53,7 @@ export function ProgramDetailsPage() {
     setInsightError(null);
     setInsight("");
     if (!isAiConfigured()) {
-      setInsight(
-        "Добавьте `VITE_API_KEY` в `.env.local` или в переменные окружения деплоя и пересоберите проект — тогда Qwen 2.5 сможет дать персональный совет по программе."
-      );
+      setInsight(t("program.insightNoKey"));
       setInsightLoading(false);
       return;
     }
@@ -61,23 +61,25 @@ export function ProgramDetailsPage() {
       const text = await getProgramAdvice(program.id);
       setInsight(text);
     } catch (e) {
-      setInsightError(e instanceof Error ? e.message : "Не удалось получить ответ ИИ.");
+      setInsightError(e instanceof Error ? e.message : t("program.insightFail"));
     } finally {
       setInsightLoading(false);
     }
-  }, [program, getProgramAdvice]);
+  }, [program, getProgramAdvice, t]);
 
   if (!result || !program || !programUniversity) {
     return (
       <div className="mx-auto max-w-5xl px-4 py-16 text-center">
-        <h1 className="text-xl font-semibold text-slate-900">Программа не найдена</h1>
-        <p className="mt-2 text-slate-600">Проверьте ссылку или вернитесь к списку программ.</p>
+        <h1 className="text-xl font-semibold text-slate-900">{t("program.notFound")}</h1>
+        <p className="mt-2 text-slate-600">{t("program.notFoundHint")}</p>
         <Link to="/" className="mt-6 inline-block font-medium text-indigo-600 hover:text-indigo-800">
-          ← На главную
+          {t("program.backHome")}
         </Link>
       </div>
     );
   }
+
+  const yearsLabel = t("programMeta.years", { count: program.durationYears });
 
   const { score, englishWarning } = calculateFitScore(
     student,
@@ -98,7 +100,7 @@ export function ProgramDetailsPage() {
       <section className="mb-8 rounded-2xl border border-slate-200/90 bg-white/90 p-4 shadow-sm ring-1 ring-slate-100/80 sm:p-5">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-700">
-            <span className="font-semibold text-slate-900">Ваш профиль</span>
+            <span className="font-semibold text-slate-900">{t("program.yourProfile")}</span>
             <span>GPA {student.academic.gpa.toFixed(1)}</span>
             <span>SAT {formatSatForDisplay(student.academic.sat)}</span>
             <span>UNT {student.academic.untScore}/140</span>
@@ -110,19 +112,19 @@ export function ProgramDetailsPage() {
               to="/profile"
               className="rounded-xl bg-indigo-600 px-4 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-700"
             >
-              Изменить данные
+              {t("program.editData")}
             </Link>
             <Link
               to="/dashboard#admission-checklist"
               className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-2 text-center text-sm font-medium text-slate-800 hover:bg-slate-100"
             >
-              Чек-лист
+              {t("program.checklist")}
             </Link>
             <Link
               to="/dashboard#program-grid"
               className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-center text-sm font-medium text-slate-800 hover:bg-slate-50"
             >
-              Все программы
+              {t("program.allPrograms")}
             </Link>
           </div>
         </div>
@@ -131,7 +133,7 @@ export function ProgramDetailsPage() {
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <nav className="text-sm text-slate-500">
           <Link to="/dashboard" className="font-medium text-indigo-600 hover:text-indigo-800">
-            Главная
+            {t("program.breadcrumbHome")}
           </Link>
           <span className="mx-2">/</span>
           <span className="text-slate-600">{programUniversity.name}</span>
@@ -143,7 +145,7 @@ export function ProgramDetailsPage() {
           onClick={() => navigate(-1)}
           className="text-sm font-medium text-slate-600 hover:text-slate-900"
         >
-          ← Назад
+          {t("program.back")}
         </button>
       </div>
 
@@ -155,16 +157,21 @@ export function ProgramDetailsPage() {
             </p>
             <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{program.name}</h1>
             <p className="mt-2 text-slate-600">
-              {program.field} · {program.degree} · {program.durationYears} years · {program.language}
+              {t("program.degreeLine", {
+                field: program.field,
+                degree: program.degree,
+                years: yearsLabel,
+                language: program.language,
+              })}
             </p>
             {faculty && (
               <p className="mt-1 text-sm text-slate-700">
-                <span className="font-medium text-slate-900">Факультет: </span>
+                <span className="font-medium text-slate-900">{t("program.faculty")} </span>
                 {faculty.name}
               </p>
             )}
             <p className="mt-2 text-sm font-medium text-emerald-900 tabular-nums">
-              Стоимость (mock): {formatTuitionKzt(program.annualTuitionKzt)}
+              {t("program.costMock")} {formatTuitionKzt(program.annualTuitionKzt)}
             </p>
             <p className="mt-1 text-sm text-slate-500">{program.matchReason}</p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -182,7 +189,7 @@ export function ProgramDetailsPage() {
 
           {faculty && (
             <section className="rounded-2xl border border-slate-200/90 bg-slate-50/80 p-5">
-              <h2 className="text-lg font-semibold text-slate-900">О факультете</h2>
+              <h2 className="text-lg font-semibold text-slate-900">{t("program.aboutFaculty")}</h2>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">{faculty.description}</p>
               <p className="mt-3 text-xs text-slate-500">
                 Вилка по вузу: {programUniversity.tuitionOverview.note}
@@ -191,7 +198,7 @@ export function ProgramDetailsPage() {
           )}
 
           <section>
-            <h2 className="text-lg font-semibold text-slate-900">About this program</h2>
+            <h2 className="text-lg font-semibold text-slate-900">{t("program.aboutProgram")}</h2>
             <ul className="mt-3 list-inside list-disc space-y-2 text-sm leading-relaxed text-slate-600">
               {program.detailedDescription.map((p, idx) => (
                 <li key={idx} className="pl-1">
@@ -202,7 +209,7 @@ export function ProgramDetailsPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-slate-900">Entry requirements</h2>
+            <h2 className="text-lg font-semibold text-slate-900">{t("program.entryRequirements")}</h2>
             <ul className="mt-3 space-y-2">
               {program.entryRequirements.map((req) => (
                 <li
@@ -221,9 +228,9 @@ export function ProgramDetailsPage() {
           <section className="rounded-2xl border border-violet-200/80 bg-violet-50/50 p-5 ring-1 ring-violet-100">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div>
-                <h2 className="text-lg font-semibold text-slate-900">Разбор от Qwen</h2>
+                <h2 className="text-lg font-semibold text-slate-900">{t("program.qwenTitle")}</h2>
                 <p className="mt-1 text-xs font-medium uppercase tracking-wide text-violet-700">
-                  Запрос вручную — без автозагрузки
+                  {t("program.qwenSub")}
                 </p>
               </div>
               <button
@@ -232,7 +239,7 @@ export function ProgramDetailsPage() {
                 disabled={insightLoading}
                 className="shrink-0 rounded-xl bg-violet-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-violet-800 disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {insight ? "Обновить разбор" : "Получить разбор Qwen"}
+                {insight ? t("program.refreshInsight") : t("program.getInsight")}
               </button>
             </div>
             {insightLoading ? (
@@ -245,7 +252,7 @@ export function ProgramDetailsPage() {
               <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-slate-700">{insight}</p>
             ) : (
               <p className="mt-3 text-sm text-slate-600">
-                Нажмите кнопку выше, чтобы Qwen проанализировал ваш профиль относительно этой программы.
+                {t("program.insightEmpty")}
               </p>
             )}
             <p className="mt-3 text-xs text-slate-500">
@@ -264,7 +271,7 @@ export function ProgramDetailsPage() {
                   : "bg-white text-slate-900 ring-1 ring-slate-200 hover:bg-slate-50"
               }`}
             >
-              {shortlisted ? "Убрать из списка" : "В избранное"}
+              {shortlisted ? t("program.removeShortlist") : t("program.addShortlist")}
             </button>
             <a
               href={applyHref}
@@ -272,7 +279,7 @@ export function ProgramDetailsPage() {
               rel="noreferrer"
               className="flex-1 rounded-2xl bg-indigo-600 py-3 text-center text-sm font-semibold text-white shadow-md transition hover:bg-indigo-700"
             >
-              Поступление (официальный сайт)
+              {t("program.applySite")}
             </a>
           </div>
         </div>

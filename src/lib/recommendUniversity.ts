@@ -1,6 +1,8 @@
 import { calculateFitScore } from "../calculateFitScore";
 import type { StudentProfile, UniversityTemplate } from "../mockData";
 import { formatTuitionBand } from "../mockData";
+import i18n from "../i18n/config";
+import { resolveAchievementProfile } from "./achievementProfile";
 
 export type UniversityRecommendation = {
   universityId: string;
@@ -86,30 +88,24 @@ export function getUniversityRecommendations(
 
     reasons.push(
       student.academic.sat > 0
-        ? `Средний прогноз AI Fit по программам этого вуза — ${Math.round(avgProgramFit)}% (с учётом GPA, SAT, UNT и интересов).`
-        : `Средний прогноз AI Fit по программам этого вуза — ${Math.round(avgProgramFit)}% (с учётом GPA, UNT и интересов; SAT в профиле не указан — это нормально для подачи в РК).`
+        ? i18n.t("recommend.fitWithSat", { pct: Math.round(avgProgramFit) })
+        : i18n.t("recommend.fitNoSat", { pct: Math.round(avgProgramFit) })
     );
 
     if (cityBoost > 0) {
-      reasons.push(
-        `Город в профиле («${student.preferences.city}») хорошо стыкуется с кампусом — приоритет при равных баллах.`
-      );
+      reasons.push(i18n.t("recommend.cityMatch", { city: student.preferences.city }));
     }
 
     if (student.preferences.financialStatus === "Need Full Scholarship") {
       if (budgetFit >= 82) {
-        reasons.push(
-          `По бюджету и стипендиям вуз выглядит реалистичнее: ориентир контракта ${formatTuitionBand(u.tuitionOverview)}, в каталоге есть сильные стипендиальные опции.`
-        );
+        reasons.push(i18n.t("recommend.budgetOk", { band: formatTuitionBand(u.tuitionOverview) }));
       } else {
-        reasons.push(
-          `Учтите стоимость: минимальный ориентир ${formatTuitionBand(u.tuitionOverview)} — сверьте с грантами и своим статусом «нужна полная поддержка».`
-        );
+        reasons.push(i18n.t("recommend.budgetWarn", { band: formatTuitionBand(u.tuitionOverview) }));
       }
     } else if (student.preferences.financialStatus === "Partial Scholarship") {
-      reasons.push(`Для сценария «частичная стипендия» этот вуз укладывается в типичный коридор цен относительно вашего профиля.`);
+      reasons.push(i18n.t("recommend.partial"));
     } else {
-      reasons.push(`При самооплате доступен более широкий выбор программ; этот вуз хорошо балансирует fit и стоимость.`);
+      reasons.push(i18n.t("recommend.selfPay"));
     }
 
     const interestHits = fits.filter((f) =>
@@ -130,14 +126,26 @@ export function getUniversityRecommendations(
     ).length;
     if (interestHits > 0) {
       reasons.push(
-        `Найдено ${interestHits} программ, близких к вашим интересам (${student.preferences.interests.slice(0, 3).join(", ")}).`
+        i18n.t("recommend.interestHits", {
+          count: interestHits,
+          list: student.preferences.interests.slice(0, 3).join(", "),
+        })
+      );
+    }
+
+    const ach = resolveAchievementProfile(student);
+    if (ach.olympiadTier > 0 || ach.sportsTier > 0 || ach.otherMerit > 0) {
+      reasons.push(
+        i18n.t("recommend.achievementBoost", {
+          o: ach.olympiadTier,
+          s: ach.sportsTier,
+          m: ach.otherMerit,
+        })
       );
     }
 
     if (englishRisk) {
-      reasons.push(
-        `Внимание: при текущем IELTS ${student.academic.ielts.toFixed(1)} часть программ может требовать подтверждения английского — проверьте требования выбранной программы.`
-      );
+      reasons.push(i18n.t("recommend.englishRisk", { ielts: student.academic.ielts.toFixed(1) }));
     }
 
     out.push({
@@ -147,7 +155,7 @@ export function getUniversityRecommendations(
       avgProgramFit: Math.round(avgProgramFit),
       budgetFit,
       cityBoost,
-      reasons: reasons.slice(0, 5),
+      reasons: reasons.slice(0, 6),
       topPrograms,
       englishRisk,
     });

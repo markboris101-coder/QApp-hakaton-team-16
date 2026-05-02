@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { calculateFitScore } from "../calculateFitScore";
 import { AdmissionChecklist } from "../components/AdmissionChecklist";
@@ -21,12 +22,15 @@ import { getTopUniversityRecommendation } from "../lib/recommendUniversity";
 import { useAssistantIntake } from "../hooks/useAssistantIntake";
 import { formatSatForDisplay } from "../lib/academicInput";
 
-function formatShortDate(iso: string): string {
-  const d = new Date(iso + (iso.includes("T") ? "" : "T12:00:00"));
-  return d.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
-}
-
-function FitRing({ value, gradientId = "heroFitGradient" }: { value: number; gradientId?: string }) {
+function FitRing({
+  value,
+  gradientId = "heroFitGradient",
+  label,
+}: {
+  value: number;
+  gradientId?: string;
+  label: string;
+}) {
   const r = 52;
   const c = 2 * Math.PI * r;
   const offset = c - (value / 100) * c;
@@ -55,14 +59,28 @@ function FitRing({ value, gradientId = "heroFitGradient" }: { value: number; gra
       </svg>
       <div className="absolute text-center">
         <p className="text-2xl font-bold text-slate-900 tabular-nums">{value}</p>
-        <p className="text-xs font-medium uppercase tracking-wide text-slate-500">AI fit</p>
+        <p className="text-xs font-medium uppercase tracking-wide text-slate-500">{label}</p>
       </div>
     </div>
   );
 }
 
 export function HomePage() {
+  const { t, i18n } = useTranslation();
   const location = useLocation();
+
+  const formatShortDate = useCallback(
+    (iso: string) => {
+      const d = new Date(iso + (iso.includes("T") ? "" : "T12:00:00"));
+      const loc = i18n.language.startsWith("kk")
+        ? "kk-KZ"
+        : i18n.language.startsWith("en")
+          ? "en-US"
+          : "ru-RU";
+      return d.toLocaleDateString(loc, { month: "short", day: "numeric", year: "numeric" });
+    },
+    [i18n.language]
+  );
   const {
     student,
     setStudent,
@@ -77,7 +95,7 @@ export function HomePage() {
 
   const assistantTop = useMemo(
     () => (intakeDone ? getTopUniversityRecommendation(student, universities) : null),
-    [student, universities, intakeDone]
+    [student, universities, intakeDone, i18n.language]
   );
   const { getGeneralFitAdvice } = useSmartAdvisor();
 
@@ -98,9 +116,7 @@ export function HomePage() {
     setExecLoading(true);
     setExecError(null);
     if (!isAiConfigured()) {
-      setExecSummary(
-        "Добавьте переменную `VITE_API_KEY` в `.env.local` (локально) или в настройках хостинга (production), затем перезапустите dev-сервер или передеплойте — чтобы Qwen 2.5 сформировал обзор."
-      );
+      setExecSummary(t("home.execNoKey"));
       setExecLoading(false);
       return;
     }
@@ -108,11 +124,11 @@ export function HomePage() {
       const text = await getGeneralFitAdvice();
       setExecSummary(text);
     } catch (e) {
-      setExecError(e instanceof Error ? e.message : "Ошибка ИИ");
+      setExecError(e instanceof Error ? e.message : t("home.execError"));
     } finally {
       setExecLoading(false);
     }
-  }, [getGeneralFitAdvice]);
+  }, [getGeneralFitAdvice, t]);
 
   useEffect(() => {
     setExecSummary("");
@@ -236,11 +252,11 @@ export function HomePage() {
       {showCatalogHint && (
         <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 border-b border-indigo-100 bg-indigo-50/95 px-4 py-2.5 text-center text-sm text-indigo-950 sm:px-6">
           <span>
-            Другой вуз? Откройте{" "}
+            {t("home.stripPrompt")}{" "}
             <Link to="/" className="font-semibold text-indigo-700 underline-offset-2 hover:underline">
-              каталог и поиск
+              {t("home.stripLink")}
             </Link>
-            .
+            {t("home.stripEnd")}
           </span>
           <button
             type="button"
@@ -254,7 +270,7 @@ export function HomePage() {
             }}
             className="rounded-lg px-2 py-1 text-xs font-semibold text-indigo-700 hover:bg-indigo-100/80"
           >
-            Скрыть
+            {t("home.stripHide")}
           </button>
         </div>
       )}
@@ -269,7 +285,7 @@ export function HomePage() {
         <div className="relative mx-auto flex w-full max-w-[min(100%,1400px)] flex-col gap-8 px-4 py-10 backdrop-blur-[1px] sm:px-6 lg:flex-row lg:items-start lg:justify-between">
           <div className="min-w-0 flex-1 space-y-5">
             <div>
-              <p className="text-sm font-medium text-indigo-600">Smart University Profile · QApp MVP</p>
+              <p className="text-sm font-medium text-indigo-600">{t("home.tagline")}</p>
               <h1 className="mt-1 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
                 {universityData.name}
               </h1>
@@ -278,25 +294,25 @@ export function HomePage() {
 
             <div className="flex flex-wrap gap-2">
               <span className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-800 ring-1 ring-slate-200/90 shadow-sm">
-                Основан: {universityData.foundedYear}
+                {t("home.founded")}: {universityData.foundedYear}
               </span>
               <span className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-800 ring-1 ring-slate-200/90 shadow-sm">
-                Языки: {instructionLanguages}
+                {t("home.languages")}: {instructionLanguages}
               </span>
               <span className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-800 ring-1 ring-slate-200/90 shadow-sm">
-                Тип: {universityData.type}
+                {t("home.type")}: {universityData.type}
               </span>
               <span className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-800 ring-1 ring-slate-200/90 shadow-sm">
-                Программ: {universityData.programs.length}
+                {t("home.programCount")}: {universityData.programs.length}
               </span>
               <span className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-medium text-violet-900 ring-1 ring-violet-200 shadow-sm">
-                Дедлайн {formatShortDate(universityData.applicationDeadline)}
+                {t("home.deadline")} {formatShortDate(universityData.applicationDeadline)}
               </span>
               <span
                 className="inline-flex max-w-full items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-900 ring-1 ring-emerald-200/80 shadow-sm"
                 title={universityData.tuitionOverview.note}
               >
-                Контракт (ориентир): {formatTuitionBand(universityData.tuitionOverview)}
+                {t("home.contractHint")}: {formatTuitionBand(universityData.tuitionOverview)}
               </span>
             </div>
 
@@ -324,32 +340,32 @@ export function HomePage() {
             </div>
 
             <div className="rounded-2xl border border-indigo-100 bg-indigo-50/35 p-4 ring-1 ring-indigo-100/90">
-              <p className="text-xs font-semibold uppercase tracking-wide text-indigo-700">Стипендии (шаблон MVP)</p>
+              <p className="text-xs font-semibold uppercase tracking-wide text-indigo-700">{t("home.scholarshipMvp")}</p>
               <p className="mt-3 text-sm leading-relaxed text-slate-800">{universityData.scholarshipBlurb}</p>
               <p className="mt-3 text-xs leading-relaxed text-slate-600">
-                Персональный текст от Qwen запускается кнопкой в блоке{" "}
+                {t("home.scholarshipQwenHint")}{" "}
                 <a href="/dashboard#ai-fit-card" className="font-medium text-indigo-700 underline-offset-2 hover:underline">
-                  AI Fit
+                  {t("home.scholarshipQwenHintLink")}
                 </a>{" "}
-                — без автоматических запросов к API.
+                {t("home.scholarshipQwenHintEnd")}
               </p>
             </div>
           </div>
 
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start lg:flex-col lg:items-end">
-            <FitRing value={averageFit} />
+            <FitRing value={averageFit} label={t("home.fitRing")} />
             <div className="flex w-full max-w-xs flex-col gap-2 sm:flex-row sm:justify-end lg:flex-col lg:items-stretch">
               <Link
                 to="/profile"
                 className="w-full rounded-xl bg-indigo-600 px-4 py-2.5 text-center text-sm font-semibold text-white shadow-md transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 sm:w-auto lg:w-full"
               >
-                Полный профиль
+                {t("home.fullProfile")}
               </Link>
               <Link
                 to="/dashboard#program-grid"
                 className="w-full rounded-xl border border-slate-200 bg-white/90 px-4 py-2.5 text-center text-sm font-semibold text-slate-800 shadow-sm ring-1 ring-slate-200/80 transition hover:bg-slate-50 sm:w-auto lg:w-full"
               >
-                Программы
+                {t("home.programs")}
               </Link>
             </div>
           </div>
@@ -364,17 +380,17 @@ export function HomePage() {
             transition={{ duration: 0.35 }}
             className="mb-6 rounded-2xl border border-amber-300/80 bg-amber-50 px-4 py-4 text-sm text-amber-950 shadow-sm ring-1 ring-amber-200/90 sm:px-5"
           >
-            <span className="font-semibold">Анкета не заполнена.</span>{" "}
+            <span className="font-semibold">{t("home.intakeBanner")}</span>{" "}
             <Link to="/" className="font-medium text-indigo-700 underline-offset-2 hover:underline">
-              Перейдите на главную
+              {t("home.intakeBannerLink")}
             </Link>
-            , чтобы ассистент мог рекомендовать вуз и показать бейдж «Ваш матч №1» в каталоге.
+            {t("home.intakeBannerRest")}
           </motion.section>
         )}
         <section className="mb-10 rounded-2xl border border-slate-200/90 bg-white/90 p-4 shadow-sm ring-1 ring-slate-100/80 sm:p-5">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-700">
-              <span className="font-semibold text-slate-900">Кратко о профиле</span>
+              <span className="font-semibold text-slate-900">{t("home.profileSummary")}</span>
               <span>GPA {student.academic.gpa.toFixed(1)}</span>
               <span>SAT {formatSatForDisplay(student.academic.sat)}</span>
               <span>UNT {student.academic.untScore}/140</span>
@@ -386,19 +402,19 @@ export function HomePage() {
                 to="/profile"
                 className="rounded-xl bg-indigo-600 px-4 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-700"
               >
-                Изменить данные
+                {t("home.changeData")}
               </Link>
               <Link
                 to="/dashboard#admission-checklist"
                 className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-2 text-center text-sm font-medium text-slate-800 hover:bg-slate-100"
               >
-                Чек-лист
+                {t("home.checklist")}
               </Link>
               <Link
                 to="/dashboard#program-grid"
                 className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-center text-sm font-medium text-slate-800 hover:bg-slate-50"
               >
-                Программы
+                {t("home.programsLink")}
               </Link>
             </div>
           </div>

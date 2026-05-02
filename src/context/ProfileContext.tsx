@@ -11,6 +11,7 @@ import type { StudentProfile, UniversityTemplate } from "../mockData";
 import * as documentStorage from "../lib/documentStorage";
 import { fetchServerProfile, saveServerProfile } from "../lib/backendApi";
 import { clampGpa, clampSat, clampUnt, roundIeltsHalfBand } from "../lib/academicInput";
+import { EMPTY_ACHIEVEMENT_PROFILE } from "../lib/achievementProfile";
 
 const SHORTLIST_KEY = "sup-program-shortlist";
 const SELECTED_UNI_KEY = "sup-selected-university";
@@ -40,6 +41,10 @@ function normalizeProfile(raw: StudentProfile): StudentProfile {
     },
     awards: Array.isArray(raw.awards) ? raw.awards : [],
     olympiadVerified: raw.olympiadVerified === true,
+    achievementProfile: {
+      ...EMPTY_ACHIEVEMENT_PROFILE,
+      ...(raw.achievementProfile ?? {}),
+    },
     documents: { ...currentStudent.documents, ...(raw.documents ?? {}) },
     documentUploads: raw.documentUploads ?? {},
   };

@@ -52,6 +52,28 @@ export interface DocumentUploadMeta {
   uploadedAt: string;
 }
 
+/** Уровень значимости по шкале 0–4 (нет → локальный → регион → республика → международный). */
+export type AchievementTier = 0 | 1 | 2 | 3 | 4;
+
+/** Совокупная значимость прочих достижений (искусство, исследования, волонтёрство). */
+export type OtherMeritTier = 0 | 1 | 2 | 3;
+
+/**
+ * Структурированные «бонусы» из текста (Qwen или эвристика).
+ * Файл PNG + VERDICT: ACCEPT даёт дополнительный коэффициент доверия к олимпиаде.
+ */
+export interface AchievementProfile {
+  olympiadTier: AchievementTier;
+  sportsTier: AchievementTier;
+  otherMerit: OtherMeritTier;
+  /** Краткое резюме модели или эвристики */
+  modelSummary?: string;
+  /** Исходный текст пользователя */
+  narrative?: string;
+  parsedAt?: string;
+  parseFailed?: boolean;
+}
+
 /** Полный профиль текущего пользователя-абитуриента */
 export interface StudentProfile {
   academic: StudentAcademic;
@@ -64,6 +86,8 @@ export interface StudentProfile {
    * Олимпиада учитывается в fit score только после успешной AI-проверки загруженного PNG-сертификата.
    */
   olympiadVerified?: boolean;
+  /** Достижения, разобранные из свободного текста (Qwen → числовые уровни). */
+  achievementProfile?: AchievementProfile;
 }
 
 export interface ScholarshipInfo {
@@ -202,6 +226,11 @@ export const currentStudent: StudentProfile = {
   },
   awards: ["Olympiad Winner"],
   olympiadVerified: false,
+  achievementProfile: {
+    olympiadTier: 0,
+    sportsTier: 0,
+    otherMerit: 0,
+  },
   documents: {
     passport: "READY",
     photo3x4: "READY",

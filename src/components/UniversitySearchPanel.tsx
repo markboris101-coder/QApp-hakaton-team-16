@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import type { UniversityTemplate, UniversityType } from "../mockData";
 import { formatTuitionBand } from "../mockData";
 import {
   buildRichCompareClipboardText,
   buildUniversitySnapshot,
-  COMPARE_SECTION_LABELS,
   COMPARE_SECTION_ORDER,
   COMPARE_TABLE_ROWS,
   type UniversityCompareSnapshot,
@@ -24,23 +24,8 @@ function bandForUniversity(u: UniversityTemplate): Exclude<PriceBand, "all"> {
   return "premium";
 }
 
-const TYPE_OPTIONS: Array<{ id: UniversityType | "all"; label: string }> = [
-  { id: "all", label: "Все типы" },
-  { id: "Research", label: "Research" },
-  { id: "Technical", label: "Technical" },
-  { id: "Comprehensive", label: "Comprehensive" },
-  { id: "Liberal Arts", label: "Liberal Arts" },
-];
-
-const PRICE_OPTIONS: Array<{ id: PriceBand; label: string; hint: string }> = [
-  { id: "all", label: "Любая цена", hint: "" },
-  { id: "budget", label: "До ~3.5M ₸", hint: "бюджетный сегмент" },
-  { id: "mid", label: "~3.5–8M ₸", hint: "средний" },
-  { id: "premium", label: "От ~8M ₸", hint: "премиум" },
-];
-
-const TYPE_IDS = new Set(TYPE_OPTIONS.map((o) => o.id));
-const PRICE_IDS = new Set(PRICE_OPTIONS.map((o) => o.id));
+const TYPE_IDS = new Set<string>(["all", "Research", "Technical", "Comprehensive", "Liberal Arts"]);
+const PRICE_IDS = new Set<string>(["all", "budget", "mid", "premium"]);
 
 type Props = {
   universities: UniversityTemplate[];
@@ -54,7 +39,29 @@ export function UniversitySearchPanel({
   onPickUniversity,
   recommendedUniversityId,
 }: Props) {
+  const { t } = useTranslation();
   const { isFavoriteUniversity, toggleFavoriteUniversity } = useProfile();
+
+  const typeOptions: Array<{ id: UniversityType | "all"; label: string }> = useMemo(
+    () => [
+      { id: "all", label: t("search.type.all") },
+      { id: "Research", label: t("search.type.Research") },
+      { id: "Technical", label: t("search.type.Technical") },
+      { id: "Comprehensive", label: t("search.type.Comprehensive") },
+      { id: "Liberal Arts", label: t("search.type.Liberal Arts") },
+    ],
+    [t]
+  );
+
+  const priceOptions: Array<{ id: PriceBand; label: string; hint: string }> = useMemo(
+    () => [
+      { id: "all", label: t("search.price.all"), hint: "" },
+      { id: "budget", label: t("search.price.budget"), hint: t("search.priceHint.budget") },
+      { id: "mid", label: t("search.price.mid"), hint: t("search.priceHint.mid") },
+      { id: "premium", label: t("search.price.premium"), hint: t("search.priceHint.premium") },
+    ],
+    [t]
+  );
   const [q, setQ] = useState("");
   const [typeFilter, setTypeFilter] = useState<UniversityType | "all">("all");
   const [cityFilter, setCityFilter] = useState<string>("all");
@@ -214,7 +221,7 @@ export function UniversitySearchPanel({
       await navigator.clipboard.writeText(text);
       setCopyDone(true);
     } catch {
-      window.alert("Не удалось скопировать — разрешите доступ к буферу или скопируйте таблицу вручную.");
+      window.alert(t("search.copyFail"));
     }
   };
 
@@ -222,7 +229,7 @@ export function UniversitySearchPanel({
     <div className={`w-full ${compareIds.length >= 2 ? "pb-24 sm:pb-28" : ""}`}>
       <div className="relative">
         <label className="sr-only" htmlFor="landing-uni-search">
-          Поиск университетов Казахстана
+          {t("search.searchLabel")}
         </label>
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-5">
           <span className="text-xl text-indigo-500" aria-hidden>
@@ -234,19 +241,19 @@ export function UniversitySearchPanel({
           type="search"
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="Название вуза, город, язык обучения…"
+          placeholder={t("search.placeholder")}
           autoComplete="off"
           className="w-full rounded-2xl border-2 border-indigo-200 bg-white py-5 pl-14 pr-6 text-lg text-slate-900 shadow-lg shadow-indigo-100/80 ring-4 ring-indigo-100/60 placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-4 focus:ring-indigo-200/90 sm:text-xl"
         />
       </div>
 
       <div className="mt-5 flex flex-col gap-4 rounded-2xl border border-slate-200/90 bg-slate-50/90 p-4 sm:p-5">
-        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Фильтры</p>
+        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{t("search.filters")}</p>
         <div className="flex flex-col gap-4 lg:flex-row lg:flex-wrap lg:items-end">
           <div className="min-w-0 flex-1">
-            <span className="mb-2 block text-xs font-medium text-slate-600">Тип вуза</span>
+            <span className="mb-2 block text-xs font-medium text-slate-600">{t("search.typeLabel")}</span>
             <div className="flex flex-wrap gap-2">
-              {TYPE_OPTIONS.map((opt) => (
+              {typeOptions.map((opt) => (
                 <button
                   key={opt.id}
                   type="button"
@@ -264,7 +271,7 @@ export function UniversitySearchPanel({
           </div>
           <div className="min-w-[200px]">
             <label className="mb-2 block text-xs font-medium text-slate-600" htmlFor="filter-city">
-              Город
+              {t("search.cityLabel")}
             </label>
             <select
               id="filter-city"
@@ -274,15 +281,15 @@ export function UniversitySearchPanel({
             >
               {cityOptions.map((c) => (
                 <option key={c} value={c}>
-                  {c === "all" ? "Все города" : c}
+                  {c === "all" ? t("search.allCities") : c}
                 </option>
               ))}
             </select>
           </div>
           <div className="min-w-[220px] flex-1">
-            <span className="mb-2 block text-xs font-medium text-slate-600">Стоимость (ориентир / год)</span>
+            <span className="mb-2 block text-xs font-medium text-slate-600">{t("search.priceLabel")}</span>
             <div className="flex flex-wrap gap-2">
-              {PRICE_OPTIONS.map((opt) => (
+              {priceOptions.map((opt) => (
                 <button
                   key={opt.id}
                   type="button"
@@ -300,17 +307,15 @@ export function UniversitySearchPanel({
             </div>
           </div>
         </div>
-        <p className="text-xs text-slate-500">
-          Запрос и фильтры сохраняются в этой вкладке браузера — при возврате на каталог всё восстановится.
-        </p>
+        <p className="text-xs text-slate-500">{t("search.filtersPersist")}</p>
       </div>
 
       <div className="mt-6 overflow-hidden rounded-2xl border-2 border-indigo-100 bg-white shadow-xl shadow-indigo-100/40">
         <div className="border-b border-slate-100 bg-indigo-50/50 px-4 py-3 sm:px-6">
           <p className="text-sm font-semibold text-indigo-900">
-            Найдено: {filtered.length}{" "}
+            {t("search.found")} {filtered.length}{" "}
             <span className="font-normal text-indigo-700">
-              — отметьте до {MAX_COMPARE} вузов для сравнения или откройте дашборд
+              {t("search.foundHint", { max: MAX_COMPARE })}
             </span>
           </p>
         </div>
@@ -319,7 +324,12 @@ export function UniversitySearchPanel({
             const band = formatTuitionBand(u.tuitionOverview);
             const cityShort = u.city.split(",")[0].trim();
             const langs = u.languagesOfInstruction.slice(0, 3).join(" · ");
-            const summary = `${u.type} · осн. ${u.foundedYear} · языки: ${langs} · ${u.programs.length} программ`;
+            const summary = t("search.summary", {
+              type: u.type,
+              year: u.foundedYear,
+              langs,
+              count: u.programs.length,
+            });
             const checked = compareSet.has(u.id);
             return (
               <li key={u.id} className="flex gap-1 sm:gap-2">
@@ -336,8 +346,12 @@ export function UniversitySearchPanel({
                         ? "border-amber-300 bg-amber-50 text-amber-600 shadow-sm"
                         : "border-slate-200 bg-white text-slate-400 hover:border-amber-200 hover:text-amber-500"
                     }`}
-                    title={isFavoriteUniversity(u.id) ? "Убрать из избранных вузов" : "В избранные вузы"}
-                    aria-label={isFavoriteUniversity(u.id) ? "Убрать из избранных" : "В избранные вузы"}
+                    title={
+                      isFavoriteUniversity(u.id) ? t("search.favoriteRemove") : t("search.favoriteAdd")
+                    }
+                    aria-label={
+                      isFavoriteUniversity(u.id) ? t("search.favoriteAriaRemove") : t("search.favoriteAriaAdd")
+                    }
                   >
                     {isFavoriteUniversity(u.id) ? "★" : "☆"}
                   </button>
@@ -347,9 +361,11 @@ export function UniversitySearchPanel({
                       checked={checked}
                       onChange={() => toggleCompare(u.id)}
                       className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
-                      aria-label={`Сравнить: ${u.name}`}
+                      aria-label={t("search.compareAria", { name: u.name })}
                     />
-                    <span className="hidden max-w-[3.5rem] text-center leading-tight sm:inline">Сравнить</span>
+                    <span className="hidden max-w-[3.5rem] text-center leading-tight sm:inline">
+                      {t("search.compare")}
+                    </span>
                   </label>
                 </div>
                 <button
@@ -362,7 +378,7 @@ export function UniversitySearchPanel({
                       <span className="text-lg font-semibold leading-snug text-slate-900">{u.name}</span>
                       {recommendedUniversityId === u.id && (
                         <span className="rounded-full bg-gradient-to-r from-amber-400 to-orange-400 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-slate-900 shadow-sm">
-                          Ваш матч №1
+                          {t("search.matchBadge")}
                         </span>
                       )}
                     </span>
@@ -372,7 +388,7 @@ export function UniversitySearchPanel({
                     <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-slate-500">{u.scholarshipBlurb}</p>
                   </div>
                   <span className="shrink-0 rounded-xl bg-indigo-600 px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm sm:self-center">
-                    Открыть →
+                    {t("search.open")}
                   </span>
                 </button>
               </li>
@@ -380,13 +396,13 @@ export function UniversitySearchPanel({
           })}
         </ul>
         {filtered.length === 0 && (
-          <p className="px-6 py-12 text-center text-slate-600">Ничего не подошло — сбросьте фильтры или запрос.</p>
+          <p className="px-6 py-12 text-center text-slate-600">{t("search.empty")}</p>
         )}
       </div>
 
       {compareLimitHint && (
         <p className="mt-3 text-center text-sm font-medium text-amber-800" role="status">
-          Можно сравнить не более {MAX_COMPARE} вузов — снимите галочку с одного из списка.
+          {t("search.compareLimit", { max: MAX_COMPARE })}
         </p>
       )}
 
@@ -398,14 +414,14 @@ export function UniversitySearchPanel({
               onClick={openCompareDialog}
               className="rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-indigo-700"
             >
-              Сравнить {compareIds.length} вузов
+              {t("search.compareN", { count: compareIds.length })}
             </button>
             <button
               type="button"
               onClick={() => setCompareIds([])}
               className="text-sm font-medium text-slate-600 underline-offset-2 hover:underline"
             >
-              Сбросить выбор
+              {t("search.resetSelection")}
             </button>
           </div>
         </div>
@@ -417,15 +433,14 @@ export function UniversitySearchPanel({
         onClose={closeCompareDialog}
       >
         <div className="border-b border-slate-100 px-5 py-4 sm:px-6">
-          <h2 className="text-lg font-semibold text-slate-900">Сравнение вузов</h2>
-          <p className="mt-1 text-sm text-slate-600">
-            Демо-данные MVP: цены, дедлайны и требования — ориентиры для прототипа; уточняйте на сайте вуза. Таблица
-            сгруппирована по темам; на узком экране листайте вправо или используйте переход к разделу.
-          </p>
+          <h2 className="text-lg font-semibold text-slate-900">{t("search.dialogTitle")}</h2>
+          <p className="mt-1 text-sm text-slate-600">{t("search.dialogHint")}</p>
         </div>
         <div className="flex flex-col gap-3 border-b border-slate-100 bg-slate-50/50 px-4 py-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:px-6">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">Детализация</span>
+            <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+              {t("search.detailLevel")}
+            </span>
             <div className="inline-flex rounded-xl border border-slate-200 bg-white p-0.5 shadow-sm">
               <button
                 type="button"
@@ -436,7 +451,7 @@ export function UniversitySearchPanel({
                     : "text-slate-700 hover:bg-slate-50"
                 }`}
               >
-                Кратко
+                {t("search.compact")}
               </button>
               <button
                 type="button"
@@ -447,13 +462,15 @@ export function UniversitySearchPanel({
                     : "text-slate-700 hover:bg-slate-50"
                 }`}
               >
-                Подробно
+                {t("search.full")}
               </button>
             </div>
-            <span className="text-xs tabular-nums text-slate-500">{compareRowsVisible.length} параметров</span>
+            <span className="text-xs tabular-nums text-slate-500">
+              {t("search.params", { count: compareRowsVisible.length })}
+            </span>
           </div>
           <label className="flex flex-wrap items-center gap-2 text-sm text-slate-700">
-            <span className="text-xs font-medium text-slate-500">К разделу</span>
+            <span className="text-xs font-medium text-slate-500">{t("search.jumpSection")}</span>
             <select
               className="max-w-[220px] rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
               defaultValue=""
@@ -465,22 +482,22 @@ export function UniversitySearchPanel({
                 }
               }}
             >
-              <option value="">Выберите раздел…</option>
+              <option value="">{t("search.pickSection")}</option>
               {COMPARE_SECTION_ORDER.map((sid) => (
                 <option key={sid} value={`compare-section-${sid}`}>
-                  {COMPARE_SECTION_LABELS[sid]}
+                  {t(`compareSection.${sid}`)}
                 </option>
               ))}
             </select>
           </label>
         </div>
         <div className="max-h-[min(75vh,640px)] overflow-x-auto overflow-y-auto px-3 py-3 sm:px-6">
-          <p className="mb-2 text-xs font-medium text-slate-500 md:hidden">← Листайте таблицу вправо →</p>
+          <p className="mb-2 text-xs font-medium text-slate-500 md:hidden">{t("search.scrollHint")}</p>
           <table className="w-full min-w-[820px] border-collapse text-left text-sm">
             <thead>
               <tr className="border-b border-slate-200 text-xs font-semibold uppercase tracking-wide text-slate-500">
                 <th className="sticky left-0 z-10 min-w-[200px] bg-white py-3 pr-3 shadow-[4px_0_12px_-4px_rgba(0,0,0,0.08)]">
-                  Параметр
+                  {t("search.paramColumn")}
                 </th>
                 {comparedUniversities.map((u) => (
                   <th key={u.id} className="min-w-[190px] px-2 py-3 align-bottom">
@@ -494,7 +511,7 @@ export function UniversitySearchPanel({
                         }}
                         className="w-full rounded-lg bg-indigo-600 px-2 py-1.5 text-xs font-semibold text-white shadow-sm hover:bg-indigo-700"
                       >
-                        Открыть дашборд
+                        {t("search.openDashboard")}
                       </button>
                     </div>
                   </th>
@@ -508,7 +525,7 @@ export function UniversitySearchPanel({
                 const colSpan = 1 + comparedUniversities.length;
                 return (
                   <React.Fragment key={sec}>
-                    <CompareSectionHeader sectionId={sec} colSpan={colSpan} title={COMPARE_SECTION_LABELS[sec]} />
+                    <CompareSectionHeader sectionId={sec} colSpan={colSpan} title={t(`compareSection.${sec}`)} />
                     {rows.map((row) => (
                       <CompareRow
                         key={row.id}
@@ -540,14 +557,14 @@ export function UniversitySearchPanel({
             onClick={() => void handleCopyCompare()}
             className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-50"
           >
-            {copyDone ? "Скопировано ✓" : "Копировать текстом"}
+            {copyDone ? t("search.copyDone") : t("search.copy")}
           </button>
           <button
             type="button"
             onClick={closeCompareDialog}
             className="rounded-xl bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-200"
           >
-            Закрыть
+            {t("search.close")}
           </button>
         </div>
       </dialog>

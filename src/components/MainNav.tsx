@@ -1,8 +1,11 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useProfile } from "../context/ProfileContext";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function MainNav() {
+  const { t } = useTranslation();
   const location = useLocation();
   const { universityData, student } = useProfile();
 
@@ -14,7 +17,7 @@ export function MainNav() {
       <div className="mx-auto flex w-full max-w-[min(100%,1400px)] flex-wrap items-center gap-3 px-4 py-3 sm:px-6">
         <Link to="/" className="flex items-center gap-2 font-semibold text-slate-900">
           <span className="rounded-lg bg-indigo-600 px-2 py-1 text-xs text-white">QApp</span>
-          <span className="hidden sm:inline">University Hub</span>
+          <span className="hidden sm:inline">{t("nav.universityHub")}</span>
         </Link>
 
         <nav className="flex flex-1 flex-wrap items-center gap-1 sm:gap-2" aria-label="Main">
@@ -24,7 +27,7 @@ export function MainNav() {
               isLanding ? "bg-indigo-50 text-indigo-800" : "text-slate-700 hover:bg-slate-100"
             }`}
           >
-            Главная
+            {t("nav.home")}
           </Link>
           <Link
             to="/dashboard"
@@ -32,7 +35,7 @@ export function MainNav() {
               isDashboard ? "bg-indigo-50 text-indigo-800" : "text-slate-700 hover:bg-slate-100"
             }`}
           >
-            Дашборд
+            {t("nav.dashboard")}
           </Link>
           {isDashboard && (
             <>
@@ -40,19 +43,19 @@ export function MainNav() {
                 href="/dashboard#ai-fit-card"
                 className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
               >
-                AI Fit
+                {t("nav.aiFit")}
               </a>
               <a
                 href="/dashboard#program-grid"
                 className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
               >
-                Программы
+                {t("nav.programs")}
               </a>
               <a
                 href="/dashboard#admission-checklist"
                 className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
               >
-                Документы
+                {t("nav.documents")}
               </a>
             </>
           )}
@@ -62,13 +65,13 @@ export function MainNav() {
                 to="/dashboard#program-grid"
                 className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
               >
-                Программы
+                {t("nav.programs")}
               </Link>
               <Link
                 to="/dashboard#admission-checklist"
                 className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
               >
-                Чек-лист
+                {t("nav.checklist")}
               </Link>
             </>
           )}
@@ -76,11 +79,12 @@ export function MainNav() {
             to="/profile"
             className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
           >
-            Профиль
+            {t("nav.profile")}
           </Link>
         </nav>
 
         <div className="flex min-w-0 flex-1 basis-full items-center justify-end gap-2 sm:basis-auto sm:flex-none">
+          <LanguageSwitcher />
           {!isLanding && (
             <div className="hidden min-w-0 max-w-[200px] truncate text-right text-xs text-slate-600 sm:block">
               <span className="font-medium text-slate-800">{universityData.name}</span>
@@ -91,7 +95,7 @@ export function MainNav() {
             to="/"
             className="shrink-0 rounded-xl border-2 border-indigo-200 bg-indigo-50 px-3 py-2 text-sm font-semibold text-indigo-800 shadow-sm transition hover:bg-indigo-100"
           >
-            {isLanding ? "Каталог" : "Сменить вуз"}
+            {isLanding ? t("nav.catalog") : t("nav.changeUniversity")}
           </Link>
         </div>
 
