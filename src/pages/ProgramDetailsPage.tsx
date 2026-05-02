@@ -107,13 +107,13 @@ export function ProgramDetailsPage() {
               Изменить данные
             </Link>
             <Link
-              to="/#admission-checklist"
+              to="/dashboard#admission-checklist"
               className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-2 text-center text-sm font-medium text-slate-800 hover:bg-slate-100"
             >
               Чек-лист
             </Link>
             <Link
-              to="/#program-grid"
+              to="/dashboard#program-grid"
               className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-center text-sm font-medium text-slate-800 hover:bg-slate-50"
             >
               Все программы
@@ -124,7 +124,7 @@ export function ProgramDetailsPage() {
 
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <nav className="text-sm text-slate-500">
-          <Link to="/" className="font-medium text-indigo-600 hover:text-indigo-800">
+          <Link to="/dashboard" className="font-medium text-indigo-600 hover:text-indigo-800">
             Главная
           </Link>
           <span className="mx-2">/</span>

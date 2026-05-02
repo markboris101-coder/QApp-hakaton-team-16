@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route, useLocation, Outlet } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ProfileProvider } from "./context/ProfileContext";
+import { LandingPage } from "./pages/LandingPage";
 import { HomePage } from "./pages/HomePage";
 import { ProgramDetailsPage } from "./pages/ProgramDetailsPage";
 import { ProfilePage } from "./pages/ProfilePage";
@@ -31,7 +32,8 @@ function AnimatedRoutes() {
       >
         <Routes location={location}>
           <Route element={<AppLayout />}>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/dashboard" element={<HomePage />} />
             <Route path="/program/:id" element={<ProgramDetailsPage />} />
             <Route path="/profile" element={<ProfilePage />} />
           </Route>

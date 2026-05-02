@@ -65,18 +65,18 @@ export function DashboardStickySidebar({
           Профиль
         </Link>
         <a
-          href="/#program-grid"
+          href="/dashboard#program-grid"
           className="rounded-xl border border-slate-200 bg-slate-50 py-2 text-center text-sm font-medium text-slate-800 hover:bg-slate-100"
         >
           Программы
         </a>
         <a
-          href="/#admission-checklist"
+          href="/dashboard#admission-checklist"
           className="rounded-xl border border-slate-200 bg-white py-2 text-center text-sm font-medium text-slate-800 hover:bg-slate-50"
         >
           Чек-лист
         </a>
-        <a href="/#ai-fit-card" className="text-center text-sm font-medium text-indigo-600 hover:text-indigo-800">
+        <a href="/dashboard#ai-fit-card" className="text-center text-sm font-medium text-indigo-600 hover:text-indigo-800">
           AI Fit →
         </a>
       </div>

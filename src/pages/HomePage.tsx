@@ -90,7 +90,11 @@ export function HomePage() {
   }, [selectedUniversityId]);
 
   useEffect(() => {
-    if (location.hash === "#admission-checklist" || location.hash === "#program-grid") {
+    if (
+      location.hash === "#admission-checklist" ||
+      location.hash === "#program-grid" ||
+      location.hash === "#ai-fit-card"
+    ) {
       const el = document.querySelector(location.hash);
       el?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
@@ -269,7 +273,7 @@ export function HomePage() {
               <p className="mt-3 text-sm leading-relaxed text-slate-800">{universityData.scholarshipBlurb}</p>
               <p className="mt-3 text-xs leading-relaxed text-slate-600">
                 Персональный текст от Qwen запускается кнопкой в блоке{" "}
-                <a href="/#ai-fit-card" className="font-medium text-indigo-700 underline-offset-2 hover:underline">
+                <a href="/dashboard#ai-fit-card" className="font-medium text-indigo-700 underline-offset-2 hover:underline">
                   AI Fit
                 </a>{" "}
                 — без автоматических запросов к API.
@@ -287,7 +291,7 @@ export function HomePage() {
                 Полный профиль
               </Link>
               <Link
-                to="/#program-grid"
+                to="/dashboard#program-grid"
                 className="w-full rounded-xl border border-slate-200 bg-white/90 px-4 py-2.5 text-center text-sm font-semibold text-slate-800 shadow-sm ring-1 ring-slate-200/80 transition hover:bg-slate-50 sm:w-auto lg:w-full"
               >
                 Программы
@@ -316,13 +320,13 @@ export function HomePage() {
                 Изменить данные
               </Link>
               <Link
-                to="/#admission-checklist"
+                to="/dashboard#admission-checklist"
                 className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-2 text-center text-sm font-medium text-slate-800 hover:bg-slate-100"
               >
                 Чек-лист
               </Link>
               <Link
-                to="/#program-grid"
+                to="/dashboard#program-grid"
                 className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-center text-sm font-medium text-slate-800 hover:bg-slate-50"
               >
                 Программы
