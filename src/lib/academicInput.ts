@@ -17,6 +17,11 @@ export function clampSat(n: number): number {
   return Math.min(SAT_MAX, Math.max(SAT_MIN, Math.round(n)));
 }
 
+/** Для подписей в UI: `0` трактуем как «не указан». */
+export function formatSatForDisplay(sat: number): string {
+  return sat > 0 ? String(sat) : "не указан";
+}
+
 export function clampUnt(n: number): number {
   if (!Number.isFinite(n)) return UNT_MIN;
   return Math.min(UNT_MAX, Math.max(UNT_MIN, Math.round(n)));

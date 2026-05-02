@@ -7,6 +7,7 @@ import { useProfile } from "../context/ProfileContext";
 import { useSmartAdvisor } from "../hooks/useSmartAdvisor";
 import { TextSkeleton } from "../components/TextSkeleton";
 import { isAiConfigured } from "../services/aiProvider";
+import { formatSatForDisplay } from "../lib/academicInput";
 
 const APPLY_URLS: Record<string, string> = {
   nu: "https://nu.edu.kz/en/admissions",
@@ -14,6 +15,11 @@ const APPLY_URLS: Record<string, string> = {
   aitu: "https://astanait.edu.kz/",
   kaznu: "https://www.kaznu.kz/",
   sdu: "https://sdu.edu.kz/",
+  enu: "https://enu.kz/",
+  satbayev: "https://satbayev.university/",
+  abaikaznpu: "https://kaznpu.kz/",
+  kaznaru: "https://kaznaru.kz/",
+  nkzu: "https://nkzu.kz/",
 };
 
 export function ProgramDetailsPage() {
@@ -94,7 +100,7 @@ export function ProgramDetailsPage() {
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-700">
             <span className="font-semibold text-slate-900">Ваш профиль</span>
             <span>GPA {student.academic.gpa.toFixed(1)}</span>
-            <span>SAT {student.academic.sat}</span>
+            <span>SAT {formatSatForDisplay(student.academic.sat)}</span>
             <span>UNT {student.academic.untScore}/140</span>
             <span>IELTS {student.academic.ielts.toFixed(1)}</span>
             <span className="max-w-xs truncate text-slate-600">{student.preferences.financialStatus}</span>
@@ -243,7 +249,7 @@ export function ProgramDetailsPage() {
               </p>
             )}
             <p className="mt-3 text-xs text-slate-500">
-              SAT {student.academic.sat}, UNT/ЕНТ {student.academic.untScore}/140, GPA{" "}
+              SAT {formatSatForDisplay(student.academic.sat)}, UNT/ЕНТ {student.academic.untScore}/140, GPA{" "}
               {student.academic.gpa.toFixed(1)}.
             </p>
           </section>

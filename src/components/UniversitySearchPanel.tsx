@@ -1,6 +1,15 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import type { UniversityTemplate, UniversityType } from "../mockData";
 import { formatTuitionBand } from "../mockData";
+import {
+  buildRichCompareClipboardText,
+  buildUniversitySnapshot,
+  COMPARE_SECTION_LABELS,
+  COMPARE_SECTION_ORDER,
+  COMPARE_TABLE_ROWS,
+  type UniversityCompareSnapshot,
+} from "../lib/universityCompareFacts";
+import { useProfile } from "../context/ProfileContext";
 
 export type PriceBand = "all" | "budget" | "mid" | "premium";
 
@@ -36,15 +45,23 @@ const PRICE_IDS = new Set(PRICE_OPTIONS.map((o) => o.id));
 type Props = {
   universities: UniversityTemplate[];
   onPickUniversity: (id: string) => void;
+  /** Вуз с лучшим матчем по профилю — показывает бейдж в списке */
+  recommendedUniversityId?: string;
 };
 
-export function UniversitySearchPanel({ universities, onPickUniversity }: Props) {
+export function UniversitySearchPanel({
+  universities,
+  onPickUniversity,
+  recommendedUniversityId,
+}: Props) {
+  const { isFavoriteUniversity, toggleFavoriteUniversity } = useProfile();
   const [q, setQ] = useState("");
   const [typeFilter, setTypeFilter] = useState<UniversityType | "all">("all");
   const [cityFilter, setCityFilter] = useState<string>("all");
   const [priceFilter, setPriceFilter] = useState<PriceBand>("all");
   const [compareIds, setCompareIds] = useState<string[]>([]);
   const [compareLimitHint, setCompareLimitHint] = useState(false);
+  const [compareDetailLevel, setCompareDetailLevel] = useState<"full" | "compact">("full");
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const cityOptions = useMemo(() => {
@@ -143,6 +160,17 @@ export function UniversitySearchPanel({ universities, onPickUniversity }: Props)
     [compareIds, universities]
   );
 
+  const snapshotById = useMemo(() => {
+    const m = new Map<string, UniversityCompareSnapshot>();
+    for (const u of comparedUniversities) m.set(u.id, buildUniversitySnapshot(u));
+    return m;
+  }, [comparedUniversities]);
+
+  const compareRowsVisible = useMemo(
+    () => COMPARE_TABLE_ROWS.filter((r) => compareDetailLevel === "full" || !r.detail),
+    [compareDetailLevel]
+  );
+
   const toggleCompare = (id: string) => {
     setCompareIds((prev) => {
       if (prev.includes(id)) return prev.filter((x) => x !== id);
@@ -161,6 +189,33 @@ export function UniversitySearchPanel({ universities, onPickUniversity }: Props)
 
   const closeCompareDialog = () => {
     dialogRef.current?.close();
+  };
+
+  useEffect(() => {
+    const el = dialogRef.current;
+    if (!el) return;
+    const onBackdrop = (e: MouseEvent) => {
+      if (e.target === el) el.close();
+    };
+    el.addEventListener("click", onBackdrop);
+    return () => el.removeEventListener("click", onBackdrop);
+  }, []);
+
+  const [copyDone, setCopyDone] = useState(false);
+  useEffect(() => {
+    if (!copyDone) return;
+    const t = window.setTimeout(() => setCopyDone(false), 2000);
+    return () => window.clearTimeout(t);
+  }, [copyDone]);
+
+  const handleCopyCompare = async () => {
+    const text = buildRichCompareClipboardText(comparedUniversities);
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopyDone(true);
+    } catch {
+      window.alert("Не удалось скопировать — разрешите доступ к буферу или скопируйте таблицу вручную.");
+    }
   };
 
   return (
@@ -269,11 +324,24 @@ export function UniversitySearchPanel({ universities, onPickUniversity }: Props)
             return (
               <li key={u.id} className="flex gap-1 sm:gap-2">
                 <div
-                  className="flex shrink-0 items-start pt-5 pl-3 sm:pl-4"
+                  className="flex shrink-0 flex-col items-center gap-2 pt-4 pl-2 sm:pl-3"
                   onClick={(e) => e.stopPropagation()}
                   onKeyDown={(e) => e.stopPropagation()}
                 >
-                  <label className="flex cursor-pointer items-center gap-2 text-xs text-slate-600">
+                  <button
+                    type="button"
+                    onClick={() => toggleFavoriteUniversity(u.id)}
+                    className={`flex h-10 w-10 items-center justify-center rounded-xl border text-lg transition ${
+                      isFavoriteUniversity(u.id)
+                        ? "border-amber-300 bg-amber-50 text-amber-600 shadow-sm"
+                        : "border-slate-200 bg-white text-slate-400 hover:border-amber-200 hover:text-amber-500"
+                    }`}
+                    title={isFavoriteUniversity(u.id) ? "Убрать из избранных вузов" : "В избранные вузы"}
+                    aria-label={isFavoriteUniversity(u.id) ? "Убрать из избранных" : "В избранные вузы"}
+                  >
+                    {isFavoriteUniversity(u.id) ? "★" : "☆"}
+                  </button>
+                  <label className="flex cursor-pointer flex-col items-center gap-1 text-[10px] text-slate-600 sm:text-xs">
                     <input
                       type="checkbox"
                       checked={checked}
@@ -281,7 +349,7 @@ export function UniversitySearchPanel({ universities, onPickUniversity }: Props)
                       className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
                       aria-label={`Сравнить: ${u.name}`}
                     />
-                    <span className="hidden w-14 sm:inline">Сравнить</span>
+                    <span className="hidden max-w-[3.5rem] text-center leading-tight sm:inline">Сравнить</span>
                   </label>
                 </div>
                 <button
@@ -290,7 +358,14 @@ export function UniversitySearchPanel({ universities, onPickUniversity }: Props)
                   className="flex min-w-0 flex-1 flex-col gap-2 px-2 py-5 text-left transition hover:bg-indigo-50/80 sm:flex-row sm:items-start sm:justify-between sm:gap-6 sm:pr-6"
                 >
                   <div className="min-w-0 flex-1">
-                    <span className="text-lg font-semibold leading-snug text-slate-900">{u.name}</span>
+                    <span className="flex flex-wrap items-center gap-2">
+                      <span className="text-lg font-semibold leading-snug text-slate-900">{u.name}</span>
+                      {recommendedUniversityId === u.id && (
+                        <span className="rounded-full bg-gradient-to-r from-amber-400 to-orange-400 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-slate-900 shadow-sm">
+                          Ваш матч №1
+                        </span>
+                      )}
+                    </span>
                     <p className="mt-1 text-sm text-slate-500">{cityShort}</p>
                     <p className="mt-1 text-sm font-medium text-emerald-800">{band}</p>
                     <p className="mt-2 text-sm text-slate-600">{summary}</p>
@@ -338,45 +413,135 @@ export function UniversitySearchPanel({ universities, onPickUniversity }: Props)
 
       <dialog
         ref={dialogRef}
-        className="w-[min(100%,920px)] rounded-2xl border border-slate-200 bg-white p-0 text-slate-900 shadow-2xl backdrop:bg-slate-900/40"
+        className="z-50 w-[min(100%,1120px)] max-w-[calc(100vw-1rem)] rounded-2xl border border-slate-200 bg-white p-0 text-slate-900 shadow-2xl backdrop:bg-slate-900/50"
         onClose={closeCompareDialog}
       >
         <div className="border-b border-slate-100 px-5 py-4 sm:px-6">
-          <h2 className="text-lg font-semibold">Сравнение вузов</h2>
-          <p className="mt-1 text-sm text-slate-600">Ориентиры по контракту и ключевые параметры (данные шаблона MVP).</p>
+          <h2 className="text-lg font-semibold text-slate-900">Сравнение вузов</h2>
+          <p className="mt-1 text-sm text-slate-600">
+            Демо-данные MVP: цены, дедлайны и требования — ориентиры для прототипа; уточняйте на сайте вуза. Таблица
+            сгруппирована по темам; на узком экране листайте вправо или используйте переход к разделу.
+          </p>
         </div>
-        <div className="max-h-[min(70vh,480px)] overflow-x-auto overflow-y-auto px-3 py-4 sm:px-6">
-          <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+        <div className="flex flex-col gap-3 border-b border-slate-100 bg-slate-50/50 px-4 py-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:px-6">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">Детализация</span>
+            <div className="inline-flex rounded-xl border border-slate-200 bg-white p-0.5 shadow-sm">
+              <button
+                type="button"
+                onClick={() => setCompareDetailLevel("compact")}
+                className={`rounded-lg px-3 py-1.5 text-sm font-semibold transition ${
+                  compareDetailLevel === "compact"
+                    ? "bg-indigo-600 text-white shadow-sm"
+                    : "text-slate-700 hover:bg-slate-50"
+                }`}
+              >
+                Кратко
+              </button>
+              <button
+                type="button"
+                onClick={() => setCompareDetailLevel("full")}
+                className={`rounded-lg px-3 py-1.5 text-sm font-semibold transition ${
+                  compareDetailLevel === "full"
+                    ? "bg-indigo-600 text-white shadow-sm"
+                    : "text-slate-700 hover:bg-slate-50"
+                }`}
+              >
+                Подробно
+              </button>
+            </div>
+            <span className="text-xs tabular-nums text-slate-500">{compareRowsVisible.length} параметров</span>
+          </div>
+          <label className="flex flex-wrap items-center gap-2 text-sm text-slate-700">
+            <span className="text-xs font-medium text-slate-500">К разделу</span>
+            <select
+              className="max-w-[220px] rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+              defaultValue=""
+              onChange={(e) => {
+                const id = e.target.value;
+                if (id) {
+                  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  e.target.selectedIndex = 0;
+                }
+              }}
+            >
+              <option value="">Выберите раздел…</option>
+              {COMPARE_SECTION_ORDER.map((sid) => (
+                <option key={sid} value={`compare-section-${sid}`}>
+                  {COMPARE_SECTION_LABELS[sid]}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+        <div className="max-h-[min(75vh,640px)] overflow-x-auto overflow-y-auto px-3 py-3 sm:px-6">
+          <p className="mb-2 text-xs font-medium text-slate-500 md:hidden">← Листайте таблицу вправо →</p>
+          <table className="w-full min-w-[820px] border-collapse text-left text-sm">
             <thead>
               <tr className="border-b border-slate-200 text-xs font-semibold uppercase tracking-wide text-slate-500">
-                <th className="sticky left-0 bg-white py-2 pr-3">Параметр</th>
+                <th className="sticky left-0 z-10 min-w-[200px] bg-white py-3 pr-3 shadow-[4px_0_12px_-4px_rgba(0,0,0,0.08)]">
+                  Параметр
+                </th>
                 {comparedUniversities.map((u) => (
-                  <th key={u.id} className="min-w-[160px] px-2 py-2 font-semibold text-indigo-900">
-                    {u.name}
+                  <th key={u.id} className="min-w-[190px] px-2 py-3 align-bottom">
+                    <div className="flex flex-col gap-2">
+                      <span className="font-semibold leading-snug text-indigo-900">{u.name}</span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          onPickUniversity(u.id);
+                          closeCompareDialog();
+                        }}
+                        className="w-full rounded-lg bg-indigo-600 px-2 py-1.5 text-xs font-semibold text-white shadow-sm hover:bg-indigo-700"
+                      >
+                        Открыть дашборд
+                      </button>
+                    </div>
                   </th>
                 ))}
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
-              <CompareRow label="Город" values={comparedUniversities.map((u) => u.city.split(",")[0].trim())} />
-              <CompareRow label="Тип" values={comparedUniversities.map((u) => u.type)} />
-              <CompareRow
-                label="Контракт (год)"
-                values={comparedUniversities.map((u) => formatTuitionBand(u.tuitionOverview))}
-              />
-              <CompareRow
-                label="Программ"
-                values={comparedUniversities.map((u) => String(u.programs.length))}
-              />
-              <CompareRow
-                label="Языки"
-                values={comparedUniversities.map((u) => u.languagesOfInstruction.join(", "))}
-              />
-              <CompareRow label="Основан" values={comparedUniversities.map((u) => String(u.foundedYear))} />
+              {COMPARE_SECTION_ORDER.map((sec) => {
+                const rows = compareRowsVisible.filter((r) => r.section === sec);
+                if (rows.length === 0) return null;
+                const colSpan = 1 + comparedUniversities.length;
+                return (
+                  <React.Fragment key={sec}>
+                    <CompareSectionHeader sectionId={sec} colSpan={colSpan} title={COMPARE_SECTION_LABELS[sec]} />
+                    {rows.map((row) => (
+                      <CompareRow
+                        key={row.id}
+                        label={row.label}
+                        values={comparedUniversities.map((u) => {
+                          const snap = snapshotById.get(u.id);
+                          return snap ? row.pick(u, snap) : "—";
+                        })}
+                        titleValues={
+                          row.title
+                            ? comparedUniversities.map((u) => {
+                                const snap = snapshotById.get(u.id);
+                                if (!snap) return undefined;
+                                return row.title!(u, snap);
+                              })
+                            : undefined
+                        }
+                      />
+                    ))}
+                  </React.Fragment>
+                );
+              })}
             </tbody>
           </table>
         </div>
-        <div className="border-t border-slate-100 px-5 py-4 text-right sm:px-6">
+        <div className="flex flex-wrap items-center justify-end gap-2 border-t border-slate-100 px-5 py-4 sm:px-6">
+          <button
+            type="button"
+            onClick={() => void handleCopyCompare()}
+            className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-50"
+          >
+            {copyDone ? "Скопировано ✓" : "Копировать текстом"}
+          </button>
           <button
             type="button"
             onClick={closeCompareDialog}
@@ -390,15 +555,51 @@ export function UniversitySearchPanel({ universities, onPickUniversity }: Props)
   );
 }
 
-function CompareRow({ label, values }: { label: string; values: string[] }) {
+function CompareSectionHeader({
+  sectionId,
+  colSpan,
+  title,
+}: {
+  sectionId: string;
+  colSpan: number;
+  title: string;
+}) {
   return (
-    <tr>
-      <th scope="row" className="sticky left-0 bg-white py-3 pr-3 align-top text-sm font-medium text-slate-700">
+    <tr id={`compare-section-${sectionId}`} className="scroll-mt-28 bg-slate-100/95">
+      <td
+        colSpan={colSpan}
+        className="px-3 py-2.5 text-xs font-bold uppercase tracking-[0.06em] text-slate-600"
+      >
+        {title}
+      </td>
+    </tr>
+  );
+}
+
+function CompareRow({
+  label,
+  values,
+  titleValues,
+}: {
+  label: string;
+  values: string[];
+  titleValues?: (string | undefined)[];
+}) {
+  return (
+    <tr className="bg-white even:bg-slate-50/50">
+      <th
+        scope="row"
+        className="sticky left-0 z-[1] bg-inherit py-3 pr-3 align-top text-sm font-medium text-slate-700 shadow-[4px_0_12px_-4px_rgba(0,0,0,0.06)]"
+      >
         {label}
       </th>
       {values.map((v, i) => (
-        <td key={i} className="px-2 py-3 align-top text-slate-800">
-          {v}
+        <td
+          key={`${label}-${i}`}
+          className="max-w-[min(280px,36vw)] px-2 py-3 align-top text-slate-800"
+          title={titleValues?.[i] ?? undefined}
+        >
+          <span className="line-clamp-6 break-words">{v}</span>
         </td>
       ))}
     </tr>

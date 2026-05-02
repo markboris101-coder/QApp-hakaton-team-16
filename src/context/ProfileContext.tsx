@@ -14,6 +14,7 @@ import { clampGpa, clampSat, clampUnt, roundIeltsHalfBand } from "../lib/academi
 
 const SHORTLIST_KEY = "sup-program-shortlist";
 const SELECTED_UNI_KEY = "sup-selected-university";
+const FAVORITE_UNIS_KEY = "qapp-favorite-universities";
 
 /** Совместимость со старыми сохранёнными профилями (новые поля). */
 function normalizeProfile(raw: StudentProfile): StudentProfile {
@@ -56,6 +57,10 @@ type ProfileContextValue = {
   shortlist: string[];
   toggleShortlist: (programId: string) => void;
   isShortlisted: (programId: string) => boolean;
+  /** Избранные вузы (localStorage), отдельно от избранных программ */
+  favoriteUniversityIds: string[];
+  toggleFavoriteUniversity: (universityId: string) => void;
+  isFavoriteUniversity: (universityId: string) => boolean;
 };
 
 const ProfileContext = createContext<ProfileContextValue | null>(null);
@@ -88,9 +93,29 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
     }
   });
 
+  const [favoriteUniversityIds, setFavoriteUniversityIds] = useState<string[]>(() => {
+    try {
+      const raw = localStorage.getItem(FAVORITE_UNIS_KEY);
+      if (!raw) return [];
+      const arr = JSON.parse(raw) as unknown;
+      if (!Array.isArray(arr)) return [];
+      return arr.filter((id): id is string => typeof id === "string" && UNIVERSITIES.some((u) => u.id === id));
+    } catch {
+      return [];
+    }
+  });
+
   useEffect(() => {
     localStorage.setItem(SHORTLIST_KEY, JSON.stringify(shortlist));
   }, [shortlist]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(FAVORITE_UNIS_KEY, JSON.stringify(favoriteUniversityIds));
+    } catch {
+      /* ignore */
+    }
+  }, [favoriteUniversityIds]);
 
   useEffect(() => {
     try {
@@ -163,6 +188,18 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
     [shortlist]
   );
 
+  const toggleFavoriteUniversity = useCallback((universityId: string) => {
+    if (!UNIVERSITIES.some((u) => u.id === universityId)) return;
+    setFavoriteUniversityIds((prev) =>
+      prev.includes(universityId) ? prev.filter((id) => id !== universityId) : [...prev, universityId]
+    );
+  }, []);
+
+  const isFavoriteUniversity = useCallback(
+    (universityId: string) => favoriteUniversityIds.includes(universityId),
+    [favoriteUniversityIds]
+  );
+
   const value = useMemo(
     () => ({
       student,
@@ -174,6 +211,9 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
       shortlist,
       toggleShortlist,
       isShortlisted,
+      favoriteUniversityIds,
+      toggleFavoriteUniversity,
+      isFavoriteUniversity,
     }),
     [
       student,
@@ -183,6 +223,9 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
       shortlist,
       toggleShortlist,
       isShortlisted,
+      favoriteUniversityIds,
+      toggleFavoriteUniversity,
+      isFavoriteUniversity,
     ]
   );
 

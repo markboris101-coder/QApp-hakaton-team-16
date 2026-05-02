@@ -11,7 +11,7 @@ import cors from "cors";
 import { UNIVERSITIES, getProgramBySlug, currentStudent } from "../src/mockData.js";
 import type { StudentProfile } from "../src/mockData.js";
 import { readProfileFile, writeProfileFile } from "./profileStore.js";
-import { completeChat, isAiConfigured } from "./openRouterChat.js";
+import { completeChat, completeChatMessages, isAiConfigured } from "./openRouterChat.js";
 
 const PORT = Number(process.env.PORT) || 8787;
 const app = express();
@@ -97,12 +97,38 @@ app.put("/api/profile", (req, res) => {
 });
 
 app.post("/api/ai/chat", async (req, res) => {
-  const { userPrompt, systemPrompt } = req.body as { userPrompt?: string; systemPrompt?: string };
-  if (!userPrompt || !systemPrompt) {
-    res.status(400).json({ error: "Expected userPrompt and systemPrompt" });
-    return;
-  }
+  const body = req.body as {
+    userPrompt?: string;
+    systemPrompt?: string;
+    messages?: Array<{ role?: string; content?: string }>;
+  };
+
   try {
+    if (
+      body.systemPrompt &&
+      Array.isArray(body.messages) &&
+      body.messages.length > 0
+    ) {
+      const turns = body.messages
+        .filter(
+          (m): m is { role: "user" | "assistant"; content: string } =>
+            (m.role === "user" || m.role === "assistant") && typeof m.content === "string" && m.content.length > 0
+        )
+        .slice(-24);
+      if (!turns.length) {
+        res.status(400).json({ error: "messages must include at least one user or assistant turn" });
+        return;
+      }
+      const text = await completeChatMessages(body.systemPrompt, turns);
+      res.json({ text });
+      return;
+    }
+
+    const { userPrompt, systemPrompt } = body;
+    if (!userPrompt || !systemPrompt) {
+      res.status(400).json({ error: "Expected userPrompt and systemPrompt, or systemPrompt + messages[]" });
+      return;
+    }
     const text = await completeChat(userPrompt, systemPrompt);
     res.json({ text });
   } catch (e) {

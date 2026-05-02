@@ -43,9 +43,16 @@ function estimateScholarshipAlignment(
       ok: !hasOlympiad || olympiadOk,
     });
   } else if (merit) {
+    const sat = student.academic.sat;
+    const unt = student.academic.untScore;
+    /** SAT не указан (0): достаточно сильного UNT; при указанном SAT нужен конкурентный балл. */
+    const strongMerit =
+      gpa >= 4.2 &&
+      (sat <= 0 ? unt >= 100 : sat >= 1280);
     checks.push({
-      label: "Сильный академический след (GPA + SAT/UNT в связке)",
-      ok: gpa >= 4.2 && student.academic.sat >= 1280,
+      label:
+        "Сильный академический след (GPA + SAT или сильный UNT, если SAT не указан)",
+      ok: strongMerit,
     });
   }
 

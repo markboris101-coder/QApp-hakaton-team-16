@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useProfile } from "../context/ProfileContext";
 import { ProfileEditorForm } from "../components/ProfileEditorForm";
@@ -6,7 +6,16 @@ import { ProfileEditorForm } from "../components/ProfileEditorForm";
 const SHELL = "mx-auto w-full max-w-[min(100%,1400px)] px-4 sm:px-6";
 
 export function ProfilePage() {
-  const { student, setStudent, universityData } = useProfile();
+  const navigate = useNavigate();
+  const {
+    student,
+    setStudent,
+    universityData,
+    universities,
+    favoriteUniversityIds,
+    toggleFavoriteUniversity,
+    setSelectedUniversityId,
+  } = useProfile();
 
   return (
     <motion.div
@@ -35,6 +44,52 @@ export function ProfilePage() {
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
           Все поля влияют на расчёт AI Fit, стипендий и советов Qwen. Разметка — на всю ширину окна (до 1400px).
         </p>
+
+        {favoriteUniversityIds.length > 0 && (
+          <section className="mt-10 rounded-2xl border border-amber-200/90 bg-amber-50/50 p-5 ring-1 ring-amber-100/80">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-amber-900">Избранные вузы</h2>
+            <p className="mt-1 text-sm text-amber-950/80">
+              Сохраняются в этом браузере. Это не то же самое, что избранные программы (шорт-лист).
+            </p>
+            <ul className="mt-4 space-y-2">
+              {favoriteUniversityIds.map((id) => {
+                const u = universities.find((x) => x.id === id);
+                if (!u) return null;
+                return (
+                  <li
+                    key={id}
+                    className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-amber-200/80 bg-white px-3 py-2.5"
+                  >
+                    <span className="text-sm font-medium text-slate-900">{u.name}</span>
+                    <div className="flex flex-wrap gap-2">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedUniversityId(u.id);
+                          navigate("/dashboard");
+                        }}
+                        className="rounded-lg bg-indigo-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-indigo-700"
+                      >
+                        Дашборд
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => toggleFavoriteUniversity(u.id)}
+                        className="rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50"
+                      >
+                        Убрать
+                      </button>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+            <Link to="/" className="mt-3 inline-block text-sm font-medium text-indigo-700 hover:underline">
+              Каталог вузов →
+            </Link>
+          </section>
+        )}
+
         <div className="mt-10">
           <ProfileEditorForm student={student} onStudentChange={setStudent} />
         </div>

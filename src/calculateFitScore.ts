@@ -69,11 +69,16 @@ function gpaAbsoluteCeiling(
   return cap;
 }
 
+/**
+ * В прототипе `sat === 0` означает «не указывал / не сдавали», а не реальный балл.
+ * Таких пользователей не штрафуем — опора на GPA и UNT (типично для подачи в РК).
+ */
 function satMultiplier(sat: number, exp: UniversityAdmissionExpectations): number {
+  if (!sat || sat <= 0) return 1;
   if (sat >= exp.targetSat) return 1.05;
   if (sat >= exp.competitiveSat) return 1;
   if (sat >= exp.competitiveSat - 120) return 0.9;
-  if (sat > 0 && sat < 1100) return 0.72;
+  if (sat < 1100) return 0.72;
   return 0.84;
 }
 

@@ -42,9 +42,9 @@ export function AiFitCard({
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-slate-600">
             Скор привязан к ориентирам вуза «{universityName}»: конкурентный GPA от ~{exp.competitiveGpa.toFixed(1)},
-            сильный от ~{exp.strongGpa.toFixed(1)}/{exp.gpaScaleMax.toFixed(1)}, SAT от ~{exp.competitiveSat}, UNT от ~
-            {exp.competitiveUnt}, IELTS ≥ {exp.minIelts}. Итог ограничен реалистичным потолком по GPA — высокий SAT не
-            «лечит» слабый средний балл. {exp.modelNote}
+            сильный от ~{exp.strongGpa.toFixed(1)}/{exp.gpaScaleMax.toFixed(1)}; UNT от ~{exp.competitiveUnt}, IELTS ≥{" "}
+            {exp.minIelts}. SAT учитывается только если вы его указали (для многих абитуриентов в РК он необязателен).
+            Итог ограничен потолком по GPA — высокий SAT не «лечит» слабый средний балл. {exp.modelNote}
           </p>
           <ul className="mt-5 space-y-2 text-sm text-slate-700">
             <li className="flex gap-2">
@@ -79,8 +79,14 @@ export function AiFitCard({
             <li className="flex gap-2">
               <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" aria-hidden />
               <span>
-                <span className="font-medium">SAT {sat}</span>
-                <span className="text-slate-500"> — диапазоны влияют на итоговый Fit.</span>
+                <span className="font-medium">
+                  {sat > 0 ? <>SAT {sat}</> : <>SAT не указан</>}
+                </span>
+                <span className="text-slate-500">
+                  {sat > 0
+                    ? " — учтён в множителе Fit."
+                    : " — расчёт опирается на GPA, UNT и IELTS (типично для подачи без SAT)."}
+                </span>
               </span>
             </li>
             <li className="flex gap-2">

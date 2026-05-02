@@ -231,8 +231,9 @@ export function ProfileEditorForm({ student, onStudentChange }: Props) {
           </section>
           <section>
             <label className="block text-sm font-medium text-slate-700" htmlFor="sat-input">
-              SAT ({SAT_MIN}–{SAT_MAX})
+              SAT ({SAT_MIN}–{SAT_MAX}, 0 = не сдавали)
             </label>
+            <p className="mb-1.5 text-xs text-slate-500">Для казахстанской подачи часто достаточно UNT; SAT опционален.</p>
             <input
               id="sat-input"
               type="number"

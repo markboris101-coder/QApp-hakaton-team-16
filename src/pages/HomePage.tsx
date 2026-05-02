@@ -7,6 +7,9 @@ import { DeadlinesTimeline } from "../components/DeadlinesTimeline";
 import { ScholarshipsSection } from "../components/ScholarshipsSection";
 import { AiFitCard } from "../components/AiFitCard";
 import { ProgramGrid } from "../components/ProgramGrid";
+import { FavoriteUniversitiesBar } from "../components/FavoriteUniversitiesBar";
+import { ThisWeekPanel } from "../components/ThisWeekPanel";
+import { AssistantDashboardNudge } from "../components/AssistantDashboardNudge";
 import { useSmartAdvisor } from "../hooks/useSmartAdvisor";
 import { DashboardStickySidebar } from "../components/DashboardStickySidebar";
 import { isAiConfigured } from "../services/aiProvider";
@@ -14,6 +17,9 @@ import * as documentStorage from "../lib/documentStorage";
 import { validateDocumentFile } from "../lib/documentUploadPolicy";
 import { useProfile } from "../context/ProfileContext";
 import { formatTuitionBand, type StudentDocuments } from "../mockData";
+import { getTopUniversityRecommendation } from "../lib/recommendUniversity";
+import { useAssistantIntake } from "../hooks/useAssistantIntake";
+import { formatSatForDisplay } from "../lib/academicInput";
 
 function formatShortDate(iso: string): string {
   const d = new Date(iso + (iso.includes("T") ? "" : "T12:00:00"));
@@ -57,7 +63,22 @@ function FitRing({ value, gradientId = "heroFitGradient" }: { value: number; gra
 
 export function HomePage() {
   const location = useLocation();
-  const { student, setStudent, universityData, selectedUniversityId } = useProfile();
+  const {
+    student,
+    setStudent,
+    universityData,
+    selectedUniversityId,
+    shortlist,
+    favoriteUniversityIds,
+    universities,
+    setSelectedUniversityId,
+  } = useProfile();
+  const { hydrated, intakeDone } = useAssistantIntake();
+
+  const assistantTop = useMemo(
+    () => (intakeDone ? getTopUniversityRecommendation(student, universities) : null),
+    [student, universities, intakeDone]
+  );
   const { getGeneralFitAdvice } = useSmartAdvisor();
 
   const [execSummary, setExecSummary] = useState("");
@@ -284,7 +305,7 @@ export function HomePage() {
                 GPA {student.academic.gpa.toFixed(1)}
               </span>
               <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-800 ring-1 ring-slate-200/80">
-                SAT {student.academic.sat}
+                SAT {formatSatForDisplay(student.academic.sat)}
               </span>
               <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-800 ring-1 ring-slate-200/80">
                 UNT {student.academic.untScore}/140
@@ -336,12 +357,26 @@ export function HomePage() {
       </header>
 
       <main className="mx-auto w-full max-w-[min(100%,1400px)] px-4 py-10 sm:px-6">
+        {hydrated && !intakeDone && (
+          <motion.section
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35 }}
+            className="mb-6 rounded-2xl border border-amber-300/80 bg-amber-50 px-4 py-4 text-sm text-amber-950 shadow-sm ring-1 ring-amber-200/90 sm:px-5"
+          >
+            <span className="font-semibold">Анкета не заполнена.</span>{" "}
+            <Link to="/" className="font-medium text-indigo-700 underline-offset-2 hover:underline">
+              Перейдите на главную
+            </Link>
+            , чтобы ассистент мог рекомендовать вуз и показать бейдж «Ваш матч №1» в каталоге.
+          </motion.section>
+        )}
         <section className="mb-10 rounded-2xl border border-slate-200/90 bg-white/90 p-4 shadow-sm ring-1 ring-slate-100/80 sm:p-5">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-700">
               <span className="font-semibold text-slate-900">Кратко о профиле</span>
               <span>GPA {student.academic.gpa.toFixed(1)}</span>
-              <span>SAT {student.academic.sat}</span>
+              <span>SAT {formatSatForDisplay(student.academic.sat)}</span>
               <span>UNT {student.academic.untScore}/140</span>
               <span>IELTS {student.academic.ielts.toFixed(1)}</span>
               <span className="max-w-xs truncate text-slate-600">{student.preferences.financialStatus}</span>
@@ -369,6 +404,22 @@ export function HomePage() {
           </div>
         </section>
 
+        <FavoriteUniversitiesBar />
+
+        {intakeDone && assistantTop && assistantTop.universityId !== selectedUniversityId && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.38, ease: "easeOut" }}
+          >
+            <AssistantDashboardNudge
+              recommendation={assistantTop}
+              currentUniversityName={universityData.name}
+              onSwitchToRecommended={() => setSelectedUniversityId(assistantTop.universityId)}
+            />
+          </motion.div>
+        )}
+
         <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start lg:gap-10">
           <div className="min-w-0 space-y-14">
             <AiFitCard
@@ -384,6 +435,14 @@ export function HomePage() {
             <ProgramGrid rows={programResults} university={universityData} />
 
             <div className="space-y-14">
+              <ThisWeekPanel
+                universityId={universityData.id}
+                universityName={universityData.name}
+                applicationDeadlineIso={universityData.applicationDeadline}
+                documents={student.documents}
+                shortlistCount={shortlist.length}
+                favoriteUniversityCount={favoriteUniversityIds.length}
+              />
               <DeadlinesTimeline
                 applicationDeadlineIso={universityData.applicationDeadline}
                 documents={student.documents}

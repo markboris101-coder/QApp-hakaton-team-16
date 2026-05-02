@@ -71,3 +71,50 @@ export async function completeChat(userPrompt: string, systemPrompt: string): Pr
 
   return text;
 }
+
+export type ChatTurn = { role: "user" | "assistant"; content: string };
+
+/**
+ * Диалог с Qwen: системный промпт + череда user/assistant (для чата в UI).
+ */
+export async function completeChatMessages(systemPrompt: string, turns: ChatTurn[]): Promise<string> {
+  const apiKey = getApiKey();
+  if (!apiKey) {
+    throw new Error("На сервере не задан API_KEY или OPENROUTER_API_KEY.");
+  }
+
+  const url = getEndpoint();
+  const model = getModel();
+
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+      ...(url.includes("openrouter.ai") && {
+        "HTTP-Referer": process.env.PUBLIC_APP_URL || "http://localhost:5173",
+        "X-Title": "Smart University Profile (API)",
+      }),
+    },
+    body: JSON.stringify({
+      model,
+      messages: [{ role: "system", content: systemPrompt }, ...turns],
+      temperature: 0.45,
+      max_tokens: 900,
+    }),
+  });
+
+  const data = (await res.json()) as ChatCompletionResponse;
+
+  if (!res.ok) {
+    const msg = data.error?.message || res.statusText || "Ошибка API";
+    throw new Error(msg);
+  }
+
+  const text = data.choices?.[0]?.message?.content?.trim();
+  if (!text || typeof text !== "string") {
+    throw new Error("Пустой ответ модели");
+  }
+
+  return text;
+}

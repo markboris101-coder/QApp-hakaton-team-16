@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import type { StudentProfile } from "../mockData";
+import { formatSatForDisplay } from "../lib/academicInput";
 
 type Props = {
   universityName: string;
@@ -45,7 +46,7 @@ export function DashboardStickySidebar({
         <div className="flex justify-between gap-2">
           <dt className="text-slate-500">SAT / UNT</dt>
           <dd className="font-medium tabular-nums text-slate-900">
-            {a.sat} · {a.untScore}/140
+            {formatSatForDisplay(a.sat)} · {a.untScore}/140
           </dd>
         </div>
         <div className="flex justify-between gap-2">

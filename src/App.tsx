@@ -7,12 +7,14 @@ import { HomePage } from "./pages/HomePage";
 import { ProgramDetailsPage } from "./pages/ProgramDetailsPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { MainNav } from "./components/MainNav";
+import { QwenAssistantDock } from "./components/QwenAssistantDock";
 
 function AppLayout() {
   return (
     <>
       <MainNav />
       <Outlet />
+      <QwenAssistantDock />
     </>
   );
 }

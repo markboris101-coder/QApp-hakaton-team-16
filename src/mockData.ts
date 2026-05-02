@@ -2,6 +2,9 @@
  * Smart University Profile — Single Source of Truth для frontend-прототипа (хакатон QApp).
  */
 
+import { mergeCatalogIntoUniversities } from "./data/universityDatabase/mergeCatalog";
+import { ADDITIONAL_KAZAKHSTAN_UNIVERSITIES } from "./data/universityDatabase/newInstitutions";
+
 /** Статус подготовки документа для абитуриента */
 export type DocumentStatus = "READY" | "MISSING" | "PENDING";
 
@@ -18,7 +21,7 @@ export interface StudentAcademic {
   gpa: number;
   gpaScale: string;
   ielts: number;
-  /** SAT Total 0–1600 */
+  /** Введённый суммарный SAT; `0` = не указывали / не сдавали (в Fit не штрафуем, опора на UNT). */
   sat: number;
   /** UNT / ЕНТ (Казахстан), 0–140 */
   untScore: number;
@@ -1223,13 +1226,21 @@ const UNIVERSITY_SDU: UniversityTemplate = {
   ],
 };
 
-/** Все мок-вузы Казахстана для MVP (переключатель и поиск). */
-export const UNIVERSITIES: UniversityTemplate[] = [
+const BASE_KAZAKHSTAN_UNIVERSITIES: UniversityTemplate[] = [
   UNIVERSITY_NU,
   UNIVERSITY_KBTU,
   UNIVERSITY_AITU,
   UNIVERSITY_KAZNU,
   UNIVERSITY_SDU,
+];
+
+/**
+ * 10 вузов РК: 5 базовых (с расширенным каталогом факультетов из open data) + 5 из `newInstitutions`.
+ * Единая «база» для поиска, дашборда и рекомендаций.
+ */
+export const UNIVERSITIES: UniversityTemplate[] = [
+  ...mergeCatalogIntoUniversities(BASE_KAZAKHSTAN_UNIVERSITIES),
+  ...ADDITIONAL_KAZAKHSTAN_UNIVERSITIES,
 ];
 
 /** Обратная совместимость: первый вуз по умолчанию. */

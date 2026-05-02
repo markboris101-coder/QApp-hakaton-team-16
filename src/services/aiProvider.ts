@@ -75,6 +75,25 @@ async function askQwenViaProxy(userPrompt: string, systemPrompt: string): Promis
   return text;
 }
 
+export type QwenChatTurn = { role: "user" | "assistant"; content: string };
+
+async function askQwenMessagesViaProxy(systemPrompt: string, turns: QwenChatTurn[]): Promise<string> {
+  const res = await fetch(apiUrl("/api/ai/chat"), {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ systemPrompt, messages: turns }),
+  });
+  const data = (await res.json()) as { text?: string; error?: string };
+  if (!res.ok) {
+    throw new AiProviderError(data.error || res.statusText || "Ошибка прокси ИИ", res.status);
+  }
+  const text = data.text?.trim();
+  if (!text) {
+    throw new AiProviderError("Пустой ответ прокси ИИ");
+  }
+  return text;
+}
+
 export async function askQwen(userPrompt: string, systemPrompt: string): Promise<string> {
   if (import.meta.env.VITE_USE_AI_PROXY === "true") {
     return askQwenViaProxy(userPrompt, systemPrompt);
@@ -108,6 +127,61 @@ export async function askQwen(userPrompt: string, systemPrompt: string): Promise
       ],
       temperature: 0.45,
       max_tokens: 600,
+    }),
+  });
+
+  const data = (await res.json()) as ChatCompletionResponse;
+
+  if (!res.ok) {
+    const msg = data.error?.message || res.statusText || "Ошибка API";
+    throw new AiProviderError(msg, res.status);
+  }
+
+  const text = data.choices?.[0]?.message?.content?.trim();
+  if (!text) {
+    throw new AiProviderError("Пустой ответ модели");
+  }
+
+  return text;
+}
+
+/**
+ * Многоходовый диалог с Qwen (тот же endpoint, что и `askQwen`, но с историей реплик).
+ */
+export async function askQwenMessages(systemPrompt: string, turns: QwenChatTurn[]): Promise<string> {
+  if (!turns.length) {
+    throw new AiProviderError("Пустая история диалога");
+  }
+
+  if (import.meta.env.VITE_USE_AI_PROXY === "true") {
+    return askQwenMessagesViaProxy(systemPrompt, turns);
+  }
+
+  const apiKey = getApiKey();
+  if (!apiKey) {
+    throw new AiProviderError(
+      "Не задан API-ключ. Укажите VITE_API_KEY в `.env.local` (dev) или в переменных окружения хостинга (production) и пересоберите приложение."
+    );
+  }
+
+  const url = getEndpoint();
+  const model = getModel();
+
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+      ...(url.includes("openrouter.ai") && {
+        "HTTP-Referer": typeof window !== "undefined" ? window.location.origin : "https://localhost",
+        "X-Title": "Smart University Profile",
+      }),
+    },
+    body: JSON.stringify({
+      model,
+      messages: [{ role: "system", content: systemPrompt }, ...turns],
+      temperature: 0.45,
+      max_tokens: 900,
     }),
   });
 
