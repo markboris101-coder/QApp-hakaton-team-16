@@ -63,6 +63,15 @@ export function HomePage() {
   const [execSummary, setExecSummary] = useState("");
   const [execLoading, setExecLoading] = useState(false);
   const [execError, setExecError] = useState<string | null>(null);
+  const [showCatalogHint, setShowCatalogHint] = useState(true);
+
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem("qapp-hide-catalog-strip") === "1") setShowCatalogHint(false);
+    } catch {
+      /* ignore */
+    }
+  }, []);
 
   const requestExecutive = useCallback(async () => {
     setExecLoading(true);
@@ -203,6 +212,31 @@ export function HomePage() {
       transition={{ duration: 0.22, ease: "easeOut" }}
       className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 text-slate-900"
     >
+      {showCatalogHint && (
+        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 border-b border-indigo-100 bg-indigo-50/95 px-4 py-2.5 text-center text-sm text-indigo-950 sm:px-6">
+          <span>
+            Другой вуз? Откройте{" "}
+            <Link to="/" className="font-semibold text-indigo-700 underline-offset-2 hover:underline">
+              каталог и поиск
+            </Link>
+            .
+          </span>
+          <button
+            type="button"
+            onClick={() => {
+              try {
+                sessionStorage.setItem("qapp-hide-catalog-strip", "1");
+              } catch {
+                /* ignore */
+              }
+              setShowCatalogHint(false);
+            }}
+            className="rounded-lg px-2 py-1 text-xs font-semibold text-indigo-700 hover:bg-indigo-100/80"
+          >
+            Скрыть
+          </button>
+        </div>
+      )}
       <header className="relative overflow-hidden border-b border-slate-200/80">
         <div
           className="absolute inset-0 bg-cover bg-center transition-[background-image] duration-500"
