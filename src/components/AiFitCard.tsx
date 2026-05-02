@@ -1,16 +1,17 @@
-import React from "react";
-import type { StudentProfile } from "../mockData";
-import { GPA_FIT_THRESHOLD } from "../calculateFitScore";
+import type { StudentProfile, UniversityAdmissionExpectations } from "../mockData";
 import { TextSkeleton } from "./TextSkeleton";
+import { isAiConfigured } from "../services/aiProvider";
 
 type Props = {
   universityName: string;
   averageFitPercent: number;
   student: StudentProfile;
-  /** Единый запрос из HomePage (getGeneralFitAdvice) — без второго вызова API */
+  /** Запрос getGeneralFitAdvice только по кнопке с родителя */
   executiveSummary: string;
   executiveLoading: boolean;
   executiveError: string | null;
+  onRequestExecutiveSummary: () => void;
+  admissionExpectations: UniversityAdmissionExpectations;
 };
 
 export function AiFitCard({
@@ -20,16 +21,19 @@ export function AiFitCard({
   executiveSummary,
   executiveLoading,
   executiveError,
+  onRequestExecutiveSummary,
+  admissionExpectations: exp,
 }: Props) {
   const gpa = student.academic.gpa;
   const ielts = student.academic.ielts;
   const sat = student.academic.sat;
   const unt = student.academic.untScore;
-  const gpaBoost = gpa > GPA_FIT_THRESHOLD;
-  const englishOk = ielts >= 6.5;
+  const gpaBoost = gpa >= exp.strongGpa;
+  const gpaCompetitive = gpa >= exp.competitiveGpa;
+  const englishOk = ielts >= exp.minIelts;
 
   return (
-    <section className="rounded-3xl border border-slate-200/90 bg-white p-6 shadow-sm sm:p-8">
+    <section id="ai-fit-card" className="rounded-3xl border border-slate-200/90 bg-white p-6 shadow-sm sm:p-8">
       <div className="flex flex-col gap-6 lg:flex-row lg:items-stretch lg:justify-between">
         <div className="min-w-0 flex-1">
           <p className="text-xs font-semibold uppercase tracking-wider text-indigo-600">AI fit</p>
@@ -37,18 +41,24 @@ export function AiFitCard({
             How you match {universityName}
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-slate-600">
-            Комбинированный скор по GPA ({GPA_FIT_THRESHOLD}/5.0), IELTS (≥ 6.5), SAT и UNT/ЕНТ, интересам и наградам.
-            Ниже — executive summary от Qwen (тот же ответ, что в Hero «Why you match»).
+            Скор привязан к ориентирам вуза «{universityName}»: конкурентный GPA от ~{exp.competitiveGpa.toFixed(1)},
+            сильный от ~{exp.strongGpa.toFixed(1)}/{exp.gpaScaleMax.toFixed(1)}, SAT от ~{exp.competitiveSat}, UNT от ~
+            {exp.competitiveUnt}, IELTS ≥ {exp.minIelts}. Итог ограничен реалистичным потолком по GPA — высокий SAT не
+            «лечит» слабый средний балл. {exp.modelNote}
           </p>
           <ul className="mt-5 space-y-2 text-sm text-slate-700">
             <li className="flex gap-2">
               <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-500" aria-hidden />
               <span>
-                <span className="font-medium">GPA {gpa.toFixed(1)}/5.0</span>
+                <span className="font-medium">
+                  GPA {gpa.toFixed(1)}/{exp.gpaScaleMax.toFixed(1)}
+                </span>
                 {gpaBoost ? (
-                  <span className="text-emerald-700"> — выше порога (+совместимость)</span>
+                  <span className="text-emerald-700"> — сильный портфель для этого вуза</span>
+                ) : gpaCompetitive ? (
+                  <span className="text-slate-600"> — конкурентный диапазон</span>
                 ) : (
-                  <span className="text-slate-500"> — без GPA-бонуса</span>
+                  <span className="text-amber-800"> — ниже ориентира (штраф к Fit)</span>
                 )}
               </span>
             </li>
@@ -59,7 +69,10 @@ export function AiFitCard({
                 {englishOk ? (
                   <span className="text-emerald-700"> — порог выполнен</span>
                 ) : (
-                  <span className="text-amber-800"> — ниже 6.5 (штраф к Fit)</span>
+                  <span className="text-amber-800">
+                    {" "}
+                    — ниже {exp.minIelts} (штраф к Fit)
+                  </span>
                 )}
               </span>
             </li>
@@ -87,17 +100,41 @@ export function AiFitCard({
             )}
           </ul>
 
-          <div className="mt-8 rounded-2xl border border-indigo-100 bg-indigo-50/40 p-4 ring-1 ring-indigo-100/80">
-            <h3 className="text-sm font-semibold text-indigo-900">AI Executive Summary</h3>
-            <p className="mt-0.5 text-xs font-medium uppercase tracking-wide text-indigo-600">Qwen 2.5 · поступление</p>
+          <div id="ai-exec-summary" className="mt-8 rounded-2xl border border-indigo-100 bg-indigo-50/40 p-4 ring-1 ring-indigo-100/80">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <h3 className="text-sm font-semibold text-indigo-900">AI Executive Summary</h3>
+                <p className="mt-0.5 text-xs font-medium uppercase tracking-wide text-indigo-600">
+                  Qwen 2.5 · поступление
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={onRequestExecutiveSummary}
+                disabled={executiveLoading}
+                className="shrink-0 rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {executiveSummary ? "Обновить обзор" : "Получить обзор Qwen"}
+              </button>
+            </div>
+            {!isAiConfigured() && (
+              <p className="mt-3 text-xs text-slate-600">
+                Добавьте <code className="rounded bg-white/80 px-1">VITE_API_KEY</code> в окружение — иначе вместо ответа
+                Qwen покажется подсказка.
+              </p>
+            )}
             {executiveLoading ? (
               <div className="mt-3">
                 <TextSkeleton lines={5} />
               </div>
             ) : executiveError ? (
               <p className="mt-3 text-sm text-red-700">{executiveError}</p>
-            ) : (
+            ) : executiveSummary ? (
               <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-slate-800">{executiveSummary}</p>
+            ) : (
+              <p className="mt-3 text-sm text-slate-600">
+                Обзор не запрашивался. Нажмите «Получить обзор Qwen», чтобы сформировать текст без автозагрузки.
+              </p>
             )}
           </div>
         </div>

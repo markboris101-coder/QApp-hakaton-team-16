@@ -28,6 +28,21 @@ function hasAllowedExtension(fileName: string): boolean {
   return /\.(pdf|jpe?g|png)$/i.test(fileName);
 }
 
+/** Только PNG для сертификатов/олимпиады (отдельный поток загрузки). */
+export function validateAchievementPng(file: File): ValidationResult {
+  if (file.size > MAX_DOCUMENT_SIZE_BYTES) {
+    return {
+      ok: false,
+      message: `Файл слишком большой. Максимум ${Math.round(MAX_DOCUMENT_SIZE_BYTES / (1024 * 1024))} MB.`,
+    };
+  }
+  const okMime = file.type === "image/png" || (file.type === "" && /\.png$/i.test(file.name));
+  if (!okMime) {
+    return { ok: false, message: "Для достижений сейчас принимается только формат PNG." };
+  }
+  return { ok: true };
+}
+
 export function validateDocumentFile(file: File): ValidationResult {
   if (file.size > MAX_DOCUMENT_SIZE_BYTES) {
     return {

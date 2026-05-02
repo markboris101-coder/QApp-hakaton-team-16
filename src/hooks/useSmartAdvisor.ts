@@ -15,6 +15,7 @@ function summarizeStudentBlock(student: StudentProfile): string {
     `Интересы: ${student.preferences.interests.join(", ") || "—"}`,
     `Финансирование: ${student.preferences.financialStatus}`,
     `Награды: ${student.awards.length ? student.awards.join(", ") : "нет"}`,
+    `Олимпиада подтверждена сертификатом (AI): ${student.olympiadVerified ? "да" : "нет"}`,
   ].join("\n");
 }
 
@@ -23,18 +24,19 @@ export function useSmartAdvisor() {
 
   const getProgramAdvice = useCallback(
     async (programId: string): Promise<string> => {
-      const program = getProgramBySlug(programId);
-      if (!program) {
+      const found = getProgramBySlug(programId);
+      if (!found) {
         throw new Error("Программа не найдена");
       }
-      const prompt = `Проанализируй баллы SAT ${student.academic.sat} и ЕНТ ${student.academic.untScore} для программы «${program.name}» (${universityData.name}, поле: ${program.field}). Дай совет из 2 предложений. Учти также GPA ${student.academic.gpa.toFixed(1)} и IELTS ${student.academic.ielts.toFixed(1)}.`;
+      const { program, university } = found;
+      const prompt = `Проанализируй баллы SAT ${student.academic.sat} и ЕНТ ${student.academic.untScore} для программы «${program.name}» (${university.name}, ${university.city}, поле: ${program.field}). Дай совет из 2 предложений. Учти также GPA ${student.academic.gpa.toFixed(1)} и IELTS ${student.academic.ielts.toFixed(1)}.`;
       return askQwen(prompt, ADVISOR_SYSTEM_PROMPT);
     },
-    [student, universityData]
+    [student]
   );
 
   const getGeneralFitAdvice = useCallback(async (): Promise<string> => {
-    const prompt = `Дай общую оценку шансов на поступление в «${universityData.name}» (Astana) для абитуриента:
+    const prompt = `Дай общую оценку шансов на поступление в «${universityData.name}» (${universityData.city}) для абитуриента:
 
 ${summarizeStudentBlock(student)}
 

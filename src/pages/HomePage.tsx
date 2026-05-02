@@ -7,9 +7,8 @@ import { DeadlinesTimeline } from "../components/DeadlinesTimeline";
 import { ScholarshipsSection } from "../components/ScholarshipsSection";
 import { AiFitCard } from "../components/AiFitCard";
 import { ProgramGrid } from "../components/ProgramGrid";
-import { StudentQuickSidebar } from "../components/StudentQuickSidebar";
-import { TextSkeleton } from "../components/TextSkeleton";
 import { useSmartAdvisor } from "../hooks/useSmartAdvisor";
+import { DashboardStickySidebar } from "../components/DashboardStickySidebar";
 import { isAiConfigured } from "../services/aiProvider";
 import * as documentStorage from "../lib/documentStorage";
 import { validateDocumentFile } from "../lib/documentUploadPolicy";
@@ -58,42 +57,37 @@ function FitRing({ value, gradientId = "heroFitGradient" }: { value: number; gra
 
 export function HomePage() {
   const location = useLocation();
-  const { student, setStudent, setEditorOpen, universityData } = useProfile();
+  const { student, setStudent, universityData, selectedUniversityId } = useProfile();
   const { getGeneralFitAdvice } = useSmartAdvisor();
 
   const [execSummary, setExecSummary] = useState("");
-  const [execLoading, setExecLoading] = useState(true);
+  const [execLoading, setExecLoading] = useState(false);
   const [execError, setExecError] = useState<string | null>(null);
 
-  useEffect(() => {
-    let cancelled = false;
+  const requestExecutive = useCallback(async () => {
     setExecLoading(true);
     setExecError(null);
-    setExecSummary("");
-
     if (!isAiConfigured()) {
       setExecSummary(
-        "Добавьте переменную `VITE_API_KEY` в `.env.local` (локально) или в настройках хостинга (production), затем перезапустите dev-сервер или передеплойте — чтобы Qwen 2.5 сформировал вердикт «Why you match»."
+        "Добавьте переменную `VITE_API_KEY` в `.env.local` (локально) или в настройках хостинга (production), затем перезапустите dev-сервер или передеплойте — чтобы Qwen 2.5 сформировал обзор."
       );
       setExecLoading(false);
       return;
     }
-
-    (async () => {
-      try {
-        const text = await getGeneralFitAdvice();
-        if (!cancelled) setExecSummary(text);
-      } catch (e) {
-        if (!cancelled) setExecError(e instanceof Error ? e.message : "Ошибка ИИ");
-      } finally {
-        if (!cancelled) setExecLoading(false);
-      }
-    })();
-
-    return () => {
-      cancelled = true;
-    };
+    try {
+      const text = await getGeneralFitAdvice();
+      setExecSummary(text);
+    } catch (e) {
+      setExecError(e instanceof Error ? e.message : "Ошибка ИИ");
+    } finally {
+      setExecLoading(false);
+    }
   }, [getGeneralFitAdvice]);
+
+  useEffect(() => {
+    setExecSummary("");
+    setExecError(null);
+  }, [selectedUniversityId]);
 
   useEffect(() => {
     if (location.hash === "#admission-checklist" || location.hash === "#program-grid") {
@@ -105,10 +99,14 @@ export function HomePage() {
   const programResults = useMemo(
     () =>
       universityData.programs.map((program) => {
-        const { score, englishWarning } = calculateFitScore(student, program);
+        const { score, englishWarning } = calculateFitScore(
+          student,
+          program,
+          universityData.admissionExpectations
+        );
         return { program, score, englishWarning };
       }),
-    [student]
+    [student, universityData]
   );
 
   const averageFit = useMemo(() => {
@@ -203,14 +201,13 @@ export function HomePage() {
     >
       <header className="relative overflow-hidden border-b border-slate-200/80">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center transition-[background-image] duration-500"
           style={{
-            backgroundImage:
-              "linear-gradient(105deg, rgba(255,255,255,0.93) 0%, rgba(248,250,252,0.9) 42%, rgba(238,242,255,0.85) 100%), url(https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1800&q=72)",
+            backgroundImage: `linear-gradient(105deg, rgba(255,255,255,0.93) 0%, rgba(248,250,252,0.9) 42%, rgba(238,242,255,0.85) 100%), url(${universityData.heroImageUrl})`,
           }}
           aria-hidden
         />
-        <div className="relative mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 backdrop-blur-[1px] lg:flex-row lg:items-start lg:justify-between">
+        <div className="relative mx-auto flex w-full max-w-[min(100%,1400px)] flex-col gap-8 px-4 py-10 backdrop-blur-[1px] sm:px-6 lg:flex-row lg:items-start lg:justify-between">
           <div className="min-w-0 flex-1 space-y-5">
             <div>
               <p className="text-sm font-medium text-indigo-600">Smart University Profile · QApp MVP</p>
@@ -222,13 +219,19 @@ export function HomePage() {
 
             <div className="flex flex-wrap gap-2">
               <span className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-800 ring-1 ring-slate-200/90 shadow-sm">
-                Language: {instructionLanguages}
+                Основан: {universityData.foundedYear}
               </span>
               <span className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-800 ring-1 ring-slate-200/90 shadow-sm">
-                Type: {universityData.type}
+                Языки: {instructionLanguages}
+              </span>
+              <span className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-800 ring-1 ring-slate-200/90 shadow-sm">
+                Тип: {universityData.type}
+              </span>
+              <span className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-800 ring-1 ring-slate-200/90 shadow-sm">
+                Программ: {universityData.programs.length}
               </span>
               <span className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-medium text-violet-900 ring-1 ring-violet-200 shadow-sm">
-                Apply by {formatShortDate(universityData.applicationDeadline)}
+                Дедлайн {formatShortDate(universityData.applicationDeadline)}
               </span>
             </div>
 
@@ -256,43 +259,73 @@ export function HomePage() {
             </div>
 
             <div className="rounded-2xl border border-indigo-100 bg-indigo-50/35 p-4 ring-1 ring-indigo-100/90">
-              <p className="text-xs font-semibold uppercase tracking-wide text-indigo-700">Why you match</p>
-              <p className="mt-0.5 text-[11px] text-slate-500">Qwen 2.5 · общая оценка шансов</p>
-              {execLoading ? (
-                <div className="mt-3">
-                  <TextSkeleton lines={3} />
-                </div>
-              ) : execError ? (
-                <p className="mt-3 text-sm text-red-700">{execError}</p>
-              ) : (
-                <p className="mt-3 text-sm leading-relaxed text-slate-800">{execSummary}</p>
-              )}
+              <p className="text-xs font-semibold uppercase tracking-wide text-indigo-700">Стипендии (шаблон MVP)</p>
+              <p className="mt-3 text-sm leading-relaxed text-slate-800">{universityData.scholarshipBlurb}</p>
+              <p className="mt-3 text-xs leading-relaxed text-slate-600">
+                Персональный текст от Qwen запускается кнопкой в блоке{" "}
+                <a href="/#ai-fit-card" className="font-medium text-indigo-700 underline-offset-2 hover:underline">
+                  AI Fit
+                </a>{" "}
+                — без автоматических запросов к API.
+              </p>
             </div>
           </div>
 
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start lg:flex-col lg:items-end">
             <FitRing value={averageFit} />
             <div className="flex w-full max-w-xs flex-col gap-2 sm:flex-row sm:justify-end lg:flex-col lg:items-stretch">
-              <button
-                type="button"
-                onClick={() => setEditorOpen(true)}
-                className="w-full rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 sm:w-auto lg:w-full"
+              <Link
+                to="/profile"
+                className="w-full rounded-xl bg-indigo-600 px-4 py-2.5 text-center text-sm font-semibold text-white shadow-md transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 sm:w-auto lg:w-full"
               >
-                Edit profile
-              </button>
+                Полный профиль
+              </Link>
               <Link
                 to="/#program-grid"
                 className="w-full rounded-xl border border-slate-200 bg-white/90 px-4 py-2.5 text-center text-sm font-semibold text-slate-800 shadow-sm ring-1 ring-slate-200/80 transition hover:bg-slate-50 sm:w-auto lg:w-full"
               >
-                Browse programs
+                Программы
               </Link>
             </div>
           </div>
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl px-4 py-10">
-        <div className="lg:grid lg:grid-cols-[1fr_minmax(260px,300px)] lg:gap-10 lg:items-start">
+      <main className="mx-auto w-full max-w-[min(100%,1400px)] px-4 py-10 sm:px-6">
+        <section className="mb-10 rounded-2xl border border-slate-200/90 bg-white/90 p-4 shadow-sm ring-1 ring-slate-100/80 sm:p-5">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-700">
+              <span className="font-semibold text-slate-900">Кратко о профиле</span>
+              <span>GPA {student.academic.gpa.toFixed(1)}</span>
+              <span>SAT {student.academic.sat}</span>
+              <span>UNT {student.academic.untScore}/140</span>
+              <span>IELTS {student.academic.ielts.toFixed(1)}</span>
+              <span className="max-w-xs truncate text-slate-600">{student.preferences.financialStatus}</span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <Link
+                to="/profile"
+                className="rounded-xl bg-indigo-600 px-4 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-700"
+              >
+                Изменить данные
+              </Link>
+              <Link
+                to="/#admission-checklist"
+                className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-2 text-center text-sm font-medium text-slate-800 hover:bg-slate-100"
+              >
+                Чек-лист
+              </Link>
+              <Link
+                to="/#program-grid"
+                className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-center text-sm font-medium text-slate-800 hover:bg-slate-50"
+              >
+                Программы
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start lg:gap-10">
           <div className="min-w-0 space-y-14">
             <AiFitCard
               universityName={universityData.name}
@@ -301,6 +334,8 @@ export function HomePage() {
               executiveSummary={execSummary}
               executiveLoading={execLoading}
               executiveError={execError}
+              onRequestExecutiveSummary={requestExecutive}
+              admissionExpectations={universityData.admissionExpectations}
             />
             <ProgramGrid rows={programResults} />
 
@@ -319,9 +354,14 @@ export function HomePage() {
               <ScholarshipsSection />
             </div>
           </div>
-
           <div className="mt-10 hidden lg:mt-0 lg:block">
-            <StudentQuickSidebar variant="dashboard" />
+            <DashboardStickySidebar
+              universityName={universityData.name}
+              city={universityData.city}
+              averageFitPercent={averageFit}
+              programCount={universityData.programs.length}
+              student={student}
+            />
           </div>
         </div>
       </main>

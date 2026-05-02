@@ -1,41 +1,47 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { calculateFitScore } from "../calculateFitScore";
-import { getProgramBySlug, universityData } from "../mockData";
-import { StudentQuickSidebar } from "../components/StudentQuickSidebar";
+import { getProgramBySlug } from "../mockData";
 import { useProfile } from "../context/ProfileContext";
 import { useSmartAdvisor } from "../hooks/useSmartAdvisor";
 import { TextSkeleton } from "../components/TextSkeleton";
 import { isAiConfigured } from "../services/aiProvider";
 
+const APPLY_URLS: Record<string, string> = {
+  nu: "https://nu.edu.kz/en/admissions",
+  kbtu: "https://www.kbtu.kz/",
+  aitu: "https://astanait.edu.kz/",
+};
+
 export function ProgramDetailsPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { student, toggleShortlist, isShortlisted } = useProfile();
+  const { student, toggleShortlist, isShortlisted, setSelectedUniversityId } = useProfile();
   const { getProgramAdvice } = useSmartAdvisor();
 
+  const result = useMemo(() => (id ? getProgramBySlug(id) : undefined), [id]);
+  const program = result?.program;
+  const programUniversity = result?.university;
+
   const [insight, setInsight] = useState<string>("");
-  const [insightLoading, setInsightLoading] = useState(true);
+  const [insightLoading, setInsightLoading] = useState(false);
   const [insightError, setInsightError] = useState<string | null>(null);
 
-  const program = id ? getProgramBySlug(id) : undefined;
+  useEffect(() => {
+    if (result) setSelectedUniversityId(result.university.id);
+  }, [result, setSelectedUniversityId]);
 
   useEffect(() => {
-    if (!id) return;
-    const prog = getProgramBySlug(id);
-    if (!prog) {
-      setInsightLoading(false);
-      setInsight("");
-      setInsightError(null);
-      return;
-    }
+    setInsight("");
+    setInsightError(null);
+  }, [id]);
 
-    let cancelled = false;
+  const requestInsight = useCallback(async () => {
+    if (!program) return;
     setInsightLoading(true);
     setInsightError(null);
     setInsight("");
-
     if (!isAiConfigured()) {
       setInsight(
         "Добавьте `VITE_API_KEY` в `.env.local` или в переменные окружения деплоя и пересоберите проект — тогда Qwen 2.5 сможет дать персональный совет по программе."
@@ -43,51 +49,83 @@ export function ProgramDetailsPage() {
       setInsightLoading(false);
       return;
     }
+    try {
+      const text = await getProgramAdvice(program.id);
+      setInsight(text);
+    } catch (e) {
+      setInsightError(e instanceof Error ? e.message : "Не удалось получить ответ ИИ.");
+    } finally {
+      setInsightLoading(false);
+    }
+  }, [program, getProgramAdvice]);
 
-    (async () => {
-      try {
-        const text = await getProgramAdvice(prog.id);
-        if (!cancelled) setInsight(text);
-      } catch (e) {
-        const msg = e instanceof Error ? e.message : "Не удалось получить ответ ИИ.";
-        if (!cancelled) setInsightError(msg);
-      } finally {
-        if (!cancelled) setInsightLoading(false);
-      }
-    })();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [id, getProgramAdvice]);
-
-  if (!program) {
+  if (!result || !program || !programUniversity) {
     return (
       <div className="mx-auto max-w-5xl px-4 py-16 text-center">
-        <h1 className="text-xl font-semibold text-slate-900">Program not found</h1>
-        <p className="mt-2 text-slate-600">Check the link or return to the program grid.</p>
+        <h1 className="text-xl font-semibold text-slate-900">Программа не найдена</h1>
+        <p className="mt-2 text-slate-600">Проверьте ссылку или вернитесь к списку программ.</p>
         <Link to="/" className="mt-6 inline-block font-medium text-indigo-600 hover:text-indigo-800">
-          ← Back to dashboard
+          ← На главную
         </Link>
       </div>
     );
   }
 
-  const { score, englishWarning } = calculateFitScore(student, program);
+  const { score, englishWarning } = calculateFitScore(
+    student,
+    program,
+    programUniversity.admissionExpectations
+  );
   const shortlisted = isShortlisted(program.id);
+  const applyHref = APPLY_URLS[programUniversity.id] ?? "https://www.gov.kz";
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.22, ease: "easeOut" }}
-      className="mx-auto max-w-6xl px-4 py-8 lg:py-12"
+      className="mx-auto w-full max-w-[min(100%,1400px)] px-4 py-8 sm:px-6 lg:py-12"
     >
+      <section className="mb-8 rounded-2xl border border-slate-200/90 bg-white/90 p-4 shadow-sm ring-1 ring-slate-100/80 sm:p-5">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-700">
+            <span className="font-semibold text-slate-900">Ваш профиль</span>
+            <span>GPA {student.academic.gpa.toFixed(1)}</span>
+            <span>SAT {student.academic.sat}</span>
+            <span>UNT {student.academic.untScore}/140</span>
+            <span>IELTS {student.academic.ielts.toFixed(1)}</span>
+            <span className="max-w-xs truncate text-slate-600">{student.preferences.financialStatus}</span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <Link
+              to="/profile"
+              className="rounded-xl bg-indigo-600 px-4 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-700"
+            >
+              Изменить данные
+            </Link>
+            <Link
+              to="/#admission-checklist"
+              className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-2 text-center text-sm font-medium text-slate-800 hover:bg-slate-100"
+            >
+              Чек-лист
+            </Link>
+            <Link
+              to="/#program-grid"
+              className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-center text-sm font-medium text-slate-800 hover:bg-slate-50"
+            >
+              Все программы
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <nav className="text-sm text-slate-500">
           <Link to="/" className="font-medium text-indigo-600 hover:text-indigo-800">
-            Dashboard
+            Главная
           </Link>
+          <span className="mx-2">/</span>
+          <span className="text-slate-600">{programUniversity.name}</span>
           <span className="mx-2">/</span>
           <span className="text-slate-800">{program.name}</span>
         </nav>
@@ -96,15 +134,15 @@ export function ProgramDetailsPage() {
           onClick={() => navigate(-1)}
           className="text-sm font-medium text-slate-600 hover:text-slate-900"
         >
-          ← Back
+          ← Назад
         </button>
       </div>
 
-      <div className="flex flex-col gap-10 lg:flex-row lg:items-start">
-        <div className="min-w-0 flex-1 space-y-8">
+      <div className="flex flex-col gap-10">
+        <div className="min-w-0 space-y-8">
           <header className="overflow-hidden rounded-3xl border border-slate-200/90 bg-gradient-to-br from-white to-indigo-50/50 p-6 shadow-sm sm:p-10">
             <p className="text-xs font-semibold uppercase tracking-wider text-indigo-600">
-              {universityData.name}
+              {programUniversity.name} · {programUniversity.city}
             </p>
             <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{program.name}</h1>
             <p className="mt-2 text-slate-600">
@@ -113,7 +151,7 @@ export function ProgramDetailsPage() {
             <p className="mt-3 text-sm text-slate-500">{program.matchReason}</p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <div className="inline-flex items-center gap-2 rounded-2xl bg-slate-900 px-4 py-2 text-white shadow-md">
-                <span className="text-xs font-medium uppercase tracking-wide text-slate-300">Your fit</span>
+                <span className="text-xs font-medium uppercase tracking-wide text-slate-300">AI fit</span>
                 <span className="text-2xl font-bold tabular-nums">{score}%</span>
               </div>
               {englishWarning && (
@@ -153,19 +191,38 @@ export function ProgramDetailsPage() {
           </section>
 
           <section className="rounded-2xl border border-violet-200/80 bg-violet-50/50 p-5 ring-1 ring-violet-100">
-            <h2 className="text-lg font-semibold text-slate-900">Your match insight</h2>
-            <p className="mt-1 text-xs font-medium uppercase tracking-wide text-violet-700">Qwen 2.5 · QApp</p>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <h2 className="text-lg font-semibold text-slate-900">Разбор от Qwen</h2>
+                <p className="mt-1 text-xs font-medium uppercase tracking-wide text-violet-700">
+                  Запрос вручную — без автозагрузки
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={requestInsight}
+                disabled={insightLoading}
+                className="shrink-0 rounded-xl bg-violet-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-violet-800 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {insight ? "Обновить разбор" : "Получить разбор Qwen"}
+              </button>
+            </div>
             {insightLoading ? (
               <div className="mt-4">
                 <TextSkeleton lines={4} />
               </div>
             ) : insightError ? (
               <p className="mt-3 text-sm text-red-700">{insightError}</p>
-            ) : (
+            ) : insight ? (
               <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-slate-700">{insight}</p>
+            ) : (
+              <p className="mt-3 text-sm text-slate-600">
+                Нажмите кнопку выше, чтобы Qwen проанализировал ваш профиль относительно этой программы.
+              </p>
             )}
             <p className="mt-3 text-xs text-slate-500">
-              SAT {student.academic.sat}, UNT/ЕНТ {student.academic.untScore}/140, GPA {student.academic.gpa.toFixed(1)}.
+              SAT {student.academic.sat}, UNT/ЕНТ {student.academic.untScore}/140, GPA{" "}
+              {student.academic.gpa.toFixed(1)}.
             </p>
           </section>
 
@@ -179,21 +236,17 @@ export function ProgramDetailsPage() {
                   : "bg-white text-slate-900 ring-1 ring-slate-200 hover:bg-slate-50"
               }`}
             >
-              {shortlisted ? "Remove from shortlist" : "Add to shortlist"}
+              {shortlisted ? "Убрать из списка" : "В избранное"}
             </button>
             <a
-              href="https://nu.edu.kz/en/admissions"
+              href={applyHref}
               target="_blank"
               rel="noreferrer"
               className="flex-1 rounded-2xl bg-indigo-600 py-3 text-center text-sm font-semibold text-white shadow-md transition hover:bg-indigo-700"
             >
-              Start application
+              Поступление (официальный сайт)
             </a>
           </div>
-        </div>
-
-        <div className="w-full shrink-0 lg:max-w-sm">
-          <StudentQuickSidebar />
         </div>
       </div>
     </motion.div>

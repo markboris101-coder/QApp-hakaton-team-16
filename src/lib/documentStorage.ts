@@ -2,9 +2,21 @@ import type { DocumentUploadMeta, StudentDocuments, StudentProfile } from "../mo
 
 /** Имя БД не меняем — сохраняем уже загруженные файлы пользователей после апдейта. */
 const DB_NAME = "smart-university-profile-docs";
-const DB_VERSION = 2;
+const DB_VERSION = 3;
 const STORE_DOCS = "documents";
 const STORE_PROFILE = "profile";
+const STORE_ACHIEVEMENTS = "achievements";
+
+export type AchievementCategory = "olympiad" | "other";
+
+export interface AchievementStored {
+  id: string;
+  category: AchievementCategory;
+  meta: DocumentUploadMeta;
+  blob: Blob;
+  aiVerdict?: string;
+  aiCheckedAt?: string;
+}
 
 const PROFILE_ROW_ID = "student_profile";
 
@@ -23,6 +35,9 @@ function openDb(): Promise<IDBDatabase> {
       }
       if (oldVersion < 2 && !db.objectStoreNames.contains(STORE_PROFILE)) {
         db.createObjectStore(STORE_PROFILE, { keyPath: "id" });
+      }
+      if (!db.objectStoreNames.contains(STORE_ACHIEVEMENTS)) {
+        db.createObjectStore(STORE_ACHIEVEMENTS, { keyPath: "id" });
       }
     };
   });
@@ -163,4 +178,103 @@ export async function loadMergedStudent(defaultProfile: StudentProfile): Promise
   } catch {
     return base;
   }
+}
+
+// -----------------------------------------------------------------------------
+// Сертификаты и достижения (PNG и др.) — отдельное хранилище
+// -----------------------------------------------------------------------------
+
+export async function putAchievement(
+  file: File,
+  category: AchievementCategory
+): Promise<{ id: string; meta: DocumentUploadMeta }> {
+  const id =
+    typeof crypto !== "undefined" && crypto.randomUUID
+      ? crypto.randomUUID()
+      : `ach-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+  const meta: DocumentUploadMeta = {
+    fileName: file.name,
+    mimeType: file.type || "image/png",
+    sizeBytes: file.size,
+    uploadedAt: new Date().toISOString(),
+  };
+  const blob = file.slice(0, file.size, file.type);
+  const row: AchievementStored = { id, category, meta, blob };
+  const db = await openDb();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE_ACHIEVEMENTS, "readwrite");
+    const store = tx.objectStore(STORE_ACHIEVEMENTS);
+    const req = store.put(row);
+    req.onerror = () => reject(req.error ?? new Error("achievement put failed"));
+    req.onsuccess = () => resolve({ id, meta });
+    tx.oncomplete = () => db.close();
+  });
+}
+
+export async function deleteAchievement(id: string): Promise<void> {
+  const db = await openDb();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE_ACHIEVEMENTS, "readwrite");
+    const store = tx.objectStore(STORE_ACHIEVEMENTS);
+    const req = store.delete(id);
+    req.onerror = () => reject(req.error ?? new Error("achievement delete failed"));
+    req.onsuccess = () => resolve();
+    tx.oncomplete = () => db.close();
+  });
+}
+
+export async function listAchievements(): Promise<AchievementStored[]> {
+  const db = await openDb();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE_ACHIEVEMENTS, "readonly");
+    const store = tx.objectStore(STORE_ACHIEVEMENTS);
+    const req = store.getAll();
+    req.onerror = () => reject(req.error ?? new Error("achievement list failed"));
+    req.onsuccess = () => {
+      resolve((req.result as AchievementStored[]) ?? []);
+    };
+    tx.oncomplete = () => db.close();
+  });
+}
+
+export async function saveAchievementVerdict(id: string, verdict: string): Promise<void> {
+  const existing = await getAchievementById(id);
+  if (!existing) return;
+  const updated: AchievementStored = {
+    ...existing,
+    aiVerdict: verdict,
+    aiCheckedAt: new Date().toISOString(),
+  };
+  const db = await openDb();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE_ACHIEVEMENTS, "readwrite");
+    const store = tx.objectStore(STORE_ACHIEVEMENTS);
+    const req = store.put(updated);
+    req.onerror = () => reject(req.error ?? new Error("achievement verdict save failed"));
+    req.onsuccess = () => resolve();
+    tx.oncomplete = () => db.close();
+  });
+}
+
+async function getAchievementById(id: string): Promise<AchievementStored | null> {
+  const db = await openDb();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE_ACHIEVEMENTS, "readonly");
+    const store = tx.objectStore(STORE_ACHIEVEMENTS);
+    const req = store.get(id);
+    req.onerror = () => reject(req.error ?? new Error("achievement get failed"));
+    req.onsuccess = () => resolve((req.result as AchievementStored | undefined) ?? null);
+    tx.oncomplete = () => db.close();
+  });
+}
+
+/** Есть ли среди записей подтверждённая олимпиада (ACCEPT). */
+export async function hasVerifiedOlympiadCertificate(): Promise<boolean> {
+  const rows = await listAchievements();
+  return rows.some(
+    (r) =>
+      r.category === "olympiad" &&
+      r.aiVerdict &&
+      /VERDICT\s*:\s*ACCEPT/i.test(r.aiVerdict)
+  );
 }

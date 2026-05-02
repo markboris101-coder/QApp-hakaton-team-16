@@ -1,98 +1,288 @@
-import React, { useEffect, useState } from "react";
-import type { ScholarshipInfo } from "../mockData";
+import React, { useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
+import type { ScholarshipAiRelevance, ScholarshipInfo, StudentProfile } from "../mockData";
 import { useProfile } from "../context/ProfileContext";
 import { useSmartAdvisor } from "../hooks/useSmartAdvisor";
 import { TextSkeleton } from "./TextSkeleton";
 import { isAiConfigured } from "../services/aiProvider";
 
-function ScholarshipAiNote({ scholarship }: { scholarship: ScholarshipInfo }) {
+type FilterRel = "all" | ScholarshipAiRelevance;
+
+function estimateScholarshipAlignment(
+  student: StudentProfile,
+  s: ScholarshipInfo
+): { score: number; checks: { label: string; ok: boolean }[] } {
+  const gpa = student.academic.gpa;
+  const ielts = student.academic.ielts;
+  const fin = student.preferences.financialStatus;
+  const needBased = /need|financial|aid/i.test(s.name) || /need|financial/i.test(s.requirements);
+  const merit = /merit|scholarship|olympiad|science|nu scholarship/i.test(s.name);
+  const hasOlympiad = student.awards.some((a) => /olympiad/i.test(a));
+  const olympiadOk = student.olympiadVerified === true;
+
+  const checks: { label: string; ok: boolean }[] = [];
+
+  checks.push({
+    label: "GPA в конкурентном диапазоне (≈4.0+ / 5.0)",
+    ok: gpa >= 4.0,
+  });
+  checks.push({
+    label: "IELTS ≥ 6.5 (англоязычные программы)",
+    ok: ielts >= 6.5,
+  });
+  if (needBased) {
+    checks.push({
+      label: "Соответствие need-based (заявленная потребность в помощи)",
+      ok: fin === "Need Full Scholarship" || fin === "Partial Scholarship",
+    });
+  }
+  if (merit && /STEM|science|olympiad/i.test(s.requirements)) {
+    checks.push({
+      label: "Олимпиада/STEM — сертификат проверен AI",
+      ok: !hasOlympiad || olympiadOk,
+    });
+  } else if (merit) {
+    checks.push({
+      label: "Сильный академический след (GPA + SAT/UNT в связке)",
+      ok: gpa >= 4.2 && student.academic.sat >= 1280,
+    });
+  }
+
+  const passed = checks.filter((c) => c.ok).length;
+  const ratio = passed / checks.length;
+  let base = 35 + ratio * 55;
+  if (s.aiRelevance === "High") base += 4;
+  if (s.aiRelevance === "Low") base -= 6;
+  return { score: Math.min(100, Math.max(12, Math.round(base))), checks };
+}
+
+function ScholarshipAiPanel({ scholarship }: { scholarship: ScholarshipInfo }) {
   const { getScholarshipAdvice } = useSmartAdvisor();
   const [text, setText] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [err, setErr] = useState<string | null>(null);
+  const [fetched, setFetched] = useState(false);
 
-  useEffect(() => {
-    let cancelled = false;
+  const load = async () => {
     setLoading(true);
     setErr(null);
-    setText("");
-
     if (!isAiConfigured()) {
-      setText(
-        "Добавьте `VITE_API_KEY` локально или в env деплоя — тогда Qwen объяснит связь олимпиады со стипендией."
-      );
+      setText("Добавьте VITE_API_KEY (локально или в env деплоя) — Qwen сможет разобрать эту стипендию под ваш профиль.");
       setLoading(false);
+      setFetched(true);
       return;
     }
-
-    (async () => {
-      try {
-        const t = await getScholarshipAdvice(scholarship.name);
-        if (!cancelled) setText(t);
-      } catch (e) {
-        if (!cancelled) setErr(e instanceof Error ? e.message : "Ошибка ИИ");
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
-    })();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [scholarship.name, getScholarshipAdvice]);
+    try {
+      const t = await getScholarshipAdvice(scholarship.name);
+      setText(t);
+      setFetched(true);
+    } catch (e) {
+      setErr(e instanceof Error ? e.message : "Ошибка ИИ");
+      setFetched(true);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <div className="mt-4 rounded-xl bg-white/80 px-3 py-2.5 ring-1 ring-slate-200/80">
-      <p className="text-xs font-semibold text-indigo-700">AI · Qwen · Olympiad &amp; scholarship</p>
-      {loading ? (
-        <div className="mt-2">
+    <div className="mt-4 border-t border-slate-200/80 pt-4">
+      <p className="text-sm font-semibold text-indigo-800">AI-разбор Qwen</p>
+      <p className="mt-1 text-xs text-slate-600">Запрос выполняется только по кнопке, без фоновых вызовов.</p>
+      <div className="mt-3 flex flex-wrap items-center gap-2">
+        <button
+          type="button"
+          onClick={load}
+          disabled={loading}
+          className="rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {fetched ? "Обновить разбор" : "Запросить разбор Qwen"}
+        </button>
+      </div>
+      <div className="mt-3 rounded-xl bg-indigo-50/50 px-3 py-2.5 ring-1 ring-indigo-100/80">
+        {loading ? (
           <TextSkeleton lines={3} />
-        </div>
-      ) : err ? (
-        <p className="mt-2 text-sm text-red-600">{err}</p>
-      ) : (
-        <p className="mt-2 text-sm leading-relaxed text-slate-700">{text}</p>
-      )}
+        ) : err ? (
+          <p className="text-sm text-red-600">{err}</p>
+        ) : fetched ? (
+          <p className="text-sm leading-relaxed text-slate-800">{text}</p>
+        ) : (
+          <p className="text-sm text-slate-600">Ответ Qwen появится после нажатия кнопки.</p>
+        )}
+      </div>
     </div>
   );
 }
 
+const REL_STYLES: Record<ScholarshipAiRelevance, { label: string; className: string }> = {
+  High: { label: "High fit", className: "bg-amber-100 text-amber-950 ring-amber-200" },
+  Medium: { label: "Medium", className: "bg-slate-100 text-slate-800 ring-slate-200" },
+  Low: { label: "Lower priority", className: "bg-slate-50 text-slate-600 ring-slate-200" },
+};
+
 export function ScholarshipsSection() {
-  const { universityData } = useProfile();
+  const { universityData, student } = useProfile();
   const scholarships = universityData.scholarships;
+  const [filter, setFilter] = useState<FilterRel>("all");
+  const [q, setQ] = useState("");
+  const [expanded, setExpanded] = useState<string | null>(null);
+
+  const rows = useMemo(() => {
+    return scholarships
+      .filter((s) => (filter === "all" ? true : s.aiRelevance === filter))
+      .filter((s) => {
+        const t = q.trim().toLowerCase();
+        if (!t) return true;
+        return s.name.toLowerCase().includes(t) || s.requirements.toLowerCase().includes(t);
+      })
+      .map((s) => ({
+        s,
+        est: estimateScholarshipAlignment(student, s),
+      }))
+      .sort((a, b) => b.est.score - a.est.score);
+  }, [scholarships, filter, q, student]);
 
   return (
-    <section className="rounded-3xl border border-slate-200/80 bg-white p-8 shadow-sm">
-      <p className="text-xs font-semibold uppercase tracking-wider text-indigo-600">10.G</p>
-      <h2 className="mt-1 text-xl font-semibold text-slate-900">Scholarships</h2>
-      <p className="mt-2 max-w-xl text-sm leading-relaxed text-slate-600">
-        Релевантность по профилю; для каждой стипендии Qwen объясняет, как награда «Olympiad Winner» может усилить заявку.
-      </p>
+    <section className="w-full overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-b from-white to-slate-50/80 shadow-sm">
+      <div className="border-b border-slate-200/80 bg-white/80 px-6 py-6 sm:px-8 sm:py-8">
+        <p className="text-xs font-semibold uppercase tracking-wider text-indigo-600">Scholarships &amp; aid</p>
+        <h2 className="mt-1 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+          Стипендии и гранты
+        </h2>
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600">
+          Сравнение с вашим профилем, чек-лист соответствия и отдельный AI-разбор по каждой позиции. Тип
+          релевантности (High/Medium/Low) — эвристика QApp; оценка «Match %» — ориентир, не оффер.
+        </p>
+        <div className="mt-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div className="flex flex-wrap gap-2">
+            {(["all", "High", "Medium", "Low"] as const).map((k) => (
+              <button
+                key={k}
+                type="button"
+                onClick={() => setFilter(k)}
+                className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                  filter === k
+                    ? "bg-indigo-600 text-white shadow"
+                    : "bg-slate-100 text-slate-700 ring-1 ring-slate-200/80 hover:bg-slate-200/80"
+                }`}
+              >
+                {k === "all" ? "Все" : k === "High" ? "High fit" : k}
+              </button>
+            ))}
+          </div>
+          <div className="flex w-full max-w-md flex-col gap-1">
+            <label className="text-xs font-medium text-slate-500" htmlFor="sch-search">
+              Поиск по названию или требованиям
+            </label>
+            <input
+              id="sch-search"
+              type="search"
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="Например, olympiad, need, merit…"
+              className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+            />
+          </div>
+        </div>
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-dashed border-indigo-200/80 bg-indigo-50/30 px-4 py-3 text-sm text-slate-700">
+          <span>
+            Профиль: GPA <strong>{student.academic.gpa.toFixed(1)}</strong>, IELTS{" "}
+            <strong>{student.academic.ielts.toFixed(1)}</strong>, {student.preferences.financialStatus}
+            {student.olympiadVerified && (
+              <span className="ml-2 rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-900">
+                олимпиада подтверждена
+              </span>
+            )}
+          </span>
+          <Link
+            to="/profile"
+            className="font-medium text-indigo-600 hover:text-indigo-800"
+          >
+            Редактировать профиль →
+          </Link>
+        </div>
+      </div>
 
-      <ul className="mt-8 grid gap-5 sm:grid-cols-2">
-        {scholarships.map((s) => {
-          const isTop = s.aiRelevance === "High";
-          return (
-            <li
-              key={s.name}
-              className={`relative flex flex-col rounded-2xl p-5 transition-shadow ${
-                isTop
-                  ? "border-2 border-amber-400/90 bg-gradient-to-br from-amber-50/90 to-white shadow-md ring-1 ring-amber-200/50"
-                  : "border border-slate-200 bg-slate-50/50 shadow-sm hover:shadow-md"
-              }`}
-            >
-              {isTop && (
-                <span className="absolute -top-2.5 right-4 rounded-full bg-amber-500 px-3 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white shadow">
-                  Top choice for you
-                </span>
-              )}
-              <h3 className="pr-2 text-base font-semibold text-slate-900">{s.name}</h3>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600">{s.requirements}</p>
-              <ScholarshipAiNote scholarship={s} />
-            </li>
-          );
-        })}
-      </ul>
+      <div className="px-4 py-6 sm:px-8 sm:py-8">
+        <ul className="space-y-4">
+          {rows.map(({ s, est }) => {
+            const rel = REL_STYLES[s.aiRelevance];
+            const isOpen = expanded === s.name;
+            return (
+              <li
+                key={s.name}
+                className="overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm transition hover:shadow-md"
+              >
+                <div className="flex flex-col gap-4 p-5 lg:flex-row lg:items-stretch lg:gap-6">
+                  <div className="min-w-0 flex-1 lg:grid lg:grid-cols-[1fr_120px] lg:gap-6">
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h3 className="text-lg font-semibold text-slate-900">{s.name}</h3>
+                        <span
+                          className={`inline-flex rounded-full px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide ring-1 ${rel.className}`}
+                        >
+                          {rel.label}
+                        </span>
+                      </div>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-600">{s.requirements}</p>
+                    </div>
+                    <div className="flex flex-col items-stretch justify-center border-t border-slate-100 pt-4 lg:border-l lg:border-t-0 lg:pl-6 lg:pt-0">
+                      <p className="text-xs font-medium uppercase tracking-wide text-slate-500">Match (эвр.)</p>
+                      <p className="mt-1 text-3xl font-bold tabular-nums text-slate-900">{est.score}%</p>
+                      <div className="mt-2 h-2 overflow-hidden rounded-full bg-slate-100">
+                        <div
+                          className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500"
+                          style={{ width: `${est.score}%` }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="border-t border-slate-100 bg-slate-50/50 px-5 py-4">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Быстрый чек-лист</p>
+                  <ul className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                    {est.checks.map((c) => (
+                      <li
+                        key={c.label}
+                        className={`flex items-start gap-2 text-sm ${
+                          c.ok ? "text-emerald-800" : "text-amber-900"
+                        }`}
+                      >
+                        <span className="mt-0.5 select-none" aria-hidden>
+                          {c.ok ? "✓" : "○"}
+                        </span>
+                        <span>{c.label}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    type="button"
+                    onClick={() => setExpanded(isOpen ? null : s.name)}
+                    className="mt-4 text-sm font-medium text-indigo-600 hover:text-indigo-800"
+                  >
+                    {isOpen ? "Свернуть детали" : "Подробнее и AI-разбор"}
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <ScholarshipAiPanel scholarship={s} />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+        {rows.length === 0 && (
+          <p className="py-8 text-center text-sm text-slate-500">Нет стипендий по выбранным фильтрам.</p>
+        )}
+      </div>
     </section>
   );
 }

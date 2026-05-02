@@ -6,21 +6,30 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { currentStudent, universityData as universityDataStatic } from "../mockData";
+import { UNIVERSITIES, currentStudent } from "../mockData";
 import type { StudentProfile, UniversityTemplate } from "../mockData";
 import * as documentStorage from "../lib/documentStorage";
+import { fetchServerProfile, saveServerProfile } from "../lib/backendApi";
+import { clampGpa, clampSat, clampUnt, roundIeltsHalfBand } from "../lib/academicInput";
 
 const SHORTLIST_KEY = "sup-program-shortlist";
+const SELECTED_UNI_KEY = "sup-selected-university";
 
 /** Совместимость со старыми сохранёнными профилями (новые поля). */
 function normalizeProfile(raw: StudentProfile): StudentProfile {
+  const mergedAcademic = {
+    ...currentStudent.academic,
+    ...(raw.academic ?? {}),
+  };
   return {
     ...currentStudent,
     ...raw,
     academic: {
-      ...currentStudent.academic,
-      ...(raw.academic ?? {}),
-      untScore: raw.academic?.untScore ?? currentStudent.academic.untScore,
+      ...mergedAcademic,
+      gpa: clampGpa(mergedAcademic.gpa),
+      ielts: roundIeltsHalfBand(mergedAcademic.ielts),
+      sat: clampSat(mergedAcademic.sat),
+      untScore: clampUnt(mergedAcademic.untScore),
     },
     preferences: {
       ...currentStudent.preferences,
@@ -29,6 +38,7 @@ function normalizeProfile(raw: StudentProfile): StudentProfile {
         raw.preferences?.financialStatus ?? currentStudent.preferences.financialStatus,
     },
     awards: Array.isArray(raw.awards) ? raw.awards : [],
+    olympiadVerified: raw.olympiadVerified === true,
     documents: { ...currentStudent.documents, ...(raw.documents ?? {}) },
     documentUploads: raw.documentUploads ?? {},
   };
@@ -36,11 +46,13 @@ function normalizeProfile(raw: StudentProfile): StudentProfile {
 
 type ProfileContextValue = {
   student: StudentProfile;
-  /** Шаблон университета (SSOT из mockData) */
+  /** Активный вуз дашборда (MVP: мок-список) */
   universityData: UniversityTemplate;
   setStudent: React.Dispatch<React.SetStateAction<StudentProfile>>;
-  editorOpen: boolean;
-  setEditorOpen: (open: boolean) => void;
+  /** Все вузы для поиска / переключателя */
+  universities: UniversityTemplate[];
+  selectedUniversityId: string;
+  setSelectedUniversityId: (id: string) => void;
   shortlist: string[];
   toggleShortlist: (programId: string) => void;
   isShortlisted: (programId: string) => boolean;
@@ -50,8 +62,23 @@ const ProfileContext = createContext<ProfileContextValue | null>(null);
 
 export function ProfileProvider({ children }: { children: React.ReactNode }) {
   const [student, setStudent] = useState<StudentProfile>(currentStudent);
-  const [editorOpen, setEditorOpen] = useState(false);
   const [persistReady, setPersistReady] = useState(false);
+  const [selectedUniversityId, setSelectedUniversityIdState] = useState<string>(() => {
+    try {
+      const raw = localStorage.getItem(SELECTED_UNI_KEY);
+      if (raw && UNIVERSITIES.some((u) => u.id === raw)) return raw;
+    } catch {
+      /* ignore */
+    }
+    return UNIVERSITIES[0].id;
+  });
+
+  const setSelectedUniversityId = useCallback((id: string) => {
+    if (UNIVERSITIES.some((u) => u.id === id)) {
+      setSelectedUniversityIdState(id);
+    }
+  }, []);
+
   const [shortlist, setShortlist] = useState<string[]>(() => {
     try {
       const raw = localStorage.getItem(SHORTLIST_KEY);
@@ -66,15 +93,38 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
   }, [shortlist]);
 
   useEffect(() => {
+    try {
+      localStorage.setItem(SELECTED_UNI_KEY, selectedUniversityId);
+    } catch {
+      /* ignore */
+    }
+  }, [selectedUniversityId]);
+
+  const universityData = useMemo(
+    () => UNIVERSITIES.find((u) => u.id === selectedUniversityId) ?? UNIVERSITIES[0],
+    [selectedUniversityId]
+  );
+
+  useEffect(() => {
     let cancelled = false;
     (async () => {
-      if (typeof indexedDB === "undefined") {
-        setPersistReady(true);
-        return;
-      }
       try {
-        const merged = await documentStorage.loadMergedStudent(currentStudent);
-        if (!cancelled) setStudent(normalizeProfile(merged));
+        let merged: StudentProfile =
+          typeof indexedDB === "undefined"
+            ? currentStudent
+            : normalizeProfile(await documentStorage.loadMergedStudent(currentStudent));
+
+        const remote = await fetchServerProfile();
+        if (remote && !cancelled) {
+          merged = normalizeProfile({
+            ...merged,
+            ...remote.student,
+            documents: merged.documents,
+            documentUploads: merged.documentUploads,
+          });
+        }
+
+        if (!cancelled) setStudent(merged);
       } catch (e) {
         console.warn("Initial profile load failed", e);
       } finally {
@@ -94,6 +144,14 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
     return () => clearTimeout(handle);
   }, [student, persistReady]);
 
+  useEffect(() => {
+    if (!persistReady) return;
+    const handle = window.setTimeout(() => {
+      void saveServerProfile(student).catch(() => undefined);
+    }, 900);
+    return () => clearTimeout(handle);
+  }, [student, persistReady]);
+
   const toggleShortlist = useCallback((programId: string) => {
     setShortlist((prev) =>
       prev.includes(programId) ? prev.filter((id) => id !== programId) : [...prev, programId]
@@ -108,15 +166,24 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
   const value = useMemo(
     () => ({
       student,
-      universityData: universityDataStatic,
+      universityData,
       setStudent,
-      editorOpen,
-      setEditorOpen,
+      universities: UNIVERSITIES,
+      selectedUniversityId,
+      setSelectedUniversityId,
       shortlist,
       toggleShortlist,
       isShortlisted,
     }),
-    [student, editorOpen, shortlist, toggleShortlist, isShortlisted]
+    [
+      student,
+      universityData,
+      selectedUniversityId,
+      setSelectedUniversityId,
+      shortlist,
+      toggleShortlist,
+      isShortlisted,
+    ]
   );
 
   return <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>;

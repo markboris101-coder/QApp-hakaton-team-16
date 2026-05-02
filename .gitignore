@@ -8,6 +8,7 @@ dist/
 .env
 .env.local
 .env.*.local
+.env.server
 
 # Vite cache (pre-bundled deps)
 .vite/
@@ -15,3 +16,6 @@ dist/
 # Logs / IDE
 *.log
 .DS_Store
+
+# Backend local profile store
+server/data/profile.json
