@@ -1,21 +1,36 @@
-import React, { useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useMemo } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { AssistantIntakeForm } from "../components/AssistantIntakeForm";
 import { AssistantRecommendationHero } from "../components/AssistantRecommendationHero";
 import { UniversitySearchPanel } from "../components/UniversitySearchPanel";
 import { useProfile } from "../context/ProfileContext";
-import { useAssistantIntake } from "../hooks/useAssistantIntake";
+import { useAssistantIntake } from "../context/AssistantIntakeContext";
 import { getTopUniversityRecommendation } from "../lib/recommendUniversity";
+import { bumpLandingVisit } from "../lib/demoAnalytics";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export function LandingPage() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
+  const location = useLocation();
+  const blockedFrom = (location.state as { blockedPath?: string } | null)?.blockedPath;
+
+  useEffect(() => {
+    bumpLandingVisit();
+  }, []);
+
   const { student, universities, setSelectedUniversityId } = useProfile();
   const { hydrated, intakeDone, markIntakeComplete } = useAssistantIntake();
+
+  useEffect(() => {
+    if (!blockedFrom || !hydrated || intakeDone) return;
+    document.getElementById("assistant-intake-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [blockedFrom, hydrated, intakeDone]);
+
+  const dismissBlockedBanner = () => navigate("/", { replace: true, state: {} });
 
   const recommendation = useMemo(
     () => (intakeDone ? getTopUniversityRecommendation(student, universities) : null),
@@ -59,6 +74,21 @@ export function LandingPage() {
               exit={{ opacity: 0, x: 28 }}
               transition={{ duration: 0.4, ease: easeOut }}
             >
+              {blockedFrom ? (
+                <div
+                  role="alert"
+                  className="mb-6 flex flex-col gap-3 rounded-2xl border border-amber-200/90 bg-amber-50 px-4 py-3 text-sm text-amber-950 sm:flex-row sm:items-center sm:justify-between"
+                >
+                  <p>{t("intake.blockedBanner", { path: blockedFrom })}</p>
+                  <button
+                    type="button"
+                    onClick={dismissBlockedBanner}
+                    className="shrink-0 rounded-lg bg-amber-200/80 px-3 py-1.5 text-xs font-semibold text-amber-950 hover:bg-amber-300/90"
+                  >
+                    {t("intake.blockedDismiss")}
+                  </button>
+                </div>
+              ) : null}
               <div className="mb-10 text-center">
                 <p className="text-sm font-semibold uppercase tracking-wide text-indigo-600">
                   {t("landing.badge")}

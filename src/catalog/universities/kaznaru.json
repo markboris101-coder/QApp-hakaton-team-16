@@ -1,0 +1,140 @@
+{
+  "id": "kaznaru",
+  "name": "Kazakh National Agrarian Research University",
+  "city": "Almaty, Kazakhstan",
+  "foundedYear": 1929,
+  "type": "Comprehensive",
+  "languagesOfInstruction": [
+    "Kazakh",
+    "Russian",
+    "English"
+  ],
+  "applicationDeadline": "2026-08-05",
+  "scholarshipBlurb": "Гранты на аграрные и биотехспециальности, поддержка сельской молодёжи и проекты агропредпринимательства.",
+  "heroImageUrl": "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 950000,
+    "maxKzt": 2400000,
+    "note": "Аграрные программы часто доступнее по контракту; точная сумма зависит от факультета и языка."
+  },
+  "faculties": [
+    {
+      "id": "nar-agronomy",
+      "name": "Faculty of Agronomy and Soil Science",
+      "description": "Растениеводство, защита растений, почвоведение и агроэкология; опытные поля и лаборатории анализа."
+    },
+    {
+      "id": "nar-vet",
+      "name": "Faculty of Veterinary Medicine and Animal Science",
+      "description": "Ветеринария, зоотехния, кормление и биобезопасность животноводческих комплексов."
+    },
+    {
+      "id": "nar-food",
+      "name": "Faculty of Food Production Technology",
+      "description": "Технология переработки молока, мяса, зерна и масложировой продукции; стандарты качества и безопасности."
+    },
+    {
+      "id": "nar-env",
+      "name": "Faculty of Environmental Sciences and Water Resources",
+      "description": "Экология сельской местности, гидрология, устойчивое управление водными ресурсами."
+    },
+    {
+      "id": "nar-mechanization",
+      "name": "Faculty of Agricultural Mechanization and Electrical Engineering",
+      "description": "Тракторы и сельхозмашины, точное земледелие, автоматизация агропроизводства."
+    },
+    {
+      "id": "nar-econ-rural",
+      "name": "Faculty of Agricultural Economics and Rural Development",
+      "description": "Экономика АПК, кооперация фермеров, маркетинг продукции и государственные программы поддержки."
+    },
+    {
+      "id": "nar-land-mgmt",
+      "name": "Faculty of Land Management and Cadastre",
+      "description": "Землеустройство, геодезия, кадастр и правовое регулирование земельных отношений."
+    },
+    {
+      "id": "nar-biotech",
+      "name": "Faculty of Biotechnology and Bioengineering",
+      "description": "Биотехнологии микроорганизмов, селекция и биостимуляторы для растениеводства."
+    },
+    {
+      "id": "nar-forestry",
+      "name": "Faculty of Forestry and Wildlife",
+      "description": "Лесоведение, охота и сохранение биоразнообразия; лесные питомники и мониторинг экосистем."
+    },
+    {
+      "id": "nar-horticulture",
+      "name": "Faculty of Horticulture and Crop Sciences",
+      "description": "Овощеводство, садоводство, тепличные технологии и сортовые коллекции."
+    },
+    {
+      "id": "nar-it-agri",
+      "name": "Faculty of Digital Agriculture and GIS",
+      "description": "ГИС в АПК, дроны и спутниковый мониторинг полей, данные для точного земледелия."
+    },
+    {
+      "id": "nar-law-rural",
+      "name": "Faculty of Agrarian Law",
+      "description": "Правовое сопровождение фермерских хозяйств, земельные споры и контракты в АПК."
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 4,
+    "competitiveGpa": 3.45,
+    "competitiveSat": 1020,
+    "targetSat": 1180,
+    "competitiveUnt": 82,
+    "targetUnt": 100,
+    "minIelts": 5,
+    "modelNote": "Аграрный профиль: биология и химия важны для многих программ; английский для международных треков."
+  },
+  "scholarships": [
+    {
+      "name": "Грант на специальности АПК",
+      "requirements": "Конкурс ЕНТ и целевые программы развития села.",
+      "aiRelevance": "High"
+    }
+  ],
+  "programs": [
+    {
+      "id": "nar-bsc-agronomy",
+      "name": "BSc in Agronomy",
+      "facultyId": "nar-agronomy",
+      "annualTuitionKzt": 1650000,
+      "field": "Science",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian",
+      "fitScore": 71,
+      "matchReason": "Классическое растениеводство и защита урожая для карьеры в АПК.",
+      "detailedDescription": [
+        "Агрохимия, семеноводство, полевые практики."
+      ],
+      "entryRequirements": [
+        "Биология и химия",
+        "ЕНТ"
+      ]
+    },
+    {
+      "id": "nar-bsc-food-tech",
+      "name": "BSc in Food Technology",
+      "facultyId": "nar-food",
+      "annualTuitionKzt": 1800000,
+      "field": "Science",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 72,
+      "matchReason": "Переработка сельхозсырья и контроль качества продукции.",
+      "detailedDescription": [
+        "Технологические линии, микробиология пищи."
+      ],
+      "entryRequirements": [
+        "Химия и биология",
+        "ЕНТ"
+      ]
+    }
+  ]
+}

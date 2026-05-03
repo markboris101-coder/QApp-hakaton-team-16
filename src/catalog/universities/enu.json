@@ -1,0 +1,167 @@
+{
+  "id": "enu",
+  "name": "L.N. Gumilyov Eurasian National University",
+  "city": "Astana, Kazakhstan",
+  "foundedYear": 1996,
+  "type": "Comprehensive",
+  "languagesOfInstruction": [
+    "Kazakh",
+    "Russian",
+    "English"
+  ],
+  "applicationDeadline": "2026-08-15",
+  "scholarshipBlurb": "Государственные образовательные гранты, ректорские стипендии и поддержка одарённых студентов по профилям (уточняйте на приёмной кампании года).",
+  "heroImageUrl": "https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 1400000,
+    "maxKzt": 3200000,
+    "note": "Ориентир контрактной оплаты по крупным факультетам; грантовые места — по конкурсу ЕНТ/внутренним правилам года."
+  },
+  "faculties": [
+    {
+      "id": "enu-engineering",
+      "name": "Faculty of Engineering",
+      "description": "Машиностроение, энергетика, транспорт и материаловедение; проектные семестры и связь с промышленностью Астаны и регионов."
+    },
+    {
+      "id": "enu-it",
+      "name": "Faculty of Information Technologies",
+      "description": "Информатика, программная инженерия, сети и информационные системы; хакатоны и лаборатории с ИТ-партнёрами."
+    },
+    {
+      "id": "enu-law",
+      "name": "Faculty of Law",
+      "description": "Гражданское, уголовное и административное право; судебная практика, юридическая клиника и мот-к турниры."
+    },
+    {
+      "id": "enu-econ",
+      "name": "Faculty of Economics and Business",
+      "description": "Экономическая теория, финансы, менеджмент и предпринимательство; аналитика рынков и проекты для малого бизнеса."
+    },
+    {
+      "id": "enu-history",
+      "name": "Faculty of History and Archeology",
+      "description": "История Казахстана и Евразии, археология степи, музейное дело и работа с культурным наследием."
+    },
+    {
+      "id": "enu-philology",
+      "name": "Faculty of Philology",
+      "description": "Филология казахского, русского и иностранных языков; перевод, литература и методика преподавания."
+    },
+    {
+      "id": "enu-international",
+      "name": "Faculty of International Relations",
+      "description": "Мировая политика, дипломатия, региональная безопасность и международное право; модели межгосударственных организаций."
+    },
+    {
+      "id": "enu-natural",
+      "name": "Faculty of Natural Sciences",
+      "description": "Биология, химия, география и экология; полевые практики и подготовка к научным школам университета."
+    },
+    {
+      "id": "enu-social",
+      "name": "Faculty of Social Sciences",
+      "description": "Социология, политология, социальная работа и управление социальными программами."
+    },
+    {
+      "id": "enu-math",
+      "name": "Faculty of Mathematics and Cybernetics",
+      "description": "Математический анализ, дискретная математика, математическое моделирование и основы кибернетики."
+    },
+    {
+      "id": "enu-sport",
+      "name": "Faculty of Physical Culture and Sport",
+      "description": "Тренерская деятельность, спортивная медицина основ и управление физкультурно-оздоровительной деятельностью."
+    },
+    {
+      "id": "enu-journalism",
+      "name": "Faculty of Journalism",
+      "description": "Медиакоммуникации, цифровая журналистика, медиаменеджмент и медиатворчество."
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 4.2,
+    "competitiveGpa": 3.65,
+    "competitiveSat": 1120,
+    "targetSat": 1300,
+    "competitiveUnt": 92,
+    "targetUnt": 112,
+    "minIelts": 5.5,
+    "modelNote": "ЕНУ — крупный классический университет столицы; конкурс на грант высокий. Fit-модель учитывает UNT и языковые пороги программы."
+  },
+  "scholarships": [
+    {
+      "name": "Государственный образовательный грант",
+      "requirements": "Конкурс ЕНТ для граждан РК по правилам года набора.",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Ректорская стипендия за успеваемость",
+      "requirements": "Топ по GPA курса; продление при сохранении результатов.",
+      "aiRelevance": "Medium"
+    }
+  ],
+  "programs": [
+    {
+      "id": "enu-bsc-it",
+      "name": "BSc in Information Systems",
+      "facultyId": "enu-it",
+      "annualTuitionKzt": 2450000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 76,
+      "matchReason": "Прикладной IT для тех, кто хочет связать программирование с аналитикой и бизнес-процессами.",
+      "detailedDescription": [
+        "Базы данных, веб, основы управления проектами.",
+        "Практики в ИТ-компаниях региона."
+      ],
+      "entryRequirements": [
+        "ЕНТ по профильным предметам",
+        "Информатика приветствуется",
+        "Уровень языка по потоку"
+      ]
+    },
+    {
+      "id": "enu-bsc-economics",
+      "name": "BSc in Economics",
+      "facultyId": "enu-econ",
+      "annualTuitionKzt": 2100000,
+      "field": "Business",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian",
+      "fitScore": 74,
+      "matchReason": "Экономическая аналитика и финансы для поступающих с сильной математикой.",
+      "detailedDescription": [
+        "Микро- и макроэкономика, метрика, работа с данными."
+      ],
+      "entryRequirements": [
+        "Математика в сертификате",
+        "Конкурсный балл ЕНТ"
+      ]
+    },
+    {
+      "id": "enu-ba-law",
+      "name": "LL.B. in Law",
+      "facultyId": "enu-law",
+      "annualTuitionKzt": 2350000,
+      "field": "Law",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 72,
+      "matchReason": "Базовое юридическое образование с акцентом на законодательство РК.",
+      "detailedDescription": [
+        "Теория права, материальное и процессуальное право.",
+        "Практика в юридической клинике."
+      ],
+      "entryRequirements": [
+        "История и обществознание",
+        "Конкурс ЕНТ"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,294 @@
+{
+  "id": "kaznu",
+  "name": "al-Farabi Kazakh National University",
+  "nameRu": "Казахский национальный университет имени аль-Фараби",
+  "nameKk": "Әл-Фараби атындағы Қазақ ұлттық университеті",
+  "officialWebsiteUrl": "https://farabi.university",
+  "admissionsEmail": "admission@kaznu.kz",
+  "city": "Almaty, Kazakhstan",
+  "foundedYear": 1934,
+  "type": "Comprehensive",
+  "languagesOfInstruction": [
+    "Kazakh",
+    "Russian",
+    "English"
+  ],
+  "applicationDeadline": "2026-08-01",
+  "scholarshipBlurb": "Государственные гранты, стипендии для лучших по UNT, целевые квоты и социальные категории (иллюстративно для QApp; уточняйте в приёмной комиссии).",
+  "heroImageUrl": "https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 1200000,
+    "maxKzt": 2800000,
+    "note": "Вилка для контрактного обучения (грант = 0 ₸); цифры ориентировочные по крупным факультетам, mock."
+  },
+  "faculties": [
+    {
+      "id": "kaznu-physmath",
+      "name": "Faculty of Mechanics and Mathematics",
+      "description": "Фундаментальная подготовка в математике, механике и математическом моделировании; сильные кафедры анализа, дифференциальных уравнений и прикладной механики."
+    },
+    {
+      "id": "kaznu-bio",
+      "name": "Faculty of Biology and Biotechnology",
+      "description": "Современная биология, молекулярная генетика, экология и биотех: лаборатории, полевые практики и выход в науку Республики."
+    },
+    {
+      "id": "kaznu-law",
+      "name": "Faculty of Law",
+      "description": "Классическое юридическое образование с уклоном в гражданское, уголовное и международное право; мoot-courts и договорная работа."
+    },
+    {
+      "id": "kaznu-journ",
+      "name": "Faculty of Journalism",
+      "description": "Медиа, цифровой контент, расследовательская журналистика и дизайн коммуникаций; учебные студии и проекты с отраслевыми партнёрами."
+    },
+    {
+      "id": "kaznu-chem",
+      "name": "Faculty of Chemistry and Chemical Technology",
+      "description": "Синтез, аналитическая химия, катализ и зелёная химия; мост к фармацевтике, материаловедению и нефтехимии."
+    },
+    {
+      "id": "kaznu-phil",
+      "name": "Faculty of Philology",
+      "description": "Лингвистика, перевод, литературоведение трёх языков; гуманитарный костяк национального университета."
+    },
+    {
+      "id": "kaznu-hseb",
+      "name": "Higher School of Economics and Business",
+      "description": "Финансы, менеджмент и экономическая аналитика: микро- и макроэкономика, инвестиции, корпоративные финансы в бакалавриате и магистратуре."
+    },
+    {
+      "id": "kaznu-history",
+      "name": "Faculty of History, Archaeology and Ethnology",
+      "description": "История Казахстана и мира, археология степных памятников и этнография; экспедиции, музейная практика и работа с источниками."
+    },
+    {
+      "id": "kaznu-oriental",
+      "name": "Faculty of Oriental Studies",
+      "description": "Языки и культуры Востока, региональная политика и межкультурная коммуникация; подготовка переводчиков и аналитиков."
+    },
+    {
+      "id": "kaznu-international",
+      "name": "Faculty of International Relations",
+      "description": "Международное право и организации, дипломатия, глобальная безопасность и межкультурные переговоры; модели ООН и дебаты."
+    },
+    {
+      "id": "kaznu-geography",
+      "name": "Faculty of Geography and Environmental Sciences",
+      "description": "Физическая география, геоинформатика, климат и устойчивое развитие территорий; полевые школы и картографические проекты."
+    },
+    {
+      "id": "kaznu-physics-tech",
+      "name": "Faculty of Physics and Technology",
+      "description": "Экспериментальная физика, электроника, оптоэлектроника и материалы; лаборатории для исследований и инженерных приложений."
+    },
+    {
+      "id": "kaznu-philosophy",
+      "name": "Faculty of Philosophy and Political Science",
+      "description": "Социально-политическая теория, этика технологий и критическое мышление; академические дискуссии и исследовательские семинары."
+    },
+    {
+      "id": "kaznu-medicine",
+      "name": "Medical Faculty (General Medicine track)",
+      "description": "Фундаментальные медицинские дисциплины и клинические базы (по контракту года набора); интеграция с университетской клиникой — уточняйте на сайте КазНУ."
+    },
+    {
+      "id": "kaznu-radio-engineering",
+      "name": "Faculty of Radio Engineering and Electronics",
+      "description": "Радиотехника, микроэлектроника, схемотехника и телеком; НИР и стажировки в отрасли связи (по открытым разделам КазНУ)."
+    },
+    {
+      "id": "kaznu-mechanical-engineering",
+      "name": "Faculty of Mechanics and Technology",
+      "description": "Прикладная механика, машиностроение и технологические процессы; подготовка инженеров для промышленности Алматы и регионов."
+    },
+    {
+      "id": "kaznu-information-systems",
+      "name": "Faculty of Information Systems and Cybersecurity",
+      "description": "Информационные системы, сети и информационная безопасность на базе классического университета; проектные семестры и хакатоны."
+    },
+    {
+      "id": "kaznu-space-engineering",
+      "name": "Faculty / Institute Cluster — Aerospace and Space Technologies",
+      "description": "Подготовка и НИР в области космических технологий и инженерии (организационные единицы КазНУ — уточняйте актуальный состав на kaznu.kz)."
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 4.2,
+    "competitiveGpa": 3.6,
+    "competitiveSat": 1100,
+    "targetSat": 1280,
+    "competitiveUnt": 90,
+    "targetUnt": 110,
+    "minIelts": 5.5,
+    "modelNote": "КазНУ — крупный классический вуз: конкуренция на бюджет высокая; для mock Fit мягче SAT, сильнее UNT/школьный GPA. EN-программы встречаются точечно."
+  },
+  "scholarships": [
+    {
+      "name": "State educational grant (Kazakhstan)",
+      "requirements": "Competitive UNT + school portfolio; full tuition on grant track for citizens (policy varies by year).",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Rector’s merit list",
+      "requirements": "Top cohort GPA; may include partial contract discount in selected faculties — mock label.",
+      "aiRelevance": "Medium"
+    },
+    {
+      "name": "Regional youth support (mock)",
+      "requirements": "Documented residence in priority regions as per annual government lists.",
+      "aiRelevance": "Low"
+    }
+  ],
+  "programs": [
+    {
+      "id": "kaznu-bsc-mathematics",
+      "name": "BSc in Mathematics",
+      "facultyId": "kaznu-physmath",
+      "annualTuitionKzt": 1450000,
+      "field": "Science",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 78,
+      "matchReason": "Фундаментальная математика для тех, кто хочет ML/финансовую математику и академическую траекторию.",
+      "detailedDescription": [
+        "Анализ, алгебра, дифференциальные уравнения и дискретная математика с исследовательскими семинарами.",
+        "Мосты в магистратуру по прикладной математике, data science и преподаванию; конкурсы и олимпиадная подготовка.",
+        "Смежные кафедры позволяют подобрать минор по информатике или экономике."
+      ],
+      "entryRequirements": [
+        "UNT или эквивалент по профилю",
+        "Школьная математика высокого уровня",
+        "Собеседование на некоторые потоки"
+      ]
+    },
+    {
+      "id": "kaznu-bsc-molecular-biology",
+      "name": "BSc in Molecular Biology",
+      "facultyId": "kaznu-bio",
+      "annualTuitionKzt": 1680000,
+      "field": "Science",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian",
+      "fitScore": 74,
+      "matchReason": "Лабораторная биология и генетика — для абитуриентов с сильной химией и интересом к R&D.",
+      "detailedDescription": [
+        "Клеточная биология, генетика, биохимия и микробиология с проектами в кампусных лабораториях.",
+        "Практики в институтах и клиниках-партнёрах (иллюстративно); выход в магистратуру биомед."
+      ],
+      "entryRequirements": [
+        "Биология и химия в школьном аттестате",
+        "UNT профильный или внутренние экзамены",
+        "Медицинская книжка по запросу практик"
+      ]
+    },
+    {
+      "id": "kaznu-llb-law",
+      "name": "LL.B. in Law",
+      "facultyId": "kaznu-law",
+      "annualTuitionKzt": 1900000,
+      "field": "Law",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian",
+      "fitScore": 72,
+      "matchReason": "Классическое юридическое образование в крупнейшем правовом факультете страны (по репутации).",
+      "detailedDescription": [
+        "Гражданское, уголовное, конституционное и административное право; процессуальные дисциплины и клиники.",
+        "Судебные и ADR-модули, стажировки в госорганах и компаниях (описательно)."
+      ],
+      "entryRequirements": [
+        "Сильные гуманитарные оценки",
+        "Истории и обществознание",
+        "Конкурс портфолио/эссе — по годам"
+      ]
+    },
+    {
+      "id": "kaznu-ba-journalism",
+      "name": "B.A. in Journalism and Mass Communications",
+      "facultyId": "kaznu-journ",
+      "annualTuitionKzt": 1720000,
+      "field": "Humanities",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian",
+      "fitScore": 70,
+      "matchReason": "Медиа, креатив и цифровой сторителлинг — для пишущих и визуально сильных кандидатов.",
+      "detailedDescription": [
+        "Репортаж, радио, ТВ, цифровые платформы; этика, медиаправо и аналитика контента.",
+        "Учебные студии, макетное мастерство, соцсети и data-journalism вводные курсы."
+      ],
+      "entryRequirements": [
+        "Творческий конкурс / портфолио",
+        "Сочинение на вступительных (если предусмотрено)",
+        "UNT и внутр. испытания"
+      ]
+    },
+    {
+      "id": "kaznu-bsc-chemistry",
+      "name": "BSc in Chemistry",
+      "facultyId": "kaznu-chem",
+      "annualTuitionKzt": 1550000,
+      "field": "Science",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian",
+      "fitScore": 76,
+      "matchReason": "Органика, неорганика, аналитика — база для фармы, материалов и нефтехимии в Казахстане.",
+      "detailedDescription": [
+        "Лабораторный трек с инструментальными методами: спектроскопия, хроматография, синтез.",
+        "Связи с научно-исследовательскими лабораториями и отраслевыми стажировками."
+      ],
+      "entryRequirements": [
+        "Химия в аттестате",
+        "Конкурс UNT",
+        "Вступительные по химии — уточнять в год"
+      ]
+    },
+    {
+      "id": "kaznu-ba-translation",
+      "name": "B.A. in Translation Studies",
+      "facultyId": "kaznu-phil",
+      "annualTuitionKzt": 1380000,
+      "field": "Humanities",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian / English",
+      "fitScore": 69,
+      "matchReason": "Перевод и межкультурная коммуникация — трёхъязычные компетенции для дипломатии и бизнеса.",
+      "detailedDescription": [
+        "Теория и практика последовательного и письменного перевода, терминология, CAT-tools вводно.",
+        "Смежные курсы культурологии и деловой коммуникации; мосты в магистратуру лингвистики."
+      ],
+      "entryRequirements": [
+        "Высокий уровень языка (внутр. тесты)",
+        "ESH/олимпиады — плюс",
+        "Портфолио эссе"
+      ]
+    },
+    {
+      "id": "kaznu-msc-finance",
+      "name": "MSc in Finance",
+      "facultyId": "kaznu-hseb",
+      "annualTuitionKzt": 2800000,
+      "field": "Business",
+      "degree": "Master",
+      "durationYears": 2,
+      "language": "English / Russian",
+      "fitScore": 75,
+      "matchReason": "Корпоративные финансы и инвестиции для выпускников бакалавриата экономики и смежных полей.",
+      "detailedDescription": [
+        "DCF, рынки капитала, риск-менеджмент, финансовое моделирование в Excel/Python.",
+        "Кейсы с эмитентами KASE и международными стандартами отчётности — учебные симуляции."
+      ],
+      "entryRequirements": [
+        "Релевантный бакалавр",
+        "GMAT/внутренний экзамен — по году",
+        "IELTS 6.0+ для англоязычного потока"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "id": "your-institution-slug",
+  "name": "Official English name",
+  "nameRu": "Название по-русски",
+  "nameKk": "Атауы қазақша",
+  "officialWebsiteUrl": "https://example.edu.kz",
+  "admissionsEmail": "admissions@example.edu.kz",
+  "city": "City, Kazakhstan",
+  "foundedYear": 2000,
+  "type": "Comprehensive",
+  "languagesOfInstruction": ["Kazakh", "Russian", "English"],
+  "applicationDeadline": "2026-08-01",
+  "scholarshipBlurb": "Кратко про гранты и стипендии (демо).",
+  "heroImageUrl": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 1500000,
+    "maxKzt": 3500000,
+    "note": "Ориентир контрактной оплаты (mock)."
+  },
+  "faculties": [
+    {
+      "id": "your-inst-slug-main-faculty",
+      "name": "Faculty name EN",
+      "description": "Описание факультета."
+    }
+  ],
+  "scholarships": [],
+  "programs": [
+    {
+      "id": "your-inst-slug-bsc-sample",
+      "name": "BSc Sample Program",
+      "facultyId": "your-inst-slug-main-faculty",
+      "annualTuitionKzt": 2500000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 75,
+      "matchReason": "Краткое пояснение fit.",
+      "detailedDescription": ["Абзац 1.", "Абзац 2."],
+      "entryRequirements": ["ЕНТ / GPA", "Язык"]
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5.0,
+    "strongGpa": 4.5,
+    "competitiveGpa": 3.7,
+    "competitiveSat": 1200,
+    "targetSat": 1350,
+    "competitiveUnt": 95,
+    "targetUnt": 110,
+    "minIelts": 6.0,
+    "modelNote": "Не официальные пороги приёма — только ориентир для демо Fit."
+  }
+}

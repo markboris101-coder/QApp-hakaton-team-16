@@ -1,0 +1,230 @@
+{
+  "id": "aitu",
+  "name": "Astana IT University",
+  "nameRu": "Университет Astana IT",
+  "nameKk": "Astana IT университеті",
+  "officialWebsiteUrl": "https://astanait.edu.kz",
+  "admissionsEmail": "admissions@astanait.edu.kz",
+  "city": "Astana, Kazakhstan",
+  "foundedYear": 2019,
+  "type": "Technical",
+  "languagesOfInstruction": [
+    "English",
+    "Kazakh",
+    "Russian"
+  ],
+  "applicationDeadline": "2026-06-15",
+  "scholarshipBlurb": "Tech-talent grants, digital innovation stipends and partner-company co-funding for strong computing applicants (mock).",
+  "heroImageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 5000000,
+    "maxKzt": 6500000,
+    "note": "IT-бакалавриат в Astana IT U.; partner-треки и лаборатории могут менять стоимость (mock)."
+  },
+  "faculties": [
+    {
+      "id": "aitu-computing",
+      "name": "School of Digital Technologies & Computing",
+      "description": "Базовый контур AITU: computer science, software engineering, data и робототехника с практикой в продуктовых командах и хакатонах."
+    },
+    {
+      "id": "aitu-cyber",
+      "name": "Institute of Cybersecurity & Digital Resilience",
+      "description": "Защита информации, криптография, SOC-практики и безопасная разработка; сценарии red/blue team и compliance."
+    },
+    {
+      "id": "aitu-digital-econ",
+      "name": "School of Digital Economy & Innovation",
+      "description": "Цифровой бизнес, продукт, аналитика и инновационное предпринимательство на стыке менеджмента и tech."
+    },
+    {
+      "id": "aitu-iot",
+      "name": "Institute of Smart Systems and IoT",
+      "description": "Встраиваемые системы, датчики, промышленный IoT и edge-вычисления; прототипирование умных кампусных и городских решений."
+    },
+    {
+      "id": "aitu-govtech",
+      "name": "Faculty of Digital Economy and Public Sector Innovation",
+      "description": "Цифровизация услуг, данные государственных реестров и этика автоматизации — кейсы для smart-city и e-government."
+    },
+    {
+      "id": "aitu-design-digital",
+      "name": "School of Digital Arts and Interaction Design",
+      "description": "UX/UI, медиа-дизайн и продуктовый дизайн для IT-сервисов; связка с разработкой через agile-команды учебных студий."
+    },
+    {
+      "id": "aitu-resilience",
+      "name": "Center for IT Infrastructure Resilience (учебный блок)",
+      "description": "Облака, отказоустойчивость, DevOps-практики и эксплуатация больших систем — как дополнительный трек для инженеров платформы."
+    },
+    {
+      "id": "aitu-digital-mining",
+      "name": "Institute of Digital Mining, Geoinformatics and Subsurface Data",
+      "description": "Геоинформатика, цифровые двойники месторождений и аналитика добывающих данных — трек для казахстанского нефтегазово-горного сектора."
+    },
+    {
+      "id": "aitu-fintech",
+      "name": "Institute of Financial Technologies, Blockchain and RegTech",
+      "description": "Финтех, распределённые реестры, комплаенс и цифровые платежи; лаборатории с банками и IT-регуляторикой (учебные кейсы)."
+    },
+    {
+      "id": "aitu-edtech",
+      "name": "Institute of Educational Technologies and Learning Analytics",
+      "description": "LMS, адаптивное обучение, аналитика успеваемости и дизайн цифровых курсов; связка с EdTech-стартапами Астаны."
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 4.5,
+    "competitiveGpa": 3.85,
+    "competitiveSat": 1240,
+    "targetSat": 1420,
+    "competitiveUnt": 105,
+    "targetUnt": 122,
+    "minIelts": 6,
+    "modelNote": "AITU ориентирован на IT и цифровую экономику; Fit-модель подчёркивает математику, программирование и английский для англоязычных потоков."
+  },
+  "scholarships": [
+    {
+      "name": "AITU Digital Talent Grant",
+      "requirements": "Portfolio of coding projects, hackathons or olympiads; competitive GPA; English for English-medium tracks.",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Need-aware tech access award",
+      "requirements": "Documented financial constraints plus satisfactory academic progress; limited seats per cycle (mock).",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Industry partner fellowship",
+      "requirements": "Co-funded placements with technology employers; interview and technical screening — illustrative MVP entry.",
+      "aiRelevance": "Medium"
+    },
+    {
+      "name": "Regional ICT scholarship",
+      "requirements": "Priority for applicants from designated regions of Kazakhstan per annual policy — demo placeholder.",
+      "aiRelevance": "Low"
+    }
+  ],
+  "programs": [
+    {
+      "id": "aitu-bsc-computer-science",
+      "name": "BSc in Computer Science",
+      "facultyId": "aitu-computing",
+      "annualTuitionKzt": 5800000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 86,
+      "matchReason": "Core CS plus cloud and software engineering electives — flagship tech pathway at AITU.",
+      "detailedDescription": [
+        "Programming, discrete math, systems and theory with project-based learning.",
+        "Strong ecosystem ties to Astana tech hub — mock narrative."
+      ],
+      "entryRequirements": [
+        "IELTS 6.0+",
+        "Mathematics and informatics",
+        "Portfolio recommended"
+      ]
+    },
+    {
+      "id": "aitu-bsc-big-data",
+      "name": "BSc in Big Data Analytics",
+      "facultyId": "aitu-computing",
+      "annualTuitionKzt": 5600000,
+      "field": "Science",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 84,
+      "matchReason": "Statistics, distributed systems and ML pipelines — ideal for data-minded applicants.",
+      "detailedDescription": [
+        "Data engineering, visualization and modeling coursework."
+      ],
+      "entryRequirements": [
+        "Strong math",
+        "IELTS 6.0+",
+        "Problem-solving assessment"
+      ]
+    },
+    {
+      "id": "aitu-bsc-cybersecurity",
+      "name": "BSc in Cybersecurity",
+      "facultyId": "aitu-cyber",
+      "annualTuitionKzt": 6000000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 82,
+      "matchReason": "Network security, cryptography labs and blue/red team exercises — hands-on defensive security.",
+      "detailedDescription": [
+        "Ethical hacking basics and secure software development practices."
+      ],
+      "entryRequirements": [
+        "IELTS 6.0+",
+        "Logical reasoning",
+        "Clean disciplinary record"
+      ]
+    },
+    {
+      "id": "aitu-ba-digital-business",
+      "name": "B.A. in Digital Business",
+      "facultyId": "aitu-digital-econ",
+      "annualTuitionKzt": 5200000,
+      "field": "Business",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 78,
+      "matchReason": "Product, analytics and digital marketing at the intersection of tech and management.",
+      "detailedDescription": [
+        "Lean startup projects and analytics tooling — mock summary."
+      ],
+      "entryRequirements": [
+        "IELTS 6.0+",
+        "Quantitative readiness"
+      ]
+    },
+    {
+      "id": "aitu-bsc-software-engineering",
+      "name": "BSc in Software Engineering",
+      "facultyId": "aitu-computing",
+      "annualTuitionKzt": 6100000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 87,
+      "matchReason": "End-to-end software delivery, agile teams and quality assurance — strong alignment with product-oriented students.",
+      "detailedDescription": [
+        "Design patterns, testing, DevOps introduction and capstone industry projects."
+      ],
+      "entryRequirements": [
+        "Git/portfolio plus GPA",
+        "IELTS 6.0+"
+      ]
+    },
+    {
+      "id": "aitu-bsc-robotics-ai",
+      "name": "BSc in Robotics and Intelligent Systems",
+      "facultyId": "aitu-computing",
+      "annualTuitionKzt": 5900000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 80,
+      "matchReason": "Embedded AI, perception and control — bridges mechanical intuition with AI tooling.",
+      "detailedDescription": [
+        "ROS-style projects and interdisciplinary labs — illustrative."
+      ],
+      "entryRequirements": [
+        "Physics & math",
+        "IELTS 6.0+",
+        "Creative portfolio"
+      ]
+    }
+  ]
+}

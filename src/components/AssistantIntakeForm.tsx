@@ -134,12 +134,13 @@ export function AssistantIntakeForm({ onComplete }: Props) {
 
   return (
     <motion.section
+      id="assistant-intake-form"
       layout
       initial={{ opacity: 0, y: 14 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -12 }}
       transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-      className="rounded-3xl border-2 border-indigo-200/90 bg-white p-6 shadow-xl shadow-indigo-100/40 ring-1 ring-indigo-100/80 sm:p-8"
+      className="scroll-mt-28 rounded-3xl border-2 border-indigo-200/90 bg-white p-6 shadow-xl shadow-indigo-100/40 ring-1 ring-indigo-100/80 sm:p-8"
     >
       <p className="text-xs font-bold uppercase tracking-[0.14em] text-indigo-600">{t("intake.step")}</p>
       <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">{t("intake.title")}</h2>

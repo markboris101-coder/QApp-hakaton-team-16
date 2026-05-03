@@ -1,8 +1,11 @@
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { useProfile } from "../context/ProfileContext";
 import { ProfileEditorForm } from "../components/ProfileEditorForm";
+import { DemoAnalyticsPanel } from "../components/DemoAnalyticsPanel";
+import { bumpProfileVisit } from "../lib/demoAnalytics";
 import { getUniversityDisplayName } from "../lib/universityLabels";
 
 const SHELL = "mx-auto w-full max-w-[min(100%,1400px)] px-4 sm:px-6";
@@ -19,6 +22,10 @@ export function ProfilePage() {
     toggleFavoriteUniversity,
     setSelectedUniversityId,
   } = useProfile();
+
+  useEffect(() => {
+    bumpProfileVisit();
+  }, []);
 
   return (
     <motion.div
@@ -100,6 +107,8 @@ export function ProfilePage() {
         <div className="mt-10">
           <ProfileEditorForm student={student} onStudentChange={setStudent} />
         </div>
+
+        <DemoAnalyticsPanel />
       </div>
     </motion.div>
   );

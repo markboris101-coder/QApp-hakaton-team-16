@@ -1,0 +1,236 @@
+{
+  "id": "buketov",
+  "name": "Karaganda University named after E.A. Buketov",
+  "nameRu": "Карагандинский университет имени Е.А. Букетова",
+  "nameKk": "Е.А. Букетов атындағы Қарағанды университеті",
+  "city": "Karaganda, Kazakhstan",
+  "foundedYear": 1972,
+  "type": "Comprehensive",
+  "languagesOfInstruction": [
+    "Kazakh",
+    "Russian",
+    "English"
+  ],
+  "applicationDeadline": "2026-08-10",
+  "scholarshipBlurb": "Государственные образовательные гранты, социальные стипендии и поддержка талантливой молодёжи по правилам приёмной кампании.",
+  "heroImageUrl": "https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 900000,
+    "maxKzt": 2600000,
+    "note": "Ориентир контрактного обучения; гранты — по конкурсу ЕНТ (уточняйте на приёмной комиссии)."
+  },
+  "faculties": [
+    {
+      "id": "buket-bio-geo",
+      "name": "Faculty of Biology and Geography",
+      "nameRu": "Факультет биологии и географии",
+      "nameKk": "Биология және география факультеті",
+      "description": "Botany, zoology, physiology, geography; field courses in the ecosystems of Central Kazakhstan.",
+      "descriptionRu": "Ботаника, зоология, физиология человека и животных, география; полевые практики в экосистемах Центрального Казахстана.",
+      "descriptionKk": "Ботаника, зоология, физиология, география; Орталық Қазақстан экожүйелерінде өріс тәжірибелері."
+    },
+    {
+      "id": "buket-history",
+      "name": "Faculty of History",
+      "nameRu": "Исторический факультет",
+      "nameKk": "Тарих факультеті",
+      "description": "Archaeology, ethnology, national and world history; museum projects and regional heritage.",
+      "descriptionRu": "Археология, этнология, история Казахстана и мировая история; музейные проекты и краеведение региона.",
+      "descriptionKk": "Археология, этнология, Қазақстан тарихы және дүние тарихы; мұражай жобалары."
+    },
+    {
+      "id": "buket-foreign",
+      "name": "Faculty of Foreign Languages",
+      "nameRu": "Факультет иностранных языков",
+      "nameKk": "Шет тілдері факультеті",
+      "description": "Foreign philology, translation theory, intensive language training for teachers and translators.",
+      "descriptionRu": "Иностранная филология, теория и практика перевода, практические курсы языков для преподавателей и переводчиков.",
+      "descriptionKk": "Шет филологиясы, аударма теориясы мен тәжірибесі, оқытушылар мен аудармашыларға арналған курстар."
+    },
+    {
+      "id": "buket-math-it",
+      "name": "Faculty of Mathematics and Information Technology",
+      "nameRu": "Факультет математики и информационных технологий",
+      "nameKk": "Математика және ақпараттық технологиялар факультеті",
+      "description": "Pure and applied mathematics, computer science, software engineering and educational IT.",
+      "descriptionRu": "Теоретическая и прикладная математика, информатика, программная инженерия и IT в образовании.",
+      "descriptionKk": "Теориялық және қолданбалы математика, информатика, бағдарламалық инженерия."
+    },
+    {
+      "id": "buket-ped",
+      "name": "Pedagogical Faculty",
+      "nameRu": "Педагогический факультет",
+      "nameKk": "Педагогика факультеті",
+      "description": "Teacher education for schools; subject methodology, inclusive practices and classroom labs.",
+      "descriptionRu": "Подготовка учителей для школ; методики предметов, инклюзивные практики и учебные мастерские.",
+      "descriptionKk": "Мектеп мұғалімдерін даярлау; пән әдістемелері, инклюзиялық тәжірибе."
+    },
+    {
+      "id": "buket-phys-tech",
+      "name": "Faculty of Physics and Technology",
+      "nameRu": "Факультет физики и технологии",
+      "nameKk": "Физика және технология факультеті",
+      "description": "Physics, engineering physics, instrumentation and applied labs tied to regional industry.",
+      "descriptionRu": "Физика, инженерная физика, приборостроение и прикладные лаборатории с опорой на региональную промышленность.",
+      "descriptionKk": "Физика, инженерлік физика, аспап жасау және өңдеу салаларымен байланысты зертханалар."
+    },
+    {
+      "id": "buket-sport",
+      "name": "Faculty of Physical Culture and Sports",
+      "nameRu": "Факультет физической культуры и спорта",
+      "nameKk": "Дене шынықтыру және спорт факультеті",
+      "description": "Coaching, physical education teaching, sports science basics and regional athletics partnerships.",
+      "descriptionRu": "Тренерская подготовка, физкультура в школе, основы спортивной науки и партнёрства с региональным спортом.",
+      "descriptionKk": "Бапкерлік, мектеп дене тәрбиесі, спорт ғылымының негіздері."
+    },
+    {
+      "id": "buket-philology",
+      "name": "Faculty of Philology",
+      "nameRu": "Филологический факультет",
+      "nameKk": "Филология факультеті",
+      "description": "Kazakh and Russian philology, literature, linguistics and teacher preparation.",
+      "descriptionRu": "Казахская и русская филология, литература, лингвистика и подготовка преподавателей языка и литературы.",
+      "descriptionKk": "Қазақ және орыс филологиясы, әдебиет, лингвистика."
+    },
+    {
+      "id": "buket-phil-psy",
+      "name": "Faculty of Philosophy and Psychology",
+      "nameRu": "Факультет философии и психологии",
+      "nameKk": "Философия және психология факультеті",
+      "description": "Philosophy, ethics, practical and educational psychology for schools and social services.",
+      "descriptionRu": "Философия, этика, практическая и педагогическая психология для школ и социальной сферы.",
+      "descriptionKk": "Философия, этика, практикалық және педагогикалық психология."
+    },
+    {
+      "id": "buket-chem",
+      "name": "Faculty of Chemistry",
+      "nameRu": "Химический факультет",
+      "nameKk": "Химия факультеті",
+      "description": "Chemical sciences, laboratory safety, materials and environmental chemistry projects.",
+      "descriptionRu": "Химические науки, безопасность в лаборатории, материалы и проекты по экологической химии.",
+      "descriptionKk": "Химия ғылымдары, зертхана қауіпсіздігі, материалтану және экологиялық химия."
+    },
+    {
+      "id": "buket-econ",
+      "name": "Faculty of Economics",
+      "nameRu": "Экономический факультет",
+      "nameKk": "Экономика факультеті",
+      "description": "Economic theory, finance, management and digital analytics for enterprises.",
+      "descriptionRu": "Экономическая теория, финансы, менеджмент и цифровая аналитика для предприятий региона.",
+      "descriptionKk": "Экономикалық теория, қаржы, менеджмент және кәсіпорындарға сандық талдау."
+    },
+    {
+      "id": "buket-law",
+      "name": "Faculty of Law",
+      "nameRu": "Юридический факультет",
+      "nameKk": "Заң факультеті",
+      "description": "Civil, criminal and administrative law of Kazakhstan; legal clinics and moot practice.",
+      "descriptionRu": "Гражданское, уголовное и административное право РК; юридические клиники и практика мут-кортов.",
+      "descriptionKk": "ҚР азаматтық, қылмыстық және әкімшілік құқық; заң клиникалары."
+    },
+    {
+      "id": "buket-military",
+      "name": "Military Department",
+      "nameRu": "Военная кафедра",
+      "nameKk": "Әскери кафедра",
+      "description": "Basic military training and territorial defence modules for students of compatible programmes.",
+      "descriptionRu": "Начальная военная подготовка и модули территориальной обороны для студентов совместимых программ.",
+      "descriptionKk": "Бастапқы әскери дайындық және үйлесімді бағдарламалар студенттеріне арналған модульдер."
+    },
+    {
+      "id": "buket-add-ed",
+      "name": "Faculty of Additional Education",
+      "nameRu": "Факультет дополнительного образования",
+      "nameKk": "Қосымша білім беру факультеті",
+      "description": "Lifelong learning, retraining, preparatory and certificate programmes for working adults.",
+      "descriptionRu": "Непрерывное образование, переподготовка, подготовительные и сертификационные программы для работающих.",
+      "descriptionKk": "Өмір бойы оқу, қайта даярлау, дайындық және сертификаттау бағдарламалары."
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 4,
+    "competitiveGpa": 3.4,
+    "competitiveSat": 980,
+    "targetSat": 1140,
+    "competitiveUnt": 75,
+    "targetUnt": 95,
+    "minIelts": 5,
+    "modelNote": "Региональный классический университет; конкурс на грант ниже столичного «топа», но популярные педагогические и IT-направления требуют стабильного UNT."
+  },
+  "scholarships": [
+    {
+      "name": "Государственный образовательный грант",
+      "requirements": "Конкурс ЕНТ для граждан РК по квотам года.",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Стипендия имени Е.А. Букетова (мерит)",
+      "requirements": "Высокий GPA и участие в научных/олимпиадных проектах вуза.",
+      "aiRelevance": "Medium"
+    }
+  ],
+  "programs": [
+    {
+      "id": "buket-bsc-biology",
+      "name": "BSc in Biology",
+      "facultyId": "buket-bio-geo",
+      "annualTuitionKzt": 1650000,
+      "field": "Science",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 74,
+      "matchReason": "Естественно-научная подготовка с полевыми практиками в регионе.",
+      "detailedDescription": [
+        "Ботаника, зоология, экология.",
+        "Лаборатории и летние практики."
+      ],
+      "entryRequirements": [
+        "Биология и география в сертификате",
+        "ЕНТ"
+      ]
+    },
+    {
+      "id": "buket-bsc-it-math",
+      "name": "BSc in Information Systems",
+      "facultyId": "buket-math-it",
+      "annualTuitionKzt": 1850000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 77,
+      "matchReason": "Прикладной IT и математика для регионального рынка труда.",
+      "detailedDescription": [
+        "Программирование, базы данных.",
+        "Проекты с партнёрами города."
+      ],
+      "entryRequirements": [
+        "Математика",
+        "Информатика желательна",
+        "ЕНТ"
+      ]
+    },
+    {
+      "id": "buket-llb-law",
+      "name": "LL.B. in Law",
+      "facultyId": "buket-law",
+      "annualTuitionKzt": 1720000,
+      "field": "Law",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 73,
+      "matchReason": "Базовое юридическое образование с практикой в юрклинике.",
+      "detailedDescription": [
+        "Материальное и процессуальное право РК.",
+        "Кейсы и мот-к."
+      ],
+      "entryRequirements": [
+        "История Казахстана и всемирная история",
+        "ЕНТ"
+      ]
+    }
+  ]
+}

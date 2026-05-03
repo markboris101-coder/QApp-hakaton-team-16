@@ -1,0 +1,213 @@
+{
+  "id": "semeymu",
+  "name": "Semey Medical University",
+  "nameRu": "Семейский медицинский университет",
+  "nameKk": "Семей медицина университеті",
+  "officialWebsiteUrl": "https://smu.edu.kz",
+  "admissionsEmail": "priem@smu.edu.kz",
+  "city": "Semey, Kazakhstan",
+  "foundedYear": 1953,
+  "type": "Comprehensive",
+  "languagesOfInstruction": [
+    "Russian",
+    "Kazakh"
+  ],
+  "applicationDeadline": "2026-07-05",
+  "scholarshipBlurb": "Гранты Минздрава и региональные квоты; поддержка студентов сельских территорий ВКО.",
+  "heroImageUrl": "https://images.unsplash.com/photo-1584515933487-92f68f65f28f?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 2400000,
+    "maxKzt": 4600000,
+    "note": "Медицина и педиатрия — разные тарифы по годам обучения."
+  },
+  "faculties": [
+    {
+      "id": "semeymu-medicine",
+      "name": "Faculty of Medicine",
+      "description": "Лечебное дело, клинические дисциплины."
+    },
+    {
+      "id": "semeymu-pediatrics",
+      "name": "Faculty of Pediatrics",
+      "description": "Детские специальности и семейная медицина."
+    },
+    {
+      "id": "semeymu-medbio",
+      "name": "Faculty of Medicine and Biology",
+      "description": "Базовые науки для клинических программ."
+    },
+    {
+      "id": "semeymu-dental",
+      "name": "Faculty of Dentistry",
+      "description": "Стоматология общей практики."
+    },
+    {
+      "id": "semeymu-pharm",
+      "name": "Faculty of Pharmacy",
+      "description": "Фармация и управление качеством ЛС."
+    },
+    {
+      "id": "semeymu-public",
+      "name": "Faculty of Public Health",
+      "description": "Санитария, эпидемиология, управление здравоохранением."
+    },
+    {
+      "id": "semeymu-postgrad",
+      "name": "Faculty of Additional Medical Education",
+      "description": "Усовершенствование и специализации (справочник)."
+    },
+    {
+      "id": "semeymu-nursing",
+      "name": "Faculty of Nursing",
+      "description": "Средний и высший медицинский персонал."
+    },
+    {
+      "id": "semeymu-lang",
+      "name": "Department of Fundamental Disciplines",
+      "description": "Биофизика, биохимия, латынь."
+    }
+  ],
+  "scholarships": [
+    {
+      "name": "Грант Минздрава РК",
+      "requirements": "Конкурс ЕНТ по медицинским направлениям.",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Региональная поддержка ВКО",
+      "requirements": "Регистрация в области и социальный пакет.",
+      "aiRelevance": "Medium"
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 4.35,
+    "competitiveGpa": 3.75,
+    "competitiveSat": 1180,
+    "targetSat": 1320,
+    "competitiveUnt": 108,
+    "targetUnt": 122,
+    "minIelts": 5.5,
+    "modelNote": "Демо-модель Fit для QApp; официальные пороги и правила года набора — только на сайте вуза."
+  },
+  "programs": [
+    {
+      "id": "semeymu-md-medicine",
+      "name": "MD General Medicine",
+      "facultyId": "semeymu-medicine",
+      "annualTuitionKzt": 4500000,
+      "field": "Medicine",
+      "degree": "Bachelor",
+      "durationYears": 6,
+      "language": "Russian / Kazakh",
+      "fitScore": 86,
+      "matchReason": "Классическая медицина с учебной базой на ВКО.",
+      "detailedDescription": [
+        "Ранние стажировки в поликлиниках.",
+        "Основы УЗ-диагностики."
+      ],
+      "entryRequirements": [
+        "Биология и химия",
+        "ЕНТ"
+      ]
+    },
+    {
+      "id": "semeymu-md-pediatrics",
+      "name": "MD Pediatrics",
+      "facultyId": "semeymu-pediatrics",
+      "annualTuitionKzt": 4400000,
+      "field": "Medicine",
+      "degree": "Bachelor",
+      "durationYears": 6,
+      "language": "Russian / Kazakh",
+      "fitScore": 84,
+      "matchReason": "Для тех, кто хочет работать с детьми и семьями.",
+      "detailedDescription": [
+        "Неонатология модуль.",
+        "Вакцинационные протоколы."
+      ],
+      "entryRequirements": [
+        "Биология",
+        "ЕНТ"
+      ]
+    },
+    {
+      "id": "semeymu-bds",
+      "name": "BDS Dentistry",
+      "facultyId": "semeymu-dental",
+      "annualTuitionKzt": 3900000,
+      "field": "Medicine",
+      "degree": "Bachelor",
+      "durationYears": 5,
+      "language": "Russian / Kazakh",
+      "fitScore": 82,
+      "matchReason": "Стоматология с упором на первичную помощь.",
+      "detailedDescription": [
+        "Учебная клиника.",
+        "Ортопедические основы."
+      ],
+      "entryRequirements": [
+        "Биология",
+        "Химия"
+      ]
+    },
+    {
+      "id": "semeymu-bpharm",
+      "name": "BPharm",
+      "facultyId": "semeymu-pharm",
+      "annualTuitionKzt": 3200000,
+      "field": "Science",
+      "degree": "Bachelor",
+      "durationYears": 5,
+      "language": "Russian / Kazakh",
+      "fitScore": 78,
+      "matchReason": "Фармацевт для городских и сельских аптек.",
+      "detailedDescription": [
+        "Технология лекарственных форм.",
+        "Клиническая фармация intro."
+      ],
+      "entryRequirements": [
+        "Химия",
+        "Биология"
+      ]
+    },
+    {
+      "id": "semeymu-bsc-public-health",
+      "name": "BSc Public Health",
+      "facultyId": "semeymu-public",
+      "annualTuitionKzt": 2600000,
+      "field": "Social Sciences",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 74,
+      "matchReason": "Системное здравоохранение региона.",
+      "detailedDescription": [
+        "Эпидемиология полевая практика."
+      ],
+      "entryRequirements": [
+        "Математика",
+        "Биология"
+      ]
+    },
+    {
+      "id": "semeymu-bsc-nursing",
+      "name": "BSc Nursing",
+      "facultyId": "semeymu-nursing",
+      "annualTuitionKzt": 2400000,
+      "field": "Medicine",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian",
+      "fitScore": 73,
+      "matchReason": "Сестринское дело для стационаров.",
+      "detailedDescription": [
+        "Симуляции экстренной помощи."
+      ],
+      "entryRequirements": [
+        "Биология",
+        "ЕНТ"
+      ]
+    }
+  ]
+}

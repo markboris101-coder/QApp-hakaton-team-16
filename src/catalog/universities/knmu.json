@@ -1,0 +1,219 @@
+{
+  "id": "knmu",
+  "name": "Kazakh National Medical University",
+  "nameRu": "Казахский национальный медицинский университет",
+  "nameKk": "Қазақ ұлттық медицина университеті",
+  "officialWebsiteUrl": "https://www.kaznmu.edu.kz",
+  "admissionsEmail": "info@kaznmu.edu.kz",
+  "city": "Almaty, Kazakhstan",
+  "foundedYear": 1931,
+  "type": "Research",
+  "languagesOfInstruction": [
+    "Russian",
+    "Kazakh",
+    "English"
+  ],
+  "applicationDeadline": "2026-06-20",
+  "scholarshipBlurb": "Государственные гранты на медицину высокого конкурса; именные стипендии кафедр и поддержка исследовательских стажировок.",
+  "heroImageUrl": "https://images.unsplash.com/photo-1579684385127-1ef15d5081ad?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 2800000,
+    "maxKzt": 5500000,
+    "note": "Медицинские программы дороже из-за клинических модулей и симуляционных центров."
+  },
+  "faculties": [
+    {
+      "id": "knmu-general-med",
+      "name": "General Medicine",
+      "description": "Шестилетний цикл врача общей практики с ранней клиникой."
+    },
+    {
+      "id": "knmu-pediatrics",
+      "name": "Pediatrics",
+      "description": "Детские болезни, неонатология, прививочные программы."
+    },
+    {
+      "id": "knmu-stomatology",
+      "name": "Dentistry",
+      "nameRu": "Стоматология",
+      "description": "Терапия, ортопедия, челюстно-лицевая хирургия."
+    },
+    {
+      "id": "knmu-pharmacy",
+      "name": "Pharmacy",
+      "description": "Клиническая фармация и управление лекарственным обеспечением."
+    },
+    {
+      "id": "knmu-public-health",
+      "name": "Public Health",
+      "description": "Эпидемиология, управление здравоохранением."
+    },
+    {
+      "id": "knmu-nursing",
+      "name": "Nursing and Rehabilitation",
+      "description": "Сестринское дело высшего уровня."
+    },
+    {
+      "id": "knmu-biomedicine",
+      "name": "Biomedical Sciences",
+      "description": "Молекулярная биология для медицинских исследований."
+    },
+    {
+      "id": "knmu-postgrad",
+      "name": "Postgraduate Medical Education",
+      "description": "Ординатура и переподготовка (демо-справочник)."
+    },
+    {
+      "id": "knmu-languages",
+      "name": "Medical Humanities & Languages",
+      "description": "Латинский язык медицины, этика, коммуникация с пациентом."
+    }
+  ],
+  "scholarships": [
+    {
+      "name": "Государственный грант на медицину",
+      "requirements": "Высокий ЕНТ для граждан РК.",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Стипендия за научную работу студента",
+      "requirements": "Публикации или конференции NMU Student.",
+      "aiRelevance": "Medium"
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 4.35,
+    "competitiveGpa": 3.75,
+    "competitiveSat": 1180,
+    "targetSat": 1320,
+    "competitiveUnt": 115,
+    "targetUnt": 128,
+    "minIelts": 6,
+    "modelNote": "Демо-модель Fit для QApp; официальные пороги и правила года набора — только на сайте вуза."
+  },
+  "programs": [
+    {
+      "id": "knmu-md-general-medicine",
+      "name": "MD General Medicine",
+      "facultyId": "knmu-general-med",
+      "annualTuitionKzt": 4800000,
+      "field": "Medicine",
+      "degree": "Bachelor",
+      "durationYears": 6,
+      "language": "Russian / Kazakh",
+      "fitScore": 88,
+      "matchReason": "Классический путь врача с интегрированными клиническими ротациями.",
+      "detailedDescription": [
+        "Анатомия VR-лаборатории.",
+        "Госпитальные блоки с наставниками."
+      ],
+      "entryRequirements": [
+        "Биология и химия — высокие баллы",
+        "ЕНТ конкурс"
+      ]
+    },
+    {
+      "id": "knmu-bds-dentistry",
+      "name": "BDS Dentistry",
+      "facultyId": "knmu-stomatology",
+      "annualTuitionKzt": 4200000,
+      "field": "Medicine",
+      "degree": "Bachelor",
+      "durationYears": 5,
+      "language": "Russian / Kazakh",
+      "fitScore": 85,
+      "matchReason": "Стоматологическая подготовка с учебной клиникой.",
+      "detailedDescription": [
+        "Мануальные навыки на фантомах.",
+        "Ортодонтия основ."
+      ],
+      "entryRequirements": [
+        "Биология",
+        "Химия",
+        "Конкурс ЕНТ"
+      ]
+    },
+    {
+      "id": "knmu-bpharm-pharmacy",
+      "name": "BPharm Pharmacy",
+      "facultyId": "knmu-pharmacy",
+      "annualTuitionKzt": 3600000,
+      "field": "Science",
+      "degree": "Bachelor",
+      "durationYears": 5,
+      "language": "Russian / Kazakh",
+      "fitScore": 81,
+      "matchReason": "Фармацевт для аптечных и клинических команд.",
+      "detailedDescription": [
+        "Фармакология.",
+        "Good pharmacy practice."
+      ],
+      "entryRequirements": [
+        "Химия и биология",
+        "ЕНТ"
+      ]
+    },
+    {
+      "id": "knmu-bsc-public-health",
+      "name": "BSc Public Health",
+      "facultyId": "knmu-public-health",
+      "annualTuitionKzt": 3100000,
+      "field": "Social Sciences",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English / Russian",
+      "fitScore": 77,
+      "matchReason": "Для тех, кто хочет системные решения в здравоохранении, не только клинику.",
+      "detailedDescription": [
+        "Статистика здравоохранения.",
+        "Полевые опросы."
+      ],
+      "entryRequirements": [
+        "Математика",
+        "Биология",
+        "IELTS 5.5+ для англ. потока"
+      ]
+    },
+    {
+      "id": "knmu-bsc-nursing",
+      "name": "BSc Nursing",
+      "facultyId": "knmu-nursing",
+      "annualTuitionKzt": 2900000,
+      "field": "Medicine",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian",
+      "fitScore": 75,
+      "matchReason": "Сестринский менеджмент и координация ухода.",
+      "detailedDescription": [
+        "Симуляционный центр.",
+        "Коммуникация с пациентами."
+      ],
+      "entryRequirements": [
+        "Биология",
+        "ЕНТ"
+      ]
+    },
+    {
+      "id": "knmu-bsc-biomedical",
+      "name": "BSc Biomedical Sciences",
+      "facultyId": "knmu-biomedicine",
+      "annualTuitionKzt": 3400000,
+      "field": "Science",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 80,
+      "matchReason": "Мост к магистратурам и medical research.",
+      "detailedDescription": [
+        "Лабораторные техники.",
+        "Научные семинары."
+      ],
+      "entryRequirements": [
+        "IELTS 6.0+",
+        "Сильная химия/биология"
+      ]
+    }
+  ]
+}

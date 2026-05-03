@@ -1,0 +1,216 @@
+{
+  "id": "narxoz",
+  "name": "Turan-Astana University (ex-Narxoz)",
+  "nameRu": "Университет Туран-Астана (правопреемник Narxoz)",
+  "nameKk": "Түркістан-Астана университеті (Narxoz мұрагері)",
+  "officialWebsiteUrl": "https://turan-astana.edu.kz",
+  "admissionsEmail": "admission@turan-astana.edu.kz",
+  "city": "Astana, Kazakhstan",
+  "foundedYear": 1963,
+  "type": "Liberal Arts",
+  "languagesOfInstruction": [
+    "Kazakh",
+    "Russian",
+    "English"
+  ],
+  "applicationDeadline": "2026-07-25",
+  "scholarshipBlurb": "Экономика, финансы и управление; гранты на социально значимые специальности и англоязычные потоки.",
+  "heroImageUrl": "https://images.unsplash.com/photo-1556761175-b893da4e6fb9?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 2000000,
+    "maxKzt": 4500000,
+    "note": "Бизнес и финансы — верхняя часть диапазона; гуманитарные программы ниже."
+  },
+  "faculties": [
+    {
+      "id": "narxoz-finance",
+      "name": "Finance and Accounting",
+      "description": "Финансовый менеджмент, аудит, налогообложение."
+    },
+    {
+      "id": "narxoz-management",
+      "name": "Management and Marketing",
+      "description": "Стратегия, бренды, digital-маркетинг."
+    },
+    {
+      "id": "narxoz-econ",
+      "name": "School of Economics",
+      "description": "Микро/макро, экономическая политика."
+    },
+    {
+      "id": "narxoz-law",
+      "name": "Law and International Business Law",
+      "description": "Корпоративное право, международные контракты."
+    },
+    {
+      "id": "narxoz-digital",
+      "name": "Digital Economy and Analytics",
+      "description": "Данные, SQL, бизнес-аналитика."
+    },
+    {
+      "id": "narxoz-lang",
+      "name": "Languages and Communication",
+      "description": "Деловой английский, перевод."
+    },
+    {
+      "id": "narxoz-public-admin",
+      "name": "Public Administration",
+      "description": "Госсектор, Smart City основы."
+    },
+    {
+      "id": "narxoz-tourism",
+      "name": "Hospitality and Tourism Economics",
+      "description": "Инвестиции в туристический сектор."
+    },
+    {
+      "id": "narxoz-found",
+      "name": "Foundation Year",
+      "description": "Подготовка к экономическим бакалавриатам."
+    }
+  ],
+  "scholarships": [
+    {
+      "name": "Грант на экономику и финансы",
+      "requirements": "Высокий ЕНТ по математике.",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Международная стипендия ENG-потока",
+      "requirements": "IELTS 6.5+ и GPA школы.",
+      "aiRelevance": "Medium"
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 4.35,
+    "competitiveGpa": 3.85,
+    "competitiveSat": 1180,
+    "targetSat": 1320,
+    "competitiveUnt": 90,
+    "targetUnt": 110,
+    "minIelts": 5.5,
+    "modelNote": "Демо-модель Fit для QApp; официальные пороги и правила года набора — только на сайте вуза."
+  },
+  "programs": [
+    {
+      "id": "narxoz-bfinance",
+      "name": "Bachelor of Finance",
+      "facultyId": "narxoz-finance",
+      "annualTuitionKzt": 3200000,
+      "field": "Business",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 78,
+      "matchReason": "Финансовый аналитик для банков и корпораций.",
+      "detailedDescription": [
+        "Финансовое моделирование.",
+        "Риск-менеджмент intro."
+      ],
+      "entryRequirements": [
+        "Математика",
+        "ЕНТ"
+      ]
+    },
+    {
+      "id": "narxoz-bba-marketing",
+      "name": "BBA Marketing",
+      "facultyId": "narxoz-management",
+      "annualTuitionKzt": 3400000,
+      "field": "Business",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English / Russian",
+      "fitScore": 77,
+      "matchReason": "Digital strategy и growth hacking.",
+      "detailedDescription": [
+        "Performance-маркетинг.",
+        "Brand labs."
+      ],
+      "entryRequirements": [
+        "IELTS 6.0+",
+        "Математика"
+      ]
+    },
+    {
+      "id": "narxoz-bsc-economics",
+      "name": "BSc Economics",
+      "facultyId": "narxoz-econ",
+      "annualTuitionKzt": 2900000,
+      "field": "Business",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 76,
+      "matchReason": "Политика и рынки Казахстана.",
+      "detailedDescription": [
+        "Эконометрика.",
+        "Исследовательские семинары."
+      ],
+      "entryRequirements": [
+        "Математика",
+        "ЕНТ"
+      ]
+    },
+    {
+      "id": "narxoz-llb-law-business",
+      "name": "LL.B. Law (Business track)",
+      "facultyId": "narxoz-law",
+      "annualTuitionKzt": 2700000,
+      "field": "Law",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian",
+      "fitScore": 74,
+      "matchReason": "Юрист для корпоративных отделов.",
+      "detailedDescription": [
+        "M&A кейсы intro.",
+        "Договорное право."
+      ],
+      "entryRequirements": [
+        "Обществознание",
+        "История"
+      ]
+    },
+    {
+      "id": "narxoz-bsc-business-analytics",
+      "name": "BSc Business Analytics",
+      "facultyId": "narxoz-digital",
+      "annualTuitionKzt": 3600000,
+      "field": "Business",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 80,
+      "matchReason": "SQL, визуализация, решения на данных.",
+      "detailedDescription": [
+        "Проекты с партнёрами.",
+        "Ethics of data."
+      ],
+      "entryRequirements": [
+        "Математика",
+        "IELTS 6.0+"
+      ]
+    },
+    {
+      "id": "narxoz-bpa-public-admin",
+      "name": "Bachelor of Public Administration",
+      "facultyId": "narxoz-public-admin",
+      "annualTuitionKzt": 2400000,
+      "field": "Social Sciences",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian",
+      "fitScore": 73,
+      "matchReason": "Госслужба и муниципальное управление.",
+      "detailedDescription": [
+        "Бюджетный цикл.",
+        "Гражданские сервисы."
+      ],
+      "entryRequirements": [
+        "История",
+        "Обществознание"
+      ]
+    }
+  ]
+}

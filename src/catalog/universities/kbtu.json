@@ -1,0 +1,254 @@
+{
+  "id": "kbtu",
+  "name": "Kazakh-British Technical University",
+  "nameRu": "Казахско-Британский технический университет",
+  "nameKk": "Қазақ-британ техникалық университеті",
+  "officialWebsiteUrl": "https://kbtu.edu.kz",
+  "admissionsEmail": "admission@kbtu.edu.kz",
+  "city": "Almaty, Kazakhstan",
+  "foundedYear": 2000,
+  "type": "Technical",
+  "languagesOfInstruction": [
+    "English",
+    "Russian"
+  ],
+  "applicationDeadline": "2026-07-01",
+  "scholarshipBlurb": "Academic excellence scholarships, STEM achievement awards and partial tuition support for strong applicants (mock).",
+  "heroImageUrl": "https://images.unsplash.com/photo-1564981797829-6f5d176d8e31?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 3200000,
+    "maxKzt": 5200000,
+    "note": "Смешанные EN/RU потоки; в mock указана вилка бакалавриата. Магистратура и грант-контракты считаются отдельно."
+  },
+  "faculties": [
+    {
+      "id": "kbtu-fit",
+      "name": "Faculty of Information Technologies & Digital Engineering",
+      "description": "Прикладной IT, автоматизация, цифровой инжиниринг: связка программирования, электроники и промышленных стандартов; стажировки в отраслевых компаниях региона."
+    },
+    {
+      "id": "kbtu-energy",
+      "name": "Faculty of Energy, Oil and Gas",
+      "description": "Классическое сильное направление KBTU: добыча, бурение, нефтегазовая механика, экология и безопасность; лаборатории с отраслевым оборудованием (иллюстративно)."
+    },
+    {
+      "id": "kbtu-business",
+      "name": "Business School",
+      "description": "Менеджмент, экономика и предпринимательство в контексте инженерного вуза; кейсы и международные партнёрские программы."
+    },
+    {
+      "id": "kbtu-arch-civil",
+      "name": "Faculty of Architecture and Civil Engineering",
+      "description": "Архитектурное проектирование, инженерия конструкций и городская среда: BIM, устойчивые материалы и нормативная база строительства РК."
+    },
+    {
+      "id": "kbtu-chem-eng",
+      "name": "Faculty of Chemical Engineering and Ecology",
+      "description": "Химическая технология, переработка, экологический мониторинг и безопасность производств; лаборатории для прототипирования процессов."
+    },
+    {
+      "id": "kbtu-geology",
+      "name": "Faculty of Geology and Exploration",
+      "description": "Поиск и оценка месторождений, геологическое картирование, горное дело и связка с нефтегазовым блоком KBTU."
+    },
+    {
+      "id": "kbtu-transport",
+      "name": "Faculty of Transport and Mechanical Engineering",
+      "description": "Транспортные системы, машиностроение и надёжность оборудования; проектное обучение с производственными стажировками."
+    },
+    {
+      "id": "kbtu-econ-intl",
+      "name": "International School of Economics",
+      "description": "Экономическая теория, эконометрика и прикладная аналитика с акцентом на международную торговлю и финансовые рынки."
+    },
+    {
+      "id": "kbtu-pharma-food",
+      "name": "Faculty of Food Technology and Biotechnology",
+      "description": "Технология продуктов питания, качество и безопасность пищевых цепочек; биотехнологические процессы для переработки сырья."
+    },
+    {
+      "id": "kbtu-matsci-green",
+      "name": "School of Materials Science and Green Technologies",
+      "description": "Материаловедение, устойчивые технологии и «зелёная» химия; лаборатории синтеза и экспериментальные установки по данным открытых страниц KBTU."
+    },
+    {
+      "id": "kbtu-applied-math",
+      "name": "School of Applied Mathematics",
+      "description": "Прикладная математика, моделирование процессов и вычислительные методы для инженерных и экономических задач добывающего региона."
+    },
+    {
+      "id": "kbtu-ite",
+      "name": "School of Information Technology and Engineering",
+      "description": "Инженерия информационных систем, робототехника и смежные направления — официальная школа KBTU рядом с ИТ-направлениями (по структуре сайта вуза)."
+    },
+    {
+      "id": "kbtu-ise",
+      "name": "International School of Economics and Social Sciences (ISE)",
+      "description": "Партнёрские программы с University of London (LSE track): экономика, финансы, data science и социальные науки в англоязычной среде."
+    },
+    {
+      "id": "kbtu-natural-social",
+      "name": "School of Natural and Social Sciences",
+      "description": "Естественнонаучная и социогуманитарная подготовка в инженерном контексте; междисциплинарные курсы и исследовательские семинары."
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 4.4,
+    "competitiveGpa": 3.9,
+    "competitiveSat": 1220,
+    "targetSat": 1380,
+    "competitiveUnt": 100,
+    "targetUnt": 118,
+    "minIelts": 6,
+    "modelNote": "Fit-модель для KBTU: акцент на инженерные и IT-программы; пороги чуть мягче премиального NU, IELTS часто от 6.0 для смешанного EN/RU обучения. Иллюстрация для MVP."
+  },
+  "scholarships": [
+    {
+      "name": "KBTU Academic Excellence",
+      "requirements": "Strong GPA in STEM subjects, portfolio of projects or competitions; English or Russian proficiency per program track.",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Presidential / State quota pathways",
+      "requirements": "Kazakhstan citizens may qualify via national programs subject to annual quotas; documents verified through admissions office.",
+      "aiRelevance": "Medium"
+    },
+    {
+      "name": "Women in STEM incentive (mock)",
+      "requirements": "Merit-based supplement for competitive female applicants in selected engineering and computing programs — demo entry.",
+      "aiRelevance": "Medium"
+    },
+    {
+      "name": "Sports & leadership stipend",
+      "requirements": "Documented national-level sport or student leadership; smaller tuition discount than flagship merit awards.",
+      "aiRelevance": "Low"
+    }
+  ],
+  "programs": [
+    {
+      "id": "kbtu-bsc-information-systems",
+      "name": "BSc in Information Systems",
+      "facultyId": "kbtu-fit",
+      "annualTuitionKzt": 4200000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 84,
+      "matchReason": "Business analysis, databases and software engineering — fits applicants wanting applied computing in industry contexts.",
+      "detailedDescription": [
+        "Focus on enterprise systems, software development lifecycle, data management and IT consulting skills.",
+        "Coursework bridges computer science foundations with management information systems.",
+        "Graduates join banks, telecoms, and tech integrators across Kazakhstan and abroad."
+      ],
+      "entryRequirements": [
+        "Mathematics and informatics preparation",
+        "IELTS 6.0+ for English track or Russian proficiency for parallel track",
+        "Competitive UNT/SAT considered holistically"
+      ]
+    },
+    {
+      "id": "kbtu-bsc-automation-control",
+      "name": "BSc in Automation and Control",
+      "facultyId": "kbtu-energy",
+      "annualTuitionKzt": 3600000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian",
+      "fitScore": 79,
+      "matchReason": "Control theory, industrial automation and instrumentation — for students strong in physics and linear algebra.",
+      "detailedDescription": [
+        "Laboratory-intensive study of PLCs, robotics integration, and process control.",
+        "Links to oil & gas and manufacturing sectors prevalent in the region."
+      ],
+      "entryRequirements": [
+        "Strong physics and mathematics",
+        "UNT threshold varies by year",
+        "Russian medium — proof of proficiency"
+      ]
+    },
+    {
+      "id": "kbtu-bsc-oil-gas-engineering",
+      "name": "BSc in Oil and Gas Engineering",
+      "facultyId": "kbtu-energy",
+      "annualTuitionKzt": 4800000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 76,
+      "matchReason": "Reservoir, drilling and production fundamentals aligned with Kazakhstan’s energy sector demand.",
+      "detailedDescription": [
+        "Petroleum engineering core with safety and environmental modules.",
+        "Industry internships with national operators — illustrative mock."
+      ],
+      "entryRequirements": [
+        "IELTS 6.0+",
+        "Chemistry and physics foundation",
+        "Competitive GPA"
+      ]
+    },
+    {
+      "id": "kbtu-ba-business-administration",
+      "name": "B.A. in Business Administration",
+      "facultyId": "kbtu-business",
+      "annualTuitionKzt": 3900000,
+      "field": "Business",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 77,
+      "matchReason": "Management, finance and entrepreneurship tracks — analytical applicants with leadership interests.",
+      "detailedDescription": [
+        "Core business curriculum with quantitative methods and strategy projects."
+      ],
+      "entryRequirements": [
+        "IELTS 6.0+",
+        "Mathematics for business",
+        "Holistic review"
+      ]
+    },
+    {
+      "id": "kbtu-msc-computer-science",
+      "name": "MSc in Computer Science",
+      "facultyId": "kbtu-fit",
+      "annualTuitionKzt": 5100000,
+      "field": "Engineering",
+      "degree": "Master",
+      "durationYears": 2,
+      "language": "English",
+      "fitScore": 81,
+      "matchReason": "Graduate depth in algorithms and systems — for bachelor graduates raising research or senior engineering profile.",
+      "detailedDescription": [
+        "Advanced coursework and thesis component in CS research groups."
+      ],
+      "entryRequirements": [
+        "Relevant bachelor degree",
+        "IELTS 6.5+",
+        "Strong bachelor GPA and motivation statement"
+      ]
+    },
+    {
+      "id": "kbtu-bsc-digital-engineering",
+      "name": "BSc in Digital Engineering",
+      "facultyId": "kbtu-fit",
+      "annualTuitionKzt": 4000000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 83,
+      "matchReason": "Cross-disciplinary digital design, IoT and smart systems — modern Industry 4.0 angle.",
+      "detailedDescription": [
+        "Combines mechanical design signals with computing and embedded platforms."
+      ],
+      "entryRequirements": [
+        "STEM portfolio",
+        "IELTS 6.0+",
+        "UNT/SAT competitive"
+      ]
+    }
+  ]
+}

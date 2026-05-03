@@ -1,46 +1,57 @@
 import type { StudentDocuments } from "../mockData";
 
 /**
- * Обязательный перечень документов (названия для UI) — ТЗ п.3.
- * Ключи совпадают с `StudentDocuments` в mockData.
+ * Обязательный перечень документов — ключи совпадают с `StudentDocuments`.
+ * `lane` группирует карточки в UI; `priority` — порядок внутри дорожки.
  */
-export const DOCUMENT_ENTRIES: {
+export type DocumentLane = "identity" | "academicRecords" | "health" | "portrait";
+
+export const DOCUMENT_LANE_ORDER: DocumentLane[] = ["identity", "academicRecords", "health", "portrait"];
+
+export type DocumentEntryMeta = {
   key: keyof StudentDocuments;
   /** Строка для UI (EN), как в ТЗ */
   label: string;
   /** Строка для UI (RU), как в ТЗ */
   labelRu: string;
-  /** Короткая подсказка для чек-листа */
-  hintRu: string;
-}[] = [
+  lane: DocumentLane;
+  priority: number;
+};
+
+export const DOCUMENT_ENTRIES: DocumentEntryMeta[] = [
   {
     key: "passport",
     label: "ID / Passport",
     labelRu: "Удостоверение личности / Паспорт",
-    hintRu: "Нужен для идентификации в заявлении и договоре; проверьте срок действия.",
-  },
-  {
-    key: "photo3x4",
-    label: "Photo 3×4",
-    labelRu: "Фотография 3х4",
-    hintRu: "Матовая бумага, цветное фото по требованиям приёмной комиссии.",
-  },
-  {
-    key: "medicalCertificate",
-    label: "Medical Certificate",
-    labelRu: "Медицинская справка 075/у",
-    hintRu: "Форма по правилам МЗ; часто действует ограниченное время — уточните у вуза.",
+    lane: "identity",
+    priority: 10,
   },
   {
     key: "academicTranscript",
     label: "Academic Transcript",
     labelRu: "Транскрипт с оценками",
-    hintRu: "Для конкурса и перевода баллов; приложите официальную версию с печатью школы/колледжа.",
+    lane: "academicRecords",
+    priority: 20,
   },
   {
     key: "diploma",
     label: "Diploma / Certificate",
     labelRu: "Аттестат или диплом",
-    hintRu: "Подтверждение уровня образования; для неполного набора страниц — добавьте вкладыш.",
+    lane: "academicRecords",
+    priority: 30,
+  },
+  {
+    key: "medicalCertificate",
+    label: "Medical Certificate",
+    labelRu: "Медицинская справка 075/у",
+    lane: "health",
+    priority: 40,
+  },
+  {
+    key: "photo3x4",
+    label: "Photo 3×4",
+    labelRu: "Фотография 3х4",
+    lane: "portrait",
+    priority: 50,
   },
 ];

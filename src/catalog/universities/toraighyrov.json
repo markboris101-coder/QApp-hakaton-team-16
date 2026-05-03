@@ -1,0 +1,172 @@
+{
+  "id": "toraighyrov",
+  "name": "Toraighyrov University",
+  "nameRu": "Университет имени С. Торайгырова",
+  "nameKk": "С. Торайғыров атындағы университет",
+  "city": "Pavlodar, Kazakhstan",
+  "foundedYear": 1960,
+  "type": "Technical",
+  "languagesOfInstruction": [
+    "Kazakh",
+    "Russian",
+    "English"
+  ],
+  "applicationDeadline": "2026-08-08",
+  "scholarshipBlurb": "Государственные гранты, поддержка инженерных кадров для энергетики и АПК Северного и Восточного Казахстана.",
+  "heroImageUrl": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 880000,
+    "maxKzt": 2500000,
+    "note": "Энергетика и машиностроение традиционно в середине–верху вилки контракта."
+  },
+  "faculties": [
+    {
+      "id": "tour-natural",
+      "name": "Faculty of Natural Sciences",
+      "nameRu": "Факультет естественных наук",
+      "nameKk": "Жаратылыстану ғылымдары факультеті",
+      "description": "Mathematics, physics, chemistry and biology programmes with applied labs.",
+      "descriptionRu": "Математика, физика, химия и биология с прикладными лабораториями для инженерных траекторий.",
+      "descriptionKk": "Математика, физика, химия және биология; инженерлік траекториялар үшін зертханалар."
+    },
+    {
+      "id": "tour-energetics",
+      "name": "Faculty of Energetics",
+      "nameRu": "Энергетический факультет",
+      "nameKk": "Энергетика факультеті",
+      "description": "Power engineering, electrical systems and energy efficiency for industry.",
+      "descriptionRu": "Энергетическое машиностроение, электросистемы и энергоэффективность для промышленности.",
+      "descriptionKk": "Энергетикалық машина жасау, электр жүйелері және өнеркәсіптің энергия тиімділігі."
+    },
+    {
+      "id": "tour-cs",
+      "name": "Faculty of Computer Science",
+      "nameRu": "Факультет компьютерных наук",
+      "nameKk": "Компьютер ғылымы факультеті",
+      "description": "Computer science, software engineering and information systems.",
+      "descriptionRu": "Информатика, программная инженерия и информационные системы.",
+      "descriptionKk": "Информатика, бағдарламалық инженерия және ақпараттық жүйелер."
+    },
+    {
+      "id": "tour-engineering",
+      "name": "Faculty of Engineering",
+      "nameRu": "Инженерный факультет",
+      "nameKk": "Инженерлік факультет",
+      "description": "Mechanical, civil and environmental engineering with plant internships.",
+      "descriptionRu": "Машиностроение, гражданское и экологическое инженерное дело; практики на предприятиях.",
+      "descriptionKk": "Машина жасау, азаматтық және экологиялық инженерия; зауытта тәжірибе."
+    },
+    {
+      "id": "tour-agri",
+      "name": "Faculty of Agricultural Sciences",
+      "nameRu": "Аграрный факультет",
+      "nameKk": "Аграрлық ғылымдар факультеті",
+      "description": "Agronomy, mechanisation and agribusiness for northern climate zones.",
+      "descriptionRu": "Агрономия, механизация и агробизнес для зон северного климата.",
+      "descriptionKk": "Агрономия, механизация және солтүстік климат аймақтары үшін агробизнес."
+    },
+    {
+      "id": "tour-humanities",
+      "name": "Faculty of Humanities and Social Sciences",
+      "nameRu": "Факультет гуманитарных и социальных наук",
+      "nameKk": "Гуманитарлық және қоғамдық ғылымдар факультеті",
+      "description": "Philology, history, sociology and regional cultural studies.",
+      "descriptionRu": "Филология, история, социология и региональные культурные исследования.",
+      "descriptionKk": "Филология, тарих, социология және аймақтық мәдени зерттеулер."
+    },
+    {
+      "id": "tour-econ-law",
+      "name": "Faculty of Economics and Law",
+      "nameRu": "Факультет экономики и права",
+      "nameKk": "Экономика және құқық факультеті",
+      "description": "Economics, management, finance and law for enterprises and public sector.",
+      "descriptionRu": "Экономика, менеджмент, финансы и право для бизнеса и госсектора.",
+      "descriptionKk": "Экономика, менеджмент, қаржы және бизнес пен мемлекеттік сектор үшін құқық."
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 3.95,
+    "competitiveGpa": 3.4,
+    "competitiveSat": 1000,
+    "targetSat": 1180,
+    "competitiveUnt": 74,
+    "targetUnt": 94,
+    "minIelts": 5,
+    "modelNote": "Инженерно-технический профиль вуза; энергетика и машиностроение конкурентны на грант при сильной математике."
+  },
+  "scholarships": [
+    {
+      "name": "Государственный образовательный грант",
+      "requirements": "Конкурс ЕНТ для граждан РК.",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Стипендия отраслевых партнёров (энергетика)",
+      "requirements": "Инженерные программы и контракт с работодателем по целевому обучению — при наличии.",
+      "aiRelevance": "Medium"
+    }
+  ],
+  "programs": [
+    {
+      "id": "tour-bsc-power-engineering",
+      "name": "BSc in Power Engineering",
+      "facultyId": "tour-energetics",
+      "annualTuitionKzt": 1810000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 77,
+      "matchReason": "Подготовка к энергетическому сектору региона и страны.",
+      "detailedDescription": [
+        "Электрические машины и системы.",
+        "Теплоэнергетика — основы."
+      ],
+      "entryRequirements": [
+        "Математика и физика",
+        "ЕНТ"
+      ]
+    },
+    {
+      "id": "tour-bsc-computer-science",
+      "name": "BSc in Computer Science",
+      "facultyId": "tour-cs",
+      "annualTuitionKzt": 1760000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 76,
+      "matchReason": "Прикладная информатика для промышленности и ИТ-сервисов.",
+      "detailedDescription": [
+        "Алгоритмы и ООП.",
+        "Базы данных и сети."
+      ],
+      "entryRequirements": [
+        "Математика",
+        "ЕНТ"
+      ]
+    },
+    {
+      "id": "tour-bba-management",
+      "name": "BBA in Management",
+      "facultyId": "tour-econ-law",
+      "annualTuitionKzt": 1490000,
+      "field": "Business",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian",
+      "fitScore": 71,
+      "matchReason": "Менеджмент и основы права для малого и среднего бизнеса.",
+      "detailedDescription": [
+        "Операционный менеджмент.",
+        "Корпоративные финансы — вводный курс."
+      ],
+      "entryRequirements": [
+        "Математика",
+        "ЕНТ"
+      ]
+    }
+  ]
+}

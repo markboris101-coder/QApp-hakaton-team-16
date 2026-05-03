@@ -1,0 +1,181 @@
+{
+  "id": "shakarim",
+  "name": "Shakarim University",
+  "nameRu": "Университет Шәкәрім",
+  "nameKk": "Шәкәрім университеті",
+  "city": "Semey, Kazakhstan",
+  "foundedYear": 1917,
+  "type": "Comprehensive",
+  "languagesOfInstruction": [
+    "Kazakh",
+    "Russian",
+    "English"
+  ],
+  "applicationDeadline": "2026-08-12",
+  "scholarshipBlurb": "Государственные гранты, поддержка одарённой молодёжи Восточного Казахстана и гранты партнёров в аграрно-промышленном секторе.",
+  "heroImageUrl": "https://images.unsplash.com/photo-1488190528338-8f318e73588f?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 950000,
+    "maxKzt": 2800000,
+    "note": "Диапазон зависит от школы/программы; аграрные и STEM-треки конкурентны на грант."
+  },
+  "faculties": [
+    {
+      "id": "shak-food",
+      "name": "Research School of Food Engineering",
+      "nameRu": "Научная школа пищевой инженерии",
+      "nameKk": "Азық-түлік инженериясы ғылыми мектебі",
+      "description": "Food safety, processing technology and quality systems for agri-food chains.",
+      "descriptionRu": "Безопасность пищи, переработка и системы качества для агропродовольственных цепочек.",
+      "descriptionKk": "Азық қауіпсіздігі, өңдеу технологиялары және агроазық тізбектерінің сапасы."
+    },
+    {
+      "id": "shak-vet-agri",
+      "name": "Research School of Veterinary Medicine and Agriculture",
+      "nameRu": "Научная школа ветеринарии и сельского хозяйства",
+      "nameKk": "Ветеринария және ауыл шаруашылығы ғылыми мектебі",
+      "description": "Veterinary science, animal husbandry and sustainable agriculture for the east region.",
+      "descriptionRu": "Ветеринария, животноводство и устойчивое земледелие для восточных регионов.",
+      "descriptionKk": "Ветеринария, мал шаруашылығы және шығыс аймақтары үшін тұрақты егіншілік."
+    },
+    {
+      "id": "shak-phys-chem",
+      "name": "Research School of Physical and Chemical Sciences",
+      "nameRu": "Научная школа физико-химических наук",
+      "nameKk": "Физика-химия ғылымдары ғылыми мектебі",
+      "description": "Physics, chemistry and interdisciplinary labs linking materials and energy.",
+      "descriptionRu": "Физика, химия и междисциплинарные лаборатории материаловедения и энергетики.",
+      "descriptionKk": "Физика, химия және материалтану мен энергетиканы байланыстыру."
+    },
+    {
+      "id": "shak-edu",
+      "name": "Graduate School of Education",
+      "nameRu": "Высшая школа образования",
+      "nameKk": "Білім берудің жоғары мектебі",
+      "description": "Teacher education, educational leadership and policy research.",
+      "descriptionRu": "Подготовка педагогов, управление образованием и исследования в политике образования.",
+      "descriptionKk": "Мұғалімдерді даярлау, білім басқару және саяси зерттеулер."
+    },
+    {
+      "id": "shak-stem-edu",
+      "name": "Graduate School of STEM Education",
+      "nameRu": "Высшая школа STEM-образования",
+      "nameKk": "STEM білім берудің жоғары мектебі",
+      "description": "STEM pedagogy, robotics in schools and digital tools for classrooms.",
+      "descriptionRu": "STEM-педагогика, робототехника в школе и цифровые инструменты для учителей.",
+      "descriptionKk": "STEM педагогикасы, мектептегі робототехника және мұғалімдерге цифрлық құралдар."
+    },
+    {
+      "id": "shak-sport-nat",
+      "name": "Graduate School of Sports and Natural Sciences",
+      "nameRu": "Высшая школа спорта и естественных наук",
+      "nameKk": "Спорт және жаратылыстану ғылымдарының жоғары мектебі",
+      "description": "Sports science, coaching and natural sciences applied to health and performance.",
+      "descriptionRu": "Спортивная наука, тренерская подготовка и естественные науки для здоровья и результатов.",
+      "descriptionKk": "Спорт ғылымы, бапкерлік және денсаулық пен нәтиже үшін табиғи ғылымдар."
+    },
+    {
+      "id": "shak-digital-construct",
+      "name": "Graduate School of Digital Technologies and Construction",
+      "nameRu": "Высшая школа цифровых технологий и строительства",
+      "nameKk": "Цифрлық технологиялар және құрылыс жоғары мектебі",
+      "description": "Civil engineering, BIM and digital twins for smart infrastructure.",
+      "descriptionRu": "Гражданское строительство, BIM и цифровые двойники для умной инфраструктуры.",
+      "descriptionKk": "Азаматтық құрылыс, BIM және ақылды инфрақұрылым үшін цифрлық егіздер."
+    },
+    {
+      "id": "shak-business-comm",
+      "name": "Graduate School of Business and Communication",
+      "nameRu": "Высшая школа бизнеса и коммуникаций",
+      "nameKk": "Бизнес және коммуникация жоғары мектебі",
+      "description": "Business analytics, media communications and public relations.",
+      "descriptionRu": "Бизнес-аналитика, медиакоммуникации и связи с общественностью.",
+      "descriptionKk": "Бизнес аналитикасы, медиакоммуникация және қоғаммен байланыс."
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 4.15,
+    "competitiveGpa": 3.55,
+    "competitiveSat": 1080,
+    "targetSat": 1260,
+    "competitiveUnt": 82,
+    "targetUnt": 102,
+    "minIelts": 5.5,
+    "modelNote": "Крупный вуз Восточного Казахстана с сильными аграрно-пищевыми школами; часть программ — смешанный английский."
+  },
+  "scholarships": [
+    {
+      "name": "Государственный образовательный грант",
+      "requirements": "Конкурс ЕНТ по правилам года.",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Грант сельской молодёжи",
+      "requirements": "Подтверждение регистрации в сельской местности при наличии квот.",
+      "aiRelevance": "Medium"
+    }
+  ],
+  "programs": [
+    {
+      "id": "shak-bsc-food-tech",
+      "name": "BSc in Food Technology",
+      "facultyId": "shak-food",
+      "annualTuitionKzt": 1720000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 75,
+      "matchReason": "Пищевая инженерия для переработки и безопасности продукции.",
+      "detailedDescription": [
+        "Технология переработки.",
+        "Управление качеством и HACCP — основы."
+      ],
+      "entryRequirements": [
+        "Химия и биология",
+        "ЕНТ"
+      ]
+    },
+    {
+      "id": "shak-bsc-digital-construction",
+      "name": "BSc in Civil Engineering (Digital track)",
+      "facultyId": "shak-digital-construct",
+      "annualTuitionKzt": 1880000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh / English modules",
+      "fitScore": 77,
+      "matchReason": "Строительство с BIM и цифровыми инструментами проектирования.",
+      "detailedDescription": [
+        "Конструкции и материалы.",
+        "BIM и совместная работа в проекте."
+      ],
+      "entryRequirements": [
+        "Математика и физика",
+        "ЕНТ"
+      ]
+    },
+    {
+      "id": "shak-ba-journalism",
+      "name": "BA in Journalism and Media",
+      "facultyId": "shak-business-comm",
+      "annualTuitionKzt": 1540000,
+      "field": "Humanities",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian",
+      "fitScore": 72,
+      "matchReason": "Медиа и коммуникации для регионального информационного поля.",
+      "detailedDescription": [
+        "Цифровая журналистика.",
+        "Медиааналитика и этика."
+      ],
+      "entryRequirements": [
+        "Творческий экзамен по потоку",
+        "ЕНТ"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "id": "zhubanov-aru",
+  "name": "K. Zhubanov Aktobe Regional University",
+  "nameRu": "Актюбинский региональный университет имени К. Жубанова",
+  "nameKk": "К. Жубанов атындағы Ақтөбе облыстық университеті",
+  "city": "Aktobe, Kazakhstan",
+  "foundedYear": 1935,
+  "type": "Comprehensive",
+  "languagesOfInstruction": [
+    "Kazakh",
+    "Russian",
+    "English"
+  ],
+  "applicationDeadline": "2026-08-05",
+  "scholarshipBlurb": "Государственные гранты, поддержка сельской молодёжи и партнёрские стипендии с отраслевыми работодателями Западного Казахстана.",
+  "heroImageUrl": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 800000,
+    "maxKzt": 2400000,
+    "note": "Региональный контракт; филиал Heriot-Watt — отдельные тарифы partner campus."
+  },
+  "faculties": [
+    {
+      "id": "zhub-natural",
+      "name": "Faculty of Natural Sciences",
+      "nameRu": "Факультет естественных наук",
+      "nameKk": "Жаратылыстану ғылымдары факультеті",
+      "description": "Biology, ecology, chemistry and chemical technology laboratories for applied science.",
+      "descriptionRu": "Биология, экология, химия и химическая технология; прикладные лаборатории для региональных отраслей.",
+      "descriptionKk": "Биология, экология, химия және химиялық технология; қолданбалы зертханалар."
+    },
+    {
+      "id": "zhub-humanities",
+      "name": "Faculty of Humanities and Social Sciences",
+      "nameRu": "Факультет гуманитарных и социальных наук",
+      "nameKk": "Гуманитарлық және қоғамдық ғылымдар факультеті",
+      "description": "History, philosophy, sociology and regional studies for public sector careers.",
+      "descriptionRu": "История, философия, социология и регионоведение; подготовка к госсектору и НКО.",
+      "descriptionKk": "Тарих, философия, социология және аймақтану."
+    },
+    {
+      "id": "zhub-pedagogy",
+      "name": "Faculty of Pedagogy and Management in Education",
+      "nameRu": "Факультет педагогики и управления в образовании",
+      "nameKk": "Педагогика және білім басқару факультеті",
+      "description": "School leadership, educational management and teacher development programmes.",
+      "descriptionRu": "Управление школой, менеджмент в образовании и развитие педагогических кадров.",
+      "descriptionKk": "Мектеп басқаруы, білім менеджменті және мұғалімдерді дамыту."
+    },
+    {
+      "id": "zhub-econ-law",
+      "name": "Faculty of Economics and Law",
+      "nameRu": "Факультет экономики и права",
+      "nameKk": "Экономика және құқық факультеті",
+      "description": "Economics, finance, law and public administration tailored to western Kazakhstan.",
+      "descriptionRu": "Экономика, финансы, право и государственное управление с акцентом на Западный Казахстан.",
+      "descriptionKk": "Экономика, қаржы, құқық және мемлекеттік басқару."
+    },
+    {
+      "id": "zhub-engineering",
+      "name": "Faculty of Engineering",
+      "nameRu": "Инженерный факультет",
+      "nameKk": "Инженерлік факультет",
+      "description": "Mechanical, civil and industrial engineering with TechnoPark and industry projects.",
+      "descriptionRu": "Машиностроение, гражданское и промышленное инженерное дело; проекты с ТехноПарком и предприятиями.",
+      "descriptionKk": "Машина жасау, азаматтық және өнеркәсіптік инженерия; ТехноПарк жобалары."
+    },
+    {
+      "id": "zhub-philology",
+      "name": "Faculty of Philology",
+      "nameRu": "Филологический факультет",
+      "nameKk": "Филология факультеті",
+      "description": "Kazakh and world literature, linguistics and speech communication programmes.",
+      "descriptionRu": "Казахская и мировая литература, лингвистика и коммуникативные компетенции.",
+      "descriptionKk": "Қазақ және әлем әдебиеті, лингвистика."
+    },
+    {
+      "id": "zhub-physmath",
+      "name": "Faculty of Physics and Mathematics",
+      "nameRu": "Факультет физики и математики",
+      "nameKk": "Физика және математика факультеті",
+      "description": "Mathematics, physics and data literacy programmes for engineering pipelines.",
+      "descriptionRu": "Математика, физика и математическая грамотность данных для инженерных траекторий.",
+      "descriptionKk": "Математика, физика және деректер сауаттылығы."
+    },
+    {
+      "id": "zhub-foreign",
+      "name": "Faculty of Foreign Languages",
+      "nameRu": "Факультет иностранных языков",
+      "nameKk": "Шет тілдері факультеті",
+      "description": "English, Chinese and European languages with translation and tourism tracks.",
+      "descriptionRu": "Английский, китайский и европейские языки; перевод и туристические треки.",
+      "descriptionKk": "Ағылшын, қытай және еуропа тілдері; аударма және туризм."
+    },
+    {
+      "id": "zhub-creative",
+      "name": "Faculty of Professional and Creative Studies",
+      "nameRu": "Факультет профессионального и творческого образования",
+      "nameKk": "Кәсіби және шығармашылық білім факультеті",
+      "description": "Design, arts pedagogy and creative industries bridging culture and employment.",
+      "descriptionRu": "Дизайн, педагогика искусств и креативные индустрии; связь культуры и занятости.",
+      "descriptionKk": "Дизайн, өнер педагогикасы және креативті индустриялар."
+    },
+    {
+      "id": "zhub-hw",
+      "name": "Heriot-Watt University Branch Campus (partner programmes)",
+      "nameRu": "Филиал Heriot-Watt University (партнёрские программы)",
+      "nameKk": "Heriot-Watt University филиалы (серіктес бағдарламалар)",
+      "description": "British-style degrees delivered locally with joint quality assurance (partner campus).",
+      "descriptionRu": "Совместные программы с британским университетом; локальная реализация и общее обеспечение качества.",
+      "descriptionKk": "Британдық университетпен бірлескен бағдарламалар; ортақ сапаны қамтамасыз ету."
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 4,
+    "competitiveGpa": 3.35,
+    "competitiveSat": 960,
+    "targetSat": 1120,
+    "competitiveUnt": 72,
+    "targetUnt": 93,
+    "minIelts": 5,
+    "modelNote": "Крупнейший вуз Западного Казахстана; англоязычные partner-программы могут требовать IELTS выше среднего по вузу."
+  },
+  "scholarships": [
+    {
+      "name": "Государственный образовательный грант",
+      "requirements": "ЕНТ и квоты года для граждан РК.",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Грант социальной поддержки",
+      "requirements": "Категории по законодательству РК (соц. уязвимость и др.).",
+      "aiRelevance": "Medium"
+    }
+  ],
+  "programs": [
+    {
+      "id": "zhub-bsc-mechanical",
+      "name": "BSc in Mechanical Engineering",
+      "facultyId": "zhub-engineering",
+      "annualTuitionKzt": 1780000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 76,
+      "matchReason": "Инженерная подготовка с опорой на промышленность региона.",
+      "detailedDescription": [
+        "Детали машин, материалы.",
+        "Практика на предприятиях."
+      ],
+      "entryRequirements": [
+        "Математика и физика",
+        "ЕНТ"
+      ]
+    },
+    {
+      "id": "zhub-ba-economics",
+      "name": "BBA in Economics",
+      "facultyId": "zhub-econ-law",
+      "annualTuitionKzt": 1520000,
+      "field": "Business",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian",
+      "fitScore": 72,
+      "matchReason": "Экономика и финансы для малого и среднего бизнеса Западного Казахстана.",
+      "detailedDescription": [
+        "Микро- и макроэкономика.",
+        "Цифровая отчётность."
+      ],
+      "entryRequirements": [
+        "Математика",
+        "ЕНТ"
+      ]
+    },
+    {
+      "id": "zhub-ba-english-tourism",
+      "name": "BA in Foreign Language (Tourism track)",
+      "facultyId": "zhub-foreign",
+      "annualTuitionKzt": 1480000,
+      "field": "Humanities",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh / English",
+      "fitScore": 71,
+      "matchReason": "Языки и туристический трек для транспортного хаба региона.",
+      "detailedDescription": [
+        "Иностранный язык.",
+        "Туризм и межкультурная коммуникация."
+      ],
+      "entryRequirements": [
+        "Иностранный язык в сертификате",
+        "ЕНТ"
+      ]
+    }
+  ]
+}

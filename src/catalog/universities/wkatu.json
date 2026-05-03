@@ -1,0 +1,212 @@
+{
+  "id": "wkatu",
+  "name": "M. Utemisov West Kazakhstan University",
+  "nameRu": "Западно-Казахстанский университет имени М. Утемисова",
+  "nameKk": "М. Өтемісов атындағы Батыс Қазақстан университеті",
+  "officialWebsiteUrl": "https://wku.edu.kz",
+  "admissionsEmail": "info@wku.edu.kz",
+  "city": "Oral (Uralsk), Kazakhstan",
+  "foundedYear": 1932,
+  "type": "Comprehensive",
+  "languagesOfInstruction": [
+    "Kazakh",
+    "Russian",
+    "English"
+  ],
+  "applicationDeadline": "2026-08-12",
+  "scholarshipBlurb": "Гранты для приоритетных специальностей ЗКО; поддержка студентов сельских районов и билингвальных программ.",
+  "heroImageUrl": "https://images.unsplash.com/photo-1498243691581-b2c99f7b84cd?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 1200000,
+    "maxKzt": 2900000,
+    "note": "Региональный университет; контракт ниже столичного среднего."
+  },
+  "faculties": [
+    {
+      "id": "wkatu-physics-tech",
+      "name": "Physics and Engineering",
+      "description": "Физика, приборостроение, энергетика региона."
+    },
+    {
+      "id": "wkatu-biology",
+      "name": "Biology and Biotechnology",
+      "description": "Биоресурсы Западного Казахстана."
+    },
+    {
+      "id": "wkatu-chem",
+      "name": "Chemistry",
+      "description": "Химия материалов и экологический мониторинг."
+    },
+    {
+      "id": "wkatu-math-it",
+      "name": "Mathematics and Digital Sciences",
+      "description": "Математика, информатика, data literacy."
+    },
+    {
+      "id": "wkatu-history-law",
+      "name": "History, Law and Regional Studies",
+      "description": "Право и история Прикаспия и Урала."
+    },
+    {
+      "id": "wkatu-philology",
+      "name": "Philology and Multilingual Education",
+      "description": "Казахский, русский, западные языки."
+    },
+    {
+      "id": "wkatu-pedagogy",
+      "name": "Pedagogy and Psychology",
+      "description": "Учителя для школ ЗКО."
+    },
+    {
+      "id": "wkatu-econ-mgmt",
+      "name": "Economics and Management",
+      "description": "Малый бизнес, логистика границы."
+    },
+    {
+      "id": "wkatu-earth",
+      "name": "Earth Sciences and Ecology",
+      "description": "География, климатология, охрана окружающей среды."
+    }
+  ],
+  "scholarships": [
+    {
+      "name": "Государственный образовательный грант",
+      "requirements": "ЕНТ конкурс.",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Стипендия билингвальных программ",
+      "requirements": "Казахский + английский уровень B2+.",
+      "aiRelevance": "Medium"
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 4.35,
+    "competitiveGpa": 3.75,
+    "competitiveSat": 1180,
+    "targetSat": 1320,
+    "competitiveUnt": 85,
+    "targetUnt": 110,
+    "minIelts": 5.5,
+    "modelNote": "Демо-модель Fit для QApp; официальные пороги и правила года набора — только на сайте вуза."
+  },
+  "programs": [
+    {
+      "id": "wkatu-bsc-physics",
+      "name": "BSc Physics",
+      "facultyId": "wkatu-physics-tech",
+      "annualTuitionKzt": 1450000,
+      "field": "Science",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 72,
+      "matchReason": "Фундамент для инженерных магистратур.",
+      "detailedDescription": [
+        "Лаборатории оптики.",
+        "Вычислительное моделирование."
+      ],
+      "entryRequirements": [
+        "Физика",
+        "Математика"
+      ]
+    },
+    {
+      "id": "wkatu-bsc-biology",
+      "name": "BSc Biology",
+      "facultyId": "wkatu-biology",
+      "annualTuitionKzt": 1400000,
+      "field": "Science",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian",
+      "fitScore": 71,
+      "matchReason": "Биология степи и водных экосистем.",
+      "detailedDescription": [
+        "Полевые экспедиции."
+      ],
+      "entryRequirements": [
+        "Биология",
+        "Химия"
+      ]
+    },
+    {
+      "id": "wkatu-bsc-chemistry",
+      "name": "BSc Chemistry",
+      "facultyId": "wkatu-chem",
+      "annualTuitionKzt": 1420000,
+      "field": "Science",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 71,
+      "matchReason": "Аналитическая химия и экология.",
+      "detailedDescription": [
+        "Спектрометрия intro."
+      ],
+      "entryRequirements": [
+        "Химия",
+        "Математика"
+      ]
+    },
+    {
+      "id": "wkatu-bsc-it",
+      "name": "BSc Information Systems",
+      "facultyId": "wkatu-math-it",
+      "annualTuitionKzt": 1800000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / English",
+      "fitScore": 74,
+      "matchReason": "ИТ для региональных госуслуг и бизнеса.",
+      "detailedDescription": [
+        "Веб-сервисы.",
+        "Кибергигиена."
+      ],
+      "entryRequirements": [
+        "Математика",
+        "Информатика"
+      ]
+    },
+    {
+      "id": "wkatu-ba-regional-law",
+      "name": "BA in Law (Regional Practice)",
+      "facultyId": "wkatu-history-law",
+      "annualTuitionKzt": 1350000,
+      "field": "Law",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian",
+      "fitScore": 70,
+      "matchReason": "Право с упором на приграничное регулирование.",
+      "detailedDescription": [
+        "Таможенное право intro."
+      ],
+      "entryRequirements": [
+        "История",
+        "Обществознание"
+      ]
+    },
+    {
+      "id": "wkatu-bba-management",
+      "name": "BBA Management",
+      "facultyId": "wkatu-econ-mgmt",
+      "annualTuitionKzt": 1500000,
+      "field": "Business",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 73,
+      "matchReason": "Менеджмент для логистики и торговли.",
+      "detailedDescription": [
+        "Кейсы транспортных коридоров."
+      ],
+      "entryRequirements": [
+        "Математика",
+        "География"
+      ]
+    }
+  ]
+}

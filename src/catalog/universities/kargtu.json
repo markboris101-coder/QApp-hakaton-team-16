@@ -1,0 +1,216 @@
+{
+  "id": "kargtu",
+  "name": "Karaganda Technical University",
+  "nameRu": "Карагандинский технический университет",
+  "nameKk": "Қарағанды техникалық университеті",
+  "officialWebsiteUrl": "https://ktu.edu.kz",
+  "admissionsEmail": "priem@ktu.edu.kz",
+  "city": "Karaganda, Kazakhstan",
+  "foundedYear": 1953,
+  "type": "Technical",
+  "languagesOfInstruction": [
+    "Russian",
+    "Kazakh",
+    "English"
+  ],
+  "applicationDeadline": "2026-08-01",
+  "scholarshipBlurb": "Гранты для инженерных специальностей; корпоративные стипендии горно-металлургических партнёров региона.",
+  "heroImageUrl": "https://images.unsplash.com/photo-1581092918056-bec9f17ec75f?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 1800000,
+    "maxKzt": 3600000,
+    "note": "Инженерные лаборатории включают сбор за расходные материалы (ориентир)."
+  },
+  "faculties": [
+    {
+      "id": "kargtu-mining",
+      "name": "Mining and Geology",
+      "description": "Горное дело, маркшейдерия, недропользование."
+    },
+    {
+      "id": "kargtu-metallurgy",
+      "name": "Metallurgy and Materials",
+      "description": "Металлургические процессы и материаловедение."
+    },
+    {
+      "id": "kargtu-energy",
+      "name": "Energy and Electrical Engineering",
+      "description": "Энергетика, электроснабжение, возобновляемые источники intro."
+    },
+    {
+      "id": "kargtu-mechanical",
+      "name": "Mechanical Engineering",
+      "description": "Машиностроение, робототехника прикладная."
+    },
+    {
+      "id": "kargtu-it",
+      "name": "Information Technologies",
+      "description": "ПО, сети, промышленная автоматизация."
+    },
+    {
+      "id": "kargtu-civil",
+      "name": "Civil Engineering and Architecture",
+      "description": "Строительные конструкции, инженерные системы."
+    },
+    {
+      "id": "kargtu-env",
+      "name": "Environmental Engineering and Safety",
+      "description": "Охрана труда, экологический мониторинг производств."
+    },
+    {
+      "id": "kargtu-econ",
+      "name": "Economics and Management in Industry",
+      "description": "Управление производственными активами."
+    },
+    {
+      "id": "kargtu-transport",
+      "name": "Transport and Logistics",
+      "description": "Логистика угольно-металлургического кластера."
+    }
+  ],
+  "scholarships": [
+    {
+      "name": "Инженерный грант региона",
+      "requirements": "ЕНТ по физике и математике.",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Партнёрская стипендия предприятий",
+      "requirements": "Обязательство стажировки 2+ лет.",
+      "aiRelevance": "Medium"
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 4.35,
+    "competitiveGpa": 3.75,
+    "competitiveSat": 1180,
+    "targetSat": 1320,
+    "competitiveUnt": 88,
+    "targetUnt": 105,
+    "minIelts": 5.5,
+    "modelNote": "Демо-модель Fit для QApp; официальные пороги и правила года набора — только на сайте вуза."
+  },
+  "programs": [
+    {
+      "id": "kargtu-bsc-mining",
+      "name": "BSc Mining Engineering",
+      "facultyId": "kargtu-mining",
+      "annualTuitionKzt": 2600000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 79,
+      "matchReason": "Горный инженер для месторождений Центрального Казахстана.",
+      "detailedDescription": [
+        "Горные выработки лаборатории.",
+        "Геомеханика."
+      ],
+      "entryRequirements": [
+        "Физика",
+        "Математика"
+      ]
+    },
+    {
+      "id": "kargtu-bsc-metallurgy",
+      "name": "BSc Metallurgy",
+      "facultyId": "kargtu-metallurgy",
+      "annualTuitionKzt": 2500000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 77,
+      "matchReason": "Плавки, литейное производство, контроль качества.",
+      "detailedDescription": [
+        "Термодинамика металлов.",
+        "Практика на предприятиях."
+      ],
+      "entryRequirements": [
+        "Химия",
+        "Физика"
+      ]
+    },
+    {
+      "id": "kargtu-bsc-electrical",
+      "name": "BSc Electrical Power Engineering",
+      "facultyId": "kargtu-energy",
+      "annualTuitionKzt": 2400000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 76,
+      "matchReason": "Энергосистемы промышленности.",
+      "detailedDescription": [
+        "Релейная защита intro.",
+        "Smart grid основы."
+      ],
+      "entryRequirements": [
+        "Физика",
+        "Математика"
+      ]
+    },
+    {
+      "id": "kargtu-bsc-mechanical",
+      "name": "BSc Mechanical Engineering",
+      "facultyId": "kargtu-mechanical",
+      "annualTuitionKzt": 2350000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 75,
+      "matchReason": "Детали машин, станки, производственный инжиниринг.",
+      "detailedDescription": [
+        "CAD/CAM.",
+        "Производственная практика."
+      ],
+      "entryRequirements": [
+        "Математика",
+        "Физика"
+      ]
+    },
+    {
+      "id": "kargtu-bsc-cs",
+      "name": "BSc Computer Science & Automation",
+      "facultyId": "kargtu-it",
+      "annualTuitionKzt": 2700000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / English",
+      "fitScore": 78,
+      "matchReason": "Автоматизация производственных линий.",
+      "detailedDescription": [
+        "PLC лаборатории.",
+        "Промышленный IoT."
+      ],
+      "entryRequirements": [
+        "Информатика",
+        "Математика"
+      ]
+    },
+    {
+      "id": "kargtu-bsc-civil",
+      "name": "BSc Civil Engineering",
+      "facultyId": "kargtu-civil",
+      "annualTuitionKzt": 2300000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian",
+      "fitScore": 74,
+      "matchReason": "Инженерия для городской инфраструктуры.",
+      "detailedDescription": [
+        "Строительная механика.",
+        " BIM intro."
+      ],
+      "entryRequirements": [
+        "Математика",
+        "Физика"
+      ]
+    }
+  ]
+}

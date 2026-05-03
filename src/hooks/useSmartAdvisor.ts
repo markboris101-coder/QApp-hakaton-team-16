@@ -1,38 +1,28 @@
 import { useCallback } from "react";
 import { useProfile } from "../context/ProfileContext";
 import { askQwen, askQwenMessages, type QwenChatTurn } from "../services/aiProvider";
-import { getProgramBySlug } from "../mockData";
-import type { StudentProfile } from "../mockData";
+import { getFaculty, getProgramBySlug } from "../mockData";
 import i18n from "../i18n/config";
 import { getUniversityDisplayName } from "../lib/universityLabels";
-
-/**
- * Системный промпт для всех сценариев QApp.
- * Явно снимаем «смещение к NU»: модели часто перетягивают ответы к Nazarbayev University без оснований.
- */
-export const ADVISOR_SYSTEM_PROMPT = `Ты — эксперт QApp по поступлению в вузы Казахстана (в каталоге QApp — более десятка вузов с разными городами).
-
-Правила контекста:
-- Не предполагай по умолчанию, что абитуриент целится в Nazarbayev University (NU). Упоминай NU только если пользователь или контекст явно называют этот вуз.
-- Если в запросе указан другой вуз (название, город, id) — отвечай про него; не подменяй ответ советами «как в NU».
-- Общие вопросы (документы, ЕНТ, сроки) давай нейтрально по системе приёма в РК, без фокуса на одном вузе.
-
-Ориентируйся на типичную практику приёма, ЕНТ/UNT и международные экзамены. Тон: профессиональный, лаконичный. Русский язык.`;
-
-function summarizeStudentBlock(student: StudentProfile): string {
-  const a = student.academic;
-  return [
-    `Страна: ${a.country}`,
-    `GPA: ${a.gpa}/5.0, IELTS: ${a.ielts}, SAT: ${a.sat > 0 ? a.sat : "не указан"}, UNT/ЕНТ: ${a.untScore}/140`,
-    `Интересы: ${student.preferences.interests.join(", ") || "—"}`,
-    `Финансирование: ${student.preferences.financialStatus}`,
-    `Награды: ${student.awards.length ? student.awards.join(", ") : "нет"}`,
-    `Олимпиада подтверждена сертификатом (AI): ${student.olympiadVerified ? "да" : "нет"}`,
-  ].join("\n");
-}
+import {
+  buildAdvisorBaseSystemPrompt,
+  buildScenarioAdvisorContext,
+  computeAverageProgramFit,
+  formatTopProgramsForAdvisor,
+  summarizeStudentRich,
+} from "../lib/advisorContext";
+import { calculateFitScore } from "../calculateFitScore";
 
 export function useSmartAdvisor() {
-  const { student, universityData, universities, selectedUniversityId, favoriteUniversityIds } = useProfile();
+  const {
+    student,
+    universityData,
+    universities,
+    selectedUniversityId,
+    favoriteUniversityIds,
+    shortlist,
+  } = useProfile();
+  const lang = i18n.language;
 
   const getProgramAdvice = useCallback(
     async (programId: string): Promise<string> => {
@@ -41,89 +31,123 @@ export function useSmartAdvisor() {
         throw new Error("Программа не найдена");
       }
       const { program, university } = found;
-      const satLine =
-        student.academic.sat > 0
-          ? `SAT ${student.academic.sat} и `
-          : "";
-      const uniLabel = getUniversityDisplayName(university, i18n.language);
-      const prompt = `Программа «${program.name}» в вузе «${uniLabel}» (${university.city}; поле: ${program.field}). Все рекомендации — только для этого вуза; не переноси требования Nazarbayev University сюда без нужды.
+      const uniLabel = getUniversityDisplayName(university, lang);
+      const fac = getFaculty(university, program.facultyId);
+      const facultyLine = fac ? getFacultyDisplayNameSafe(fac, lang) : program.facultyId;
+      const fit = calculateFitScore(student, program, university.admissionExpectations);
+      const req = program.entryRequirements?.length
+        ? program.entryRequirements.join("; ")
+        : "см. общие требования вуза в данных MVP";
 
-Проанализируй ${satLine}ЕНТ ${student.academic.untScore} для этой программы (в РК SAT часто не указывают — не требуй его, если в профиле нет). Дай совет из 2 предложений. Учти GPA ${student.academic.gpa.toFixed(1)} и IELTS ${student.academic.ielts.toFixed(1)}.`;
-      return askQwen(prompt, ADVISOR_SYSTEM_PROMPT);
+      const system = `${buildAdvisorBaseSystemPrompt(lang)}
+
+Ты даёшь персональный разбор ОДНОЙ программы в контексте сохранённого профиля абитуриента. Опирайся только на переданные данные; не переноси требования других вузов.`;
+
+      const prompt = `Вуз: «${uniLabel}» (${university.city}), id=${university.id}.
+Факультет/школа: ${facultyLine}.
+
+Программа: «${program.name}»
+Поле: ${program.field}; степень: ${program.degree}; срок: ${program.durationYears} г.; язык программы: ${program.language}.
+Ориентировочная стоимость в mock-данных: ${program.annualTuitionKzt} ₸/год (не официальный прайс).
+
+Расчётный AI Fit этой программы для профиля ниже: ${fit.score}%${fit.englishWarning ? `. Внимание по английскому: ${fit.englishWarning}` : ""}.
+
+Mock «почему подходит» в данных: ${program.matchReason}
+
+Вступительные требования в карточке (демо): ${req}
+
+Профиль абитуриента:
+${summarizeStudentRich(student, lang)}
+
+Задача: 4–6 предложений на языке, заданном системным промптом — конкурентность именно этой программы, главный риск (балл/язык/документы), один конкретный следующий шаг (что проверить на сайте вуза или в чек-листе).`;
+
+      return askQwen(prompt, system);
     },
-    [student]
+    [student, lang]
   );
 
   const getGeneralFitAdvice = useCallback(async (): Promise<string> => {
-    const un = getUniversityDisplayName(universityData, i18n.language);
-    const prompt = `Оценка только для вуза «${un}» (${universityData.city}), id=${universityData.id}. Не переключайся на Nazarbayev University, если это другой вуз.
+    const un = getUniversityDisplayName(universityData, lang);
+    const avg = computeAverageProgramFit(student, universityData);
+    const system = `${buildAdvisorBaseSystemPrompt(lang)}
 
-Дай общую оценку шансов поступления именно туда для абитуриента:
+Ты пишешь executive summary для блока AI Fit на дашборде. Используй только переданный контекст; не придумывай официальные квоты и лимиты.`;
 
-${summarizeStudentBlock(student)}
+    const prompt = `Вуз дашборда: «${un}» (${universityData.city}), id=${universityData.id}.
 
-Средний AI Fit по программам можно упомянуть контекстно, но не выдумывай точные цифры приёмной комиссии. Сформулируй краткий executive summary на 3–4 предложения: сильные стороны, риски, следующий шаг.`;
+Уже посчитано прототипом: средний fit по программам вуза ≈ ${avg}%.
 
-    return askQwen(prompt, ADVISOR_SYSTEM_PROMPT);
-  }, [student, universityData]);
+Топ-3 программы по fit для этого профиля:
+${formatTopProgramsForAdvisor(student, universityData, lang, 3)}
+
+Полный профиль и документы:
+${summarizeStudentRich(student, lang)}
+
+Шорт-лист программ пользователя в этом вузе: ${
+      shortlist.length
+        ? shortlist
+            .map((id) => {
+              const p = universityData.programs.find((x) => x.id === id);
+              return p ? p.name : id;
+            })
+            .join(", ")
+        : "пока пуст"
+    }
+
+Напиши связный обзор на 4–7 предложений: общая картина по этому вузу для этого человека, сильные стороны, 2–3 явных риска или пробела, приоритетный следующий шаг до дедлайна ${universityData.applicationDeadline}.`;
+
+    return askQwen(prompt, system);
+  }, [student, universityData, shortlist, lang]);
 
   const getScholarshipAdvice = useCallback(
     async (scholarshipName: string): Promise<string> => {
       const s = universityData.scholarships.find((x) => x.name === scholarshipName);
       const reqText = s?.requirements ?? "";
-      const un = getUniversityDisplayName(universityData, i18n.language);
-      const prompt = `Стипендия «${scholarshipName}» в вузе «${un}» (${universityData.city}). Не относись к ней как к стипендии NU, если это другой вуз.
+      const un = getUniversityDisplayName(universityData, lang);
+      const system = `${buildAdvisorBaseSystemPrompt(lang)}
 
-Объясни, как награда «Olympiad Winner» (олимпиада) может усилить заявку на эту стипендию.
+Ты объясняешь релевантность конкретной стипендии для профиля абитуриента в ЭТОМ вузе.`;
 
-Требования стипендии (справочно): ${reqText.slice(0, 800)}
+      const prompt = `Вуз: «${un}» (${universityData.city}), id=${universityData.id}.
+Дедлайн заявок в mock: ${universityData.applicationDeadline}.
 
-Профиль абитуриента:
-${summarizeStudentBlock(student)}
+Стипендия: «${scholarshipName}»
+Описание/требования в данных: ${reqText.slice(0, 900)}
 
-Ответ: 2–3 предложения, конкретно про связь олимпиады с этой стипендией в ЭТОМ вузе.`;
+Профиль и документы:
+${summarizeStudentRich(student, lang)}
 
-      return askQwen(prompt, ADVISOR_SYSTEM_PROMPT);
+Ответ: 3–5 предложений — насколько реалистично при текущем профиле, что усилит заявку, что проверить официально на сайте вуза. Свяжи с олимпиадами/меритом только если это уместно по тексту стипендии и профилю.`;
+
+      return askQwen(prompt, system);
     },
-    [student, universityData]
+    [student, universityData, lang]
   );
 
-  /** Свободный чат с Qwen: `priorTurns` — уже состоявшийся диалог (без нового сообщения). */
   const sendAdmissionChat = useCallback(
     async (priorTurns: QwenChatTurn[], newUserMessage: string): Promise<string> => {
-      const favLine =
-        favoriteUniversityIds.length > 0
-          ? favoriteUniversityIds
-              .map((id) => universities.find((u) => u.id === id))
-              .filter(Boolean)
-              .map((u) => `«${getUniversityDisplayName(u!, i18n.language)}»`)
-              .join(", ")
-          : "не отмечены";
+      const scenario = buildScenarioAdvisorContext({
+        student,
+        universityData,
+        universities,
+        selectedUniversityId,
+        favoriteUniversityIds,
+        shortlist,
+        lang,
+      });
 
-      const curUn = getUniversityDisplayName(universityData, i18n.language);
-      const context = `ТЕКУЩИЙ ВЫБОР В ИНТЕРФЕЙСЕ (дашборд QApp): id=${selectedUniversityId}, вуз «${curUn}», ${universityData.city}.
-Это переключатель «активного вуза» для карточек на сайте — НЕ утверждение, что пользователь подаёт документы только сюда. В каталоге QApp сейчас ${universities.length} вузов Казахстана; абитуриент может подавать в несколько.
+      const system = `${buildAdvisorBaseSystemPrompt(lang)}
 
-Важно: не отвечай так, будто заявка только в Nazarbayev University, если в строке выше другой вуз. По общим вопросам (ЕНТ, портал, документы) будь нейтрален к конкретному вузу.
+Ты в режиме живого чата QApp. Отвечай опираясь на блок «Сценарный контекст» — это актуальное состояние интерфейса и профиля пользователя. Если вопрос общий про систему приёма в РК, можно опираться на общие знания, но не противоречь переданным данным профиля.
+Если пользователь спрашивает про другой вуз из списка избранного — учитывай его название из контекста.
 
-Избранные вузы в приложении: ${favLine}.
-
-Языки обучения у выбранного для дашборда вуза: ${universityData.languagesOfInstruction.join(", ")}.
-
-Профиль абитуриента:
-${summarizeStudentBlock(student)}`;
-
-      const system = `${ADVISOR_SYSTEM_PROMPT}
-
-Ты в режиме чата на сайте QApp. Отвечай по-русски, структурировано, без выдуманных точных порогов баллов — ориентиры и что уточнить на сайте нужного вуза.
-
-Контекст:
-${context}`;
+Сценарный контекст (обновляется при каждом сообщении):
+${scenario}`;
 
       const turns: QwenChatTurn[] = [...priorTurns, { role: "user", content: newUserMessage }];
       return askQwenMessages(system, turns);
     },
-    [student, universityData, universities, selectedUniversityId, favoriteUniversityIds]
+    [student, universityData, universities, selectedUniversityId, favoriteUniversityIds, shortlist, lang]
   );
 
   return {
@@ -132,4 +156,13 @@ ${context}`;
     getScholarshipAdvice,
     sendAdmissionChat,
   };
+}
+
+function getFacultyDisplayNameSafe(
+  fac: { name: string; nameRu?: string; nameKk?: string },
+  lang: string
+): string {
+  if (lang.startsWith("kk") && fac.nameKk) return fac.nameKk;
+  if (lang.startsWith("ru") && fac.nameRu) return fac.nameRu;
+  return fac.name;
 }

@@ -1,0 +1,214 @@
+{
+  "id": "kostanayu",
+  "name": "Kostanay Regional University named after A. Baitursynov",
+  "nameRu": "Костанайский региональный университет имени А. Байтурсынова",
+  "nameKk": "А. Байтұрсынов атындағы Қостанай өңірлік университеті",
+  "officialWebsiteUrl": "https://ksu.edu.kz",
+  "admissionsEmail": "priem@ksu.edu.kz",
+  "city": "Kostanay, Kazakhstan",
+  "foundedYear": 1939,
+  "type": "Comprehensive",
+  "languagesOfInstruction": [
+    "Kazakh",
+    "Russian"
+  ],
+  "applicationDeadline": "2026-08-18",
+  "scholarshipBlurb": "Гранты для педагогических и агроинженерных программ северных регионов; поддержка сельской молодёжи.",
+  "heroImageUrl": "https://images.unsplash.com/photo-1464983953576-de2d98abbdbe?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 980000,
+    "maxKzt": 2400000,
+    "note": "Стоимость ниже столичной; аграрные программы с полевыми практиками."
+  },
+  "faculties": [
+    {
+      "id": "kostanayu-agronomy",
+      "name": "Agronomy and Soil Science",
+      "description": "Растениеводство зерновых и масличных культур."
+    },
+    {
+      "id": "kostanayu-agritech",
+      "name": "Agricultural Engineering",
+      "description": "Техника для полей и переработки."
+    },
+    {
+      "id": "kostanayu-vet",
+      "name": "Veterinary Medicine",
+      "description": "Здоровье животных и биобезопасность ферм."
+    },
+    {
+      "id": "kostanayu-biology",
+      "name": "Biology and Chemistry",
+      "description": "Естественно-научная база для аграрных программ."
+    },
+    {
+      "id": "kostanayu-it",
+      "name": "Information Technologies",
+      "description": "Цифровизация агрохолдингов."
+    },
+    {
+      "id": "kostanayu-econ",
+      "name": "Economics and Agrarian Markets",
+      "description": "Экономика АПК и кооперации."
+    },
+    {
+      "id": "kostanayu-ped",
+      "name": "Pedagogy",
+      "description": "Учителя для школ области."
+    },
+    {
+      "id": "kostanayu-law",
+      "name": "Law",
+      "description": "Право землепользования и экологическое право."
+    },
+    {
+      "id": "kostanayu-lang",
+      "name": "Philology",
+      "description": "Казахская и русская филология."
+    }
+  ],
+  "scholarships": [
+    {
+      "name": "Грант АПК направлений",
+      "requirements": "ЕНТ по биологии и химии.",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Стипендия педагогического резерва",
+      "requirements": "Обязательство работы в школе региона.",
+      "aiRelevance": "Medium"
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 4.35,
+    "competitiveGpa": 3.75,
+    "competitiveSat": 1180,
+    "targetSat": 1320,
+    "competitiveUnt": 82,
+    "targetUnt": 110,
+    "minIelts": 5.5,
+    "modelNote": "Демо-модель Fit для QApp; официальные пороги и правила года набора — только на сайте вуза."
+  },
+  "programs": [
+    {
+      "id": "kostanayu-bsc-agronomy",
+      "name": "BSc Agronomy",
+      "facultyId": "kostanayu-agronomy",
+      "annualTuitionKzt": 1350000,
+      "field": "Science",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian",
+      "fitScore": 72,
+      "matchReason": "Агроном для степных хозяйств.",
+      "detailedDescription": [
+        "Полевые практики.",
+        "Агрохимия."
+      ],
+      "entryRequirements": [
+        "Биология",
+        "Химия"
+      ]
+    },
+    {
+      "id": "kostanayu-bsc-agritech",
+      "name": "BSc Agricultural Engineering",
+      "facultyId": "kostanayu-agritech",
+      "annualTuitionKzt": 1500000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 71,
+      "matchReason": "Инженер техники для АПК.",
+      "detailedDescription": [
+        "Тракторные системы.",
+        "Точное земледелие intro."
+      ],
+      "entryRequirements": [
+        "Физика",
+        "Математика"
+      ]
+    },
+    {
+      "id": "kostanayu-bsc-vet",
+      "name": "BSc Veterinary Science",
+      "facultyId": "kostanayu-vet",
+      "annualTuitionKzt": 1900000,
+      "field": "Medicine",
+      "degree": "Bachelor",
+      "durationYears": 5,
+      "language": "Russian / Kazakh",
+      "fitScore": 74,
+      "matchReason": "Ветеринария для ферм и переработки.",
+      "detailedDescription": [
+        "Лаборатории патологии.",
+        "Эпизоотический контроль."
+      ],
+      "entryRequirements": [
+        "Биология",
+        "Химия"
+      ]
+    },
+    {
+      "id": "kostanayu-bsc-it-agro",
+      "name": "BSc IT in Agriculture",
+      "facultyId": "kostanayu-it",
+      "annualTuitionKzt": 1650000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 73,
+      "matchReason": "Агроцифровизация и учёт урожая.",
+      "detailedDescription": [
+        "GIS intro.",
+        "IoT датчики."
+      ],
+      "entryRequirements": [
+        "Информатика",
+        "Математика"
+      ]
+    },
+    {
+      "id": "kostanayu-bba-agribusiness",
+      "name": "BBA Agribusiness",
+      "facultyId": "kostanayu-econ",
+      "annualTuitionKzt": 1400000,
+      "field": "Business",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian",
+      "fitScore": 70,
+      "matchReason": "Маркетинг зерна и масла.",
+      "detailedDescription": [
+        "Цепочки поставок.",
+        "Экспорт intro."
+      ],
+      "entryRequirements": [
+        "Математика",
+        "География"
+      ]
+    },
+    {
+      "id": "kostanayu-ba-ped-primary",
+      "name": "BA Primary Education",
+      "facultyId": "kostanayu-ped",
+      "annualTuitionKzt": 1100000,
+      "field": "Humanities",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian",
+      "fitScore": 69,
+      "matchReason": "Учитель начальных классов области.",
+      "detailedDescription": [
+        "Методики чтения.",
+        "Классное руководство."
+      ],
+      "entryRequirements": [
+        "ЕНТ педагогический профиль"
+      ]
+    }
+  ]
+}

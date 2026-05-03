@@ -10,6 +10,7 @@ import {
   type UniversityTemplate,
 } from "../mockData";
 import { getFacultyDisplayName } from "../lib/universityLabels";
+import { useProfile } from "../context/ProfileContext";
 
 export type ProgramRow = {
   program: UniversityProgram;
@@ -37,6 +38,15 @@ const DEGREES: Array<DegreeLevel | "all"> = ["all", "Bachelor", "Master", "PhD"]
 
 type PriceBand = "all" | "low" | "mid" | "high";
 
+/** Фильтр Fit Score по §10.D ТЗ */
+type FitBand = "all" | "high" | "mid" | "low";
+
+function fitBand(score: number): Exclude<FitBand, "all"> {
+  if (score >= 75) return "high";
+  if (score >= 55) return "mid";
+  return "low";
+}
+
 function programPriceBand(kzt: number): Exclude<PriceBand, "all"> {
   if (kzt < 4_000_000) return "low";
   if (kzt <= 8_000_000) return "mid";
@@ -45,18 +55,22 @@ function programPriceBand(kzt: number): Exclude<PriceBand, "all"> {
 
 export function ProgramGrid({ rows, university }: Props) {
   const { t, i18n } = useTranslation();
+  const { shortlist, toggleShortlist, isShortlisted } = useProfile();
   const [fieldFilter, setFieldFilter] = useState<ProgramField | "all">("all");
   const [degreeFilter, setDegreeFilter] = useState<DegreeLevel | "all">("all");
   const [facultyFilter, setFacultyFilter] = useState<string | "all">("all");
   const [languageFilter, setLanguageFilter] = useState<string | "all">("all");
   const [priceBand, setPriceBand] = useState<PriceBand>("all");
+  const [fitBandFilter, setFitBandFilter] = useState<FitBand>("all");
   const [query, setQuery] = useState("");
 
+  const sortedRows = useMemo(() => [...rows].sort((a, b) => b.score - a.score), [rows]);
+
   const languageOptions = useMemo(() => {
-    const s = new Set(rows.map((r) => r.program.language));
+    const s = new Set(sortedRows.map((r) => r.program.language));
     const loc = i18n.language.startsWith("kk") ? "kk" : i18n.language.startsWith("ru") ? "ru" : "en";
     return ["all" as const, ...[...s].sort((a, b) => a.localeCompare(b, loc))];
-  }, [rows, i18n.language]);
+  }, [sortedRows, i18n.language]);
 
   const priceLabels = useMemo(
     (): Record<Exclude<PriceBand, "all">, string> => ({
@@ -69,7 +83,8 @@ export function ProgramGrid({ rows, university }: Props) {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return rows.filter(({ program }) => {
+    return sortedRows.filter(({ program, score }) => {
+      if (fitBandFilter !== "all" && fitBand(score) !== fitBandFilter) return false;
       if (fieldFilter !== "all" && program.field !== fieldFilter) return false;
       if (degreeFilter !== "all" && program.degree !== degreeFilter) return false;
       if (facultyFilter !== "all" && program.facultyId !== facultyFilter) return false;
@@ -84,7 +99,7 @@ export function ProgramGrid({ rows, university }: Props) {
       }
       return true;
     });
-  }, [rows, fieldFilter, degreeFilter, facultyFilter, languageFilter, priceBand, query]);
+  }, [sortedRows, fitBandFilter, fieldFilter, degreeFilter, facultyFilter, languageFilter, priceBand, query]);
 
   return (
     <section id="program-grid">
@@ -109,6 +124,30 @@ export function ProgramGrid({ rows, university }: Props) {
       </div>
 
       <div className="mt-4 flex flex-col gap-4">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs font-medium uppercase tracking-wide text-slate-500">{t("programGrid.fitLabel")}</span>
+          {(["all", "high", "mid", "low"] as const).map((fb) => (
+            <button
+              key={fb}
+              type="button"
+              onClick={() => setFitBandFilter(fb)}
+              className={`rounded-full px-3 py-1 text-xs font-medium transition ${
+                fitBandFilter === fb
+                  ? "bg-indigo-600 text-white shadow-sm"
+                  : "bg-slate-100 text-slate-700 ring-1 ring-slate-200 hover:bg-slate-200/80"
+              }`}
+            >
+              {fb === "all"
+                ? t("programGrid.fitAll")
+                : fb === "high"
+                  ? t("programGrid.fitHigh")
+                  : fb === "mid"
+                    ? t("programGrid.fitMid")
+                    : t("programGrid.fitLow")}
+            </button>
+          ))}
+        </div>
+
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs font-medium uppercase tracking-wide text-slate-500">{t("programGrid.fieldLabel")}</span>
           {FIELDS.map((f) => (
@@ -220,11 +259,12 @@ export function ProgramGrid({ rows, university }: Props) {
           {filtered.map(({ program, score, englishWarning }) => {
             const fac = getFaculty(university, program.facultyId);
             const yearsLabel = t("programMeta.years", { count: program.durationYears });
+            const listed = isShortlisted(program.id);
             return (
-              <li key={program.id}>
+              <li key={program.id} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all hover:border-indigo-200 hover:shadow-md">
                 <Link
                   to={`/program/${program.id}`}
-                  className="block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:border-indigo-200 hover:shadow-md active:scale-[0.99]"
+                  className="block p-5 pb-3 transition-colors hover:bg-slate-50/80 active:bg-slate-50"
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="min-w-0">
@@ -245,8 +285,26 @@ export function ProgramGrid({ rows, university }: Props) {
                   {englishWarning && (
                     <p className="mt-2 text-sm font-medium text-amber-800">{englishWarning}</p>
                   )}
-                  <p className="mt-3 text-xs font-medium text-indigo-600">{t("programGrid.detailsLink")}</p>
                 </Link>
+                <div className="flex flex-wrap gap-2 border-t border-slate-100 bg-slate-50/50 px-5 py-3">
+                  <Link
+                    to={`/program/${program.id}`}
+                    className="inline-flex flex-1 items-center justify-center rounded-xl bg-indigo-600 px-3 py-2 text-center text-xs font-semibold text-white shadow-sm transition hover:bg-indigo-700 sm:flex-none sm:px-4 sm:text-sm"
+                  >
+                    {t("programGrid.viewRequirements")}
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => toggleShortlist(program.id)}
+                    className={`inline-flex flex-1 items-center justify-center rounded-xl border px-3 py-2 text-center text-xs font-semibold transition sm:flex-none sm:px-4 sm:text-sm ${
+                      listed
+                        ? "border-emerald-300 bg-emerald-50 text-emerald-900 hover:bg-emerald-100"
+                        : "border-slate-200 bg-white text-slate-800 hover:bg-slate-100"
+                    }`}
+                  >
+                    {listed ? t("programGrid.removeShortlist") : t("programGrid.addShortlist")}
+                  </button>
+                </div>
               </li>
             );
           })}

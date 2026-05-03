@@ -258,6 +258,14 @@ export function ScholarshipsSection() {
                         </span>
                       </div>
                       <p className="mt-2 text-sm leading-relaxed text-slate-600">{s.requirements}</p>
+                      <div className="mt-3">
+                        <Link
+                          to="/profile"
+                          className="inline-flex rounded-xl border border-indigo-200 bg-white px-4 py-2 text-sm font-semibold text-indigo-800 shadow-sm transition hover:bg-indigo-50"
+                        >
+                          {t("scholarships.ctaPrepare")}
+                        </Link>
+                      </div>
                     </div>
                     <div className="flex flex-col items-stretch justify-center border-t border-slate-100 pt-4 lg:border-l lg:border-t-0 lg:pl-6 lg:pt-0">
                       <p className="text-xs font-medium uppercase tracking-wide text-slate-500">

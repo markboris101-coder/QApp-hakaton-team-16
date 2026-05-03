@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { bumpDashboardVisit, recordShortlistPeak } from "../lib/demoAnalytics";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
@@ -13,15 +14,17 @@ import { ThisWeekPanel } from "../components/ThisWeekPanel";
 import { AssistantDashboardNudge } from "../components/AssistantDashboardNudge";
 import { useSmartAdvisor } from "../hooks/useSmartAdvisor";
 import { DashboardStickySidebar } from "../components/DashboardStickySidebar";
+import { UniversityComparisonSection } from "../components/UniversityComparisonSection";
 import { isAiConfigured } from "../services/aiProvider";
 import * as documentStorage from "../lib/documentStorage";
 import { validateDocumentFile } from "../lib/documentUploadPolicy";
 import { useProfile } from "../context/ProfileContext";
 import { formatTuitionBand, type StudentDocuments } from "../mockData";
 import { getTopUniversityRecommendation } from "../lib/recommendUniversity";
-import { useAssistantIntake } from "../hooks/useAssistantIntake";
+import { useAssistantIntake } from "../context/AssistantIntakeContext";
 import { formatSatForDisplay } from "../lib/academicInput";
 import { getUniversityDisplayName } from "../lib/universityLabels";
+import { getFitMatchTier } from "../lib/fitMatchTier";
 
 function FitRing({
   value,
@@ -94,6 +97,14 @@ export function HomePage() {
   } = useProfile();
   const { hydrated, intakeDone } = useAssistantIntake();
 
+  useEffect(() => {
+    bumpDashboardVisit();
+  }, []);
+
+  useEffect(() => {
+    recordShortlistPeak(shortlist.length);
+  }, [shortlist.length]);
+
   const assistantTop = useMemo(
     () => (intakeDone ? getTopUniversityRecommendation(student, universities) : null),
     [student, universities, intakeDone, i18n.language]
@@ -140,23 +151,38 @@ export function HomePage() {
     if (
       location.hash === "#admission-checklist" ||
       location.hash === "#program-grid" ||
-      location.hash === "#ai-fit-card"
+      location.hash === "#ai-fit-card" ||
+      location.hash === "#university-comparison"
     ) {
       const el = document.querySelector(location.hash);
       el?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, [location.pathname, location.hash]);
 
+  const programsInterestMatch = useMemo(() => {
+    const ints = student.preferences.interests.map((i) => i.toLowerCase());
+    return universityData.programs.some((p) =>
+      ints.some(
+        (int) =>
+          p.field.toLowerCase().includes(int) ||
+          int.includes(p.field.toLowerCase()) ||
+          p.name.toLowerCase().includes(int)
+      )
+    );
+  }, [student.preferences.interests, universityData.programs]);
+
   const programResults = useMemo(
     () =>
-      universityData.programs.map((program) => {
-        const { score, englishWarning } = calculateFitScore(
-          student,
-          program,
-          universityData.admissionExpectations
-        );
-        return { program, score, englishWarning };
-      }),
+      [...universityData.programs]
+        .map((program) => {
+          const { score, englishWarning } = calculateFitScore(
+            student,
+            program,
+            universityData.admissionExpectations
+          );
+          return { program, score, englishWarning };
+        })
+        .sort((a, b) => b.score - a.score),
     [student, universityData]
   );
 
@@ -288,9 +314,15 @@ export function HomePage() {
             <div>
               <p className="text-sm font-medium text-indigo-600">{t("home.tagline")}</p>
               <h1 className="mt-1 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-                {getUniversityDisplayName(universityData, i18n.language)}
+                {universityData.nameRu ?? universityData.name}
               </h1>
+              <p className="mt-1 text-lg font-medium text-slate-700 sm:text-xl">{universityData.name}</p>
               <p className="mt-2 text-slate-600">{universityData.city}</p>
+              <p className="mt-3 rounded-xl border border-emerald-200 bg-emerald-50/90 px-4 py-3 text-sm font-medium text-emerald-950 ring-1 ring-emerald-100">
+                {t("home.aiInsight", {
+                  label: t(`aiFit.tier.${getFitMatchTier(averageFit)}`),
+                })}
+              </p>
             </div>
 
             <div className="flex flex-wrap gap-2">
@@ -308,6 +340,9 @@ export function HomePage() {
               </span>
               <span className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-medium text-violet-900 ring-1 ring-violet-200 shadow-sm">
                 {t("home.deadline")} {formatShortDate(universityData.applicationDeadline)}
+              </span>
+              <span className="inline-flex items-center rounded-full bg-indigo-600 px-3 py-1 text-xs font-bold uppercase tracking-wide text-white shadow-sm ring-1 ring-indigo-700/30">
+                {t("home.badgeAiMatch")} · {averageFit}%
               </span>
               <span
                 className="inline-flex max-w-full items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-900 ring-1 ring-emerald-200/80 shadow-sm"
@@ -357,16 +392,22 @@ export function HomePage() {
             <FitRing value={averageFit} label={t("home.fitRing")} />
             <div className="flex w-full max-w-xs flex-col gap-2 sm:flex-row sm:justify-end lg:flex-col lg:items-stretch">
               <Link
-                to="/profile"
+                to="/dashboard#admission-checklist"
                 className="w-full rounded-xl bg-indigo-600 px-4 py-2.5 text-center text-sm font-semibold text-white shadow-md transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 sm:w-auto lg:w-full"
               >
-                {t("home.fullProfile")}
+                {t("home.ctaStart")}
               </Link>
               <Link
-                to="/dashboard#program-grid"
+                to="/profile"
                 className="w-full rounded-xl border border-slate-200 bg-white/90 px-4 py-2.5 text-center text-sm font-semibold text-slate-800 shadow-sm ring-1 ring-slate-200/80 transition hover:bg-slate-50 sm:w-auto lg:w-full"
               >
-                {t("home.programs")}
+                {t("home.ctaSave")}
+              </Link>
+              <Link
+                to="/dashboard#university-comparison"
+                className="w-full rounded-xl border border-indigo-200 bg-indigo-50/90 px-4 py-2.5 text-center text-sm font-semibold text-indigo-900 shadow-sm ring-1 ring-indigo-100 transition hover:bg-indigo-100 sm:w-auto lg:w-full"
+              >
+                {t("home.ctaCompare")}
               </Link>
             </div>
           </div>
@@ -443,6 +484,8 @@ export function HomePage() {
               universityName={getUniversityDisplayName(universityData, i18n.language)}
               averageFitPercent={averageFit}
               student={student}
+              documents={student.documents}
+              programsInterestMatch={programsInterestMatch}
               executiveSummary={execSummary}
               executiveLoading={execLoading}
               executiveError={execError}
@@ -450,6 +493,8 @@ export function HomePage() {
               admissionExpectations={universityData.admissionExpectations}
             />
             <ProgramGrid rows={programResults} university={universityData} />
+
+            <UniversityComparisonSection />
 
             <div className="space-y-14">
               <ThisWeekPanel
@@ -472,19 +517,18 @@ export function HomePage() {
                 onSelectFile={handleDocumentSelectFile}
                 onRemoveFile={handleDocumentRemoveFile}
                 onDownloadFile={handleDocumentDownload}
+                applicationDeadlineIso={universityData.applicationDeadline}
               />
               <ScholarshipsSection />
             </div>
           </div>
           <div className="mt-10 hidden lg:mt-0 lg:block">
-            <DashboardStickySidebar
-              universityName={getUniversityDisplayName(universityData, i18n.language)}
-              city={universityData.city}
-              averageFitPercent={averageFit}
-              programCount={universityData.programs.length}
-              student={student}
-            />
+            <DashboardStickySidebar university={universityData} averageFitPercent={averageFit} student={student} />
           </div>
+        </div>
+
+        <div className="mx-auto mt-10 w-full max-w-[min(100%,1400px)] px-4 lg:hidden sm:px-6">
+          <DashboardStickySidebar university={universityData} averageFitPercent={averageFit} student={student} />
         </div>
       </main>
     </motion.div>

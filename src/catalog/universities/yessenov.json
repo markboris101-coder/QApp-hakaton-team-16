@@ -1,0 +1,191 @@
+{
+  "id": "yessenov",
+  "name": "Yessenov University",
+  "nameRu": "Университет имени Шахмардана Есенова",
+  "nameKk": "Шахмардан Есенов атындағы университет",
+  "city": "Aktau, Kazakhstan",
+  "foundedYear": 1997,
+  "type": "Technical",
+  "languagesOfInstruction": [
+    "Kazakh",
+    "Russian",
+    "English"
+  ],
+  "applicationDeadline": "2026-07-30",
+  "scholarshipBlurb": "Государственные гранты, поддержка талантов Каспийского региона и отраслевые стипендии добывающих и логистических компаний.",
+  "heroImageUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 1100000,
+    "maxKzt": 3000000,
+    "note": "Морской и инженерный блоки часто в верхней части вилки; уточняйте по программе года."
+  },
+  "faculties": [
+    {
+      "id": "yess-tourism-lang",
+      "name": "Faculty of Tourism and Languages",
+      "nameRu": "Факультет туризма и языков",
+      "nameKk": "Туризм және тілдер факультеті",
+      "description": "Hospitality, tourism management and multilingual service skills for the Caspian hub.",
+      "descriptionRu": "Гостеприимство, управление туризмом и многоязычный сервис для каспийского туристического узла.",
+      "descriptionKk": "Қонақ үй ісі, туризм басқару және Каспий туристік торабы үшін көп тілді сервис."
+    },
+    {
+      "id": "yess-business-law",
+      "name": "Faculty of Business and Law",
+      "nameRu": "Факультет бизнеса и права",
+      "nameKk": "Бизнес және құқық факультеті",
+      "description": "Management, finance, marketing and business law aligned with Kazakhstan legislation.",
+      "descriptionRu": "Менеджмент, финансы, маркетинг и хозяйственное право в соответствии с законодательством РК.",
+      "descriptionKk": "Менеджмент, қаржы, маркетинг және Қазақстан заңнамасына сай коммерциялық құқық."
+    },
+    {
+      "id": "yess-engineering",
+      "name": "Faculty of Engineering",
+      "nameRu": "Инженерный факультет",
+      "nameKk": "Инженерлік факультет",
+      "description": "Mechanical, electrical and chemical engineering serving oil, gas and logistics.",
+      "descriptionRu": "Машиностроение, электротехника и химическая инженерия для нефтегаза и логистики.",
+      "descriptionKk": "Машина жасау, электротехника және мұнай-газ бен логистика үшін химиялық инженерия."
+    },
+    {
+      "id": "yess-sci-tech",
+      "name": "Faculty of Science and Technology",
+      "nameRu": "Факультет науки и технологий",
+      "nameKk": "Ғылым және технологиялар факультеті",
+      "description": "Applied sciences, lab instrumentation and technology transfer to industry.",
+      "descriptionRu": "Прикладные науки, лабораторная аппаратура и трансфер технологий в отрасль.",
+      "descriptionKk": "Қолданбалы ғылымдар, зертхана жабдықтары және технологияларды өнеркәсіпке беру."
+    },
+    {
+      "id": "yess-marine",
+      "name": "Marine Academy",
+      "nameRu": "Морская академия",
+      "nameKk": "Теңіз академиясы",
+      "description": "Maritime transport, port logistics and offshore engineering fundamentals.",
+      "descriptionRu": "Морской транспорт, портовая логистика и основы оффшорной инженерии.",
+      "descriptionKk": "Теңіз көлігі, порт логистикасы және оффшор инженериясының негіздері."
+    },
+    {
+      "id": "yess-education",
+      "name": "Faculty of Education",
+      "nameRu": "Педагогический факультет",
+      "nameKk": "Педагогика факультеті",
+      "description": "Teacher education for schools and colleges across Mangystau region.",
+      "descriptionRu": "Подготовка учителей для школ и колледжей Мангистауской области.",
+      "descriptionKk": "Маңғыстау облысы мектептері мен колледждері үшін мұғалім даярлау."
+    },
+    {
+      "id": "yess-military",
+      "name": "Military Department",
+      "nameRu": "Военная кафедра",
+      "nameKk": "Әскери кафедра",
+      "description": "Territorial defence and basic military training for eligible students.",
+      "descriptionRu": "Территориальная оборона и начальная военная подготовка для студентов по совместимости программ.",
+      "descriptionKk": "Бағдарламаларға сай студенттер үшін аудандық қорғаныс және әскери дайындық."
+    },
+    {
+      "id": "yess-cs-ai",
+      "name": "Faculty of Computer Science and Artificial Intelligence",
+      "nameRu": "Факультет компьютерных наук и искусственного интеллекта",
+      "nameKk": "Компьютер ғылымы және жасанды интеллект факультеті",
+      "description": "Software engineering, data science and AI applications for regional digitalisation.",
+      "descriptionRu": "Программная инженерия, анализ данных и приложения ИИ для цифровизации региона.",
+      "descriptionKk": "Бағдарламалық инженерия, деректер талдауы және аймақтың цифрлануы үшін ЖИ қолданбалары."
+    },
+    {
+      "id": "yess-phil-sport",
+      "name": "Faculty of Philology and Sports",
+      "nameRu": "Факультет филологии и спорта",
+      "nameKk": "Филология және спорт факультеті",
+      "description": "Philology tracks combined with physical culture and coaching modules.",
+      "descriptionRu": "Филологические направления с модулями физической культуры и тренерской подготовки.",
+      "descriptionKk": "Филология бағыттары мен дене шынықтыру және бапкерлік модульдері."
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 4.1,
+    "competitiveGpa": 3.5,
+    "competitiveSat": 1040,
+    "targetSat": 1220,
+    "competitiveUnt": 80,
+    "targetUnt": 100,
+    "minIelts": 5.5,
+    "modelNote": "Прикладной вуз Каспия; англоязычные и смешанные программы встречаются чаще среднего по регионам."
+  },
+  "scholarships": [
+    {
+      "name": "Государственный образовательный грант",
+      "requirements": "Конкурс ЕНТ для граждан РК.",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Стипендия достижений (олимпиады/конкурсы)",
+      "requirements": "Дипломы республиканских конкурсов и подтверждённый GPA.",
+      "aiRelevance": "Medium"
+    }
+  ],
+  "programs": [
+    {
+      "id": "yess-bsc-marine-transport",
+      "name": "BSc in Maritime Transport and Logistics",
+      "facultyId": "yess-marine",
+      "annualTuitionKzt": 2200000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 78,
+      "matchReason": "Порт и морская логистика для Актау как ключевого узла.",
+      "detailedDescription": [
+        "Навигация и логистика портов.",
+        "Безопасность на море — базовый модуль."
+      ],
+      "entryRequirements": [
+        "Математика и физика",
+        "ЕНТ"
+      ]
+    },
+    {
+      "id": "yess-bsc-cs",
+      "name": "BSc in Computer Science",
+      "facultyId": "yess-cs-ai",
+      "annualTuitionKzt": 2050000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English / Russian",
+      "fitScore": 80,
+      "matchReason": "Прикладной CS и введение в ИИ для цифровой экономики региона.",
+      "detailedDescription": [
+        "Алгоритмы и структуры данных.",
+        "Машинное обучение — вводный курс."
+      ],
+      "entryRequirements": [
+        "Математика",
+        "Информатика желательна",
+        "ЕНТ или IELTS по потоку"
+      ]
+    },
+    {
+      "id": "yess-bba-business",
+      "name": "BBA in Business Administration",
+      "facultyId": "yess-business-law",
+      "annualTuitionKzt": 1900000,
+      "field": "Business",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian",
+      "fitScore": 74,
+      "matchReason": "Управление бизнесом и основы права для предпринимательства на западе страны.",
+      "detailedDescription": [
+        "Маркетинг и финансы.",
+        "Корпоративное право — основы."
+      ],
+      "entryRequirements": [
+        "Математика",
+        "ЕНТ"
+      ]
+    }
+  ]
+}

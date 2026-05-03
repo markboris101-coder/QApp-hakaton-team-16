@@ -1,0 +1,213 @@
+{
+  "id": "astanamu",
+  "name": "Astana Medical University",
+  "nameRu": "Астанский медицинский университет",
+  "nameKk": "Астана медицина университеті",
+  "officialWebsiteUrl": "https://amu.edu.kz",
+  "admissionsEmail": "admission@amu.edu.kz",
+  "city": "Astana, Kazakhstan",
+  "foundedYear": 1997,
+  "type": "Research",
+  "languagesOfInstruction": [
+    "Kazakh",
+    "Russian",
+    "English"
+  ],
+  "applicationDeadline": "2026-06-25",
+  "scholarshipBlurb": "Гранты для медицинских специальностей столицы; STEM-олимпиады учитываются в дополнительных конкурсах.",
+  "heroImageUrl": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 2900000,
+    "maxKzt": 5800000,
+    "note": "Англоязычные группы могут иметь надбавку; проверяйте официальный прайсинг года."
+  },
+  "faculties": [
+    {
+      "id": "amu-internal",
+      "name": "Internal Medicine Foundations",
+      "description": "Терапия, кардиология основ, нефрология intro."
+    },
+    {
+      "id": "amu-surgery",
+      "name": "Surgery and Anesthesiology Basics",
+      "description": "Оперативная практика после базовых лет."
+    },
+    {
+      "id": "amu-pediatrics",
+      "name": "Pediatrics and Childhood Diseases",
+      "description": "Детские направления столицы."
+    },
+    {
+      "id": "amu-pharm",
+      "name": "Pharmacy and Biotechnology",
+      "description": "Фармацевтические технологии."
+    },
+    {
+      "id": "amu-dental",
+      "name": "Dentistry",
+      "description": "Стоматология общей практики."
+    },
+    {
+      "id": "amu-public",
+      "name": "Public Health Management",
+      "description": "Управление медицинскими организациями."
+    },
+    {
+      "id": "amu-nursing",
+      "name": "Nursing School",
+      "description": "Практический уход и координация палат."
+    },
+    {
+      "id": "amu-lang",
+      "name": "Medical Languages and Ethics",
+      "description": "Коммуникация врача и межкультурная компетентность."
+    },
+    {
+      "id": "amu-research",
+      "name": "Translational Research Cluster",
+      "description": "Введение в клинические исследования."
+    }
+  ],
+  "scholarships": [
+    {
+      "name": "Грант на медицину (столица)",
+      "requirements": "ЕНТ конкурс.",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Менторство от выпускников клиник Астаны",
+      "requirements": "Отбор по GPA после 2 курса.",
+      "aiRelevance": "Low"
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 4.35,
+    "competitiveGpa": 3.75,
+    "competitiveSat": 1180,
+    "targetSat": 1320,
+    "competitiveUnt": 112,
+    "targetUnt": 110,
+    "minIelts": 5.5,
+    "modelNote": "Демо-модель Fit для QApp; официальные пороги и правила года набора — только на сайте вуза."
+  },
+  "programs": [
+    {
+      "id": "amu-md-medicine",
+      "name": "MD General Medicine",
+      "facultyId": "amu-internal",
+      "annualTuitionKzt": 4900000,
+      "field": "Medicine",
+      "degree": "Bachelor",
+      "durationYears": 6,
+      "language": "Kazakh / Russian",
+      "fitScore": 87,
+      "matchReason": "Медицина столицы с доступом к госпиталям NHS-партнёров (демо).",
+      "detailedDescription": [
+        "Интегрированные кейсы.",
+        "OSCE экзамены."
+      ],
+      "entryRequirements": [
+        "Биология",
+        "Химия",
+        "ЕНТ"
+      ]
+    },
+    {
+      "id": "amu-md-pediatrics",
+      "name": "MD Pediatrics",
+      "facultyId": "amu-pediatrics",
+      "annualTuitionKzt": 4850000,
+      "field": "Medicine",
+      "degree": "Bachelor",
+      "durationYears": 6,
+      "language": "Russian / Kazakh",
+      "fitScore": 85,
+      "matchReason": "Педиатрия для городских поликлиник.",
+      "detailedDescription": [
+        "Неонатология симуляции."
+      ],
+      "entryRequirements": [
+        "Биология",
+        "ЕНТ"
+      ]
+    },
+    {
+      "id": "amu-bds",
+      "name": "BDS Dentistry",
+      "facultyId": "amu-dental",
+      "annualTuitionKzt": 4000000,
+      "field": "Medicine",
+      "degree": "Bachelor",
+      "durationYears": 5,
+      "language": "Russian / Kazakh",
+      "fitScore": 83,
+      "matchReason": "Стоматология с ранней клиникой.",
+      "detailedDescription": [
+        "Профилактика кариеса community."
+      ],
+      "entryRequirements": [
+        "Биология",
+        "Химия"
+      ]
+    },
+    {
+      "id": "amu-bpharm",
+      "name": "BPharm",
+      "facultyId": "amu-pharm",
+      "annualTuitionKzt": 3500000,
+      "field": "Science",
+      "degree": "Bachelor",
+      "durationYears": 5,
+      "language": "Russian / Kazakh",
+      "fitScore": 79,
+      "matchReason": "Фармацевт для столичной сети.",
+      "detailedDescription": [
+        "GMP лаборатории intro."
+      ],
+      "entryRequirements": [
+        "Химия",
+        "Биология"
+      ]
+    },
+    {
+      "id": "amu-bsc-health-admin",
+      "name": "BSc Healthcare Administration",
+      "facultyId": "amu-public",
+      "annualTuitionKzt": 3200000,
+      "field": "Business",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English / Kazakh",
+      "fitScore": 76,
+      "matchReason": "Управление клиниками и цифровизация МЗ.",
+      "detailedDescription": [
+        "Операционный менеджмент.",
+        "Закупки МЗ РК."
+      ],
+      "entryRequirements": [
+        "Математика",
+        "IELTS 5.5+ для ENG"
+      ]
+    },
+    {
+      "id": "amu-bsc-nursing",
+      "name": "BSc Nursing",
+      "facultyId": "amu-nursing",
+      "annualTuitionKzt": 2850000,
+      "field": "Medicine",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian",
+      "fitScore": 74,
+      "matchReason": "Сестринское дело высшего образования.",
+      "detailedDescription": [
+        "Палатные станции VR."
+      ],
+      "entryRequirements": [
+        "Биология",
+        "ЕНТ"
+      ]
+    }
+  ]
+}

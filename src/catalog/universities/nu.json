@@ -1,0 +1,256 @@
+{
+  "id": "nu",
+  "name": "Nazarbayev University",
+  "nameRu": "Назарбаев Университет",
+  "nameKk": "Назарбаев Университеті",
+  "officialWebsiteUrl": "https://nu.edu.kz",
+  "admissionsEmail": "admissions@nu.edu.kz",
+  "city": "Astana, Kazakhstan",
+  "foundedYear": 2010,
+  "type": "Research",
+  "languagesOfInstruction": [
+    "English"
+  ],
+  "applicationDeadline": "2026-04-15",
+  "scholarshipBlurb": "Merit-based NU Scholarship, need-based financial aid, STEM/Olympiad recognition and regional talent grants (mock summary for QApp demo).",
+  "heroImageUrl": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 9200000,
+    "maxKzt": 12800000,
+    "note": "Ориентир по бакалавриату (английский), без учёта общежития. Точные суммы — в оферте приёма; mock QApp."
+  },
+  "faculties": [
+    {
+      "id": "nu-seds",
+      "name": "School of Engineering and Digital Sciences",
+      "description": "Инженерные и цифровые направления: от робототехники и Data Science до вычислительной физики. Акцент на лаборатории, международные стандарты ABET-ориентира и исследовательские группы."
+    },
+    {
+      "id": "nu-science",
+      "name": "School of Sciences and Humanities",
+      "description": "Естественные науки и междисциплинарные гуманитарные треки: биология, химия, математика; поддержка undergraduate research и публикаций."
+    },
+    {
+      "id": "nu-ssh",
+      "name": "School of Social Sciences",
+      "description": "Экономика, политология и смежные социальные дисциплины в англоязычной среде; кейсы, политический анализ и подготовка к глобальным магистратурам."
+    },
+    {
+      "id": "nu-gsb",
+      "name": "Graduate School of Business",
+      "description": "MBA и узкоспециализированные магистратуры для управленцев: стратегия, финансы, операционная эффективность и лидерство; кейсы с региональным и международным бизнесом."
+    },
+    {
+      "id": "nu-gse",
+      "name": "Graduate School of Education",
+      "description": "Подготовка исследователей и практиков в образовании: EdTech, политика школ, оценивание и развитие преподавателей в англоязычной академической среде."
+    },
+    {
+      "id": "nu-gspp",
+      "name": "Graduate School of Public Policy",
+      "description": "Аналитика государственной политики, экономика регионов, программы развития и управление проектами в публичном секторе; междисциплинарные семинары и полевые исследования."
+    },
+    {
+      "id": "nu-med",
+      "name": "School of Medicine",
+      "description": "Медицинское образование по международным стандартам: базовые науки, клинические навыки, этика и исследования; партнёрские практики в системе здравоохранения."
+    },
+    {
+      "id": "nu-mng",
+      "name": "School of Mining and Geosciences",
+      "description": "Геология, геофизика, недропользование и устойчивое освоение ресурсов: полевые практики, лаборатории и связь с отраслевыми стандартами."
+    },
+    {
+      "id": "nu-nla",
+      "name": "NU Laboratory Schools Network (образовательная экосистема)",
+      "description": "Связка кампуса с лабораторными школами и проектами STEM/outreach — как контекст для педагогических и социальных исследований (описательно для каталога QApp)."
+    },
+    {
+      "id": "nu-cps",
+      "name": "Center for Preparatory Studies (NU CPS)",
+      "description": "Подготовительный год и программы Foundation Year с аккредитацией BALEAP; английский для академических целей и мост в бакалавриат NU или зарубежные вузы."
+    },
+    {
+      "id": "nu-cenms",
+      "name": "Center for Energy and New Materials Science",
+      "description": "Исследования в области энергетики, материаловедения и ИТ для «чистой» энергии; международные партнёрства и прикладные лаборатории кампуса NU."
+    },
+    {
+      "id": "nu-nurce",
+      "name": "Nazarbayev University Research Centre for Entrepreneurship (NURCE)",
+      "description": "Исследовательский центр предпринимательства при Graduate School of Business: стартапы, инновационная экосистема и политика поддержки МСП."
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 4.5,
+    "competitiveGpa": 4,
+    "competitiveSat": 1280,
+    "targetSat": 1450,
+    "competitiveUnt": 108,
+    "targetUnt": 125,
+    "minIelts": 6.5,
+    "modelNote": "Модель Fit ориентирована на публичные требования NU (англоязычное обучение, конкурентный академический профиль, SAT/UNT как часть портфеля). Не заменяет решение приёмной комиссии."
+  },
+  "scholarships": [
+    {
+      "name": "NU Scholarship",
+      "requirements": "Strong secondary school GPA, competitive SAT/ACT or NU Foundation Year record, English proficiency (IELTS/TOEFL). Merit-based; full or partial tuition coverage depending on ranking.",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Need-Based Financial Aid",
+      "requirements": "Documented financial need, satisfactory academic progress, timely application through NU admissions portal. May combine with partial merit awards.",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Science Olympiad / Competition Recognition",
+      "requirements": "National or international awards in STEM or relevant subjects; verification of certificates. Can strengthen scholarship tier for STEM programs.",
+      "aiRelevance": "Medium"
+    },
+    {
+      "name": "Regional Talent Grant (Kazakhstan)",
+      "requirements": "Citizens of Kazakhstan, priority regions per NU policy in the admissions cycle; additional essay or interview may apply.",
+      "aiRelevance": "Medium"
+    },
+    {
+      "name": "Sports / Cultural Achievement Award",
+      "requirements": "Documented high-level achievement in sport or arts; lower tuition discount than flagship merit awards; limited seats.",
+      "aiRelevance": "Low"
+    }
+  ],
+  "programs": [
+    {
+      "id": "nu-bsc-computer-science",
+      "name": "BSc in Computer Science",
+      "facultyId": "nu-seds",
+      "annualTuitionKzt": 12800000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 88,
+      "matchReason": "Strong CS pathway with computing fundamentals, algorithms, and systems — aligned with tech-focused applicants.",
+      "detailedDescription": [
+        "The BSc in Computer Science at NU trains students in programming languages, discrete mathematics, algorithms, software engineering, and modern computing systems.",
+        "Electives cover AI/ML, security, and human–computer interaction; small cohorts support lab-intensive coursework and undergraduate research.",
+        "Graduates pursue software engineering, product development, and graduate study at competitive institutions worldwide."
+      ],
+      "entryRequirements": [
+        "IELTS 6.5+ or equivalent English proficiency",
+        "Strong secondary STEM preparation; competitive SAT (Evidence-Based Reading & Writing + Math total considered holistically)",
+        "Recommended: SAT Math section 750+ for strongest quantitative readiness signal"
+      ]
+    },
+    {
+      "id": "nu-bsc-robotics-mechatronics",
+      "name": "BSc in Robotics and Mechatronics",
+      "facultyId": "nu-seds",
+      "annualTuitionKzt": 11500000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 82,
+      "matchReason": "Hands-on mechanical, electrical, and control engineering — ideal for students combining physics interest with programming.",
+      "detailedDescription": [
+        "Integrates mechanics, electronics, embedded systems, and control theory with robotics projects and design studios.",
+        "Laboratory work emphasizes sensors, actuators, automation, and interdisciplinary team projects.",
+        "Prepares students for advanced manufacturing, autonomous systems, and related graduate engineering paths."
+      ],
+      "entryRequirements": [
+        "IELTS 6.5+",
+        "Solid grades in mathematics and physics",
+        "SAT Math 720+ recommended; portfolio of STEM projects or competitions is a plus"
+      ]
+    },
+    {
+      "id": "nu-bsc-data-science",
+      "name": "BSc in Data Science",
+      "facultyId": "nu-seds",
+      "annualTuitionKzt": 12200000,
+      "field": "Science",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 85,
+      "matchReason": "Statistical modeling, programming, and domain analytics — fits analytical profiles bridging math and computing.",
+      "detailedDescription": [
+        "Combines probability, statistics, machine learning, and computation with applications across science and industry.",
+        "Coursework typically includes linear algebra, databases, visualization, and ethics of data-driven decision-making.",
+        "Career paths include analytics, ML engineering, and research-oriented roles requiring quantitative depth."
+      ],
+      "entryRequirements": [
+        "IELTS 6.5+",
+        "Strong performance in mathematics; familiarity with programming is helpful",
+        "Competitive SAT with balanced verbal/quantitative reasoning; STEM olympiad results valued"
+      ]
+    },
+    {
+      "id": "nu-ba-economics",
+      "name": "B.A. in Economics",
+      "facultyId": "nu-ssh",
+      "annualTuitionKzt": 10800000,
+      "field": "Business",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 80,
+      "matchReason": "Micro/macro theory, econometrics, and policy — suited to students interested in markets, finance, and decision science.",
+      "detailedDescription": [
+        "Core economics theory plus quantitative methods and policy analysis in an English-medium liberal education environment.",
+        "Opportunities for research assistantships, internships, and cross-registration with related quantitative fields.",
+        "Graduates enter consulting, public policy, finance, and competitive graduate programs."
+      ],
+      "entryRequirements": [
+        "IELTS 6.5+",
+        "Strong quantitative skills; mathematics preparation expected",
+        "SAT Evidence-Based Reading & Writing and Math reviewed holistically (no single cut-off published publicly)"
+      ]
+    },
+    {
+      "id": "nu-bsc-biological-sciences",
+      "name": "BSc in Biological Sciences",
+      "facultyId": "nu-science",
+      "annualTuitionKzt": 11000000,
+      "field": "Science",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 68,
+      "matchReason": "Molecular biology, genetics, and physiology tracks — for students committed to life sciences and research labs.",
+      "detailedDescription": [
+        "Laboratory-intensive curriculum spanning cell biology, genetics, ecology, and physiology with research mentorship.",
+        "Pathways toward medicine-adjacent careers, biotechnology, and graduate study in biology and related fields.",
+        "Interdisciplinary links with chemistry and computational biology where available."
+      ],
+      "entryRequirements": [
+        "IELTS 6.5+",
+        "Strong foundation in biology and chemistry",
+        "SAT with solid STEM subsection profile recommended"
+      ]
+    },
+    {
+      "id": "nu-ba-political-science-ir",
+      "name": "B.A. in Political Science and International Relations",
+      "facultyId": "nu-ssh",
+      "annualTuitionKzt": 10200000,
+      "field": "Social Sciences",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 72,
+      "matchReason": "International politics, institutions, and comparative analysis — strong writing and critical reasoning expected.",
+      "detailedDescription": [
+        "Examines political theory, international security, diplomacy, and regional studies with research-oriented seminars.",
+        "Develops argumentation, policy analysis, and qualitative/quantitative research skills applicable to global careers.",
+        "Graduates pursue law, public service, NGOs, international organizations, and related graduate degrees."
+      ],
+      "entryRequirements": [
+        "IELTS 6.5+ (strong writing skills)",
+        "Evidence of analytical writing or debate experience is advantageous",
+        "SAT Evidence-Based Reading & Writing weighted alongside overall academic record"
+      ]
+    }
+  ]
+}

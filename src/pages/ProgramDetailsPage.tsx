@@ -10,24 +10,7 @@ import { TextSkeleton } from "../components/TextSkeleton";
 import { isAiConfigured } from "../services/aiProvider";
 import { formatSatForDisplay } from "../lib/academicInput";
 import { getFacultyDescription, getFacultyDisplayName, getUniversityDisplayName } from "../lib/universityLabels";
-
-const APPLY_URLS: Record<string, string> = {
-  nu: "https://nu.edu.kz/en/admissions",
-  kbtu: "https://www.kbtu.kz/",
-  aitu: "https://astanait.edu.kz/",
-  kaznu: "https://www.kaznu.kz/",
-  sdu: "https://sdu.edu.kz/",
-  enu: "https://enu.kz/",
-  satbayev: "https://satbayev.university/",
-  abaikaznpu: "https://kaznpu.kz/",
-  kaznaru: "https://kaznaru.kz/",
-  nkzu: "https://nkzu.kz/",
-  buketov: "https://buketov.edu.kz/",
-  "zhubanov-aru": "https://zhubanov.edu.kz/",
-  yessenov: "https://yu.edu.kz/",
-  shakarim: "https://shakarim.university/",
-  toraighyrov: "https://tou.edu.kz/",
-};
+import { resolveUniversityExternalWebsite } from "../lib/universityWebsite";
 
 export function ProgramDetailsPage() {
   const { t, i18n } = useTranslation();
@@ -93,7 +76,7 @@ export function ProgramDetailsPage() {
     programUniversity.admissionExpectations
   );
   const shortlisted = isShortlisted(program.id);
-  const applyHref = APPLY_URLS[programUniversity.id] ?? "https://www.gov.kz";
+  const externalApplyUrl = resolveUniversityExternalWebsite(programUniversity);
   const faculty = getFaculty(programUniversity, program.facultyId);
 
   return (
@@ -281,15 +264,34 @@ export function ProgramDetailsPage() {
             >
               {shortlisted ? t("program.removeShortlist") : t("program.addShortlist")}
             </button>
-            <a
-              href={applyHref}
-              target="_blank"
-              rel="noreferrer"
-              className="flex-1 rounded-2xl bg-indigo-600 py-3 text-center text-sm font-semibold text-white shadow-md transition hover:bg-indigo-700"
-            >
-              {t("program.applySite")}
-            </a>
+            {externalApplyUrl ? (
+              <a
+                href={externalApplyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 rounded-2xl bg-indigo-600 py-3 text-center text-sm font-semibold text-white shadow-md transition hover:bg-indigo-700"
+              >
+                {t("program.applySite")}
+              </a>
+            ) : (
+              <Link
+                to="/dashboard#admission-checklist"
+                className="flex-1 rounded-2xl bg-indigo-600 py-3 text-center text-sm font-semibold text-white shadow-md transition hover:bg-indigo-700"
+              >
+                {t("program.applyChecklist")}
+              </Link>
+            )}
           </div>
+          {!externalApplyUrl && programUniversity.admissionsEmail ? (
+            <p className="text-center text-sm text-slate-600 sm:text-left">
+              <a
+                href={`mailto:${programUniversity.admissionsEmail}`}
+                className="font-medium text-indigo-600 underline-offset-2 hover:text-indigo-800 hover:underline"
+              >
+                {t("program.emailAdmissions", { email: programUniversity.admissionsEmail })}
+              </a>
+            </p>
+          ) : null}
         </div>
       </div>
     </motion.div>

@@ -1,0 +1,142 @@
+{
+  "id": "abaikaznpu",
+  "name": "Abai Kazakh National Pedagogical University",
+  "city": "Almaty, Kazakhstan",
+  "foundedYear": 1928,
+  "type": "Comprehensive",
+  "languagesOfInstruction": [
+    "Kazakh",
+    "Russian",
+    "English"
+  ],
+  "applicationDeadline": "2026-08-10",
+  "scholarshipBlurb": "Государственные гранты на педагогические специальности, социальные категории и поддержка сельской молодёжи (по квотам года).",
+  "heroImageUrl": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 900000,
+    "maxKzt": 2100000,
+    "note": "Педагогические программы часто имеют грантовые места; контракт — разумный для региональных абитуриентов."
+  },
+  "faculties": [
+    {
+      "id": "abai-ped-primary",
+      "name": "Faculty of Preschool and Primary Education",
+      "description": "Методика начального обучения, детская психология и игровые технологии; практики в школах и детсадах."
+    },
+    {
+      "id": "abai-ped-natural",
+      "name": "Faculty of Natural Science Education",
+      "description": "Подготовка учителей математики, физики, информатики и естественных дисциплин с лабораторным блоком."
+    },
+    {
+      "id": "abai-ped-humanities",
+      "name": "Faculty of Humanities Education",
+      "description": "Учителя литературы, истории, языков и общественных дисциплин; проектное обучение и читальные клубы."
+    },
+    {
+      "id": "abai-foreign",
+      "name": "Faculty of Foreign Languages",
+      "description": "Лингвистика, перевод, методика преподавания английского и вторых языков; международные сертификаты."
+    },
+    {
+      "id": "abai-psych",
+      "name": "Faculty of Psychology and Social Work",
+      "description": "Клиническая и образовательная психология, консультирование и социальная работа в школе и сообществе."
+    },
+    {
+      "id": "abai-arts",
+      "name": "Faculty of Arts and Culture",
+      "description": "Музыкальное и художественное образование, хореография и режиссура школьных постановок."
+    },
+    {
+      "id": "abai-sport-ped",
+      "name": "Faculty of Physical Culture and Sport Pedagogy",
+      "description": "Учителя физкультуры, тренеры молодёжных секций и организаторы массового спорта."
+    },
+    {
+      "id": "abai-math",
+      "name": "Faculty of Mathematics and Informatics Education",
+      "description": "Глубокая математическая подготовка будущих учителей и олимпиадное наставничество."
+    },
+    {
+      "id": "abai-defectology",
+      "name": "Faculty of Special and Inclusive Education",
+      "description": "Дефектология, логопедия и инклюзивные практики для работы с особыми образовательными потребностями."
+    },
+    {
+      "id": "abai-management-edu",
+      "name": "Faculty of Educational Management and Leadership",
+      "description": "Управление школой, образовательная политика и цифровая трансформация учебных заведений."
+    },
+    {
+      "id": "abai-kazakh-lang",
+      "name": "Faculty of Kazakh Language and Literature",
+      "description": "Филология, диалектология и современная литература; подготовка филологов и редакторов."
+    },
+    {
+      "id": "abai-preschool-master",
+      "name": "Institute of Additional Education and Professional Retraining",
+      "description": "Курсы повышения квалификации учителей, магистратуры ускоренного формата и методическая поддержка регионов."
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 4.1,
+    "competitiveGpa": 3.55,
+    "competitiveSat": 1050,
+    "targetSat": 1220,
+    "competitiveUnt": 85,
+    "targetUnt": 105,
+    "minIelts": 5,
+    "modelNote": "Педагогический вуз: конкурс на учительские специальности зависит от квот и сельских программ; IELTS часто для языковых потоков."
+  },
+  "scholarships": [
+    {
+      "name": "Грант на педагогические специальности",
+      "requirements": "Конкурс ЕНТ и целевые направления по перечню Минпросвещения.",
+      "aiRelevance": "High"
+    }
+  ],
+  "programs": [
+    {
+      "id": "abai-bsc-primary-ed",
+      "name": "BSc in Primary Education",
+      "facultyId": "abai-ped-primary",
+      "annualTuitionKzt": 1250000,
+      "field": "Humanities",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian",
+      "fitScore": 70,
+      "matchReason": "Подготовка учителя начальных классов и воспитателя.",
+      "detailedDescription": [
+        "Методики обучения чтению и счёту.",
+        "Практика в партнёрских школах."
+      ],
+      "entryRequirements": [
+        "ЕНТ",
+        "Мотивационное интервью по году"
+      ]
+    },
+    {
+      "id": "abai-bsc-english-ed",
+      "name": "BSc in English Language Education",
+      "facultyId": "abai-foreign",
+      "annualTuitionKzt": 1450000,
+      "field": "Humanities",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English / Kazakh / Russian",
+      "fitScore": 73,
+      "matchReason": "Учитель английского для школ и языковых центров.",
+      "detailedDescription": [
+        "Лингвистика и методика.",
+        "IELTS для продвинутых групп."
+      ],
+      "entryRequirements": [
+        "Английский язык в ЕНТ приветствуется",
+        "Устное тестирование"
+      ]
+    }
+  ]
+}

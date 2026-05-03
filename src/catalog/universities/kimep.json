@@ -1,0 +1,216 @@
+{
+  "id": "kimep",
+  "name": "KIMEP University",
+  "nameRu": "Университет КИМЭП",
+  "nameKk": "КИМЭП университеті",
+  "officialWebsiteUrl": "https://www.kimep.kz",
+  "admissionsEmail": "admissions@kimep.kz",
+  "city": "Almaty, Kazakhstan",
+  "foundedYear": 1992,
+  "type": "Liberal Arts",
+  "languagesOfInstruction": [
+    "English",
+    "Russian"
+  ],
+  "applicationDeadline": "2026-07-01",
+  "scholarshipBlurb": "Merit scholarships for strong GPA, talent grants for journalism and debate; need-aware aid on competitive basis (demo summary).",
+  "heroImageUrl": "https://images.unsplash.com/photo-1523247730359-763486e6a22b?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 4200000,
+    "maxKzt": 8800000,
+    "note": "Контракт English-taught программ; гранты ограничены — уточняйте офис приёма."
+  },
+  "faculties": [
+    {
+      "id": "kimep-business",
+      "name": "Bang College of Business",
+      "description": "MBA-oriented bachelor tracks, analytics, strategy."
+    },
+    {
+      "id": "kimep-law",
+      "name": "School of Law",
+      "description": "Common law orientation, moot courts, commercial law."
+    },
+    {
+      "id": "kimep-socsci",
+      "name": "College of Social Sciences",
+      "description": "Psychology, sociology, human behaviour research."
+    },
+    {
+      "id": "kimep-polsci",
+      "name": "Political Science & International Relations",
+      "description": "IR theory, diplomacy simulations, policy analysis."
+    },
+    {
+      "id": "kimep-journ",
+      "name": "Journalism & Mass Communication",
+      "description": "Digital newsrooms, media law, storytelling labs."
+    },
+    {
+      "id": "kimep-econ",
+      "name": "Economics",
+      "description": "Quantitative economics, econometrics, policy evaluation."
+    },
+    {
+      "id": "kimep-found",
+      "name": "Foundation & General Education",
+      "description": "Academic writing, critical thinking, pathways to majors."
+    },
+    {
+      "id": "kimep-lang",
+      "name": "Center for Foreign Languages",
+      "description": "Intensive English pathways and certification prep."
+    },
+    {
+      "id": "kimep-it",
+      "name": "Information Systems & Technology",
+      "description": "Applied computing for business and data pipelines."
+    }
+  ],
+  "scholarships": [
+    {
+      "name": "KIMEP Merit Scholarship",
+      "requirements": "High school GPA top tier + English exam.",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Regional talent grant",
+      "requirements": "Olympiad or national competition portfolio.",
+      "aiRelevance": "Medium"
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 4.5,
+    "competitiveGpa": 4,
+    "competitiveSat": 1180,
+    "targetSat": 1320,
+    "competitiveUnt": 95,
+    "targetUnt": 110,
+    "minIelts": 6,
+    "modelNote": "Демо-модель Fit для QApp; официальные пороги и правила года набора — только на сайте вуза."
+  },
+  "programs": [
+    {
+      "id": "kimep-bba-management",
+      "name": "Bachelor of Business Administration",
+      "facultyId": "kimep-business",
+      "annualTuitionKzt": 6200000,
+      "field": "Business",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 84,
+      "matchReason": "Сильный англоязычный бизнес-трек с акцентом на лидерство и аналитику.",
+      "detailedDescription": [
+        "Cases, internships with regional employers.",
+        "Capstone consulting projects."
+      ],
+      "entryRequirements": [
+        "High school GPA competitive",
+        "IELTS 6.0+",
+        "Math proficiency"
+      ]
+    },
+    {
+      "id": "kimep-llb-law",
+      "name": "LL.B. in Law",
+      "facultyId": "kimep-law",
+      "annualTuitionKzt": 5900000,
+      "field": "Law",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 80,
+      "matchReason": "Для поступающих с интересом к международному и корпоративному праву.",
+      "detailedDescription": [
+        "Legal writing labs.",
+        "Client interviewing simulations."
+      ],
+      "entryRequirements": [
+        "IELTS 6.0+",
+        "Critical reading score"
+      ]
+    },
+    {
+      "id": "kimep-ba-international-relations",
+      "name": "BA in International Relations",
+      "facultyId": "kimep-polsci",
+      "annualTuitionKzt": 5400000,
+      "field": "Social Sciences",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 78,
+      "matchReason": "Модели ООН, региональная безопасность Центральной Азии.",
+      "detailedDescription": [
+        "Model UN cohort.",
+        "Policy memo workshops."
+      ],
+      "entryRequirements": [
+        "IELTS 6.0+",
+        "Social science coursework"
+      ]
+    },
+    {
+      "id": "kimep-ba-journalism",
+      "name": "BA in Journalism and Mass Communication",
+      "facultyId": "kimep-journ",
+      "annualTuitionKzt": 5100000,
+      "field": "Humanities",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 77,
+      "matchReason": "Цифровые медиа, подкасты и аналитический репортаж.",
+      "detailedDescription": [
+        "Newsroom practicum.",
+        "Ethics and misinformation studio."
+      ],
+      "entryRequirements": [
+        "Portfolio or writing sample",
+        "IELTS 6.0+"
+      ]
+    },
+    {
+      "id": "kimep-bsc-computer-science",
+      "name": "BSc in Computer Science",
+      "facultyId": "kimep-it",
+      "annualTuitionKzt": 6800000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 83,
+      "matchReason": "Software engineering fundamentals plus product delivery studios.",
+      "detailedDescription": [
+        "Algorithms, systems, databases.",
+        "Industry-sponsored hackathons."
+      ],
+      "entryRequirements": [
+        "Math + Informatics strength",
+        "IELTS 6.0+"
+      ]
+    },
+    {
+      "id": "kimep-bsc-economics",
+      "name": "BSc in Economics",
+      "facultyId": "kimep-econ",
+      "annualTuitionKzt": 5700000,
+      "field": "Business",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 79,
+      "matchReason": "Эконометрика и data storytelling для политики и рынков.",
+      "detailedDescription": [
+        "Micro/macro sequences.",
+        "Coding for economists."
+      ],
+      "entryRequirements": [
+        "Calculus readiness",
+        "IELTS 6.0+"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "id": "nkzu",
+  "name": "M. Kozybayev North Kazakhstan University",
+  "city": "Petropavl, Kazakhstan",
+  "foundedYear": 1937,
+  "type": "Comprehensive",
+  "languagesOfInstruction": [
+    "Kazakh",
+    "Russian",
+    "English"
+  ],
+  "applicationDeadline": "2026-08-01",
+  "scholarshipBlurb": "Государственные гранты, поддержка студентов из сельской местности и региональные программы развития кадров.",
+  "heroImageUrl": "https://images.unsplash.com/photo-1498243691581-b2c99f900906?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 850000,
+    "maxKzt": 2000000,
+    "note": "Региональный вуз с доступным контрактом; грантовые места по конкурсу ЕНТ."
+  },
+  "faculties": [
+    {
+      "id": "nkzu-engineering",
+      "name": "Faculty of Engineering and Technology",
+      "description": "Машиностроение, энергетика и материалы для региональной промышленности и транспорта."
+    },
+    {
+      "id": "nkzu-it",
+      "name": "Faculty of Information Technologies and Cybersecurity Basics",
+      "description": "Информатика, программирование и основы информационной безопасности для малых предприятий и госуслуг."
+    },
+    {
+      "id": "nkzu-agro",
+      "name": "Faculty of Agricultural Sciences",
+      "description": "Растениеводство и животноводство для северных зон, кормопроизводство и агроэкология."
+    },
+    {
+      "id": "nkzu-econ-law",
+      "name": "Faculty of Economics and Law",
+      "description": "Экономика предприятия, финансы, гражданское и предпринимательское право для регионального бизнеса."
+    },
+    {
+      "id": "nkzu-ped",
+      "name": "Faculty of Pedagogy and Psychology",
+      "description": "Подготовка учителей для школ Северного Казахстана; школьная психология и методики."
+    },
+    {
+      "id": "nkzu-philology",
+      "name": "Faculty of Philology and Translation",
+      "description": "Казахская и русская филология, иностранные языки и литературное образование."
+    },
+    {
+      "id": "nkzu-history",
+      "name": "Faculty of History and Cultural Heritage",
+      "description": "История Казахстана и краеведение, музейное дело и туристические маршруты региона."
+    },
+    {
+      "id": "nkzu-natural",
+      "name": "Faculty of Natural Sciences",
+      "description": "Биология, химия, география и экология северных экосистем."
+    },
+    {
+      "id": "nkzu-math",
+      "name": "Faculty of Mathematics and Digital Sciences",
+      "description": "Математика, статистика и прикладная информатика для школ и локальной аналитики."
+    },
+    {
+      "id": "nkzu-med-bio",
+      "name": "Faculty of Biology and Biomedical Foundations",
+      "description": "Биология человека, основы медицинских знаний и подготовка к смежным магистратурам здравоохранения."
+    },
+    {
+      "id": "nkzu-physical",
+      "name": "Faculty of Physical Culture and Sport",
+      "description": "Физическая рекреация, спортивная подготовка и управление спортивными объектами города."
+    },
+    {
+      "id": "nkzu-international",
+      "name": "Faculty of International Relations and Regional Studies",
+      "description": "Международные связи Северного региона, соседние рынки и культурная дипломатия."
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 4,
+    "competitiveGpa": 3.45,
+    "competitiveSat": 1000,
+    "targetSat": 1160,
+    "competitiveUnt": 78,
+    "targetUnt": 98,
+    "minIelts": 5,
+    "modelNote": "Региональный комплексный университет; пороги конкурса часто ниже столичных — подходит для широкого пула абитуриентов."
+  },
+  "scholarships": [
+    {
+      "name": "Государственный образовательный грант",
+      "requirements": "Конкурс ЕНТ для граждан РК.",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Социальная поддержка сельской молодёжи",
+      "requirements": "Документы о регистрации в сельской местности при наличии квот.",
+      "aiRelevance": "Medium"
+    }
+  ],
+  "programs": [
+    {
+      "id": "nkzu-bsc-cs",
+      "name": "BSc in Computer Science",
+      "facultyId": "nkzu-it",
+      "annualTuitionKzt": 1950000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian / Kazakh",
+      "fitScore": 75,
+      "matchReason": "Прикладная информатика для регионального рынка труда.",
+      "detailedDescription": [
+        "Программирование, базы данных, веб."
+      ],
+      "entryRequirements": [
+        "Математика",
+        "ЕНТ"
+      ]
+    },
+    {
+      "id": "nkzu-bba-econ",
+      "name": "BBA in Economics",
+      "facultyId": "nkzu-econ-law",
+      "annualTuitionKzt": 1450000,
+      "field": "Business",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Kazakh / Russian",
+      "fitScore": 70,
+      "matchReason": "Экономика и управление для малого бизнеса региона.",
+      "detailedDescription": [
+        "Микроэкономика, учёт, маркетинг."
+      ],
+      "entryRequirements": [
+        "Математика и обществознание",
+        "ЕНТ"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,242 @@
+{
+  "id": "sdu",
+  "name": "Suleyman Demirel University",
+  "nameRu": "Университет имени Сулеймана Демиреля",
+  "nameKk": "Сүлеймен Демірел атындағы университет",
+  "officialWebsiteUrl": "https://sdu.edu.kz",
+  "admissionsEmail": "admission@sdu.edu.kz",
+  "city": "Kaskelen, Almaty Region, Kazakhstan",
+  "foundedYear": 1996,
+  "type": "Comprehensive",
+  "languagesOfInstruction": [
+    "English",
+    "Kazakh",
+    "Russian"
+  ],
+  "applicationDeadline": "2026-07-20",
+  "scholarshipBlurb": "Академические стипендии SDU, партнёрские гранты IT-компаний и социальные скидки на контракт (mock-описание для демо).",
+  "heroImageUrl": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1800&q=72",
+  "tuitionOverview": {
+    "minKzt": 2400000,
+    "maxKzt": 4100000,
+    "note": "Кампус в Каскелене; стоимость зависит от факультета и языка обучения (mock)."
+  },
+  "faculties": [
+    {
+      "id": "sdu-eng",
+      "name": "Faculty of Engineering and Natural Sciences",
+      "description": "Инженерия, IT и естественные науки в современном кампусе: проектное обучение, лаборатории и хакатоны с индустрией."
+    },
+    {
+      "id": "sdu-law-soc",
+      "name": "Faculty of Law and Social Sciences",
+      "description": "Право, международные отношения, социология и публичная политика — с модульными стажировками."
+    },
+    {
+      "id": "sdu-bus",
+      "name": "Faculty of Business and Economics",
+      "description": "Бизнес-администрирование, финансы, маркетинг и предпринимательство; аккредитации и двойные дипломы — по партнёрским программам."
+    },
+    {
+      "id": "sdu-arch",
+      "name": "Faculty of Architecture and Design",
+      "description": "Архитектура города и ландшафта, дизайн среды; студии макетирования, BIM-ввод и урбанистические проекты."
+    },
+    {
+      "id": "sdu-edu-hum",
+      "name": "Faculty of Education and Humanities",
+      "description": "Педагогика, психология, языки и социальная работа; практики в школах и инклюзивные программы подготовки учителей."
+    },
+    {
+      "id": "sdu-it-bus",
+      "name": "Faculty of Digital Management and Innovation",
+      "description": "Цифровая трансформация бизнеса, продуктовый менеджмент и аналитика данных для малого и среднего предпринимательства."
+    },
+    {
+      "id": "sdu-pharm",
+      "name": "Faculty of Pharmacy and Pharmaceutical Sciences",
+      "description": "Фармацевтическая химия, клиническая фармация и управление качеством лекарственных средств; лаборатории анализа."
+    },
+    {
+      "id": "sdu-lang",
+      "name": "Faculty of Foreign Languages and Translation",
+      "description": "Профессиональный перевод, терминология и межкультурная коммуникация для бизнеса и государственных проектов."
+    },
+    {
+      "id": "sdu-sport",
+      "name": "Faculty of Physical Culture and Sports Management",
+      "description": "Тренерская подготовка, спортивная медицина основ и управление спортивными объектами; партнёрства с федерациями."
+    },
+    {
+      "id": "sdu-foundation",
+      "name": "Center for Foundation Studies and Academic English",
+      "description": "Подготовительные программы, академический английский и мост в бакалавриат SDU для международных и внутренних абитуриентов."
+    },
+    {
+      "id": "sdu-research-innovation",
+      "name": "Research Institute of Innovation and Smart Systems",
+      "description": "Прикладные исследования в робототехнике, умном кампусе и устойчивой инфраструктуре; гранты и проекты с индустрией."
+    },
+    {
+      "id": "sdu-intl-programs",
+      "name": "Office of International Programs and Academic Mobility",
+      "description": "Двойные дипломы, обмены Erasmus+ и партнёрские сети; координация англоязычных треков и летних школ."
+    }
+  ],
+  "admissionExpectations": {
+    "gpaScaleMax": 5,
+    "strongGpa": 4.3,
+    "competitiveGpa": 3.75,
+    "competitiveSat": 1180,
+    "targetSat": 1360,
+    "competitiveUnt": 95,
+    "targetUnt": 115,
+    "minIelts": 6,
+    "modelNote": "SDU — частный кампусный вуз; Fit учитывает англоязычные программы и конкуренцию по контракту."
+  },
+  "scholarships": [
+    {
+      "name": "SDU Academic Scholarship",
+      "requirements": "High GPA and admission ranking; partial tuition waiver — illustrative.",
+      "aiRelevance": "High"
+    },
+    {
+      "name": "Women in STEM grant (mock)",
+      "requirements": "Merit + motivation letter for selected engineering tracks.",
+      "aiRelevance": "Medium"
+    },
+    {
+      "name": "Sibling discount policy (mock)",
+      "requirements": "Family with two or more siblings enrolled — marketing placeholder.",
+      "aiRelevance": "Low"
+    }
+  ],
+  "programs": [
+    {
+      "id": "sdu-bsc-computer-engineering",
+      "name": "BSc in Computer Engineering",
+      "facultyId": "sdu-eng",
+      "annualTuitionKzt": 3950000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 83,
+      "matchReason": "Аппаратно-программный стек: от микропроцессоров до embedded и backend — для hardware-curious разработчиков.",
+      "detailedDescription": [
+        "Цифровая схемотехника, архитектура компьютеров, ОС, сети и проектные семестры с индустриальными менторами.",
+        "Лаборатории IoT и робототехники; выход в стажировки у партнёров в Алматы (описательно)."
+      ],
+      "entryRequirements": [
+        "Математика и физика",
+        "IELTS 6.0+ для EN-track",
+        "UNT/SAT для конкурса"
+      ]
+    },
+    {
+      "id": "sdu-bba-management",
+      "name": "B.B.A. in Management",
+      "facultyId": "sdu-bus",
+      "annualTuitionKzt": 3400000,
+      "field": "Business",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 79,
+      "matchReason": "Операции, HR и стратегия с кейсами кампусных стартапов и международными стажировками.",
+      "detailedDescription": [
+        "Бизнес-модели, управление проектами, переговоры и лидерство; консалтинг-проекты для местных МСП.",
+        "Элективы по digital marketing и продуктовому менеджменту."
+      ],
+      "entryRequirements": [
+        "Математика в аттестате",
+        "IELTS 6.0+",
+        "Мотивационное эссе"
+      ]
+    },
+    {
+      "id": "sdu-llb-law-international",
+      "name": "LL.B. in International Law",
+      "facultyId": "sdu-law-soc",
+      "annualTuitionKzt": 3100000,
+      "field": "Law",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "English",
+      "fitScore": 71,
+      "matchReason": "Международное право и трейд-лай — для поступающих с сильными гуманитарными навыками и английским.",
+      "detailedDescription": [
+        "Публичное и частное международное право, инвестиционные споры, модели международных организаций.",
+        "Moot courts на английском; языковая поддержка Legal Writing."
+      ],
+      "entryRequirements": [
+        "IELTS 6.5+",
+        "История / обществознание",
+        "Внутренний экзамен или SAT Reading"
+      ]
+    },
+    {
+      "id": "sdu-barch-architecture",
+      "name": "B.Arch in Architecture",
+      "facultyId": "sdu-arch",
+      "annualTuitionKzt": 4100000,
+      "field": "Engineering",
+      "degree": "Bachelor",
+      "durationYears": 5,
+      "language": "Russian / English",
+      "fitScore": 77,
+      "matchReason": "Пятилетка с проектными ателье, урбанистикой и устойчивым строительством.",
+      "detailedDescription": [
+        "Архитектурный дизайн, конструкции, BIM, история архитектуры Центральной Азии и Европы.",
+        "Регулярные ревю портфолио и летние практики в бюро."
+      ],
+      "entryRequirements": [
+        "Творческий конкурс / портфолио",
+        "Математика и черчение",
+        "Собеседование"
+      ]
+    },
+    {
+      "id": "sdu-ba-psychology",
+      "name": "B.A. in Psychology",
+      "facultyId": "sdu-law-soc",
+      "annualTuitionKzt": 2650000,
+      "field": "Social Sciences",
+      "degree": "Bachelor",
+      "durationYears": 4,
+      "language": "Russian",
+      "fitScore": 73,
+      "matchReason": "Когнитивная и социальная психология с практикой опросов и HR/коучинг-модулями.",
+      "detailedDescription": [
+        "Статистика для психологов, психометрия, клиническое введение и организационная психология.",
+        "Этика работы с клиентами; мост в магистратуру клинической и образовательной психологии."
+      ],
+      "entryRequirements": [
+        "Биология и обществознание",
+        "UNT",
+        "Интервью на некоторые места"
+      ]
+    },
+    {
+      "id": "sdu-msc-digital-innovation",
+      "name": "MSc in Digital Innovation and Entrepreneurship",
+      "facultyId": "sdu-bus",
+      "annualTuitionKzt": 3800000,
+      "field": "Business",
+      "degree": "Master",
+      "durationYears": 2,
+      "language": "English",
+      "fitScore": 80,
+      "matchReason": "Для тех, кто хочет связать продукт, данные и запуск стартапа в одном магистерском треке.",
+      "detailedDescription": [
+        "Lean startup, unit-экономика, инвестиционные питчи, работа с VC-симуляциями.",
+        "Совместные проекты с IT-факультетом: MVP и go-to-market."
+      ],
+      "entryRequirements": [
+        "Бакалавр любого профиля с конкурсным GPA",
+        "IELTS 6.5+",
+        "Интервью и мотивация"
+      ]
+    }
+  ]
+}

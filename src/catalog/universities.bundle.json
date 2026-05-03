@@ -1,0 +1,5149 @@
+[
+  {
+    "id": "abaikaznpu",
+    "name": "Abai Kazakh National Pedagogical University",
+    "city": "Almaty, Kazakhstan",
+    "foundedYear": 1928,
+    "type": "Comprehensive",
+    "languagesOfInstruction": [
+      "Kazakh",
+      "Russian",
+      "English"
+    ],
+    "applicationDeadline": "2026-08-10",
+    "scholarshipBlurb": "Государственные гранты на педагогические специальности, социальные категории и поддержка сельской молодёжи (по квотам года).",
+    "heroImageUrl": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 900000,
+      "maxKzt": 2100000,
+      "note": "Педагогические программы часто имеют грантовые места; контракт — разумный для региональных абитуриентов."
+    },
+    "faculties": [
+      {
+        "id": "abai-ped-primary",
+        "name": "Faculty of Preschool and Primary Education",
+        "description": "Методика начального обучения, детская психология и игровые технологии; практики в школах и детсадах."
+      },
+      {
+        "id": "abai-ped-natural",
+        "name": "Faculty of Natural Science Education",
+        "description": "Подготовка учителей математики, физики, информатики и естественных дисциплин с лабораторным блоком."
+      },
+      {
+        "id": "abai-ped-humanities",
+        "name": "Faculty of Humanities Education",
+        "description": "Учителя литературы, истории, языков и общественных дисциплин; проектное обучение и читальные клубы."
+      },
+      {
+        "id": "abai-foreign",
+        "name": "Faculty of Foreign Languages",
+        "description": "Лингвистика, перевод, методика преподавания английского и вторых языков; международные сертификаты."
+      },
+      {
+        "id": "abai-psych",
+        "name": "Faculty of Psychology and Social Work",
+        "description": "Клиническая и образовательная психология, консультирование и социальная работа в школе и сообществе."
+      },
+      {
+        "id": "abai-arts",
+        "name": "Faculty of Arts and Culture",
+        "description": "Музыкальное и художественное образование, хореография и режиссура школьных постановок."
+      },
+      {
+        "id": "abai-sport-ped",
+        "name": "Faculty of Physical Culture and Sport Pedagogy",
+        "description": "Учителя физкультуры, тренеры молодёжных секций и организаторы массового спорта."
+      },
+      {
+        "id": "abai-math",
+        "name": "Faculty of Mathematics and Informatics Education",
+        "description": "Глубокая математическая подготовка будущих учителей и олимпиадное наставничество."
+      },
+      {
+        "id": "abai-defectology",
+        "name": "Faculty of Special and Inclusive Education",
+        "description": "Дефектология, логопедия и инклюзивные практики для работы с особыми образовательными потребностями."
+      },
+      {
+        "id": "abai-management-edu",
+        "name": "Faculty of Educational Management and Leadership",
+        "description": "Управление школой, образовательная политика и цифровая трансформация учебных заведений."
+      },
+      {
+        "id": "abai-kazakh-lang",
+        "name": "Faculty of Kazakh Language and Literature",
+        "description": "Филология, диалектология и современная литература; подготовка филологов и редакторов."
+      },
+      {
+        "id": "abai-preschool-master",
+        "name": "Institute of Additional Education and Professional Retraining",
+        "description": "Курсы повышения квалификации учителей, магистратуры ускоренного формата и методическая поддержка регионов."
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4.1,
+      "competitiveGpa": 3.55,
+      "competitiveSat": 1050,
+      "targetSat": 1220,
+      "competitiveUnt": 85,
+      "targetUnt": 105,
+      "minIelts": 5,
+      "modelNote": "Педагогический вуз: конкурс на учительские специальности зависит от квот и сельских программ; IELTS часто для языковых потоков."
+    },
+    "scholarships": [
+      {
+        "name": "Грант на педагогические специальности",
+        "requirements": "Конкурс ЕНТ и целевые направления по перечню Минпросвещения.",
+        "aiRelevance": "High"
+      }
+    ],
+    "programs": [
+      {
+        "id": "abai-bsc-primary-ed",
+        "name": "BSc in Primary Education",
+        "facultyId": "abai-ped-primary",
+        "annualTuitionKzt": 1250000,
+        "field": "Humanities",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 70,
+        "matchReason": "Подготовка учителя начальных классов и воспитателя.",
+        "detailedDescription": [
+          "Методики обучения чтению и счёту.",
+          "Практика в партнёрских школах."
+        ],
+        "entryRequirements": [
+          "ЕНТ",
+          "Мотивационное интервью по году"
+        ]
+      },
+      {
+        "id": "abai-bsc-english-ed",
+        "name": "BSc in English Language Education",
+        "facultyId": "abai-foreign",
+        "annualTuitionKzt": 1450000,
+        "field": "Humanities",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English / Kazakh / Russian",
+        "fitScore": 73,
+        "matchReason": "Учитель английского для школ и языковых центров.",
+        "detailedDescription": [
+          "Лингвистика и методика.",
+          "IELTS для продвинутых групп."
+        ],
+        "entryRequirements": [
+          "Английский язык в ЕНТ приветствуется",
+          "Устное тестирование"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "aitu",
+    "name": "Astana IT University",
+    "nameRu": "Университет Astana IT",
+    "nameKk": "Astana IT университеті",
+    "officialWebsiteUrl": "https://astanait.edu.kz",
+    "admissionsEmail": "admissions@astanait.edu.kz",
+    "city": "Astana, Kazakhstan",
+    "foundedYear": 2019,
+    "type": "Technical",
+    "languagesOfInstruction": [
+      "English",
+      "Kazakh",
+      "Russian"
+    ],
+    "applicationDeadline": "2026-06-15",
+    "scholarshipBlurb": "Tech-talent grants, digital innovation stipends and partner-company co-funding for strong computing applicants (mock).",
+    "heroImageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 5000000,
+      "maxKzt": 6500000,
+      "note": "IT-бакалавриат в Astana IT U.; partner-треки и лаборатории могут менять стоимость (mock)."
+    },
+    "faculties": [
+      {
+        "id": "aitu-computing",
+        "name": "School of Digital Technologies & Computing",
+        "description": "Базовый контур AITU: computer science, software engineering, data и робототехника с практикой в продуктовых командах и хакатонах."
+      },
+      {
+        "id": "aitu-cyber",
+        "name": "Institute of Cybersecurity & Digital Resilience",
+        "description": "Защита информации, криптография, SOC-практики и безопасная разработка; сценарии red/blue team и compliance."
+      },
+      {
+        "id": "aitu-digital-econ",
+        "name": "School of Digital Economy & Innovation",
+        "description": "Цифровой бизнес, продукт, аналитика и инновационное предпринимательство на стыке менеджмента и tech."
+      },
+      {
+        "id": "aitu-iot",
+        "name": "Institute of Smart Systems and IoT",
+        "description": "Встраиваемые системы, датчики, промышленный IoT и edge-вычисления; прототипирование умных кампусных и городских решений."
+      },
+      {
+        "id": "aitu-govtech",
+        "name": "Faculty of Digital Economy and Public Sector Innovation",
+        "description": "Цифровизация услуг, данные государственных реестров и этика автоматизации — кейсы для smart-city и e-government."
+      },
+      {
+        "id": "aitu-design-digital",
+        "name": "School of Digital Arts and Interaction Design",
+        "description": "UX/UI, медиа-дизайн и продуктовый дизайн для IT-сервисов; связка с разработкой через agile-команды учебных студий."
+      },
+      {
+        "id": "aitu-resilience",
+        "name": "Center for IT Infrastructure Resilience (учебный блок)",
+        "description": "Облака, отказоустойчивость, DevOps-практики и эксплуатация больших систем — как дополнительный трек для инженеров платформы."
+      },
+      {
+        "id": "aitu-digital-mining",
+        "name": "Institute of Digital Mining, Geoinformatics and Subsurface Data",
+        "description": "Геоинформатика, цифровые двойники месторождений и аналитика добывающих данных — трек для казахстанского нефтегазово-горного сектора."
+      },
+      {
+        "id": "aitu-fintech",
+        "name": "Institute of Financial Technologies, Blockchain and RegTech",
+        "description": "Финтех, распределённые реестры, комплаенс и цифровые платежи; лаборатории с банками и IT-регуляторикой (учебные кейсы)."
+      },
+      {
+        "id": "aitu-edtech",
+        "name": "Institute of Educational Technologies and Learning Analytics",
+        "description": "LMS, адаптивное обучение, аналитика успеваемости и дизайн цифровых курсов; связка с EdTech-стартапами Астаны."
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4.5,
+      "competitiveGpa": 3.85,
+      "competitiveSat": 1240,
+      "targetSat": 1420,
+      "competitiveUnt": 105,
+      "targetUnt": 122,
+      "minIelts": 6,
+      "modelNote": "AITU ориентирован на IT и цифровую экономику; Fit-модель подчёркивает математику, программирование и английский для англоязычных потоков."
+    },
+    "scholarships": [
+      {
+        "name": "AITU Digital Talent Grant",
+        "requirements": "Portfolio of coding projects, hackathons or olympiads; competitive GPA; English for English-medium tracks.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Need-aware tech access award",
+        "requirements": "Documented financial constraints plus satisfactory academic progress; limited seats per cycle (mock).",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Industry partner fellowship",
+        "requirements": "Co-funded placements with technology employers; interview and technical screening — illustrative MVP entry.",
+        "aiRelevance": "Medium"
+      },
+      {
+        "name": "Regional ICT scholarship",
+        "requirements": "Priority for applicants from designated regions of Kazakhstan per annual policy — demo placeholder.",
+        "aiRelevance": "Low"
+      }
+    ],
+    "programs": [
+      {
+        "id": "aitu-bsc-computer-science",
+        "name": "BSc in Computer Science",
+        "facultyId": "aitu-computing",
+        "annualTuitionKzt": 5800000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 86,
+        "matchReason": "Core CS plus cloud and software engineering electives — flagship tech pathway at AITU.",
+        "detailedDescription": [
+          "Programming, discrete math, systems and theory with project-based learning.",
+          "Strong ecosystem ties to Astana tech hub — mock narrative."
+        ],
+        "entryRequirements": [
+          "IELTS 6.0+",
+          "Mathematics and informatics",
+          "Portfolio recommended"
+        ]
+      },
+      {
+        "id": "aitu-bsc-big-data",
+        "name": "BSc in Big Data Analytics",
+        "facultyId": "aitu-computing",
+        "annualTuitionKzt": 5600000,
+        "field": "Science",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 84,
+        "matchReason": "Statistics, distributed systems and ML pipelines — ideal for data-minded applicants.",
+        "detailedDescription": [
+          "Data engineering, visualization and modeling coursework."
+        ],
+        "entryRequirements": [
+          "Strong math",
+          "IELTS 6.0+",
+          "Problem-solving assessment"
+        ]
+      },
+      {
+        "id": "aitu-bsc-cybersecurity",
+        "name": "BSc in Cybersecurity",
+        "facultyId": "aitu-cyber",
+        "annualTuitionKzt": 6000000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 82,
+        "matchReason": "Network security, cryptography labs and blue/red team exercises — hands-on defensive security.",
+        "detailedDescription": [
+          "Ethical hacking basics and secure software development practices."
+        ],
+        "entryRequirements": [
+          "IELTS 6.0+",
+          "Logical reasoning",
+          "Clean disciplinary record"
+        ]
+      },
+      {
+        "id": "aitu-ba-digital-business",
+        "name": "B.A. in Digital Business",
+        "facultyId": "aitu-digital-econ",
+        "annualTuitionKzt": 5200000,
+        "field": "Business",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 78,
+        "matchReason": "Product, analytics and digital marketing at the intersection of tech and management.",
+        "detailedDescription": [
+          "Lean startup projects and analytics tooling — mock summary."
+        ],
+        "entryRequirements": [
+          "IELTS 6.0+",
+          "Quantitative readiness"
+        ]
+      },
+      {
+        "id": "aitu-bsc-software-engineering",
+        "name": "BSc in Software Engineering",
+        "facultyId": "aitu-computing",
+        "annualTuitionKzt": 6100000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 87,
+        "matchReason": "End-to-end software delivery, agile teams and quality assurance — strong alignment with product-oriented students.",
+        "detailedDescription": [
+          "Design patterns, testing, DevOps introduction and capstone industry projects."
+        ],
+        "entryRequirements": [
+          "Git/portfolio plus GPA",
+          "IELTS 6.0+"
+        ]
+      },
+      {
+        "id": "aitu-bsc-robotics-ai",
+        "name": "BSc in Robotics and Intelligent Systems",
+        "facultyId": "aitu-computing",
+        "annualTuitionKzt": 5900000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 80,
+        "matchReason": "Embedded AI, perception and control — bridges mechanical intuition with AI tooling.",
+        "detailedDescription": [
+          "ROS-style projects and interdisciplinary labs — illustrative."
+        ],
+        "entryRequirements": [
+          "Physics & math",
+          "IELTS 6.0+",
+          "Creative portfolio"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "astanamu",
+    "name": "Astana Medical University",
+    "nameRu": "Астанский медицинский университет",
+    "nameKk": "Астана медицина университеті",
+    "officialWebsiteUrl": "https://amu.edu.kz",
+    "admissionsEmail": "admission@amu.edu.kz",
+    "city": "Astana, Kazakhstan",
+    "foundedYear": 1997,
+    "type": "Research",
+    "languagesOfInstruction": [
+      "Kazakh",
+      "Russian",
+      "English"
+    ],
+    "applicationDeadline": "2026-06-25",
+    "scholarshipBlurb": "Гранты для медицинских специальностей столицы; STEM-олимпиады учитываются в дополнительных конкурсах.",
+    "heroImageUrl": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 2900000,
+      "maxKzt": 5800000,
+      "note": "Англоязычные группы могут иметь надбавку; проверяйте официальный прайсинг года."
+    },
+    "faculties": [
+      {
+        "id": "amu-internal",
+        "name": "Internal Medicine Foundations",
+        "description": "Терапия, кардиология основ, нефрология intro."
+      },
+      {
+        "id": "amu-surgery",
+        "name": "Surgery and Anesthesiology Basics",
+        "description": "Оперативная практика после базовых лет."
+      },
+      {
+        "id": "amu-pediatrics",
+        "name": "Pediatrics and Childhood Diseases",
+        "description": "Детские направления столицы."
+      },
+      {
+        "id": "amu-pharm",
+        "name": "Pharmacy and Biotechnology",
+        "description": "Фармацевтические технологии."
+      },
+      {
+        "id": "amu-dental",
+        "name": "Dentistry",
+        "description": "Стоматология общей практики."
+      },
+      {
+        "id": "amu-public",
+        "name": "Public Health Management",
+        "description": "Управление медицинскими организациями."
+      },
+      {
+        "id": "amu-nursing",
+        "name": "Nursing School",
+        "description": "Практический уход и координация палат."
+      },
+      {
+        "id": "amu-lang",
+        "name": "Medical Languages and Ethics",
+        "description": "Коммуникация врача и межкультурная компетентность."
+      },
+      {
+        "id": "amu-research",
+        "name": "Translational Research Cluster",
+        "description": "Введение в клинические исследования."
+      }
+    ],
+    "scholarships": [
+      {
+        "name": "Грант на медицину (столица)",
+        "requirements": "ЕНТ конкурс.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Менторство от выпускников клиник Астаны",
+        "requirements": "Отбор по GPA после 2 курса.",
+        "aiRelevance": "Low"
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4.35,
+      "competitiveGpa": 3.75,
+      "competitiveSat": 1180,
+      "targetSat": 1320,
+      "competitiveUnt": 112,
+      "targetUnt": 110,
+      "minIelts": 5.5,
+      "modelNote": "Демо-модель Fit для QApp; официальные пороги и правила года набора — только на сайте вуза."
+    },
+    "programs": [
+      {
+        "id": "amu-md-medicine",
+        "name": "MD General Medicine",
+        "facultyId": "amu-internal",
+        "annualTuitionKzt": 4900000,
+        "field": "Medicine",
+        "degree": "Bachelor",
+        "durationYears": 6,
+        "language": "Kazakh / Russian",
+        "fitScore": 87,
+        "matchReason": "Медицина столицы с доступом к госпиталям NHS-партнёров (демо).",
+        "detailedDescription": [
+          "Интегрированные кейсы.",
+          "OSCE экзамены."
+        ],
+        "entryRequirements": [
+          "Биология",
+          "Химия",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "amu-md-pediatrics",
+        "name": "MD Pediatrics",
+        "facultyId": "amu-pediatrics",
+        "annualTuitionKzt": 4850000,
+        "field": "Medicine",
+        "degree": "Bachelor",
+        "durationYears": 6,
+        "language": "Russian / Kazakh",
+        "fitScore": 85,
+        "matchReason": "Педиатрия для городских поликлиник.",
+        "detailedDescription": [
+          "Неонатология симуляции."
+        ],
+        "entryRequirements": [
+          "Биология",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "amu-bds",
+        "name": "BDS Dentistry",
+        "facultyId": "amu-dental",
+        "annualTuitionKzt": 4000000,
+        "field": "Medicine",
+        "degree": "Bachelor",
+        "durationYears": 5,
+        "language": "Russian / Kazakh",
+        "fitScore": 83,
+        "matchReason": "Стоматология с ранней клиникой.",
+        "detailedDescription": [
+          "Профилактика кариеса community."
+        ],
+        "entryRequirements": [
+          "Биология",
+          "Химия"
+        ]
+      },
+      {
+        "id": "amu-bpharm",
+        "name": "BPharm",
+        "facultyId": "amu-pharm",
+        "annualTuitionKzt": 3500000,
+        "field": "Science",
+        "degree": "Bachelor",
+        "durationYears": 5,
+        "language": "Russian / Kazakh",
+        "fitScore": 79,
+        "matchReason": "Фармацевт для столичной сети.",
+        "detailedDescription": [
+          "GMP лаборатории intro."
+        ],
+        "entryRequirements": [
+          "Химия",
+          "Биология"
+        ]
+      },
+      {
+        "id": "amu-bsc-health-admin",
+        "name": "BSc Healthcare Administration",
+        "facultyId": "amu-public",
+        "annualTuitionKzt": 3200000,
+        "field": "Business",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English / Kazakh",
+        "fitScore": 76,
+        "matchReason": "Управление клиниками и цифровизация МЗ.",
+        "detailedDescription": [
+          "Операционный менеджмент.",
+          "Закупки МЗ РК."
+        ],
+        "entryRequirements": [
+          "Математика",
+          "IELTS 5.5+ для ENG"
+        ]
+      },
+      {
+        "id": "amu-bsc-nursing",
+        "name": "BSc Nursing",
+        "facultyId": "amu-nursing",
+        "annualTuitionKzt": 2850000,
+        "field": "Medicine",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 74,
+        "matchReason": "Сестринское дело высшего образования.",
+        "detailedDescription": [
+          "Палатные станции VR."
+        ],
+        "entryRequirements": [
+          "Биология",
+          "ЕНТ"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "buketov",
+    "name": "Karaganda University named after E.A. Buketov",
+    "nameRu": "Карагандинский университет имени Е.А. Букетова",
+    "nameKk": "Е.А. Букетов атындағы Қарағанды университеті",
+    "city": "Karaganda, Kazakhstan",
+    "foundedYear": 1972,
+    "type": "Comprehensive",
+    "languagesOfInstruction": [
+      "Kazakh",
+      "Russian",
+      "English"
+    ],
+    "applicationDeadline": "2026-08-10",
+    "scholarshipBlurb": "Государственные образовательные гранты, социальные стипендии и поддержка талантливой молодёжи по правилам приёмной кампании.",
+    "heroImageUrl": "https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 900000,
+      "maxKzt": 2600000,
+      "note": "Ориентир контрактного обучения; гранты — по конкурсу ЕНТ (уточняйте на приёмной комиссии)."
+    },
+    "faculties": [
+      {
+        "id": "buket-bio-geo",
+        "name": "Faculty of Biology and Geography",
+        "nameRu": "Факультет биологии и географии",
+        "nameKk": "Биология және география факультеті",
+        "description": "Botany, zoology, physiology, geography; field courses in the ecosystems of Central Kazakhstan.",
+        "descriptionRu": "Ботаника, зоология, физиология человека и животных, география; полевые практики в экосистемах Центрального Казахстана.",
+        "descriptionKk": "Ботаника, зоология, физиология, география; Орталық Қазақстан экожүйелерінде өріс тәжірибелері."
+      },
+      {
+        "id": "buket-history",
+        "name": "Faculty of History",
+        "nameRu": "Исторический факультет",
+        "nameKk": "Тарих факультеті",
+        "description": "Archaeology, ethnology, national and world history; museum projects and regional heritage.",
+        "descriptionRu": "Археология, этнология, история Казахстана и мировая история; музейные проекты и краеведение региона.",
+        "descriptionKk": "Археология, этнология, Қазақстан тарихы және дүние тарихы; мұражай жобалары."
+      },
+      {
+        "id": "buket-foreign",
+        "name": "Faculty of Foreign Languages",
+        "nameRu": "Факультет иностранных языков",
+        "nameKk": "Шет тілдері факультеті",
+        "description": "Foreign philology, translation theory, intensive language training for teachers and translators.",
+        "descriptionRu": "Иностранная филология, теория и практика перевода, практические курсы языков для преподавателей и переводчиков.",
+        "descriptionKk": "Шет филологиясы, аударма теориясы мен тәжірибесі, оқытушылар мен аудармашыларға арналған курстар."
+      },
+      {
+        "id": "buket-math-it",
+        "name": "Faculty of Mathematics and Information Technology",
+        "nameRu": "Факультет математики и информационных технологий",
+        "nameKk": "Математика және ақпараттық технологиялар факультеті",
+        "description": "Pure and applied mathematics, computer science, software engineering and educational IT.",
+        "descriptionRu": "Теоретическая и прикладная математика, информатика, программная инженерия и IT в образовании.",
+        "descriptionKk": "Теориялық және қолданбалы математика, информатика, бағдарламалық инженерия."
+      },
+      {
+        "id": "buket-ped",
+        "name": "Pedagogical Faculty",
+        "nameRu": "Педагогический факультет",
+        "nameKk": "Педагогика факультеті",
+        "description": "Teacher education for schools; subject methodology, inclusive practices and classroom labs.",
+        "descriptionRu": "Подготовка учителей для школ; методики предметов, инклюзивные практики и учебные мастерские.",
+        "descriptionKk": "Мектеп мұғалімдерін даярлау; пән әдістемелері, инклюзиялық тәжірибе."
+      },
+      {
+        "id": "buket-phys-tech",
+        "name": "Faculty of Physics and Technology",
+        "nameRu": "Факультет физики и технологии",
+        "nameKk": "Физика және технология факультеті",
+        "description": "Physics, engineering physics, instrumentation and applied labs tied to regional industry.",
+        "descriptionRu": "Физика, инженерная физика, приборостроение и прикладные лаборатории с опорой на региональную промышленность.",
+        "descriptionKk": "Физика, инженерлік физика, аспап жасау және өңдеу салаларымен байланысты зертханалар."
+      },
+      {
+        "id": "buket-sport",
+        "name": "Faculty of Physical Culture and Sports",
+        "nameRu": "Факультет физической культуры и спорта",
+        "nameKk": "Дене шынықтыру және спорт факультеті",
+        "description": "Coaching, physical education teaching, sports science basics and regional athletics partnerships.",
+        "descriptionRu": "Тренерская подготовка, физкультура в школе, основы спортивной науки и партнёрства с региональным спортом.",
+        "descriptionKk": "Бапкерлік, мектеп дене тәрбиесі, спорт ғылымының негіздері."
+      },
+      {
+        "id": "buket-philology",
+        "name": "Faculty of Philology",
+        "nameRu": "Филологический факультет",
+        "nameKk": "Филология факультеті",
+        "description": "Kazakh and Russian philology, literature, linguistics and teacher preparation.",
+        "descriptionRu": "Казахская и русская филология, литература, лингвистика и подготовка преподавателей языка и литературы.",
+        "descriptionKk": "Қазақ және орыс филологиясы, әдебиет, лингвистика."
+      },
+      {
+        "id": "buket-phil-psy",
+        "name": "Faculty of Philosophy and Psychology",
+        "nameRu": "Факультет философии и психологии",
+        "nameKk": "Философия және психология факультеті",
+        "description": "Philosophy, ethics, practical and educational psychology for schools and social services.",
+        "descriptionRu": "Философия, этика, практическая и педагогическая психология для школ и социальной сферы.",
+        "descriptionKk": "Философия, этика, практикалық және педагогикалық психология."
+      },
+      {
+        "id": "buket-chem",
+        "name": "Faculty of Chemistry",
+        "nameRu": "Химический факультет",
+        "nameKk": "Химия факультеті",
+        "description": "Chemical sciences, laboratory safety, materials and environmental chemistry projects.",
+        "descriptionRu": "Химические науки, безопасность в лаборатории, материалы и проекты по экологической химии.",
+        "descriptionKk": "Химия ғылымдары, зертхана қауіпсіздігі, материалтану және экологиялық химия."
+      },
+      {
+        "id": "buket-econ",
+        "name": "Faculty of Economics",
+        "nameRu": "Экономический факультет",
+        "nameKk": "Экономика факультеті",
+        "description": "Economic theory, finance, management and digital analytics for enterprises.",
+        "descriptionRu": "Экономическая теория, финансы, менеджмент и цифровая аналитика для предприятий региона.",
+        "descriptionKk": "Экономикалық теория, қаржы, менеджмент және кәсіпорындарға сандық талдау."
+      },
+      {
+        "id": "buket-law",
+        "name": "Faculty of Law",
+        "nameRu": "Юридический факультет",
+        "nameKk": "Заң факультеті",
+        "description": "Civil, criminal and administrative law of Kazakhstan; legal clinics and moot practice.",
+        "descriptionRu": "Гражданское, уголовное и административное право РК; юридические клиники и практика мут-кортов.",
+        "descriptionKk": "ҚР азаматтық, қылмыстық және әкімшілік құқық; заң клиникалары."
+      },
+      {
+        "id": "buket-military",
+        "name": "Military Department",
+        "nameRu": "Военная кафедра",
+        "nameKk": "Әскери кафедра",
+        "description": "Basic military training and territorial defence modules for students of compatible programmes.",
+        "descriptionRu": "Начальная военная подготовка и модули территориальной обороны для студентов совместимых программ.",
+        "descriptionKk": "Бастапқы әскери дайындық және үйлесімді бағдарламалар студенттеріне арналған модульдер."
+      },
+      {
+        "id": "buket-add-ed",
+        "name": "Faculty of Additional Education",
+        "nameRu": "Факультет дополнительного образования",
+        "nameKk": "Қосымша білім беру факультеті",
+        "description": "Lifelong learning, retraining, preparatory and certificate programmes for working adults.",
+        "descriptionRu": "Непрерывное образование, переподготовка, подготовительные и сертификационные программы для работающих.",
+        "descriptionKk": "Өмір бойы оқу, қайта даярлау, дайындық және сертификаттау бағдарламалары."
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4,
+      "competitiveGpa": 3.4,
+      "competitiveSat": 980,
+      "targetSat": 1140,
+      "competitiveUnt": 75,
+      "targetUnt": 95,
+      "minIelts": 5,
+      "modelNote": "Региональный классический университет; конкурс на грант ниже столичного «топа», но популярные педагогические и IT-направления требуют стабильного UNT."
+    },
+    "scholarships": [
+      {
+        "name": "Государственный образовательный грант",
+        "requirements": "Конкурс ЕНТ для граждан РК по квотам года.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Стипендия имени Е.А. Букетова (мерит)",
+        "requirements": "Высокий GPA и участие в научных/олимпиадных проектах вуза.",
+        "aiRelevance": "Medium"
+      }
+    ],
+    "programs": [
+      {
+        "id": "buket-bsc-biology",
+        "name": "BSc in Biology",
+        "facultyId": "buket-bio-geo",
+        "annualTuitionKzt": 1650000,
+        "field": "Science",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 74,
+        "matchReason": "Естественно-научная подготовка с полевыми практиками в регионе.",
+        "detailedDescription": [
+          "Ботаника, зоология, экология.",
+          "Лаборатории и летние практики."
+        ],
+        "entryRequirements": [
+          "Биология и география в сертификате",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "buket-bsc-it-math",
+        "name": "BSc in Information Systems",
+        "facultyId": "buket-math-it",
+        "annualTuitionKzt": 1850000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 77,
+        "matchReason": "Прикладной IT и математика для регионального рынка труда.",
+        "detailedDescription": [
+          "Программирование, базы данных.",
+          "Проекты с партнёрами города."
+        ],
+        "entryRequirements": [
+          "Математика",
+          "Информатика желательна",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "buket-llb-law",
+        "name": "LL.B. in Law",
+        "facultyId": "buket-law",
+        "annualTuitionKzt": 1720000,
+        "field": "Law",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 73,
+        "matchReason": "Базовое юридическое образование с практикой в юрклинике.",
+        "detailedDescription": [
+          "Материальное и процессуальное право РК.",
+          "Кейсы и мот-к."
+        ],
+        "entryRequirements": [
+          "История Казахстана и всемирная история",
+          "ЕНТ"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "enu",
+    "name": "L.N. Gumilyov Eurasian National University",
+    "city": "Astana, Kazakhstan",
+    "foundedYear": 1996,
+    "type": "Comprehensive",
+    "languagesOfInstruction": [
+      "Kazakh",
+      "Russian",
+      "English"
+    ],
+    "applicationDeadline": "2026-08-15",
+    "scholarshipBlurb": "Государственные образовательные гранты, ректорские стипендии и поддержка одарённых студентов по профилям (уточняйте на приёмной кампании года).",
+    "heroImageUrl": "https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 1400000,
+      "maxKzt": 3200000,
+      "note": "Ориентир контрактной оплаты по крупным факультетам; грантовые места — по конкурсу ЕНТ/внутренним правилам года."
+    },
+    "faculties": [
+      {
+        "id": "enu-engineering",
+        "name": "Faculty of Engineering",
+        "description": "Машиностроение, энергетика, транспорт и материаловедение; проектные семестры и связь с промышленностью Астаны и регионов."
+      },
+      {
+        "id": "enu-it",
+        "name": "Faculty of Information Technologies",
+        "description": "Информатика, программная инженерия, сети и информационные системы; хакатоны и лаборатории с ИТ-партнёрами."
+      },
+      {
+        "id": "enu-law",
+        "name": "Faculty of Law",
+        "description": "Гражданское, уголовное и административное право; судебная практика, юридическая клиника и мот-к турниры."
+      },
+      {
+        "id": "enu-econ",
+        "name": "Faculty of Economics and Business",
+        "description": "Экономическая теория, финансы, менеджмент и предпринимательство; аналитика рынков и проекты для малого бизнеса."
+      },
+      {
+        "id": "enu-history",
+        "name": "Faculty of History and Archeology",
+        "description": "История Казахстана и Евразии, археология степи, музейное дело и работа с культурным наследием."
+      },
+      {
+        "id": "enu-philology",
+        "name": "Faculty of Philology",
+        "description": "Филология казахского, русского и иностранных языков; перевод, литература и методика преподавания."
+      },
+      {
+        "id": "enu-international",
+        "name": "Faculty of International Relations",
+        "description": "Мировая политика, дипломатия, региональная безопасность и международное право; модели межгосударственных организаций."
+      },
+      {
+        "id": "enu-natural",
+        "name": "Faculty of Natural Sciences",
+        "description": "Биология, химия, география и экология; полевые практики и подготовка к научным школам университета."
+      },
+      {
+        "id": "enu-social",
+        "name": "Faculty of Social Sciences",
+        "description": "Социология, политология, социальная работа и управление социальными программами."
+      },
+      {
+        "id": "enu-math",
+        "name": "Faculty of Mathematics and Cybernetics",
+        "description": "Математический анализ, дискретная математика, математическое моделирование и основы кибернетики."
+      },
+      {
+        "id": "enu-sport",
+        "name": "Faculty of Physical Culture and Sport",
+        "description": "Тренерская деятельность, спортивная медицина основ и управление физкультурно-оздоровительной деятельностью."
+      },
+      {
+        "id": "enu-journalism",
+        "name": "Faculty of Journalism",
+        "description": "Медиакоммуникации, цифровая журналистика, медиаменеджмент и медиатворчество."
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4.2,
+      "competitiveGpa": 3.65,
+      "competitiveSat": 1120,
+      "targetSat": 1300,
+      "competitiveUnt": 92,
+      "targetUnt": 112,
+      "minIelts": 5.5,
+      "modelNote": "ЕНУ — крупный классический университет столицы; конкурс на грант высокий. Fit-модель учитывает UNT и языковые пороги программы."
+    },
+    "scholarships": [
+      {
+        "name": "Государственный образовательный грант",
+        "requirements": "Конкурс ЕНТ для граждан РК по правилам года набора.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Ректорская стипендия за успеваемость",
+        "requirements": "Топ по GPA курса; продление при сохранении результатов.",
+        "aiRelevance": "Medium"
+      }
+    ],
+    "programs": [
+      {
+        "id": "enu-bsc-it",
+        "name": "BSc in Information Systems",
+        "facultyId": "enu-it",
+        "annualTuitionKzt": 2450000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 76,
+        "matchReason": "Прикладной IT для тех, кто хочет связать программирование с аналитикой и бизнес-процессами.",
+        "detailedDescription": [
+          "Базы данных, веб, основы управления проектами.",
+          "Практики в ИТ-компаниях региона."
+        ],
+        "entryRequirements": [
+          "ЕНТ по профильным предметам",
+          "Информатика приветствуется",
+          "Уровень языка по потоку"
+        ]
+      },
+      {
+        "id": "enu-bsc-economics",
+        "name": "BSc in Economics",
+        "facultyId": "enu-econ",
+        "annualTuitionKzt": 2100000,
+        "field": "Business",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 74,
+        "matchReason": "Экономическая аналитика и финансы для поступающих с сильной математикой.",
+        "detailedDescription": [
+          "Микро- и макроэкономика, метрика, работа с данными."
+        ],
+        "entryRequirements": [
+          "Математика в сертификате",
+          "Конкурсный балл ЕНТ"
+        ]
+      },
+      {
+        "id": "enu-ba-law",
+        "name": "LL.B. in Law",
+        "facultyId": "enu-law",
+        "annualTuitionKzt": 2350000,
+        "field": "Law",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 72,
+        "matchReason": "Базовое юридическое образование с акцентом на законодательство РК.",
+        "detailedDescription": [
+          "Теория права, материальное и процессуальное право.",
+          "Практика в юридической клинике."
+        ],
+        "entryRequirements": [
+          "История и обществознание",
+          "Конкурс ЕНТ"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kargtu",
+    "name": "Karaganda Technical University",
+    "nameRu": "Карагандинский технический университет",
+    "nameKk": "Қарағанды техникалық университеті",
+    "officialWebsiteUrl": "https://ktu.edu.kz",
+    "admissionsEmail": "priem@ktu.edu.kz",
+    "city": "Karaganda, Kazakhstan",
+    "foundedYear": 1953,
+    "type": "Technical",
+    "languagesOfInstruction": [
+      "Russian",
+      "Kazakh",
+      "English"
+    ],
+    "applicationDeadline": "2026-08-01",
+    "scholarshipBlurb": "Гранты для инженерных специальностей; корпоративные стипендии горно-металлургических партнёров региона.",
+    "heroImageUrl": "https://images.unsplash.com/photo-1581092918056-bec9f17ec75f?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 1800000,
+      "maxKzt": 3600000,
+      "note": "Инженерные лаборатории включают сбор за расходные материалы (ориентир)."
+    },
+    "faculties": [
+      {
+        "id": "kargtu-mining",
+        "name": "Mining and Geology",
+        "description": "Горное дело, маркшейдерия, недропользование."
+      },
+      {
+        "id": "kargtu-metallurgy",
+        "name": "Metallurgy and Materials",
+        "description": "Металлургические процессы и материаловедение."
+      },
+      {
+        "id": "kargtu-energy",
+        "name": "Energy and Electrical Engineering",
+        "description": "Энергетика, электроснабжение, возобновляемые источники intro."
+      },
+      {
+        "id": "kargtu-mechanical",
+        "name": "Mechanical Engineering",
+        "description": "Машиностроение, робототехника прикладная."
+      },
+      {
+        "id": "kargtu-it",
+        "name": "Information Technologies",
+        "description": "ПО, сети, промышленная автоматизация."
+      },
+      {
+        "id": "kargtu-civil",
+        "name": "Civil Engineering and Architecture",
+        "description": "Строительные конструкции, инженерные системы."
+      },
+      {
+        "id": "kargtu-env",
+        "name": "Environmental Engineering and Safety",
+        "description": "Охрана труда, экологический мониторинг производств."
+      },
+      {
+        "id": "kargtu-econ",
+        "name": "Economics and Management in Industry",
+        "description": "Управление производственными активами."
+      },
+      {
+        "id": "kargtu-transport",
+        "name": "Transport and Logistics",
+        "description": "Логистика угольно-металлургического кластера."
+      }
+    ],
+    "scholarships": [
+      {
+        "name": "Инженерный грант региона",
+        "requirements": "ЕНТ по физике и математике.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Партнёрская стипендия предприятий",
+        "requirements": "Обязательство стажировки 2+ лет.",
+        "aiRelevance": "Medium"
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4.35,
+      "competitiveGpa": 3.75,
+      "competitiveSat": 1180,
+      "targetSat": 1320,
+      "competitiveUnt": 88,
+      "targetUnt": 105,
+      "minIelts": 5.5,
+      "modelNote": "Демо-модель Fit для QApp; официальные пороги и правила года набора — только на сайте вуза."
+    },
+    "programs": [
+      {
+        "id": "kargtu-bsc-mining",
+        "name": "BSc Mining Engineering",
+        "facultyId": "kargtu-mining",
+        "annualTuitionKzt": 2600000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 79,
+        "matchReason": "Горный инженер для месторождений Центрального Казахстана.",
+        "detailedDescription": [
+          "Горные выработки лаборатории.",
+          "Геомеханика."
+        ],
+        "entryRequirements": [
+          "Физика",
+          "Математика"
+        ]
+      },
+      {
+        "id": "kargtu-bsc-metallurgy",
+        "name": "BSc Metallurgy",
+        "facultyId": "kargtu-metallurgy",
+        "annualTuitionKzt": 2500000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 77,
+        "matchReason": "Плавки, литейное производство, контроль качества.",
+        "detailedDescription": [
+          "Термодинамика металлов.",
+          "Практика на предприятиях."
+        ],
+        "entryRequirements": [
+          "Химия",
+          "Физика"
+        ]
+      },
+      {
+        "id": "kargtu-bsc-electrical",
+        "name": "BSc Electrical Power Engineering",
+        "facultyId": "kargtu-energy",
+        "annualTuitionKzt": 2400000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 76,
+        "matchReason": "Энергосистемы промышленности.",
+        "detailedDescription": [
+          "Релейная защита intro.",
+          "Smart grid основы."
+        ],
+        "entryRequirements": [
+          "Физика",
+          "Математика"
+        ]
+      },
+      {
+        "id": "kargtu-bsc-mechanical",
+        "name": "BSc Mechanical Engineering",
+        "facultyId": "kargtu-mechanical",
+        "annualTuitionKzt": 2350000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 75,
+        "matchReason": "Детали машин, станки, производственный инжиниринг.",
+        "detailedDescription": [
+          "CAD/CAM.",
+          "Производственная практика."
+        ],
+        "entryRequirements": [
+          "Математика",
+          "Физика"
+        ]
+      },
+      {
+        "id": "kargtu-bsc-cs",
+        "name": "BSc Computer Science & Automation",
+        "facultyId": "kargtu-it",
+        "annualTuitionKzt": 2700000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / English",
+        "fitScore": 78,
+        "matchReason": "Автоматизация производственных линий.",
+        "detailedDescription": [
+          "PLC лаборатории.",
+          "Промышленный IoT."
+        ],
+        "entryRequirements": [
+          "Информатика",
+          "Математика"
+        ]
+      },
+      {
+        "id": "kargtu-bsc-civil",
+        "name": "BSc Civil Engineering",
+        "facultyId": "kargtu-civil",
+        "annualTuitionKzt": 2300000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 74,
+        "matchReason": "Инженерия для городской инфраструктуры.",
+        "detailedDescription": [
+          "Строительная механика.",
+          " BIM intro."
+        ],
+        "entryRequirements": [
+          "Математика",
+          "Физика"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaznaru",
+    "name": "Kazakh National Agrarian Research University",
+    "city": "Almaty, Kazakhstan",
+    "foundedYear": 1929,
+    "type": "Comprehensive",
+    "languagesOfInstruction": [
+      "Kazakh",
+      "Russian",
+      "English"
+    ],
+    "applicationDeadline": "2026-08-05",
+    "scholarshipBlurb": "Гранты на аграрные и биотехспециальности, поддержка сельской молодёжи и проекты агропредпринимательства.",
+    "heroImageUrl": "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 950000,
+      "maxKzt": 2400000,
+      "note": "Аграрные программы часто доступнее по контракту; точная сумма зависит от факультета и языка."
+    },
+    "faculties": [
+      {
+        "id": "nar-agronomy",
+        "name": "Faculty of Agronomy and Soil Science",
+        "description": "Растениеводство, защита растений, почвоведение и агроэкология; опытные поля и лаборатории анализа."
+      },
+      {
+        "id": "nar-vet",
+        "name": "Faculty of Veterinary Medicine and Animal Science",
+        "description": "Ветеринария, зоотехния, кормление и биобезопасность животноводческих комплексов."
+      },
+      {
+        "id": "nar-food",
+        "name": "Faculty of Food Production Technology",
+        "description": "Технология переработки молока, мяса, зерна и масложировой продукции; стандарты качества и безопасности."
+      },
+      {
+        "id": "nar-env",
+        "name": "Faculty of Environmental Sciences and Water Resources",
+        "description": "Экология сельской местности, гидрология, устойчивое управление водными ресурсами."
+      },
+      {
+        "id": "nar-mechanization",
+        "name": "Faculty of Agricultural Mechanization and Electrical Engineering",
+        "description": "Тракторы и сельхозмашины, точное земледелие, автоматизация агропроизводства."
+      },
+      {
+        "id": "nar-econ-rural",
+        "name": "Faculty of Agricultural Economics and Rural Development",
+        "description": "Экономика АПК, кооперация фермеров, маркетинг продукции и государственные программы поддержки."
+      },
+      {
+        "id": "nar-land-mgmt",
+        "name": "Faculty of Land Management and Cadastre",
+        "description": "Землеустройство, геодезия, кадастр и правовое регулирование земельных отношений."
+      },
+      {
+        "id": "nar-biotech",
+        "name": "Faculty of Biotechnology and Bioengineering",
+        "description": "Биотехнологии микроорганизмов, селекция и биостимуляторы для растениеводства."
+      },
+      {
+        "id": "nar-forestry",
+        "name": "Faculty of Forestry and Wildlife",
+        "description": "Лесоведение, охота и сохранение биоразнообразия; лесные питомники и мониторинг экосистем."
+      },
+      {
+        "id": "nar-horticulture",
+        "name": "Faculty of Horticulture and Crop Sciences",
+        "description": "Овощеводство, садоводство, тепличные технологии и сортовые коллекции."
+      },
+      {
+        "id": "nar-it-agri",
+        "name": "Faculty of Digital Agriculture and GIS",
+        "description": "ГИС в АПК, дроны и спутниковый мониторинг полей, данные для точного земледелия."
+      },
+      {
+        "id": "nar-law-rural",
+        "name": "Faculty of Agrarian Law",
+        "description": "Правовое сопровождение фермерских хозяйств, земельные споры и контракты в АПК."
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4,
+      "competitiveGpa": 3.45,
+      "competitiveSat": 1020,
+      "targetSat": 1180,
+      "competitiveUnt": 82,
+      "targetUnt": 100,
+      "minIelts": 5,
+      "modelNote": "Аграрный профиль: биология и химия важны для многих программ; английский для международных треков."
+    },
+    "scholarships": [
+      {
+        "name": "Грант на специальности АПК",
+        "requirements": "Конкурс ЕНТ и целевые программы развития села.",
+        "aiRelevance": "High"
+      }
+    ],
+    "programs": [
+      {
+        "id": "nar-bsc-agronomy",
+        "name": "BSc in Agronomy",
+        "facultyId": "nar-agronomy",
+        "annualTuitionKzt": 1650000,
+        "field": "Science",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 71,
+        "matchReason": "Классическое растениеводство и защита урожая для карьеры в АПК.",
+        "detailedDescription": [
+          "Агрохимия, семеноводство, полевые практики."
+        ],
+        "entryRequirements": [
+          "Биология и химия",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "nar-bsc-food-tech",
+        "name": "BSc in Food Technology",
+        "facultyId": "nar-food",
+        "annualTuitionKzt": 1800000,
+        "field": "Science",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 72,
+        "matchReason": "Переработка сельхозсырья и контроль качества продукции.",
+        "detailedDescription": [
+          "Технологические линии, микробиология пищи."
+        ],
+        "entryRequirements": [
+          "Химия и биология",
+          "ЕНТ"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaznu",
+    "name": "al-Farabi Kazakh National University",
+    "nameRu": "Казахский национальный университет имени аль-Фараби",
+    "nameKk": "Әл-Фараби атындағы Қазақ ұлттық университеті",
+    "officialWebsiteUrl": "https://farabi.university",
+    "admissionsEmail": "admission@kaznu.kz",
+    "city": "Almaty, Kazakhstan",
+    "foundedYear": 1934,
+    "type": "Comprehensive",
+    "languagesOfInstruction": [
+      "Kazakh",
+      "Russian",
+      "English"
+    ],
+    "applicationDeadline": "2026-08-01",
+    "scholarshipBlurb": "Государственные гранты, стипендии для лучших по UNT, целевые квоты и социальные категории (иллюстративно для QApp; уточняйте в приёмной комиссии).",
+    "heroImageUrl": "https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 1200000,
+      "maxKzt": 2800000,
+      "note": "Вилка для контрактного обучения (грант = 0 ₸); цифры ориентировочные по крупным факультетам, mock."
+    },
+    "faculties": [
+      {
+        "id": "kaznu-physmath",
+        "name": "Faculty of Mechanics and Mathematics",
+        "description": "Фундаментальная подготовка в математике, механике и математическом моделировании; сильные кафедры анализа, дифференциальных уравнений и прикладной механики."
+      },
+      {
+        "id": "kaznu-bio",
+        "name": "Faculty of Biology and Biotechnology",
+        "description": "Современная биология, молекулярная генетика, экология и биотех: лаборатории, полевые практики и выход в науку Республики."
+      },
+      {
+        "id": "kaznu-law",
+        "name": "Faculty of Law",
+        "description": "Классическое юридическое образование с уклоном в гражданское, уголовное и международное право; мoot-courts и договорная работа."
+      },
+      {
+        "id": "kaznu-journ",
+        "name": "Faculty of Journalism",
+        "description": "Медиа, цифровой контент, расследовательская журналистика и дизайн коммуникаций; учебные студии и проекты с отраслевыми партнёрами."
+      },
+      {
+        "id": "kaznu-chem",
+        "name": "Faculty of Chemistry and Chemical Technology",
+        "description": "Синтез, аналитическая химия, катализ и зелёная химия; мост к фармацевтике, материаловедению и нефтехимии."
+      },
+      {
+        "id": "kaznu-phil",
+        "name": "Faculty of Philology",
+        "description": "Лингвистика, перевод, литературоведение трёх языков; гуманитарный костяк национального университета."
+      },
+      {
+        "id": "kaznu-hseb",
+        "name": "Higher School of Economics and Business",
+        "description": "Финансы, менеджмент и экономическая аналитика: микро- и макроэкономика, инвестиции, корпоративные финансы в бакалавриате и магистратуре."
+      },
+      {
+        "id": "kaznu-history",
+        "name": "Faculty of History, Archaeology and Ethnology",
+        "description": "История Казахстана и мира, археология степных памятников и этнография; экспедиции, музейная практика и работа с источниками."
+      },
+      {
+        "id": "kaznu-oriental",
+        "name": "Faculty of Oriental Studies",
+        "description": "Языки и культуры Востока, региональная политика и межкультурная коммуникация; подготовка переводчиков и аналитиков."
+      },
+      {
+        "id": "kaznu-international",
+        "name": "Faculty of International Relations",
+        "description": "Международное право и организации, дипломатия, глобальная безопасность и межкультурные переговоры; модели ООН и дебаты."
+      },
+      {
+        "id": "kaznu-geography",
+        "name": "Faculty of Geography and Environmental Sciences",
+        "description": "Физическая география, геоинформатика, климат и устойчивое развитие территорий; полевые школы и картографические проекты."
+      },
+      {
+        "id": "kaznu-physics-tech",
+        "name": "Faculty of Physics and Technology",
+        "description": "Экспериментальная физика, электроника, оптоэлектроника и материалы; лаборатории для исследований и инженерных приложений."
+      },
+      {
+        "id": "kaznu-philosophy",
+        "name": "Faculty of Philosophy and Political Science",
+        "description": "Социально-политическая теория, этика технологий и критическое мышление; академические дискуссии и исследовательские семинары."
+      },
+      {
+        "id": "kaznu-medicine",
+        "name": "Medical Faculty (General Medicine track)",
+        "description": "Фундаментальные медицинские дисциплины и клинические базы (по контракту года набора); интеграция с университетской клиникой — уточняйте на сайте КазНУ."
+      },
+      {
+        "id": "kaznu-radio-engineering",
+        "name": "Faculty of Radio Engineering and Electronics",
+        "description": "Радиотехника, микроэлектроника, схемотехника и телеком; НИР и стажировки в отрасли связи (по открытым разделам КазНУ)."
+      },
+      {
+        "id": "kaznu-mechanical-engineering",
+        "name": "Faculty of Mechanics and Technology",
+        "description": "Прикладная механика, машиностроение и технологические процессы; подготовка инженеров для промышленности Алматы и регионов."
+      },
+      {
+        "id": "kaznu-information-systems",
+        "name": "Faculty of Information Systems and Cybersecurity",
+        "description": "Информационные системы, сети и информационная безопасность на базе классического университета; проектные семестры и хакатоны."
+      },
+      {
+        "id": "kaznu-space-engineering",
+        "name": "Faculty / Institute Cluster — Aerospace and Space Technologies",
+        "description": "Подготовка и НИР в области космических технологий и инженерии (организационные единицы КазНУ — уточняйте актуальный состав на kaznu.kz)."
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4.2,
+      "competitiveGpa": 3.6,
+      "competitiveSat": 1100,
+      "targetSat": 1280,
+      "competitiveUnt": 90,
+      "targetUnt": 110,
+      "minIelts": 5.5,
+      "modelNote": "КазНУ — крупный классический вуз: конкуренция на бюджет высокая; для mock Fit мягче SAT, сильнее UNT/школьный GPA. EN-программы встречаются точечно."
+    },
+    "scholarships": [
+      {
+        "name": "State educational grant (Kazakhstan)",
+        "requirements": "Competitive UNT + school portfolio; full tuition on grant track for citizens (policy varies by year).",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Rector’s merit list",
+        "requirements": "Top cohort GPA; may include partial contract discount in selected faculties — mock label.",
+        "aiRelevance": "Medium"
+      },
+      {
+        "name": "Regional youth support (mock)",
+        "requirements": "Documented residence in priority regions as per annual government lists.",
+        "aiRelevance": "Low"
+      }
+    ],
+    "programs": [
+      {
+        "id": "kaznu-bsc-mathematics",
+        "name": "BSc in Mathematics",
+        "facultyId": "kaznu-physmath",
+        "annualTuitionKzt": 1450000,
+        "field": "Science",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 78,
+        "matchReason": "Фундаментальная математика для тех, кто хочет ML/финансовую математику и академическую траекторию.",
+        "detailedDescription": [
+          "Анализ, алгебра, дифференциальные уравнения и дискретная математика с исследовательскими семинарами.",
+          "Мосты в магистратуру по прикладной математике, data science и преподаванию; конкурсы и олимпиадная подготовка.",
+          "Смежные кафедры позволяют подобрать минор по информатике или экономике."
+        ],
+        "entryRequirements": [
+          "UNT или эквивалент по профилю",
+          "Школьная математика высокого уровня",
+          "Собеседование на некоторые потоки"
+        ]
+      },
+      {
+        "id": "kaznu-bsc-molecular-biology",
+        "name": "BSc in Molecular Biology",
+        "facultyId": "kaznu-bio",
+        "annualTuitionKzt": 1680000,
+        "field": "Science",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian",
+        "fitScore": 74,
+        "matchReason": "Лабораторная биология и генетика — для абитуриентов с сильной химией и интересом к R&D.",
+        "detailedDescription": [
+          "Клеточная биология, генетика, биохимия и микробиология с проектами в кампусных лабораториях.",
+          "Практики в институтах и клиниках-партнёрах (иллюстративно); выход в магистратуру биомед."
+        ],
+        "entryRequirements": [
+          "Биология и химия в школьном аттестате",
+          "UNT профильный или внутренние экзамены",
+          "Медицинская книжка по запросу практик"
+        ]
+      },
+      {
+        "id": "kaznu-llb-law",
+        "name": "LL.B. in Law",
+        "facultyId": "kaznu-law",
+        "annualTuitionKzt": 1900000,
+        "field": "Law",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 72,
+        "matchReason": "Классическое юридическое образование в крупнейшем правовом факультете страны (по репутации).",
+        "detailedDescription": [
+          "Гражданское, уголовное, конституционное и административное право; процессуальные дисциплины и клиники.",
+          "Судебные и ADR-модули, стажировки в госорганах и компаниях (описательно)."
+        ],
+        "entryRequirements": [
+          "Сильные гуманитарные оценки",
+          "Истории и обществознание",
+          "Конкурс портфолио/эссе — по годам"
+        ]
+      },
+      {
+        "id": "kaznu-ba-journalism",
+        "name": "B.A. in Journalism and Mass Communications",
+        "facultyId": "kaznu-journ",
+        "annualTuitionKzt": 1720000,
+        "field": "Humanities",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 70,
+        "matchReason": "Медиа, креатив и цифровой сторителлинг — для пишущих и визуально сильных кандидатов.",
+        "detailedDescription": [
+          "Репортаж, радио, ТВ, цифровые платформы; этика, медиаправо и аналитика контента.",
+          "Учебные студии, макетное мастерство, соцсети и data-journalism вводные курсы."
+        ],
+        "entryRequirements": [
+          "Творческий конкурс / портфолио",
+          "Сочинение на вступительных (если предусмотрено)",
+          "UNT и внутр. испытания"
+        ]
+      },
+      {
+        "id": "kaznu-bsc-chemistry",
+        "name": "BSc in Chemistry",
+        "facultyId": "kaznu-chem",
+        "annualTuitionKzt": 1550000,
+        "field": "Science",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian",
+        "fitScore": 76,
+        "matchReason": "Органика, неорганика, аналитика — база для фармы, материалов и нефтехимии в Казахстане.",
+        "detailedDescription": [
+          "Лабораторный трек с инструментальными методами: спектроскопия, хроматография, синтез.",
+          "Связи с научно-исследовательскими лабораториями и отраслевыми стажировками."
+        ],
+        "entryRequirements": [
+          "Химия в аттестате",
+          "Конкурс UNT",
+          "Вступительные по химии — уточнять в год"
+        ]
+      },
+      {
+        "id": "kaznu-ba-translation",
+        "name": "B.A. in Translation Studies",
+        "facultyId": "kaznu-phil",
+        "annualTuitionKzt": 1380000,
+        "field": "Humanities",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian / English",
+        "fitScore": 69,
+        "matchReason": "Перевод и межкультурная коммуникация — трёхъязычные компетенции для дипломатии и бизнеса.",
+        "detailedDescription": [
+          "Теория и практика последовательного и письменного перевода, терминология, CAT-tools вводно.",
+          "Смежные курсы культурологии и деловой коммуникации; мосты в магистратуру лингвистики."
+        ],
+        "entryRequirements": [
+          "Высокий уровень языка (внутр. тесты)",
+          "ESH/олимпиады — плюс",
+          "Портфолио эссе"
+        ]
+      },
+      {
+        "id": "kaznu-msc-finance",
+        "name": "MSc in Finance",
+        "facultyId": "kaznu-hseb",
+        "annualTuitionKzt": 2800000,
+        "field": "Business",
+        "degree": "Master",
+        "durationYears": 2,
+        "language": "English / Russian",
+        "fitScore": 75,
+        "matchReason": "Корпоративные финансы и инвестиции для выпускников бакалавриата экономики и смежных полей.",
+        "detailedDescription": [
+          "DCF, рынки капитала, риск-менеджмент, финансовое моделирование в Excel/Python.",
+          "Кейсы с эмитентами KASE и международными стандартами отчётности — учебные симуляции."
+        ],
+        "entryRequirements": [
+          "Релевантный бакалавр",
+          "GMAT/внутренний экзамен — по году",
+          "IELTS 6.0+ для англоязычного потока"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kbtu",
+    "name": "Kazakh-British Technical University",
+    "nameRu": "Казахско-Британский технический университет",
+    "nameKk": "Қазақ-британ техникалық университеті",
+    "officialWebsiteUrl": "https://kbtu.edu.kz",
+    "admissionsEmail": "admission@kbtu.edu.kz",
+    "city": "Almaty, Kazakhstan",
+    "foundedYear": 2000,
+    "type": "Technical",
+    "languagesOfInstruction": [
+      "English",
+      "Russian"
+    ],
+    "applicationDeadline": "2026-07-01",
+    "scholarshipBlurb": "Academic excellence scholarships, STEM achievement awards and partial tuition support for strong applicants (mock).",
+    "heroImageUrl": "https://images.unsplash.com/photo-1564981797829-6f5d176d8e31?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 3200000,
+      "maxKzt": 5200000,
+      "note": "Смешанные EN/RU потоки; в mock указана вилка бакалавриата. Магистратура и грант-контракты считаются отдельно."
+    },
+    "faculties": [
+      {
+        "id": "kbtu-fit",
+        "name": "Faculty of Information Technologies & Digital Engineering",
+        "description": "Прикладной IT, автоматизация, цифровой инжиниринг: связка программирования, электроники и промышленных стандартов; стажировки в отраслевых компаниях региона."
+      },
+      {
+        "id": "kbtu-energy",
+        "name": "Faculty of Energy, Oil and Gas",
+        "description": "Классическое сильное направление KBTU: добыча, бурение, нефтегазовая механика, экология и безопасность; лаборатории с отраслевым оборудованием (иллюстративно)."
+      },
+      {
+        "id": "kbtu-business",
+        "name": "Business School",
+        "description": "Менеджмент, экономика и предпринимательство в контексте инженерного вуза; кейсы и международные партнёрские программы."
+      },
+      {
+        "id": "kbtu-arch-civil",
+        "name": "Faculty of Architecture and Civil Engineering",
+        "description": "Архитектурное проектирование, инженерия конструкций и городская среда: BIM, устойчивые материалы и нормативная база строительства РК."
+      },
+      {
+        "id": "kbtu-chem-eng",
+        "name": "Faculty of Chemical Engineering and Ecology",
+        "description": "Химическая технология, переработка, экологический мониторинг и безопасность производств; лаборатории для прототипирования процессов."
+      },
+      {
+        "id": "kbtu-geology",
+        "name": "Faculty of Geology and Exploration",
+        "description": "Поиск и оценка месторождений, геологическое картирование, горное дело и связка с нефтегазовым блоком KBTU."
+      },
+      {
+        "id": "kbtu-transport",
+        "name": "Faculty of Transport and Mechanical Engineering",
+        "description": "Транспортные системы, машиностроение и надёжность оборудования; проектное обучение с производственными стажировками."
+      },
+      {
+        "id": "kbtu-econ-intl",
+        "name": "International School of Economics",
+        "description": "Экономическая теория, эконометрика и прикладная аналитика с акцентом на международную торговлю и финансовые рынки."
+      },
+      {
+        "id": "kbtu-pharma-food",
+        "name": "Faculty of Food Technology and Biotechnology",
+        "description": "Технология продуктов питания, качество и безопасность пищевых цепочек; биотехнологические процессы для переработки сырья."
+      },
+      {
+        "id": "kbtu-matsci-green",
+        "name": "School of Materials Science and Green Technologies",
+        "description": "Материаловедение, устойчивые технологии и «зелёная» химия; лаборатории синтеза и экспериментальные установки по данным открытых страниц KBTU."
+      },
+      {
+        "id": "kbtu-applied-math",
+        "name": "School of Applied Mathematics",
+        "description": "Прикладная математика, моделирование процессов и вычислительные методы для инженерных и экономических задач добывающего региона."
+      },
+      {
+        "id": "kbtu-ite",
+        "name": "School of Information Technology and Engineering",
+        "description": "Инженерия информационных систем, робототехника и смежные направления — официальная школа KBTU рядом с ИТ-направлениями (по структуре сайта вуза)."
+      },
+      {
+        "id": "kbtu-ise",
+        "name": "International School of Economics and Social Sciences (ISE)",
+        "description": "Партнёрские программы с University of London (LSE track): экономика, финансы, data science и социальные науки в англоязычной среде."
+      },
+      {
+        "id": "kbtu-natural-social",
+        "name": "School of Natural and Social Sciences",
+        "description": "Естественнонаучная и социогуманитарная подготовка в инженерном контексте; междисциплинарные курсы и исследовательские семинары."
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4.4,
+      "competitiveGpa": 3.9,
+      "competitiveSat": 1220,
+      "targetSat": 1380,
+      "competitiveUnt": 100,
+      "targetUnt": 118,
+      "minIelts": 6,
+      "modelNote": "Fit-модель для KBTU: акцент на инженерные и IT-программы; пороги чуть мягче премиального NU, IELTS часто от 6.0 для смешанного EN/RU обучения. Иллюстрация для MVP."
+    },
+    "scholarships": [
+      {
+        "name": "KBTU Academic Excellence",
+        "requirements": "Strong GPA in STEM subjects, portfolio of projects or competitions; English or Russian proficiency per program track.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Presidential / State quota pathways",
+        "requirements": "Kazakhstan citizens may qualify via national programs subject to annual quotas; documents verified through admissions office.",
+        "aiRelevance": "Medium"
+      },
+      {
+        "name": "Women in STEM incentive (mock)",
+        "requirements": "Merit-based supplement for competitive female applicants in selected engineering and computing programs — demo entry.",
+        "aiRelevance": "Medium"
+      },
+      {
+        "name": "Sports & leadership stipend",
+        "requirements": "Documented national-level sport or student leadership; smaller tuition discount than flagship merit awards.",
+        "aiRelevance": "Low"
+      }
+    ],
+    "programs": [
+      {
+        "id": "kbtu-bsc-information-systems",
+        "name": "BSc in Information Systems",
+        "facultyId": "kbtu-fit",
+        "annualTuitionKzt": 4200000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 84,
+        "matchReason": "Business analysis, databases and software engineering — fits applicants wanting applied computing in industry contexts.",
+        "detailedDescription": [
+          "Focus on enterprise systems, software development lifecycle, data management and IT consulting skills.",
+          "Coursework bridges computer science foundations with management information systems.",
+          "Graduates join banks, telecoms, and tech integrators across Kazakhstan and abroad."
+        ],
+        "entryRequirements": [
+          "Mathematics and informatics preparation",
+          "IELTS 6.0+ for English track or Russian proficiency for parallel track",
+          "Competitive UNT/SAT considered holistically"
+        ]
+      },
+      {
+        "id": "kbtu-bsc-automation-control",
+        "name": "BSc in Automation and Control",
+        "facultyId": "kbtu-energy",
+        "annualTuitionKzt": 3600000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian",
+        "fitScore": 79,
+        "matchReason": "Control theory, industrial automation and instrumentation — for students strong in physics and linear algebra.",
+        "detailedDescription": [
+          "Laboratory-intensive study of PLCs, robotics integration, and process control.",
+          "Links to oil & gas and manufacturing sectors prevalent in the region."
+        ],
+        "entryRequirements": [
+          "Strong physics and mathematics",
+          "UNT threshold varies by year",
+          "Russian medium — proof of proficiency"
+        ]
+      },
+      {
+        "id": "kbtu-bsc-oil-gas-engineering",
+        "name": "BSc in Oil and Gas Engineering",
+        "facultyId": "kbtu-energy",
+        "annualTuitionKzt": 4800000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 76,
+        "matchReason": "Reservoir, drilling and production fundamentals aligned with Kazakhstan’s energy sector demand.",
+        "detailedDescription": [
+          "Petroleum engineering core with safety and environmental modules.",
+          "Industry internships with national operators — illustrative mock."
+        ],
+        "entryRequirements": [
+          "IELTS 6.0+",
+          "Chemistry and physics foundation",
+          "Competitive GPA"
+        ]
+      },
+      {
+        "id": "kbtu-ba-business-administration",
+        "name": "B.A. in Business Administration",
+        "facultyId": "kbtu-business",
+        "annualTuitionKzt": 3900000,
+        "field": "Business",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 77,
+        "matchReason": "Management, finance and entrepreneurship tracks — analytical applicants with leadership interests.",
+        "detailedDescription": [
+          "Core business curriculum with quantitative methods and strategy projects."
+        ],
+        "entryRequirements": [
+          "IELTS 6.0+",
+          "Mathematics for business",
+          "Holistic review"
+        ]
+      },
+      {
+        "id": "kbtu-msc-computer-science",
+        "name": "MSc in Computer Science",
+        "facultyId": "kbtu-fit",
+        "annualTuitionKzt": 5100000,
+        "field": "Engineering",
+        "degree": "Master",
+        "durationYears": 2,
+        "language": "English",
+        "fitScore": 81,
+        "matchReason": "Graduate depth in algorithms and systems — for bachelor graduates raising research or senior engineering profile.",
+        "detailedDescription": [
+          "Advanced coursework and thesis component in CS research groups."
+        ],
+        "entryRequirements": [
+          "Relevant bachelor degree",
+          "IELTS 6.5+",
+          "Strong bachelor GPA and motivation statement"
+        ]
+      },
+      {
+        "id": "kbtu-bsc-digital-engineering",
+        "name": "BSc in Digital Engineering",
+        "facultyId": "kbtu-fit",
+        "annualTuitionKzt": 4000000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 83,
+        "matchReason": "Cross-disciplinary digital design, IoT and smart systems — modern Industry 4.0 angle.",
+        "detailedDescription": [
+          "Combines mechanical design signals with computing and embedded platforms."
+        ],
+        "entryRequirements": [
+          "STEM portfolio",
+          "IELTS 6.0+",
+          "UNT/SAT competitive"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kimep",
+    "name": "KIMEP University",
+    "nameRu": "Университет КИМЭП",
+    "nameKk": "КИМЭП университеті",
+    "officialWebsiteUrl": "https://www.kimep.kz",
+    "admissionsEmail": "admissions@kimep.kz",
+    "city": "Almaty, Kazakhstan",
+    "foundedYear": 1992,
+    "type": "Liberal Arts",
+    "languagesOfInstruction": [
+      "English",
+      "Russian"
+    ],
+    "applicationDeadline": "2026-07-01",
+    "scholarshipBlurb": "Merit scholarships for strong GPA, talent grants for journalism and debate; need-aware aid on competitive basis (demo summary).",
+    "heroImageUrl": "https://images.unsplash.com/photo-1523247730359-763486e6a22b?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 4200000,
+      "maxKzt": 8800000,
+      "note": "Контракт English-taught программ; гранты ограничены — уточняйте офис приёма."
+    },
+    "faculties": [
+      {
+        "id": "kimep-business",
+        "name": "Bang College of Business",
+        "description": "MBA-oriented bachelor tracks, analytics, strategy."
+      },
+      {
+        "id": "kimep-law",
+        "name": "School of Law",
+        "description": "Common law orientation, moot courts, commercial law."
+      },
+      {
+        "id": "kimep-socsci",
+        "name": "College of Social Sciences",
+        "description": "Psychology, sociology, human behaviour research."
+      },
+      {
+        "id": "kimep-polsci",
+        "name": "Political Science & International Relations",
+        "description": "IR theory, diplomacy simulations, policy analysis."
+      },
+      {
+        "id": "kimep-journ",
+        "name": "Journalism & Mass Communication",
+        "description": "Digital newsrooms, media law, storytelling labs."
+      },
+      {
+        "id": "kimep-econ",
+        "name": "Economics",
+        "description": "Quantitative economics, econometrics, policy evaluation."
+      },
+      {
+        "id": "kimep-found",
+        "name": "Foundation & General Education",
+        "description": "Academic writing, critical thinking, pathways to majors."
+      },
+      {
+        "id": "kimep-lang",
+        "name": "Center for Foreign Languages",
+        "description": "Intensive English pathways and certification prep."
+      },
+      {
+        "id": "kimep-it",
+        "name": "Information Systems & Technology",
+        "description": "Applied computing for business and data pipelines."
+      }
+    ],
+    "scholarships": [
+      {
+        "name": "KIMEP Merit Scholarship",
+        "requirements": "High school GPA top tier + English exam.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Regional talent grant",
+        "requirements": "Olympiad or national competition portfolio.",
+        "aiRelevance": "Medium"
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4.5,
+      "competitiveGpa": 4,
+      "competitiveSat": 1180,
+      "targetSat": 1320,
+      "competitiveUnt": 95,
+      "targetUnt": 110,
+      "minIelts": 6,
+      "modelNote": "Демо-модель Fit для QApp; официальные пороги и правила года набора — только на сайте вуза."
+    },
+    "programs": [
+      {
+        "id": "kimep-bba-management",
+        "name": "Bachelor of Business Administration",
+        "facultyId": "kimep-business",
+        "annualTuitionKzt": 6200000,
+        "field": "Business",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 84,
+        "matchReason": "Сильный англоязычный бизнес-трек с акцентом на лидерство и аналитику.",
+        "detailedDescription": [
+          "Cases, internships with regional employers.",
+          "Capstone consulting projects."
+        ],
+        "entryRequirements": [
+          "High school GPA competitive",
+          "IELTS 6.0+",
+          "Math proficiency"
+        ]
+      },
+      {
+        "id": "kimep-llb-law",
+        "name": "LL.B. in Law",
+        "facultyId": "kimep-law",
+        "annualTuitionKzt": 5900000,
+        "field": "Law",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 80,
+        "matchReason": "Для поступающих с интересом к международному и корпоративному праву.",
+        "detailedDescription": [
+          "Legal writing labs.",
+          "Client interviewing simulations."
+        ],
+        "entryRequirements": [
+          "IELTS 6.0+",
+          "Critical reading score"
+        ]
+      },
+      {
+        "id": "kimep-ba-international-relations",
+        "name": "BA in International Relations",
+        "facultyId": "kimep-polsci",
+        "annualTuitionKzt": 5400000,
+        "field": "Social Sciences",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 78,
+        "matchReason": "Модели ООН, региональная безопасность Центральной Азии.",
+        "detailedDescription": [
+          "Model UN cohort.",
+          "Policy memo workshops."
+        ],
+        "entryRequirements": [
+          "IELTS 6.0+",
+          "Social science coursework"
+        ]
+      },
+      {
+        "id": "kimep-ba-journalism",
+        "name": "BA in Journalism and Mass Communication",
+        "facultyId": "kimep-journ",
+        "annualTuitionKzt": 5100000,
+        "field": "Humanities",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 77,
+        "matchReason": "Цифровые медиа, подкасты и аналитический репортаж.",
+        "detailedDescription": [
+          "Newsroom practicum.",
+          "Ethics and misinformation studio."
+        ],
+        "entryRequirements": [
+          "Portfolio or writing sample",
+          "IELTS 6.0+"
+        ]
+      },
+      {
+        "id": "kimep-bsc-computer-science",
+        "name": "BSc in Computer Science",
+        "facultyId": "kimep-it",
+        "annualTuitionKzt": 6800000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 83,
+        "matchReason": "Software engineering fundamentals plus product delivery studios.",
+        "detailedDescription": [
+          "Algorithms, systems, databases.",
+          "Industry-sponsored hackathons."
+        ],
+        "entryRequirements": [
+          "Math + Informatics strength",
+          "IELTS 6.0+"
+        ]
+      },
+      {
+        "id": "kimep-bsc-economics",
+        "name": "BSc in Economics",
+        "facultyId": "kimep-econ",
+        "annualTuitionKzt": 5700000,
+        "field": "Business",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 79,
+        "matchReason": "Эконометрика и data storytelling для политики и рынков.",
+        "detailedDescription": [
+          "Micro/macro sequences.",
+          "Coding for economists."
+        ],
+        "entryRequirements": [
+          "Calculus readiness",
+          "IELTS 6.0+"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "knmu",
+    "name": "Kazakh National Medical University",
+    "nameRu": "Казахский национальный медицинский университет",
+    "nameKk": "Қазақ ұлттық медицина университеті",
+    "officialWebsiteUrl": "https://www.kaznmu.edu.kz",
+    "admissionsEmail": "info@kaznmu.edu.kz",
+    "city": "Almaty, Kazakhstan",
+    "foundedYear": 1931,
+    "type": "Research",
+    "languagesOfInstruction": [
+      "Russian",
+      "Kazakh",
+      "English"
+    ],
+    "applicationDeadline": "2026-06-20",
+    "scholarshipBlurb": "Государственные гранты на медицину высокого конкурса; именные стипендии кафедр и поддержка исследовательских стажировок.",
+    "heroImageUrl": "https://images.unsplash.com/photo-1579684385127-1ef15d5081ad?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 2800000,
+      "maxKzt": 5500000,
+      "note": "Медицинские программы дороже из-за клинических модулей и симуляционных центров."
+    },
+    "faculties": [
+      {
+        "id": "knmu-general-med",
+        "name": "General Medicine",
+        "description": "Шестилетний цикл врача общей практики с ранней клиникой."
+      },
+      {
+        "id": "knmu-pediatrics",
+        "name": "Pediatrics",
+        "description": "Детские болезни, неонатология, прививочные программы."
+      },
+      {
+        "id": "knmu-stomatology",
+        "name": "Dentistry",
+        "nameRu": "Стоматология",
+        "description": "Терапия, ортопедия, челюстно-лицевая хирургия."
+      },
+      {
+        "id": "knmu-pharmacy",
+        "name": "Pharmacy",
+        "description": "Клиническая фармация и управление лекарственным обеспечением."
+      },
+      {
+        "id": "knmu-public-health",
+        "name": "Public Health",
+        "description": "Эпидемиология, управление здравоохранением."
+      },
+      {
+        "id": "knmu-nursing",
+        "name": "Nursing and Rehabilitation",
+        "description": "Сестринское дело высшего уровня."
+      },
+      {
+        "id": "knmu-biomedicine",
+        "name": "Biomedical Sciences",
+        "description": "Молекулярная биология для медицинских исследований."
+      },
+      {
+        "id": "knmu-postgrad",
+        "name": "Postgraduate Medical Education",
+        "description": "Ординатура и переподготовка (демо-справочник)."
+      },
+      {
+        "id": "knmu-languages",
+        "name": "Medical Humanities & Languages",
+        "description": "Латинский язык медицины, этика, коммуникация с пациентом."
+      }
+    ],
+    "scholarships": [
+      {
+        "name": "Государственный грант на медицину",
+        "requirements": "Высокий ЕНТ для граждан РК.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Стипендия за научную работу студента",
+        "requirements": "Публикации или конференции NMU Student.",
+        "aiRelevance": "Medium"
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4.35,
+      "competitiveGpa": 3.75,
+      "competitiveSat": 1180,
+      "targetSat": 1320,
+      "competitiveUnt": 115,
+      "targetUnt": 128,
+      "minIelts": 6,
+      "modelNote": "Демо-модель Fit для QApp; официальные пороги и правила года набора — только на сайте вуза."
+    },
+    "programs": [
+      {
+        "id": "knmu-md-general-medicine",
+        "name": "MD General Medicine",
+        "facultyId": "knmu-general-med",
+        "annualTuitionKzt": 4800000,
+        "field": "Medicine",
+        "degree": "Bachelor",
+        "durationYears": 6,
+        "language": "Russian / Kazakh",
+        "fitScore": 88,
+        "matchReason": "Классический путь врача с интегрированными клиническими ротациями.",
+        "detailedDescription": [
+          "Анатомия VR-лаборатории.",
+          "Госпитальные блоки с наставниками."
+        ],
+        "entryRequirements": [
+          "Биология и химия — высокие баллы",
+          "ЕНТ конкурс"
+        ]
+      },
+      {
+        "id": "knmu-bds-dentistry",
+        "name": "BDS Dentistry",
+        "facultyId": "knmu-stomatology",
+        "annualTuitionKzt": 4200000,
+        "field": "Medicine",
+        "degree": "Bachelor",
+        "durationYears": 5,
+        "language": "Russian / Kazakh",
+        "fitScore": 85,
+        "matchReason": "Стоматологическая подготовка с учебной клиникой.",
+        "detailedDescription": [
+          "Мануальные навыки на фантомах.",
+          "Ортодонтия основ."
+        ],
+        "entryRequirements": [
+          "Биология",
+          "Химия",
+          "Конкурс ЕНТ"
+        ]
+      },
+      {
+        "id": "knmu-bpharm-pharmacy",
+        "name": "BPharm Pharmacy",
+        "facultyId": "knmu-pharmacy",
+        "annualTuitionKzt": 3600000,
+        "field": "Science",
+        "degree": "Bachelor",
+        "durationYears": 5,
+        "language": "Russian / Kazakh",
+        "fitScore": 81,
+        "matchReason": "Фармацевт для аптечных и клинических команд.",
+        "detailedDescription": [
+          "Фармакология.",
+          "Good pharmacy practice."
+        ],
+        "entryRequirements": [
+          "Химия и биология",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "knmu-bsc-public-health",
+        "name": "BSc Public Health",
+        "facultyId": "knmu-public-health",
+        "annualTuitionKzt": 3100000,
+        "field": "Social Sciences",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English / Russian",
+        "fitScore": 77,
+        "matchReason": "Для тех, кто хочет системные решения в здравоохранении, не только клинику.",
+        "detailedDescription": [
+          "Статистика здравоохранения.",
+          "Полевые опросы."
+        ],
+        "entryRequirements": [
+          "Математика",
+          "Биология",
+          "IELTS 5.5+ для англ. потока"
+        ]
+      },
+      {
+        "id": "knmu-bsc-nursing",
+        "name": "BSc Nursing",
+        "facultyId": "knmu-nursing",
+        "annualTuitionKzt": 2900000,
+        "field": "Medicine",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 75,
+        "matchReason": "Сестринский менеджмент и координация ухода.",
+        "detailedDescription": [
+          "Симуляционный центр.",
+          "Коммуникация с пациентами."
+        ],
+        "entryRequirements": [
+          "Биология",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "knmu-bsc-biomedical",
+        "name": "BSc Biomedical Sciences",
+        "facultyId": "knmu-biomedicine",
+        "annualTuitionKzt": 3400000,
+        "field": "Science",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 80,
+        "matchReason": "Мост к магистратурам и medical research.",
+        "detailedDescription": [
+          "Лабораторные техники.",
+          "Научные семинары."
+        ],
+        "entryRequirements": [
+          "IELTS 6.0+",
+          "Сильная химия/биология"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kostanayu",
+    "name": "Kostanay Regional University named after A. Baitursynov",
+    "nameRu": "Костанайский региональный университет имени А. Байтурсынова",
+    "nameKk": "А. Байтұрсынов атындағы Қостанай өңірлік университеті",
+    "officialWebsiteUrl": "https://ksu.edu.kz",
+    "admissionsEmail": "priem@ksu.edu.kz",
+    "city": "Kostanay, Kazakhstan",
+    "foundedYear": 1939,
+    "type": "Comprehensive",
+    "languagesOfInstruction": [
+      "Kazakh",
+      "Russian"
+    ],
+    "applicationDeadline": "2026-08-18",
+    "scholarshipBlurb": "Гранты для педагогических и агроинженерных программ северных регионов; поддержка сельской молодёжи.",
+    "heroImageUrl": "https://images.unsplash.com/photo-1464983953576-de2d98abbdbe?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 980000,
+      "maxKzt": 2400000,
+      "note": "Стоимость ниже столичной; аграрные программы с полевыми практиками."
+    },
+    "faculties": [
+      {
+        "id": "kostanayu-agronomy",
+        "name": "Agronomy and Soil Science",
+        "description": "Растениеводство зерновых и масличных культур."
+      },
+      {
+        "id": "kostanayu-agritech",
+        "name": "Agricultural Engineering",
+        "description": "Техника для полей и переработки."
+      },
+      {
+        "id": "kostanayu-vet",
+        "name": "Veterinary Medicine",
+        "description": "Здоровье животных и биобезопасность ферм."
+      },
+      {
+        "id": "kostanayu-biology",
+        "name": "Biology and Chemistry",
+        "description": "Естественно-научная база для аграрных программ."
+      },
+      {
+        "id": "kostanayu-it",
+        "name": "Information Technologies",
+        "description": "Цифровизация агрохолдингов."
+      },
+      {
+        "id": "kostanayu-econ",
+        "name": "Economics and Agrarian Markets",
+        "description": "Экономика АПК и кооперации."
+      },
+      {
+        "id": "kostanayu-ped",
+        "name": "Pedagogy",
+        "description": "Учителя для школ области."
+      },
+      {
+        "id": "kostanayu-law",
+        "name": "Law",
+        "description": "Право землепользования и экологическое право."
+      },
+      {
+        "id": "kostanayu-lang",
+        "name": "Philology",
+        "description": "Казахская и русская филология."
+      }
+    ],
+    "scholarships": [
+      {
+        "name": "Грант АПК направлений",
+        "requirements": "ЕНТ по биологии и химии.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Стипендия педагогического резерва",
+        "requirements": "Обязательство работы в школе региона.",
+        "aiRelevance": "Medium"
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4.35,
+      "competitiveGpa": 3.75,
+      "competitiveSat": 1180,
+      "targetSat": 1320,
+      "competitiveUnt": 82,
+      "targetUnt": 110,
+      "minIelts": 5.5,
+      "modelNote": "Демо-модель Fit для QApp; официальные пороги и правила года набора — только на сайте вуза."
+    },
+    "programs": [
+      {
+        "id": "kostanayu-bsc-agronomy",
+        "name": "BSc Agronomy",
+        "facultyId": "kostanayu-agronomy",
+        "annualTuitionKzt": 1350000,
+        "field": "Science",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 72,
+        "matchReason": "Агроном для степных хозяйств.",
+        "detailedDescription": [
+          "Полевые практики.",
+          "Агрохимия."
+        ],
+        "entryRequirements": [
+          "Биология",
+          "Химия"
+        ]
+      },
+      {
+        "id": "kostanayu-bsc-agritech",
+        "name": "BSc Agricultural Engineering",
+        "facultyId": "kostanayu-agritech",
+        "annualTuitionKzt": 1500000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 71,
+        "matchReason": "Инженер техники для АПК.",
+        "detailedDescription": [
+          "Тракторные системы.",
+          "Точное земледелие intro."
+        ],
+        "entryRequirements": [
+          "Физика",
+          "Математика"
+        ]
+      },
+      {
+        "id": "kostanayu-bsc-vet",
+        "name": "BSc Veterinary Science",
+        "facultyId": "kostanayu-vet",
+        "annualTuitionKzt": 1900000,
+        "field": "Medicine",
+        "degree": "Bachelor",
+        "durationYears": 5,
+        "language": "Russian / Kazakh",
+        "fitScore": 74,
+        "matchReason": "Ветеринария для ферм и переработки.",
+        "detailedDescription": [
+          "Лаборатории патологии.",
+          "Эпизоотический контроль."
+        ],
+        "entryRequirements": [
+          "Биология",
+          "Химия"
+        ]
+      },
+      {
+        "id": "kostanayu-bsc-it-agro",
+        "name": "BSc IT in Agriculture",
+        "facultyId": "kostanayu-it",
+        "annualTuitionKzt": 1650000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 73,
+        "matchReason": "Агроцифровизация и учёт урожая.",
+        "detailedDescription": [
+          "GIS intro.",
+          "IoT датчики."
+        ],
+        "entryRequirements": [
+          "Информатика",
+          "Математика"
+        ]
+      },
+      {
+        "id": "kostanayu-bba-agribusiness",
+        "name": "BBA Agribusiness",
+        "facultyId": "kostanayu-econ",
+        "annualTuitionKzt": 1400000,
+        "field": "Business",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 70,
+        "matchReason": "Маркетинг зерна и масла.",
+        "detailedDescription": [
+          "Цепочки поставок.",
+          "Экспорт intro."
+        ],
+        "entryRequirements": [
+          "Математика",
+          "География"
+        ]
+      },
+      {
+        "id": "kostanayu-ba-ped-primary",
+        "name": "BA Primary Education",
+        "facultyId": "kostanayu-ped",
+        "annualTuitionKzt": 1100000,
+        "field": "Humanities",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 69,
+        "matchReason": "Учитель начальных классов области.",
+        "detailedDescription": [
+          "Методики чтения.",
+          "Классное руководство."
+        ],
+        "entryRequirements": [
+          "ЕНТ педагогический профиль"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "narxoz",
+    "name": "Turan-Astana University (ex-Narxoz)",
+    "nameRu": "Университет Туран-Астана (правопреемник Narxoz)",
+    "nameKk": "Түркістан-Астана университеті (Narxoz мұрагері)",
+    "officialWebsiteUrl": "https://turan-astana.edu.kz",
+    "admissionsEmail": "admission@turan-astana.edu.kz",
+    "city": "Astana, Kazakhstan",
+    "foundedYear": 1963,
+    "type": "Liberal Arts",
+    "languagesOfInstruction": [
+      "Kazakh",
+      "Russian",
+      "English"
+    ],
+    "applicationDeadline": "2026-07-25",
+    "scholarshipBlurb": "Экономика, финансы и управление; гранты на социально значимые специальности и англоязычные потоки.",
+    "heroImageUrl": "https://images.unsplash.com/photo-1556761175-b893da4e6fb9?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 2000000,
+      "maxKzt": 4500000,
+      "note": "Бизнес и финансы — верхняя часть диапазона; гуманитарные программы ниже."
+    },
+    "faculties": [
+      {
+        "id": "narxoz-finance",
+        "name": "Finance and Accounting",
+        "description": "Финансовый менеджмент, аудит, налогообложение."
+      },
+      {
+        "id": "narxoz-management",
+        "name": "Management and Marketing",
+        "description": "Стратегия, бренды, digital-маркетинг."
+      },
+      {
+        "id": "narxoz-econ",
+        "name": "School of Economics",
+        "description": "Микро/макро, экономическая политика."
+      },
+      {
+        "id": "narxoz-law",
+        "name": "Law and International Business Law",
+        "description": "Корпоративное право, международные контракты."
+      },
+      {
+        "id": "narxoz-digital",
+        "name": "Digital Economy and Analytics",
+        "description": "Данные, SQL, бизнес-аналитика."
+      },
+      {
+        "id": "narxoz-lang",
+        "name": "Languages and Communication",
+        "description": "Деловой английский, перевод."
+      },
+      {
+        "id": "narxoz-public-admin",
+        "name": "Public Administration",
+        "description": "Госсектор, Smart City основы."
+      },
+      {
+        "id": "narxoz-tourism",
+        "name": "Hospitality and Tourism Economics",
+        "description": "Инвестиции в туристический сектор."
+      },
+      {
+        "id": "narxoz-found",
+        "name": "Foundation Year",
+        "description": "Подготовка к экономическим бакалавриатам."
+      }
+    ],
+    "scholarships": [
+      {
+        "name": "Грант на экономику и финансы",
+        "requirements": "Высокий ЕНТ по математике.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Международная стипендия ENG-потока",
+        "requirements": "IELTS 6.5+ и GPA школы.",
+        "aiRelevance": "Medium"
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4.35,
+      "competitiveGpa": 3.85,
+      "competitiveSat": 1180,
+      "targetSat": 1320,
+      "competitiveUnt": 90,
+      "targetUnt": 110,
+      "minIelts": 5.5,
+      "modelNote": "Демо-модель Fit для QApp; официальные пороги и правила года набора — только на сайте вуза."
+    },
+    "programs": [
+      {
+        "id": "narxoz-bfinance",
+        "name": "Bachelor of Finance",
+        "facultyId": "narxoz-finance",
+        "annualTuitionKzt": 3200000,
+        "field": "Business",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 78,
+        "matchReason": "Финансовый аналитик для банков и корпораций.",
+        "detailedDescription": [
+          "Финансовое моделирование.",
+          "Риск-менеджмент intro."
+        ],
+        "entryRequirements": [
+          "Математика",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "narxoz-bba-marketing",
+        "name": "BBA Marketing",
+        "facultyId": "narxoz-management",
+        "annualTuitionKzt": 3400000,
+        "field": "Business",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English / Russian",
+        "fitScore": 77,
+        "matchReason": "Digital strategy и growth hacking.",
+        "detailedDescription": [
+          "Performance-маркетинг.",
+          "Brand labs."
+        ],
+        "entryRequirements": [
+          "IELTS 6.0+",
+          "Математика"
+        ]
+      },
+      {
+        "id": "narxoz-bsc-economics",
+        "name": "BSc Economics",
+        "facultyId": "narxoz-econ",
+        "annualTuitionKzt": 2900000,
+        "field": "Business",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 76,
+        "matchReason": "Политика и рынки Казахстана.",
+        "detailedDescription": [
+          "Эконометрика.",
+          "Исследовательские семинары."
+        ],
+        "entryRequirements": [
+          "Математика",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "narxoz-llb-law-business",
+        "name": "LL.B. Law (Business track)",
+        "facultyId": "narxoz-law",
+        "annualTuitionKzt": 2700000,
+        "field": "Law",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 74,
+        "matchReason": "Юрист для корпоративных отделов.",
+        "detailedDescription": [
+          "M&A кейсы intro.",
+          "Договорное право."
+        ],
+        "entryRequirements": [
+          "Обществознание",
+          "История"
+        ]
+      },
+      {
+        "id": "narxoz-bsc-business-analytics",
+        "name": "BSc Business Analytics",
+        "facultyId": "narxoz-digital",
+        "annualTuitionKzt": 3600000,
+        "field": "Business",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 80,
+        "matchReason": "SQL, визуализация, решения на данных.",
+        "detailedDescription": [
+          "Проекты с партнёрами.",
+          "Ethics of data."
+        ],
+        "entryRequirements": [
+          "Математика",
+          "IELTS 6.0+"
+        ]
+      },
+      {
+        "id": "narxoz-bpa-public-admin",
+        "name": "Bachelor of Public Administration",
+        "facultyId": "narxoz-public-admin",
+        "annualTuitionKzt": 2400000,
+        "field": "Social Sciences",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 73,
+        "matchReason": "Госслужба и муниципальное управление.",
+        "detailedDescription": [
+          "Бюджетный цикл.",
+          "Гражданские сервисы."
+        ],
+        "entryRequirements": [
+          "История",
+          "Обществознание"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nkzu",
+    "name": "M. Kozybayev North Kazakhstan University",
+    "city": "Petropavl, Kazakhstan",
+    "foundedYear": 1937,
+    "type": "Comprehensive",
+    "languagesOfInstruction": [
+      "Kazakh",
+      "Russian",
+      "English"
+    ],
+    "applicationDeadline": "2026-08-01",
+    "scholarshipBlurb": "Государственные гранты, поддержка студентов из сельской местности и региональные программы развития кадров.",
+    "heroImageUrl": "https://images.unsplash.com/photo-1498243691581-b2c99f900906?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 850000,
+      "maxKzt": 2000000,
+      "note": "Региональный вуз с доступным контрактом; грантовые места по конкурсу ЕНТ."
+    },
+    "faculties": [
+      {
+        "id": "nkzu-engineering",
+        "name": "Faculty of Engineering and Technology",
+        "description": "Машиностроение, энергетика и материалы для региональной промышленности и транспорта."
+      },
+      {
+        "id": "nkzu-it",
+        "name": "Faculty of Information Technologies and Cybersecurity Basics",
+        "description": "Информатика, программирование и основы информационной безопасности для малых предприятий и госуслуг."
+      },
+      {
+        "id": "nkzu-agro",
+        "name": "Faculty of Agricultural Sciences",
+        "description": "Растениеводство и животноводство для северных зон, кормопроизводство и агроэкология."
+      },
+      {
+        "id": "nkzu-econ-law",
+        "name": "Faculty of Economics and Law",
+        "description": "Экономика предприятия, финансы, гражданское и предпринимательское право для регионального бизнеса."
+      },
+      {
+        "id": "nkzu-ped",
+        "name": "Faculty of Pedagogy and Psychology",
+        "description": "Подготовка учителей для школ Северного Казахстана; школьная психология и методики."
+      },
+      {
+        "id": "nkzu-philology",
+        "name": "Faculty of Philology and Translation",
+        "description": "Казахская и русская филология, иностранные языки и литературное образование."
+      },
+      {
+        "id": "nkzu-history",
+        "name": "Faculty of History and Cultural Heritage",
+        "description": "История Казахстана и краеведение, музейное дело и туристические маршруты региона."
+      },
+      {
+        "id": "nkzu-natural",
+        "name": "Faculty of Natural Sciences",
+        "description": "Биология, химия, география и экология северных экосистем."
+      },
+      {
+        "id": "nkzu-math",
+        "name": "Faculty of Mathematics and Digital Sciences",
+        "description": "Математика, статистика и прикладная информатика для школ и локальной аналитики."
+      },
+      {
+        "id": "nkzu-med-bio",
+        "name": "Faculty of Biology and Biomedical Foundations",
+        "description": "Биология человека, основы медицинских знаний и подготовка к смежным магистратурам здравоохранения."
+      },
+      {
+        "id": "nkzu-physical",
+        "name": "Faculty of Physical Culture and Sport",
+        "description": "Физическая рекреация, спортивная подготовка и управление спортивными объектами города."
+      },
+      {
+        "id": "nkzu-international",
+        "name": "Faculty of International Relations and Regional Studies",
+        "description": "Международные связи Северного региона, соседние рынки и культурная дипломатия."
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4,
+      "competitiveGpa": 3.45,
+      "competitiveSat": 1000,
+      "targetSat": 1160,
+      "competitiveUnt": 78,
+      "targetUnt": 98,
+      "minIelts": 5,
+      "modelNote": "Региональный комплексный университет; пороги конкурса часто ниже столичных — подходит для широкого пула абитуриентов."
+    },
+    "scholarships": [
+      {
+        "name": "Государственный образовательный грант",
+        "requirements": "Конкурс ЕНТ для граждан РК.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Социальная поддержка сельской молодёжи",
+        "requirements": "Документы о регистрации в сельской местности при наличии квот.",
+        "aiRelevance": "Medium"
+      }
+    ],
+    "programs": [
+      {
+        "id": "nkzu-bsc-cs",
+        "name": "BSc in Computer Science",
+        "facultyId": "nkzu-it",
+        "annualTuitionKzt": 1950000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 75,
+        "matchReason": "Прикладная информатика для регионального рынка труда.",
+        "detailedDescription": [
+          "Программирование, базы данных, веб."
+        ],
+        "entryRequirements": [
+          "Математика",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "nkzu-bba-econ",
+        "name": "BBA in Economics",
+        "facultyId": "nkzu-econ-law",
+        "annualTuitionKzt": 1450000,
+        "field": "Business",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 70,
+        "matchReason": "Экономика и управление для малого бизнеса региона.",
+        "detailedDescription": [
+          "Микроэкономика, учёт, маркетинг."
+        ],
+        "entryRequirements": [
+          "Математика и обществознание",
+          "ЕНТ"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nu",
+    "name": "Nazarbayev University",
+    "nameRu": "Назарбаев Университет",
+    "nameKk": "Назарбаев Университеті",
+    "officialWebsiteUrl": "https://nu.edu.kz",
+    "admissionsEmail": "admissions@nu.edu.kz",
+    "city": "Astana, Kazakhstan",
+    "foundedYear": 2010,
+    "type": "Research",
+    "languagesOfInstruction": [
+      "English"
+    ],
+    "applicationDeadline": "2026-04-15",
+    "scholarshipBlurb": "Merit-based NU Scholarship, need-based financial aid, STEM/Olympiad recognition and regional talent grants (mock summary for QApp demo).",
+    "heroImageUrl": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 9200000,
+      "maxKzt": 12800000,
+      "note": "Ориентир по бакалавриату (английский), без учёта общежития. Точные суммы — в оферте приёма; mock QApp."
+    },
+    "faculties": [
+      {
+        "id": "nu-seds",
+        "name": "School of Engineering and Digital Sciences",
+        "description": "Инженерные и цифровые направления: от робототехники и Data Science до вычислительной физики. Акцент на лаборатории, международные стандарты ABET-ориентира и исследовательские группы."
+      },
+      {
+        "id": "nu-science",
+        "name": "School of Sciences and Humanities",
+        "description": "Естественные науки и междисциплинарные гуманитарные треки: биология, химия, математика; поддержка undergraduate research и публикаций."
+      },
+      {
+        "id": "nu-ssh",
+        "name": "School of Social Sciences",
+        "description": "Экономика, политология и смежные социальные дисциплины в англоязычной среде; кейсы, политический анализ и подготовка к глобальным магистратурам."
+      },
+      {
+        "id": "nu-gsb",
+        "name": "Graduate School of Business",
+        "description": "MBA и узкоспециализированные магистратуры для управленцев: стратегия, финансы, операционная эффективность и лидерство; кейсы с региональным и международным бизнесом."
+      },
+      {
+        "id": "nu-gse",
+        "name": "Graduate School of Education",
+        "description": "Подготовка исследователей и практиков в образовании: EdTech, политика школ, оценивание и развитие преподавателей в англоязычной академической среде."
+      },
+      {
+        "id": "nu-gspp",
+        "name": "Graduate School of Public Policy",
+        "description": "Аналитика государственной политики, экономика регионов, программы развития и управление проектами в публичном секторе; междисциплинарные семинары и полевые исследования."
+      },
+      {
+        "id": "nu-med",
+        "name": "School of Medicine",
+        "description": "Медицинское образование по международным стандартам: базовые науки, клинические навыки, этика и исследования; партнёрские практики в системе здравоохранения."
+      },
+      {
+        "id": "nu-mng",
+        "name": "School of Mining and Geosciences",
+        "description": "Геология, геофизика, недропользование и устойчивое освоение ресурсов: полевые практики, лаборатории и связь с отраслевыми стандартами."
+      },
+      {
+        "id": "nu-nla",
+        "name": "NU Laboratory Schools Network (образовательная экосистема)",
+        "description": "Связка кампуса с лабораторными школами и проектами STEM/outreach — как контекст для педагогических и социальных исследований (описательно для каталога QApp)."
+      },
+      {
+        "id": "nu-cps",
+        "name": "Center for Preparatory Studies (NU CPS)",
+        "description": "Подготовительный год и программы Foundation Year с аккредитацией BALEAP; английский для академических целей и мост в бакалавриат NU или зарубежные вузы."
+      },
+      {
+        "id": "nu-cenms",
+        "name": "Center for Energy and New Materials Science",
+        "description": "Исследования в области энергетики, материаловедения и ИТ для «чистой» энергии; международные партнёрства и прикладные лаборатории кампуса NU."
+      },
+      {
+        "id": "nu-nurce",
+        "name": "Nazarbayev University Research Centre for Entrepreneurship (NURCE)",
+        "description": "Исследовательский центр предпринимательства при Graduate School of Business: стартапы, инновационная экосистема и политика поддержки МСП."
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4.5,
+      "competitiveGpa": 4,
+      "competitiveSat": 1280,
+      "targetSat": 1450,
+      "competitiveUnt": 108,
+      "targetUnt": 125,
+      "minIelts": 6.5,
+      "modelNote": "Модель Fit ориентирована на публичные требования NU (англоязычное обучение, конкурентный академический профиль, SAT/UNT как часть портфеля). Не заменяет решение приёмной комиссии."
+    },
+    "scholarships": [
+      {
+        "name": "NU Scholarship",
+        "requirements": "Strong secondary school GPA, competitive SAT/ACT or NU Foundation Year record, English proficiency (IELTS/TOEFL). Merit-based; full or partial tuition coverage depending on ranking.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Need-Based Financial Aid",
+        "requirements": "Documented financial need, satisfactory academic progress, timely application through NU admissions portal. May combine with partial merit awards.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Science Olympiad / Competition Recognition",
+        "requirements": "National or international awards in STEM or relevant subjects; verification of certificates. Can strengthen scholarship tier for STEM programs.",
+        "aiRelevance": "Medium"
+      },
+      {
+        "name": "Regional Talent Grant (Kazakhstan)",
+        "requirements": "Citizens of Kazakhstan, priority regions per NU policy in the admissions cycle; additional essay or interview may apply.",
+        "aiRelevance": "Medium"
+      },
+      {
+        "name": "Sports / Cultural Achievement Award",
+        "requirements": "Documented high-level achievement in sport or arts; lower tuition discount than flagship merit awards; limited seats.",
+        "aiRelevance": "Low"
+      }
+    ],
+    "programs": [
+      {
+        "id": "nu-bsc-computer-science",
+        "name": "BSc in Computer Science",
+        "facultyId": "nu-seds",
+        "annualTuitionKzt": 12800000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 88,
+        "matchReason": "Strong CS pathway with computing fundamentals, algorithms, and systems — aligned with tech-focused applicants.",
+        "detailedDescription": [
+          "The BSc in Computer Science at NU trains students in programming languages, discrete mathematics, algorithms, software engineering, and modern computing systems.",
+          "Electives cover AI/ML, security, and human–computer interaction; small cohorts support lab-intensive coursework and undergraduate research.",
+          "Graduates pursue software engineering, product development, and graduate study at competitive institutions worldwide."
+        ],
+        "entryRequirements": [
+          "IELTS 6.5+ or equivalent English proficiency",
+          "Strong secondary STEM preparation; competitive SAT (Evidence-Based Reading & Writing + Math total considered holistically)",
+          "Recommended: SAT Math section 750+ for strongest quantitative readiness signal"
+        ]
+      },
+      {
+        "id": "nu-bsc-robotics-mechatronics",
+        "name": "BSc in Robotics and Mechatronics",
+        "facultyId": "nu-seds",
+        "annualTuitionKzt": 11500000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 82,
+        "matchReason": "Hands-on mechanical, electrical, and control engineering — ideal for students combining physics interest with programming.",
+        "detailedDescription": [
+          "Integrates mechanics, electronics, embedded systems, and control theory with robotics projects and design studios.",
+          "Laboratory work emphasizes sensors, actuators, automation, and interdisciplinary team projects.",
+          "Prepares students for advanced manufacturing, autonomous systems, and related graduate engineering paths."
+        ],
+        "entryRequirements": [
+          "IELTS 6.5+",
+          "Solid grades in mathematics and physics",
+          "SAT Math 720+ recommended; portfolio of STEM projects or competitions is a plus"
+        ]
+      },
+      {
+        "id": "nu-bsc-data-science",
+        "name": "BSc in Data Science",
+        "facultyId": "nu-seds",
+        "annualTuitionKzt": 12200000,
+        "field": "Science",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 85,
+        "matchReason": "Statistical modeling, programming, and domain analytics — fits analytical profiles bridging math and computing.",
+        "detailedDescription": [
+          "Combines probability, statistics, machine learning, and computation with applications across science and industry.",
+          "Coursework typically includes linear algebra, databases, visualization, and ethics of data-driven decision-making.",
+          "Career paths include analytics, ML engineering, and research-oriented roles requiring quantitative depth."
+        ],
+        "entryRequirements": [
+          "IELTS 6.5+",
+          "Strong performance in mathematics; familiarity with programming is helpful",
+          "Competitive SAT with balanced verbal/quantitative reasoning; STEM olympiad results valued"
+        ]
+      },
+      {
+        "id": "nu-ba-economics",
+        "name": "B.A. in Economics",
+        "facultyId": "nu-ssh",
+        "annualTuitionKzt": 10800000,
+        "field": "Business",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 80,
+        "matchReason": "Micro/macro theory, econometrics, and policy — suited to students interested in markets, finance, and decision science.",
+        "detailedDescription": [
+          "Core economics theory plus quantitative methods and policy analysis in an English-medium liberal education environment.",
+          "Opportunities for research assistantships, internships, and cross-registration with related quantitative fields.",
+          "Graduates enter consulting, public policy, finance, and competitive graduate programs."
+        ],
+        "entryRequirements": [
+          "IELTS 6.5+",
+          "Strong quantitative skills; mathematics preparation expected",
+          "SAT Evidence-Based Reading & Writing and Math reviewed holistically (no single cut-off published publicly)"
+        ]
+      },
+      {
+        "id": "nu-bsc-biological-sciences",
+        "name": "BSc in Biological Sciences",
+        "facultyId": "nu-science",
+        "annualTuitionKzt": 11000000,
+        "field": "Science",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 68,
+        "matchReason": "Molecular biology, genetics, and physiology tracks — for students committed to life sciences and research labs.",
+        "detailedDescription": [
+          "Laboratory-intensive curriculum spanning cell biology, genetics, ecology, and physiology with research mentorship.",
+          "Pathways toward medicine-adjacent careers, biotechnology, and graduate study in biology and related fields.",
+          "Interdisciplinary links with chemistry and computational biology where available."
+        ],
+        "entryRequirements": [
+          "IELTS 6.5+",
+          "Strong foundation in biology and chemistry",
+          "SAT with solid STEM subsection profile recommended"
+        ]
+      },
+      {
+        "id": "nu-ba-political-science-ir",
+        "name": "B.A. in Political Science and International Relations",
+        "facultyId": "nu-ssh",
+        "annualTuitionKzt": 10200000,
+        "field": "Social Sciences",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 72,
+        "matchReason": "International politics, institutions, and comparative analysis — strong writing and critical reasoning expected.",
+        "detailedDescription": [
+          "Examines political theory, international security, diplomacy, and regional studies with research-oriented seminars.",
+          "Develops argumentation, policy analysis, and qualitative/quantitative research skills applicable to global careers.",
+          "Graduates pursue law, public service, NGOs, international organizations, and related graduate degrees."
+        ],
+        "entryRequirements": [
+          "IELTS 6.5+ (strong writing skills)",
+          "Evidence of analytical writing or debate experience is advantageous",
+          "SAT Evidence-Based Reading & Writing weighted alongside overall academic record"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "satbayev",
+    "name": "Satbayev University",
+    "city": "Almaty, Kazakhstan",
+    "foundedYear": 1934,
+    "type": "Technical",
+    "languagesOfInstruction": [
+      "Kazakh",
+      "Russian",
+      "English"
+    ],
+    "applicationDeadline": "2026-07-25",
+    "scholarshipBlurb": "Технические гранты и социальные льготы по квотам, ректорские поощрения для отличников и научных стипендий (по правилам года).",
+    "heroImageUrl": "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 2800000,
+      "maxKzt": 5500000,
+      "note": "Инженерные программы и ИТ — в верхней части вилки; уточняйте по выбранному институту."
+    },
+    "faculties": [
+      {
+        "id": "sat-gmi",
+        "name": "Institute of Geology and Exploration",
+        "description": "Разведка полезных ископаемых, геохимия, геофизика и картографирование недр; полевые сезоны и лаборатории минералогии."
+      },
+      {
+        "id": "sat-oil",
+        "name": "Institute of Oil and Gas",
+        "description": "Бурение, разработка месторождений, транспорт и переработка углеводородов; стандарты безопасности и экологии."
+      },
+      {
+        "id": "sat-met",
+        "name": "Institute of Metallurgy and Ore Beneficiation",
+        "description": "Пиро- и гидрометаллургия, обогащение руд, материаловедение для машиностроения и энергетики."
+      },
+      {
+        "id": "sat-arch",
+        "name": "Institute of Architecture and Construction",
+        "description": "Архитектура, градостроительство, инженерные конструкции и BIM-проектирование."
+      },
+      {
+        "id": "sat-ict",
+        "name": "Institute of Information and Communication Technologies",
+        "description": "Software engineering, кибербезопасность, телеком и интеллектуальные системы; индустриальные партнёры IT-сектора."
+      },
+      {
+        "id": "sat-energy",
+        "name": "Institute of Power Engineering and Ecology",
+        "description": "Электроэнергетика, возобновляемые источники, теплоэнергетика и экологический мониторинг."
+      },
+      {
+        "id": "sat-mech",
+        "name": "Institute of Mechanical Engineering",
+        "description": "Машиностроение, робототехника, технологические машины и оборудование для промышленности."
+      },
+      {
+        "id": "sat-trans",
+        "name": "Institute of Transport and Highway Engineering",
+        "description": "Транспортные системы, логистика, дорожные покрытия и безопасность движения."
+      },
+      {
+        "id": "sat-chem",
+        "name": "Institute of Chemical Engineering",
+        "description": "Химическая технология органических и неорганических процессов; катализ и переработка сырья."
+      },
+      {
+        "id": "sat-econ",
+        "name": "Faculty of Economics and Business",
+        "description": "Инженерная экономика, управление проектами и предпринимательство в технологическом секторе."
+      },
+      {
+        "id": "sat-safety",
+        "name": "Institute of Industrial Safety and Environmental Engineering",
+        "description": "Охрана труда, промышленная безопасность и управление рисками на производстве."
+      },
+      {
+        "id": "sat-nuclear",
+        "name": "Institute of Nuclear Engineering and Physics",
+        "description": "Ядерная физика, радиационная безопасность и атомные технологии — для подготовки к отраслевым стандартам."
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4.35,
+      "competitiveGpa": 3.85,
+      "competitiveSat": 1250,
+      "targetSat": 1420,
+      "competitiveUnt": 102,
+      "targetUnt": 120,
+      "minIelts": 6,
+      "modelNote": "Флагман инженерного образования; высокие ожидания по математике и физике. Англоязычные потоки — от IELTS 6.0."
+    },
+    "scholarships": [
+      {
+        "name": "Грант Министерства наума и высшего образования",
+        "requirements": "Конкурс ЕНТ и льготные категории по правилам года.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Стипендия имени выдающихся учёных (учебная)",
+        "requirements": "Высокий GPA и участие в научных проектах института.",
+        "aiRelevance": "Medium"
+      }
+    ],
+    "programs": [
+      {
+        "id": "sat-bsc-se",
+        "name": "BSc in Software Engineering",
+        "facultyId": "sat-ict",
+        "annualTuitionKzt": 4800000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 85,
+        "matchReason": "Полный цикл разработки ПО и командные проекты с индустрией.",
+        "detailedDescription": [
+          "Алгоритмы, архитектура, DevOps-введение.",
+          "Стажировки у партнёров."
+        ],
+        "entryRequirements": [
+          "Математика и информатика",
+          "IELTS 6.0+ для EN-потока",
+          "Конкурсный балл"
+        ]
+      },
+      {
+        "id": "sat-bsc-oil",
+        "name": "BSc in Oil and Gas Engineering",
+        "facultyId": "sat-oil",
+        "annualTuitionKzt": 4200000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 80,
+        "matchReason": "Инженерия для нефтегазового сектора Казахстана.",
+        "detailedDescription": [
+          "Технология добычи, оборудование, экология производства."
+        ],
+        "entryRequirements": [
+          "Физика и математика",
+          "ЕНТ"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sdu",
+    "name": "Suleyman Demirel University",
+    "nameRu": "Университет имени Сулеймана Демиреля",
+    "nameKk": "Сүлеймен Демірел атындағы университет",
+    "officialWebsiteUrl": "https://sdu.edu.kz",
+    "admissionsEmail": "admission@sdu.edu.kz",
+    "city": "Kaskelen, Almaty Region, Kazakhstan",
+    "foundedYear": 1996,
+    "type": "Comprehensive",
+    "languagesOfInstruction": [
+      "English",
+      "Kazakh",
+      "Russian"
+    ],
+    "applicationDeadline": "2026-07-20",
+    "scholarshipBlurb": "Академические стипендии SDU, партнёрские гранты IT-компаний и социальные скидки на контракт (mock-описание для демо).",
+    "heroImageUrl": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 2400000,
+      "maxKzt": 4100000,
+      "note": "Кампус в Каскелене; стоимость зависит от факультета и языка обучения (mock)."
+    },
+    "faculties": [
+      {
+        "id": "sdu-eng",
+        "name": "Faculty of Engineering and Natural Sciences",
+        "description": "Инженерия, IT и естественные науки в современном кампусе: проектное обучение, лаборатории и хакатоны с индустрией."
+      },
+      {
+        "id": "sdu-law-soc",
+        "name": "Faculty of Law and Social Sciences",
+        "description": "Право, международные отношения, социология и публичная политика — с модульными стажировками."
+      },
+      {
+        "id": "sdu-bus",
+        "name": "Faculty of Business and Economics",
+        "description": "Бизнес-администрирование, финансы, маркетинг и предпринимательство; аккредитации и двойные дипломы — по партнёрским программам."
+      },
+      {
+        "id": "sdu-arch",
+        "name": "Faculty of Architecture and Design",
+        "description": "Архитектура города и ландшафта, дизайн среды; студии макетирования, BIM-ввод и урбанистические проекты."
+      },
+      {
+        "id": "sdu-edu-hum",
+        "name": "Faculty of Education and Humanities",
+        "description": "Педагогика, психология, языки и социальная работа; практики в школах и инклюзивные программы подготовки учителей."
+      },
+      {
+        "id": "sdu-it-bus",
+        "name": "Faculty of Digital Management and Innovation",
+        "description": "Цифровая трансформация бизнеса, продуктовый менеджмент и аналитика данных для малого и среднего предпринимательства."
+      },
+      {
+        "id": "sdu-pharm",
+        "name": "Faculty of Pharmacy and Pharmaceutical Sciences",
+        "description": "Фармацевтическая химия, клиническая фармация и управление качеством лекарственных средств; лаборатории анализа."
+      },
+      {
+        "id": "sdu-lang",
+        "name": "Faculty of Foreign Languages and Translation",
+        "description": "Профессиональный перевод, терминология и межкультурная коммуникация для бизнеса и государственных проектов."
+      },
+      {
+        "id": "sdu-sport",
+        "name": "Faculty of Physical Culture and Sports Management",
+        "description": "Тренерская подготовка, спортивная медицина основ и управление спортивными объектами; партнёрства с федерациями."
+      },
+      {
+        "id": "sdu-foundation",
+        "name": "Center for Foundation Studies and Academic English",
+        "description": "Подготовительные программы, академический английский и мост в бакалавриат SDU для международных и внутренних абитуриентов."
+      },
+      {
+        "id": "sdu-research-innovation",
+        "name": "Research Institute of Innovation and Smart Systems",
+        "description": "Прикладные исследования в робототехнике, умном кампусе и устойчивой инфраструктуре; гранты и проекты с индустрией."
+      },
+      {
+        "id": "sdu-intl-programs",
+        "name": "Office of International Programs and Academic Mobility",
+        "description": "Двойные дипломы, обмены Erasmus+ и партнёрские сети; координация англоязычных треков и летних школ."
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4.3,
+      "competitiveGpa": 3.75,
+      "competitiveSat": 1180,
+      "targetSat": 1360,
+      "competitiveUnt": 95,
+      "targetUnt": 115,
+      "minIelts": 6,
+      "modelNote": "SDU — частный кампусный вуз; Fit учитывает англоязычные программы и конкуренцию по контракту."
+    },
+    "scholarships": [
+      {
+        "name": "SDU Academic Scholarship",
+        "requirements": "High GPA and admission ranking; partial tuition waiver — illustrative.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Women in STEM grant (mock)",
+        "requirements": "Merit + motivation letter for selected engineering tracks.",
+        "aiRelevance": "Medium"
+      },
+      {
+        "name": "Sibling discount policy (mock)",
+        "requirements": "Family with two or more siblings enrolled — marketing placeholder.",
+        "aiRelevance": "Low"
+      }
+    ],
+    "programs": [
+      {
+        "id": "sdu-bsc-computer-engineering",
+        "name": "BSc in Computer Engineering",
+        "facultyId": "sdu-eng",
+        "annualTuitionKzt": 3950000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 83,
+        "matchReason": "Аппаратно-программный стек: от микропроцессоров до embedded и backend — для hardware-curious разработчиков.",
+        "detailedDescription": [
+          "Цифровая схемотехника, архитектура компьютеров, ОС, сети и проектные семестры с индустриальными менторами.",
+          "Лаборатории IoT и робототехники; выход в стажировки у партнёров в Алматы (описательно)."
+        ],
+        "entryRequirements": [
+          "Математика и физика",
+          "IELTS 6.0+ для EN-track",
+          "UNT/SAT для конкурса"
+        ]
+      },
+      {
+        "id": "sdu-bba-management",
+        "name": "B.B.A. in Management",
+        "facultyId": "sdu-bus",
+        "annualTuitionKzt": 3400000,
+        "field": "Business",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 79,
+        "matchReason": "Операции, HR и стратегия с кейсами кампусных стартапов и международными стажировками.",
+        "detailedDescription": [
+          "Бизнес-модели, управление проектами, переговоры и лидерство; консалтинг-проекты для местных МСП.",
+          "Элективы по digital marketing и продуктовому менеджменту."
+        ],
+        "entryRequirements": [
+          "Математика в аттестате",
+          "IELTS 6.0+",
+          "Мотивационное эссе"
+        ]
+      },
+      {
+        "id": "sdu-llb-law-international",
+        "name": "LL.B. in International Law",
+        "facultyId": "sdu-law-soc",
+        "annualTuitionKzt": 3100000,
+        "field": "Law",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English",
+        "fitScore": 71,
+        "matchReason": "Международное право и трейд-лай — для поступающих с сильными гуманитарными навыками и английским.",
+        "detailedDescription": [
+          "Публичное и частное международное право, инвестиционные споры, модели международных организаций.",
+          "Moot courts на английском; языковая поддержка Legal Writing."
+        ],
+        "entryRequirements": [
+          "IELTS 6.5+",
+          "История / обществознание",
+          "Внутренний экзамен или SAT Reading"
+        ]
+      },
+      {
+        "id": "sdu-barch-architecture",
+        "name": "B.Arch in Architecture",
+        "facultyId": "sdu-arch",
+        "annualTuitionKzt": 4100000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 5,
+        "language": "Russian / English",
+        "fitScore": 77,
+        "matchReason": "Пятилетка с проектными ателье, урбанистикой и устойчивым строительством.",
+        "detailedDescription": [
+          "Архитектурный дизайн, конструкции, BIM, история архитектуры Центральной Азии и Европы.",
+          "Регулярные ревю портфолио и летние практики в бюро."
+        ],
+        "entryRequirements": [
+          "Творческий конкурс / портфолио",
+          "Математика и черчение",
+          "Собеседование"
+        ]
+      },
+      {
+        "id": "sdu-ba-psychology",
+        "name": "B.A. in Psychology",
+        "facultyId": "sdu-law-soc",
+        "annualTuitionKzt": 2650000,
+        "field": "Social Sciences",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian",
+        "fitScore": 73,
+        "matchReason": "Когнитивная и социальная психология с практикой опросов и HR/коучинг-модулями.",
+        "detailedDescription": [
+          "Статистика для психологов, психометрия, клиническое введение и организационная психология.",
+          "Этика работы с клиентами; мост в магистратуру клинической и образовательной психологии."
+        ],
+        "entryRequirements": [
+          "Биология и обществознание",
+          "UNT",
+          "Интервью на некоторые места"
+        ]
+      },
+      {
+        "id": "sdu-msc-digital-innovation",
+        "name": "MSc in Digital Innovation and Entrepreneurship",
+        "facultyId": "sdu-bus",
+        "annualTuitionKzt": 3800000,
+        "field": "Business",
+        "degree": "Master",
+        "durationYears": 2,
+        "language": "English",
+        "fitScore": 80,
+        "matchReason": "Для тех, кто хочет связать продукт, данные и запуск стартапа в одном магистерском треке.",
+        "detailedDescription": [
+          "Lean startup, unit-экономика, инвестиционные питчи, работа с VC-симуляциями.",
+          "Совместные проекты с IT-факультетом: MVP и go-to-market."
+        ],
+        "entryRequirements": [
+          "Бакалавр любого профиля с конкурсным GPA",
+          "IELTS 6.5+",
+          "Интервью и мотивация"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "semeymu",
+    "name": "Semey Medical University",
+    "nameRu": "Семейский медицинский университет",
+    "nameKk": "Семей медицина университеті",
+    "officialWebsiteUrl": "https://smu.edu.kz",
+    "admissionsEmail": "priem@smu.edu.kz",
+    "city": "Semey, Kazakhstan",
+    "foundedYear": 1953,
+    "type": "Comprehensive",
+    "languagesOfInstruction": [
+      "Russian",
+      "Kazakh"
+    ],
+    "applicationDeadline": "2026-07-05",
+    "scholarshipBlurb": "Гранты Минздрава и региональные квоты; поддержка студентов сельских территорий ВКО.",
+    "heroImageUrl": "https://images.unsplash.com/photo-1584515933487-92f68f65f28f?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 2400000,
+      "maxKzt": 4600000,
+      "note": "Медицина и педиатрия — разные тарифы по годам обучения."
+    },
+    "faculties": [
+      {
+        "id": "semeymu-medicine",
+        "name": "Faculty of Medicine",
+        "description": "Лечебное дело, клинические дисциплины."
+      },
+      {
+        "id": "semeymu-pediatrics",
+        "name": "Faculty of Pediatrics",
+        "description": "Детские специальности и семейная медицина."
+      },
+      {
+        "id": "semeymu-medbio",
+        "name": "Faculty of Medicine and Biology",
+        "description": "Базовые науки для клинических программ."
+      },
+      {
+        "id": "semeymu-dental",
+        "name": "Faculty of Dentistry",
+        "description": "Стоматология общей практики."
+      },
+      {
+        "id": "semeymu-pharm",
+        "name": "Faculty of Pharmacy",
+        "description": "Фармация и управление качеством ЛС."
+      },
+      {
+        "id": "semeymu-public",
+        "name": "Faculty of Public Health",
+        "description": "Санитария, эпидемиология, управление здравоохранением."
+      },
+      {
+        "id": "semeymu-postgrad",
+        "name": "Faculty of Additional Medical Education",
+        "description": "Усовершенствование и специализации (справочник)."
+      },
+      {
+        "id": "semeymu-nursing",
+        "name": "Faculty of Nursing",
+        "description": "Средний и высший медицинский персонал."
+      },
+      {
+        "id": "semeymu-lang",
+        "name": "Department of Fundamental Disciplines",
+        "description": "Биофизика, биохимия, латынь."
+      }
+    ],
+    "scholarships": [
+      {
+        "name": "Грант Минздрава РК",
+        "requirements": "Конкурс ЕНТ по медицинским направлениям.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Региональная поддержка ВКО",
+        "requirements": "Регистрация в области и социальный пакет.",
+        "aiRelevance": "Medium"
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4.35,
+      "competitiveGpa": 3.75,
+      "competitiveSat": 1180,
+      "targetSat": 1320,
+      "competitiveUnt": 108,
+      "targetUnt": 122,
+      "minIelts": 5.5,
+      "modelNote": "Демо-модель Fit для QApp; официальные пороги и правила года набора — только на сайте вуза."
+    },
+    "programs": [
+      {
+        "id": "semeymu-md-medicine",
+        "name": "MD General Medicine",
+        "facultyId": "semeymu-medicine",
+        "annualTuitionKzt": 4500000,
+        "field": "Medicine",
+        "degree": "Bachelor",
+        "durationYears": 6,
+        "language": "Russian / Kazakh",
+        "fitScore": 86,
+        "matchReason": "Классическая медицина с учебной базой на ВКО.",
+        "detailedDescription": [
+          "Ранние стажировки в поликлиниках.",
+          "Основы УЗ-диагностики."
+        ],
+        "entryRequirements": [
+          "Биология и химия",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "semeymu-md-pediatrics",
+        "name": "MD Pediatrics",
+        "facultyId": "semeymu-pediatrics",
+        "annualTuitionKzt": 4400000,
+        "field": "Medicine",
+        "degree": "Bachelor",
+        "durationYears": 6,
+        "language": "Russian / Kazakh",
+        "fitScore": 84,
+        "matchReason": "Для тех, кто хочет работать с детьми и семьями.",
+        "detailedDescription": [
+          "Неонатология модуль.",
+          "Вакцинационные протоколы."
+        ],
+        "entryRequirements": [
+          "Биология",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "semeymu-bds",
+        "name": "BDS Dentistry",
+        "facultyId": "semeymu-dental",
+        "annualTuitionKzt": 3900000,
+        "field": "Medicine",
+        "degree": "Bachelor",
+        "durationYears": 5,
+        "language": "Russian / Kazakh",
+        "fitScore": 82,
+        "matchReason": "Стоматология с упором на первичную помощь.",
+        "detailedDescription": [
+          "Учебная клиника.",
+          "Ортопедические основы."
+        ],
+        "entryRequirements": [
+          "Биология",
+          "Химия"
+        ]
+      },
+      {
+        "id": "semeymu-bpharm",
+        "name": "BPharm",
+        "facultyId": "semeymu-pharm",
+        "annualTuitionKzt": 3200000,
+        "field": "Science",
+        "degree": "Bachelor",
+        "durationYears": 5,
+        "language": "Russian / Kazakh",
+        "fitScore": 78,
+        "matchReason": "Фармацевт для городских и сельских аптек.",
+        "detailedDescription": [
+          "Технология лекарственных форм.",
+          "Клиническая фармация intro."
+        ],
+        "entryRequirements": [
+          "Химия",
+          "Биология"
+        ]
+      },
+      {
+        "id": "semeymu-bsc-public-health",
+        "name": "BSc Public Health",
+        "facultyId": "semeymu-public",
+        "annualTuitionKzt": 2600000,
+        "field": "Social Sciences",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 74,
+        "matchReason": "Системное здравоохранение региона.",
+        "detailedDescription": [
+          "Эпидемиология полевая практика."
+        ],
+        "entryRequirements": [
+          "Математика",
+          "Биология"
+        ]
+      },
+      {
+        "id": "semeymu-bsc-nursing",
+        "name": "BSc Nursing",
+        "facultyId": "semeymu-nursing",
+        "annualTuitionKzt": 2400000,
+        "field": "Medicine",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 73,
+        "matchReason": "Сестринское дело для стационаров.",
+        "detailedDescription": [
+          "Симуляции экстренной помощи."
+        ],
+        "entryRequirements": [
+          "Биология",
+          "ЕНТ"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "shakarim",
+    "name": "Shakarim University",
+    "nameRu": "Университет Шәкәрім",
+    "nameKk": "Шәкәрім университеті",
+    "city": "Semey, Kazakhstan",
+    "foundedYear": 1917,
+    "type": "Comprehensive",
+    "languagesOfInstruction": [
+      "Kazakh",
+      "Russian",
+      "English"
+    ],
+    "applicationDeadline": "2026-08-12",
+    "scholarshipBlurb": "Государственные гранты, поддержка одарённой молодёжи Восточного Казахстана и гранты партнёров в аграрно-промышленном секторе.",
+    "heroImageUrl": "https://images.unsplash.com/photo-1488190528338-8f318e73588f?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 950000,
+      "maxKzt": 2800000,
+      "note": "Диапазон зависит от школы/программы; аграрные и STEM-треки конкурентны на грант."
+    },
+    "faculties": [
+      {
+        "id": "shak-food",
+        "name": "Research School of Food Engineering",
+        "nameRu": "Научная школа пищевой инженерии",
+        "nameKk": "Азық-түлік инженериясы ғылыми мектебі",
+        "description": "Food safety, processing technology and quality systems for agri-food chains.",
+        "descriptionRu": "Безопасность пищи, переработка и системы качества для агропродовольственных цепочек.",
+        "descriptionKk": "Азық қауіпсіздігі, өңдеу технологиялары және агроазық тізбектерінің сапасы."
+      },
+      {
+        "id": "shak-vet-agri",
+        "name": "Research School of Veterinary Medicine and Agriculture",
+        "nameRu": "Научная школа ветеринарии и сельского хозяйства",
+        "nameKk": "Ветеринария және ауыл шаруашылығы ғылыми мектебі",
+        "description": "Veterinary science, animal husbandry and sustainable agriculture for the east region.",
+        "descriptionRu": "Ветеринария, животноводство и устойчивое земледелие для восточных регионов.",
+        "descriptionKk": "Ветеринария, мал шаруашылығы және шығыс аймақтары үшін тұрақты егіншілік."
+      },
+      {
+        "id": "shak-phys-chem",
+        "name": "Research School of Physical and Chemical Sciences",
+        "nameRu": "Научная школа физико-химических наук",
+        "nameKk": "Физика-химия ғылымдары ғылыми мектебі",
+        "description": "Physics, chemistry and interdisciplinary labs linking materials and energy.",
+        "descriptionRu": "Физика, химия и междисциплинарные лаборатории материаловедения и энергетики.",
+        "descriptionKk": "Физика, химия және материалтану мен энергетиканы байланыстыру."
+      },
+      {
+        "id": "shak-edu",
+        "name": "Graduate School of Education",
+        "nameRu": "Высшая школа образования",
+        "nameKk": "Білім берудің жоғары мектебі",
+        "description": "Teacher education, educational leadership and policy research.",
+        "descriptionRu": "Подготовка педагогов, управление образованием и исследования в политике образования.",
+        "descriptionKk": "Мұғалімдерді даярлау, білім басқару және саяси зерттеулер."
+      },
+      {
+        "id": "shak-stem-edu",
+        "name": "Graduate School of STEM Education",
+        "nameRu": "Высшая школа STEM-образования",
+        "nameKk": "STEM білім берудің жоғары мектебі",
+        "description": "STEM pedagogy, robotics in schools and digital tools for classrooms.",
+        "descriptionRu": "STEM-педагогика, робототехника в школе и цифровые инструменты для учителей.",
+        "descriptionKk": "STEM педагогикасы, мектептегі робототехника және мұғалімдерге цифрлық құралдар."
+      },
+      {
+        "id": "shak-sport-nat",
+        "name": "Graduate School of Sports and Natural Sciences",
+        "nameRu": "Высшая школа спорта и естественных наук",
+        "nameKk": "Спорт және жаратылыстану ғылымдарының жоғары мектебі",
+        "description": "Sports science, coaching and natural sciences applied to health and performance.",
+        "descriptionRu": "Спортивная наука, тренерская подготовка и естественные науки для здоровья и результатов.",
+        "descriptionKk": "Спорт ғылымы, бапкерлік және денсаулық пен нәтиже үшін табиғи ғылымдар."
+      },
+      {
+        "id": "shak-digital-construct",
+        "name": "Graduate School of Digital Technologies and Construction",
+        "nameRu": "Высшая школа цифровых технологий и строительства",
+        "nameKk": "Цифрлық технологиялар және құрылыс жоғары мектебі",
+        "description": "Civil engineering, BIM and digital twins for smart infrastructure.",
+        "descriptionRu": "Гражданское строительство, BIM и цифровые двойники для умной инфраструктуры.",
+        "descriptionKk": "Азаматтық құрылыс, BIM және ақылды инфрақұрылым үшін цифрлық егіздер."
+      },
+      {
+        "id": "shak-business-comm",
+        "name": "Graduate School of Business and Communication",
+        "nameRu": "Высшая школа бизнеса и коммуникаций",
+        "nameKk": "Бизнес және коммуникация жоғары мектебі",
+        "description": "Business analytics, media communications and public relations.",
+        "descriptionRu": "Бизнес-аналитика, медиакоммуникации и связи с общественностью.",
+        "descriptionKk": "Бизнес аналитикасы, медиакоммуникация және қоғаммен байланыс."
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4.15,
+      "competitiveGpa": 3.55,
+      "competitiveSat": 1080,
+      "targetSat": 1260,
+      "competitiveUnt": 82,
+      "targetUnt": 102,
+      "minIelts": 5.5,
+      "modelNote": "Крупный вуз Восточного Казахстана с сильными аграрно-пищевыми школами; часть программ — смешанный английский."
+    },
+    "scholarships": [
+      {
+        "name": "Государственный образовательный грант",
+        "requirements": "Конкурс ЕНТ по правилам года.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Грант сельской молодёжи",
+        "requirements": "Подтверждение регистрации в сельской местности при наличии квот.",
+        "aiRelevance": "Medium"
+      }
+    ],
+    "programs": [
+      {
+        "id": "shak-bsc-food-tech",
+        "name": "BSc in Food Technology",
+        "facultyId": "shak-food",
+        "annualTuitionKzt": 1720000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 75,
+        "matchReason": "Пищевая инженерия для переработки и безопасности продукции.",
+        "detailedDescription": [
+          "Технология переработки.",
+          "Управление качеством и HACCP — основы."
+        ],
+        "entryRequirements": [
+          "Химия и биология",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "shak-bsc-digital-construction",
+        "name": "BSc in Civil Engineering (Digital track)",
+        "facultyId": "shak-digital-construct",
+        "annualTuitionKzt": 1880000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh / English modules",
+        "fitScore": 77,
+        "matchReason": "Строительство с BIM и цифровыми инструментами проектирования.",
+        "detailedDescription": [
+          "Конструкции и материалы.",
+          "BIM и совместная работа в проекте."
+        ],
+        "entryRequirements": [
+          "Математика и физика",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "shak-ba-journalism",
+        "name": "BA in Journalism and Media",
+        "facultyId": "shak-business-comm",
+        "annualTuitionKzt": 1540000,
+        "field": "Humanities",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 72,
+        "matchReason": "Медиа и коммуникации для регионального информационного поля.",
+        "detailedDescription": [
+          "Цифровая журналистика.",
+          "Медиааналитика и этика."
+        ],
+        "entryRequirements": [
+          "Творческий экзамен по потоку",
+          "ЕНТ"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tarzu",
+    "name": "Taraz Regional University named after M.Kh. Dulaty",
+    "nameRu": "Таразский региональный университет имени М.Х. Дулати",
+    "nameKk": "М.Х. Дулати атындағы Тараз өңірлік университеті",
+    "officialWebsiteUrl": "https://www.tarzu.edu.kz",
+    "admissionsEmail": "info@tarzu.edu.kz",
+    "city": "Taraz, Kazakhstan",
+    "foundedYear": 1998,
+    "type": "Comprehensive",
+    "languagesOfInstruction": [
+      "Kazakh",
+      "Russian",
+      "English"
+    ],
+    "applicationDeadline": "2026-08-05",
+    "scholarshipBlurb": "Гранты для истории, права и инженерных направлений ЮКО; поддержка наставничества с музеями Великого шёлкового пути.",
+    "heroImageUrl": "https://images.unsplash.com/photo-1477959858617-67a23ad38f05?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 1050000,
+      "maxKzt": 2700000,
+      "note": "Региональный прайс; англоязычные группы по программе международного сотрудничества дороже."
+    },
+    "faculties": [
+      {
+        "id": "tarzu-history-arch",
+        "name": "History and Archaeology",
+        "description": "История Жетысу и археология монументов."
+      },
+      {
+        "id": "tarzu-law",
+        "name": "Law",
+        "description": "Гражданское и предпринимательское право."
+      },
+      {
+        "id": "tarzu-engineering",
+        "name": "Engineering and Technology",
+        "description": "Инженерия для региональной промышленности."
+      },
+      {
+        "id": "tarzu-it",
+        "name": "Digital Technologies",
+        "description": "ИТ-сервисы малых городов."
+      },
+      {
+        "id": "tarzu-econ",
+        "name": "Economics and Business",
+        "description": "Малый бизнес и туризм региона."
+      },
+      {
+        "id": "tarzu-philology",
+        "name": "Philology and Cultural Studies",
+        "description": "Литература и культурное наследие."
+      },
+      {
+        "id": "tarzu-ped",
+        "name": "Pedagogy and Psychology",
+        "description": "Подготовка учителей школ ЮКО."
+      },
+      {
+        "id": "tarzu-natural",
+        "name": "Natural Sciences",
+        "description": "Математика, физика, химия базовые."
+      },
+      {
+        "id": "tarzu-international",
+        "name": "International Programs Office",
+        "description": "Обменные модули и лингвистическая поддержка."
+      }
+    ],
+    "scholarships": [
+      {
+        "name": "Грант на историко-культурные специальности",
+        "requirements": "ЕНТ по истории Казахстана.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Стипендия туристического кластера ЮКО",
+        "requirements": "Проект по наследию Великого шёлкового пути.",
+        "aiRelevance": "Low"
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4.35,
+      "competitiveGpa": 3.75,
+      "competitiveSat": 1180,
+      "targetSat": 1320,
+      "competitiveUnt": 80,
+      "targetUnt": 110,
+      "minIelts": 5.5,
+      "modelNote": "Демо-модель Fit для QApp; официальные пороги и правила года набора — только на сайте вуза."
+    },
+    "programs": [
+      {
+        "id": "tarzu-ba-history",
+        "name": "BA History (Central Asian focus)",
+        "facultyId": "tarzu-history-arch",
+        "annualTuitionKzt": 1200000,
+        "field": "Humanities",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 71,
+        "matchReason": "История региона Жамбыл и кочевых империй.",
+        "detailedDescription": [
+          "Археологические экспедиции.",
+          "Архивные практики."
+        ],
+        "entryRequirements": [
+          "История",
+          "География"
+        ]
+      },
+      {
+        "id": "tarzu-llb-law",
+        "name": "LL.B. Law",
+        "facultyId": "tarzu-law",
+        "annualTuitionKzt": 1350000,
+        "field": "Law",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 72,
+        "matchReason": "Юридическая поддержка бизнеса ЮКО.",
+        "detailedDescription": [
+          "Гражданские кейсы.",
+          "Медиация intro."
+        ],
+        "entryRequirements": [
+          "Обществознание",
+          "История"
+        ]
+      },
+      {
+        "id": "tarzu-bsc-mechanical",
+        "name": "BSc Mechanical Engineering",
+        "facultyId": "tarzu-engineering",
+        "annualTuitionKzt": 1800000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 73,
+        "matchReason": "Инженер для локальных производств.",
+        "detailedDescription": [
+          "Детали машин.",
+          "Технология машиностроения."
+        ],
+        "entryRequirements": [
+          "Физика",
+          "Математика"
+        ]
+      },
+      {
+        "id": "tarzu-bsc-it",
+        "name": "BSc Information Systems",
+        "facultyId": "tarzu-it",
+        "annualTuitionKzt": 1950000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / English",
+        "fitScore": 74,
+        "matchReason": "Цифровые сервисы для региональных госорганов.",
+        "detailedDescription": [
+          "Веб и базы данных.",
+          "Кибербезопасность гражданина."
+        ],
+        "entryRequirements": [
+          "Математика",
+          "Информатика"
+        ]
+      },
+      {
+        "id": "tarzu-bba-tourism",
+        "name": "BBA Tourism and Hospitality",
+        "facultyId": "tarzu-econ",
+        "annualTuitionKzt": 1700000,
+        "field": "Business",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English / Kazakh",
+        "fitScore": 72,
+        "matchReason": "Туризм по объектам ЮНЕСКО региона.",
+        "detailedDescription": [
+          "Управление отелем.",
+          "Event-менеджмент."
+        ],
+        "entryRequirements": [
+          "География",
+          "Иностранный язык"
+        ]
+      },
+      {
+        "id": "tarzu-ba-kazakh-lang-ed",
+        "name": "BA Kazakh Language and Literature",
+        "facultyId": "tarzu-philology",
+        "annualTuitionKzt": 1050000,
+        "field": "Humanities",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh",
+        "fitScore": 70,
+        "matchReason": "Подготовка филологов и редакторов.",
+        "detailedDescription": [
+          "Диалектология ЮКО.",
+          "Медиатексты."
+        ],
+        "entryRequirements": [
+          "Казахский язык",
+          "Литература"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "toraighyrov",
+    "name": "Toraighyrov University",
+    "nameRu": "Университет имени С. Торайгырова",
+    "nameKk": "С. Торайғыров атындағы университет",
+    "city": "Pavlodar, Kazakhstan",
+    "foundedYear": 1960,
+    "type": "Technical",
+    "languagesOfInstruction": [
+      "Kazakh",
+      "Russian",
+      "English"
+    ],
+    "applicationDeadline": "2026-08-08",
+    "scholarshipBlurb": "Государственные гранты, поддержка инженерных кадров для энергетики и АПК Северного и Восточного Казахстана.",
+    "heroImageUrl": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 880000,
+      "maxKzt": 2500000,
+      "note": "Энергетика и машиностроение традиционно в середине–верху вилки контракта."
+    },
+    "faculties": [
+      {
+        "id": "tour-natural",
+        "name": "Faculty of Natural Sciences",
+        "nameRu": "Факультет естественных наук",
+        "nameKk": "Жаратылыстану ғылымдары факультеті",
+        "description": "Mathematics, physics, chemistry and biology programmes with applied labs.",
+        "descriptionRu": "Математика, физика, химия и биология с прикладными лабораториями для инженерных траекторий.",
+        "descriptionKk": "Математика, физика, химия және биология; инженерлік траекториялар үшін зертханалар."
+      },
+      {
+        "id": "tour-energetics",
+        "name": "Faculty of Energetics",
+        "nameRu": "Энергетический факультет",
+        "nameKk": "Энергетика факультеті",
+        "description": "Power engineering, electrical systems and energy efficiency for industry.",
+        "descriptionRu": "Энергетическое машиностроение, электросистемы и энергоэффективность для промышленности.",
+        "descriptionKk": "Энергетикалық машина жасау, электр жүйелері және өнеркәсіптің энергия тиімділігі."
+      },
+      {
+        "id": "tour-cs",
+        "name": "Faculty of Computer Science",
+        "nameRu": "Факультет компьютерных наук",
+        "nameKk": "Компьютер ғылымы факультеті",
+        "description": "Computer science, software engineering and information systems.",
+        "descriptionRu": "Информатика, программная инженерия и информационные системы.",
+        "descriptionKk": "Информатика, бағдарламалық инженерия және ақпараттық жүйелер."
+      },
+      {
+        "id": "tour-engineering",
+        "name": "Faculty of Engineering",
+        "nameRu": "Инженерный факультет",
+        "nameKk": "Инженерлік факультет",
+        "description": "Mechanical, civil and environmental engineering with plant internships.",
+        "descriptionRu": "Машиностроение, гражданское и экологическое инженерное дело; практики на предприятиях.",
+        "descriptionKk": "Машина жасау, азаматтық және экологиялық инженерия; зауытта тәжірибе."
+      },
+      {
+        "id": "tour-agri",
+        "name": "Faculty of Agricultural Sciences",
+        "nameRu": "Аграрный факультет",
+        "nameKk": "Аграрлық ғылымдар факультеті",
+        "description": "Agronomy, mechanisation and agribusiness for northern climate zones.",
+        "descriptionRu": "Агрономия, механизация и агробизнес для зон северного климата.",
+        "descriptionKk": "Агрономия, механизация және солтүстік климат аймақтары үшін агробизнес."
+      },
+      {
+        "id": "tour-humanities",
+        "name": "Faculty of Humanities and Social Sciences",
+        "nameRu": "Факультет гуманитарных и социальных наук",
+        "nameKk": "Гуманитарлық және қоғамдық ғылымдар факультеті",
+        "description": "Philology, history, sociology and regional cultural studies.",
+        "descriptionRu": "Филология, история, социология и региональные культурные исследования.",
+        "descriptionKk": "Филология, тарих, социология және аймақтық мәдени зерттеулер."
+      },
+      {
+        "id": "tour-econ-law",
+        "name": "Faculty of Economics and Law",
+        "nameRu": "Факультет экономики и права",
+        "nameKk": "Экономика және құқық факультеті",
+        "description": "Economics, management, finance and law for enterprises and public sector.",
+        "descriptionRu": "Экономика, менеджмент, финансы и право для бизнеса и госсектора.",
+        "descriptionKk": "Экономика, менеджмент, қаржы және бизнес пен мемлекеттік сектор үшін құқық."
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 3.95,
+      "competitiveGpa": 3.4,
+      "competitiveSat": 1000,
+      "targetSat": 1180,
+      "competitiveUnt": 74,
+      "targetUnt": 94,
+      "minIelts": 5,
+      "modelNote": "Инженерно-технический профиль вуза; энергетика и машиностроение конкурентны на грант при сильной математике."
+    },
+    "scholarships": [
+      {
+        "name": "Государственный образовательный грант",
+        "requirements": "Конкурс ЕНТ для граждан РК.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Стипендия отраслевых партнёров (энергетика)",
+        "requirements": "Инженерные программы и контракт с работодателем по целевому обучению — при наличии.",
+        "aiRelevance": "Medium"
+      }
+    ],
+    "programs": [
+      {
+        "id": "tour-bsc-power-engineering",
+        "name": "BSc in Power Engineering",
+        "facultyId": "tour-energetics",
+        "annualTuitionKzt": 1810000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 77,
+        "matchReason": "Подготовка к энергетическому сектору региона и страны.",
+        "detailedDescription": [
+          "Электрические машины и системы.",
+          "Теплоэнергетика — основы."
+        ],
+        "entryRequirements": [
+          "Математика и физика",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "tour-bsc-computer-science",
+        "name": "BSc in Computer Science",
+        "facultyId": "tour-cs",
+        "annualTuitionKzt": 1760000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 76,
+        "matchReason": "Прикладная информатика для промышленности и ИТ-сервисов.",
+        "detailedDescription": [
+          "Алгоритмы и ООП.",
+          "Базы данных и сети."
+        ],
+        "entryRequirements": [
+          "Математика",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "tour-bba-management",
+        "name": "BBA in Management",
+        "facultyId": "tour-econ-law",
+        "annualTuitionKzt": 1490000,
+        "field": "Business",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 71,
+        "matchReason": "Менеджмент и основы права для малого и среднего бизнеса.",
+        "detailedDescription": [
+          "Операционный менеджмент.",
+          "Корпоративные финансы — вводный курс."
+        ],
+        "entryRequirements": [
+          "Математика",
+          "ЕНТ"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "turan",
+    "name": "Turan University",
+    "nameRu": "Университет «Тұран»",
+    "nameKk": "«Тұран» университеті",
+    "officialWebsiteUrl": "https://www.turan-edu.kz",
+    "admissionsEmail": "info@turan-edu.kz",
+    "city": "Almaty, Kazakhstan",
+    "foundedYear": 1992,
+    "type": "Comprehensive",
+    "languagesOfInstruction": [
+      "Kazakh",
+      "Russian",
+      "English"
+    ],
+    "applicationDeadline": "2026-08-10",
+    "scholarshipBlurb": "Гранты ректора, социальные стипендии и поддержка студентов-предпринимателей акселератора кампуса.",
+    "heroImageUrl": "https://images.unsplash.com/photo-1568099275919-82db301e16b7?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 1600000,
+      "maxKzt": 3400000,
+      "note": "Зависит от школы и языка обучения; уточняйте официальный калькулятор оплаты."
+    },
+    "faculties": [
+      {
+        "id": "turan-law",
+        "name": "Law and Public Administration",
+        "description": "Гражданское, предпринимательское и административное право."
+      },
+      {
+        "id": "turan-econ",
+        "name": "Economics and Management",
+        "description": "Финансы, маркетинг, управление проектами и стартапы."
+      },
+      {
+        "id": "turan-it",
+        "name": "Digital Technologies",
+        "description": "ИТ, кибербезопасность основ и прикладная информатика."
+      },
+      {
+        "id": "turan-intl",
+        "name": "International Relations and Regional Studies",
+        "description": "Центральная Азия, межкультурные коммуникации."
+      },
+      {
+        "id": "turan-lang",
+        "name": "Philology and Translation",
+        "description": "Казахский, русский, английский для профессиональных переводчиков."
+      },
+      {
+        "id": "turan-design",
+        "name": "Architecture and Design",
+        "description": "Городская среда, дизайн интерьера и визуальные коммуникации."
+      },
+      {
+        "id": "turan-journalism",
+        "name": "Media and Communications",
+        "description": "PR, медиапродакшн, управление репутацией."
+      },
+      {
+        "id": "turan-ped",
+        "name": "Pedagogy and Psychology",
+        "description": "Подготовка педагогов и школьных психологов."
+      },
+      {
+        "id": "turan-tourism",
+        "name": "Tourism and Hospitality",
+        "description": "Гостеприимство, управление отелями и event-сервисом."
+      }
+    ],
+    "scholarships": [
+      {
+        "name": "Грант ректора за высокий GPA",
+        "requirements": "Топ выпускников школ региона.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Стипендия для ИТ-направлений",
+        "requirements": "Портфолио проектов или олимпиада.",
+        "aiRelevance": "Medium"
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4.35,
+      "competitiveGpa": 3.75,
+      "competitiveSat": 1180,
+      "targetSat": 1320,
+      "competitiveUnt": 90,
+      "targetUnt": 110,
+      "minIelts": 5.5,
+      "modelNote": "Демо-модель Fit для QApp; официальные пороги и правила года набора — только на сайте вуза."
+    },
+    "programs": [
+      {
+        "id": "turan-llb-law",
+        "name": "LL.B. in Law",
+        "facultyId": "turan-law",
+        "annualTuitionKzt": 2100000,
+        "field": "Law",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 73,
+        "matchReason": "Юридическая подготовка с упором на бизнес-среду.",
+        "detailedDescription": [
+          "Клиника потребителя.",
+          "Судебная практика."
+        ],
+        "entryRequirements": [
+          "ЕНТ",
+          "Обществознание"
+        ]
+      },
+      {
+        "id": "turan-bba-management",
+        "name": "BBA in Management",
+        "facultyId": "turan-econ",
+        "annualTuitionKzt": 2450000,
+        "field": "Business",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / English",
+        "fitScore": 75,
+        "matchReason": "Менеджмент для малого и среднего бизнеса.",
+        "detailedDescription": [
+          "Lean-проекты.",
+          "Стажировки у партнёров."
+        ],
+        "entryRequirements": [
+          "Математика",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "turan-bsc-it",
+        "name": "BSc in Information Systems",
+        "facultyId": "turan-it",
+        "annualTuitionKzt": 2700000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 76,
+        "matchReason": "ИТ для автоматизации процессов компаний.",
+        "detailedDescription": [
+          "Dev labs.",
+          "Безопасность данных."
+        ],
+        "entryRequirements": [
+          "Информатика",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "turan-ba-journalism",
+        "name": "BA in Journalism",
+        "facultyId": "turan-journalism",
+        "annualTuitionKzt": 1950000,
+        "field": "Humanities",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 72,
+        "matchReason": "Мультимедийная журналистика.",
+        "detailedDescription": [
+          "Студия контента.",
+          "Фактчекинг."
+        ],
+        "entryRequirements": [
+          "Творческий конкурс",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "turan-barch-interior",
+        "name": "Bachelor of Architecture (Interior focus)",
+        "facultyId": "turan-design",
+        "annualTuitionKzt": 3100000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 5,
+        "language": "Russian / Kazakh",
+        "fitScore": 74,
+        "matchReason": "Проектирование жилых и общественных пространств.",
+        "detailedDescription": [
+          "Студии макетирования.",
+          "История архитектуры."
+        ],
+        "entryRequirements": [
+          "Черчение/рисунок портфолио",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "turan-ba-tourism",
+        "name": "BA in Tourism Management",
+        "facultyId": "turan-tourism",
+        "annualTuitionKzt": 2200000,
+        "field": "Business",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English / Russian",
+        "fitScore": 71,
+        "matchReason": "Управление туристическими продуктами Казахстана.",
+        "detailedDescription": [
+          "Полевые практики.",
+          "Сертификация гидов."
+        ],
+        "entryRequirements": [
+          "География",
+          "Иностранный язык"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "wkatu",
+    "name": "M. Utemisov West Kazakhstan University",
+    "nameRu": "Западно-Казахстанский университет имени М. Утемисова",
+    "nameKk": "М. Өтемісов атындағы Батыс Қазақстан университеті",
+    "officialWebsiteUrl": "https://wku.edu.kz",
+    "admissionsEmail": "info@wku.edu.kz",
+    "city": "Oral (Uralsk), Kazakhstan",
+    "foundedYear": 1932,
+    "type": "Comprehensive",
+    "languagesOfInstruction": [
+      "Kazakh",
+      "Russian",
+      "English"
+    ],
+    "applicationDeadline": "2026-08-12",
+    "scholarshipBlurb": "Гранты для приоритетных специальностей ЗКО; поддержка студентов сельских районов и билингвальных программ.",
+    "heroImageUrl": "https://images.unsplash.com/photo-1498243691581-b2c99f7b84cd?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 1200000,
+      "maxKzt": 2900000,
+      "note": "Региональный университет; контракт ниже столичного среднего."
+    },
+    "faculties": [
+      {
+        "id": "wkatu-physics-tech",
+        "name": "Physics and Engineering",
+        "description": "Физика, приборостроение, энергетика региона."
+      },
+      {
+        "id": "wkatu-biology",
+        "name": "Biology and Biotechnology",
+        "description": "Биоресурсы Западного Казахстана."
+      },
+      {
+        "id": "wkatu-chem",
+        "name": "Chemistry",
+        "description": "Химия материалов и экологический мониторинг."
+      },
+      {
+        "id": "wkatu-math-it",
+        "name": "Mathematics and Digital Sciences",
+        "description": "Математика, информатика, data literacy."
+      },
+      {
+        "id": "wkatu-history-law",
+        "name": "History, Law and Regional Studies",
+        "description": "Право и история Прикаспия и Урала."
+      },
+      {
+        "id": "wkatu-philology",
+        "name": "Philology and Multilingual Education",
+        "description": "Казахский, русский, западные языки."
+      },
+      {
+        "id": "wkatu-pedagogy",
+        "name": "Pedagogy and Psychology",
+        "description": "Учителя для школ ЗКО."
+      },
+      {
+        "id": "wkatu-econ-mgmt",
+        "name": "Economics and Management",
+        "description": "Малый бизнес, логистика границы."
+      },
+      {
+        "id": "wkatu-earth",
+        "name": "Earth Sciences and Ecology",
+        "description": "География, климатология, охрана окружающей среды."
+      }
+    ],
+    "scholarships": [
+      {
+        "name": "Государственный образовательный грант",
+        "requirements": "ЕНТ конкурс.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Стипендия билингвальных программ",
+        "requirements": "Казахский + английский уровень B2+.",
+        "aiRelevance": "Medium"
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4.35,
+      "competitiveGpa": 3.75,
+      "competitiveSat": 1180,
+      "targetSat": 1320,
+      "competitiveUnt": 85,
+      "targetUnt": 110,
+      "minIelts": 5.5,
+      "modelNote": "Демо-модель Fit для QApp; официальные пороги и правила года набора — только на сайте вуза."
+    },
+    "programs": [
+      {
+        "id": "wkatu-bsc-physics",
+        "name": "BSc Physics",
+        "facultyId": "wkatu-physics-tech",
+        "annualTuitionKzt": 1450000,
+        "field": "Science",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 72,
+        "matchReason": "Фундамент для инженерных магистратур.",
+        "detailedDescription": [
+          "Лаборатории оптики.",
+          "Вычислительное моделирование."
+        ],
+        "entryRequirements": [
+          "Физика",
+          "Математика"
+        ]
+      },
+      {
+        "id": "wkatu-bsc-biology",
+        "name": "BSc Biology",
+        "facultyId": "wkatu-biology",
+        "annualTuitionKzt": 1400000,
+        "field": "Science",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 71,
+        "matchReason": "Биология степи и водных экосистем.",
+        "detailedDescription": [
+          "Полевые экспедиции."
+        ],
+        "entryRequirements": [
+          "Биология",
+          "Химия"
+        ]
+      },
+      {
+        "id": "wkatu-bsc-chemistry",
+        "name": "BSc Chemistry",
+        "facultyId": "wkatu-chem",
+        "annualTuitionKzt": 1420000,
+        "field": "Science",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 71,
+        "matchReason": "Аналитическая химия и экология.",
+        "detailedDescription": [
+          "Спектрометрия intro."
+        ],
+        "entryRequirements": [
+          "Химия",
+          "Математика"
+        ]
+      },
+      {
+        "id": "wkatu-bsc-it",
+        "name": "BSc Information Systems",
+        "facultyId": "wkatu-math-it",
+        "annualTuitionKzt": 1800000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / English",
+        "fitScore": 74,
+        "matchReason": "ИТ для региональных госуслуг и бизнеса.",
+        "detailedDescription": [
+          "Веб-сервисы.",
+          "Кибергигиена."
+        ],
+        "entryRequirements": [
+          "Математика",
+          "Информатика"
+        ]
+      },
+      {
+        "id": "wkatu-ba-regional-law",
+        "name": "BA in Law (Regional Practice)",
+        "facultyId": "wkatu-history-law",
+        "annualTuitionKzt": 1350000,
+        "field": "Law",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 70,
+        "matchReason": "Право с упором на приграничное регулирование.",
+        "detailedDescription": [
+          "Таможенное право intro."
+        ],
+        "entryRequirements": [
+          "История",
+          "Обществознание"
+        ]
+      },
+      {
+        "id": "wkatu-bba-management",
+        "name": "BBA Management",
+        "facultyId": "wkatu-econ-mgmt",
+        "annualTuitionKzt": 1500000,
+        "field": "Business",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 73,
+        "matchReason": "Менеджмент для логистики и торговли.",
+        "detailedDescription": [
+          "Кейсы транспортных коридоров."
+        ],
+        "entryRequirements": [
+          "Математика",
+          "География"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "yessenov",
+    "name": "Yessenov University",
+    "nameRu": "Университет имени Шахмардана Есенова",
+    "nameKk": "Шахмардан Есенов атындағы университет",
+    "city": "Aktau, Kazakhstan",
+    "foundedYear": 1997,
+    "type": "Technical",
+    "languagesOfInstruction": [
+      "Kazakh",
+      "Russian",
+      "English"
+    ],
+    "applicationDeadline": "2026-07-30",
+    "scholarshipBlurb": "Государственные гранты, поддержка талантов Каспийского региона и отраслевые стипендии добывающих и логистических компаний.",
+    "heroImageUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 1100000,
+      "maxKzt": 3000000,
+      "note": "Морской и инженерный блоки часто в верхней части вилки; уточняйте по программе года."
+    },
+    "faculties": [
+      {
+        "id": "yess-tourism-lang",
+        "name": "Faculty of Tourism and Languages",
+        "nameRu": "Факультет туризма и языков",
+        "nameKk": "Туризм және тілдер факультеті",
+        "description": "Hospitality, tourism management and multilingual service skills for the Caspian hub.",
+        "descriptionRu": "Гостеприимство, управление туризмом и многоязычный сервис для каспийского туристического узла.",
+        "descriptionKk": "Қонақ үй ісі, туризм басқару және Каспий туристік торабы үшін көп тілді сервис."
+      },
+      {
+        "id": "yess-business-law",
+        "name": "Faculty of Business and Law",
+        "nameRu": "Факультет бизнеса и права",
+        "nameKk": "Бизнес және құқық факультеті",
+        "description": "Management, finance, marketing and business law aligned with Kazakhstan legislation.",
+        "descriptionRu": "Менеджмент, финансы, маркетинг и хозяйственное право в соответствии с законодательством РК.",
+        "descriptionKk": "Менеджмент, қаржы, маркетинг және Қазақстан заңнамасына сай коммерциялық құқық."
+      },
+      {
+        "id": "yess-engineering",
+        "name": "Faculty of Engineering",
+        "nameRu": "Инженерный факультет",
+        "nameKk": "Инженерлік факультет",
+        "description": "Mechanical, electrical and chemical engineering serving oil, gas and logistics.",
+        "descriptionRu": "Машиностроение, электротехника и химическая инженерия для нефтегаза и логистики.",
+        "descriptionKk": "Машина жасау, электротехника және мұнай-газ бен логистика үшін химиялық инженерия."
+      },
+      {
+        "id": "yess-sci-tech",
+        "name": "Faculty of Science and Technology",
+        "nameRu": "Факультет науки и технологий",
+        "nameKk": "Ғылым және технологиялар факультеті",
+        "description": "Applied sciences, lab instrumentation and technology transfer to industry.",
+        "descriptionRu": "Прикладные науки, лабораторная аппаратура и трансфер технологий в отрасль.",
+        "descriptionKk": "Қолданбалы ғылымдар, зертхана жабдықтары және технологияларды өнеркәсіпке беру."
+      },
+      {
+        "id": "yess-marine",
+        "name": "Marine Academy",
+        "nameRu": "Морская академия",
+        "nameKk": "Теңіз академиясы",
+        "description": "Maritime transport, port logistics and offshore engineering fundamentals.",
+        "descriptionRu": "Морской транспорт, портовая логистика и основы оффшорной инженерии.",
+        "descriptionKk": "Теңіз көлігі, порт логистикасы және оффшор инженериясының негіздері."
+      },
+      {
+        "id": "yess-education",
+        "name": "Faculty of Education",
+        "nameRu": "Педагогический факультет",
+        "nameKk": "Педагогика факультеті",
+        "description": "Teacher education for schools and colleges across Mangystau region.",
+        "descriptionRu": "Подготовка учителей для школ и колледжей Мангистауской области.",
+        "descriptionKk": "Маңғыстау облысы мектептері мен колледждері үшін мұғалім даярлау."
+      },
+      {
+        "id": "yess-military",
+        "name": "Military Department",
+        "nameRu": "Военная кафедра",
+        "nameKk": "Әскери кафедра",
+        "description": "Territorial defence and basic military training for eligible students.",
+        "descriptionRu": "Территориальная оборона и начальная военная подготовка для студентов по совместимости программ.",
+        "descriptionKk": "Бағдарламаларға сай студенттер үшін аудандық қорғаныс және әскери дайындық."
+      },
+      {
+        "id": "yess-cs-ai",
+        "name": "Faculty of Computer Science and Artificial Intelligence",
+        "nameRu": "Факультет компьютерных наук и искусственного интеллекта",
+        "nameKk": "Компьютер ғылымы және жасанды интеллект факультеті",
+        "description": "Software engineering, data science and AI applications for regional digitalisation.",
+        "descriptionRu": "Программная инженерия, анализ данных и приложения ИИ для цифровизации региона.",
+        "descriptionKk": "Бағдарламалық инженерия, деректер талдауы және аймақтың цифрлануы үшін ЖИ қолданбалары."
+      },
+      {
+        "id": "yess-phil-sport",
+        "name": "Faculty of Philology and Sports",
+        "nameRu": "Факультет филологии и спорта",
+        "nameKk": "Филология және спорт факультеті",
+        "description": "Philology tracks combined with physical culture and coaching modules.",
+        "descriptionRu": "Филологические направления с модулями физической культуры и тренерской подготовки.",
+        "descriptionKk": "Филология бағыттары мен дене шынықтыру және бапкерлік модульдері."
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4.1,
+      "competitiveGpa": 3.5,
+      "competitiveSat": 1040,
+      "targetSat": 1220,
+      "competitiveUnt": 80,
+      "targetUnt": 100,
+      "minIelts": 5.5,
+      "modelNote": "Прикладной вуз Каспия; англоязычные и смешанные программы встречаются чаще среднего по регионам."
+    },
+    "scholarships": [
+      {
+        "name": "Государственный образовательный грант",
+        "requirements": "Конкурс ЕНТ для граждан РК.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Стипендия достижений (олимпиады/конкурсы)",
+        "requirements": "Дипломы республиканских конкурсов и подтверждённый GPA.",
+        "aiRelevance": "Medium"
+      }
+    ],
+    "programs": [
+      {
+        "id": "yess-bsc-marine-transport",
+        "name": "BSc in Maritime Transport and Logistics",
+        "facultyId": "yess-marine",
+        "annualTuitionKzt": 2200000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 78,
+        "matchReason": "Порт и морская логистика для Актау как ключевого узла.",
+        "detailedDescription": [
+          "Навигация и логистика портов.",
+          "Безопасность на море — базовый модуль."
+        ],
+        "entryRequirements": [
+          "Математика и физика",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "yess-bsc-cs",
+        "name": "BSc in Computer Science",
+        "facultyId": "yess-cs-ai",
+        "annualTuitionKzt": 2050000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "English / Russian",
+        "fitScore": 80,
+        "matchReason": "Прикладной CS и введение в ИИ для цифровой экономики региона.",
+        "detailedDescription": [
+          "Алгоритмы и структуры данных.",
+          "Машинное обучение — вводный курс."
+        ],
+        "entryRequirements": [
+          "Математика",
+          "Информатика желательна",
+          "ЕНТ или IELTS по потоку"
+        ]
+      },
+      {
+        "id": "yess-bba-business",
+        "name": "BBA in Business Administration",
+        "facultyId": "yess-business-law",
+        "annualTuitionKzt": 1900000,
+        "field": "Business",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 74,
+        "matchReason": "Управление бизнесом и основы права для предпринимательства на западе страны.",
+        "detailedDescription": [
+          "Маркетинг и финансы.",
+          "Корпоративное право — основы."
+        ],
+        "entryRequirements": [
+          "Математика",
+          "ЕНТ"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "zhubanov-aru",
+    "name": "K. Zhubanov Aktobe Regional University",
+    "nameRu": "Актюбинский региональный университет имени К. Жубанова",
+    "nameKk": "К. Жубанов атындағы Ақтөбе облыстық университеті",
+    "city": "Aktobe, Kazakhstan",
+    "foundedYear": 1935,
+    "type": "Comprehensive",
+    "languagesOfInstruction": [
+      "Kazakh",
+      "Russian",
+      "English"
+    ],
+    "applicationDeadline": "2026-08-05",
+    "scholarshipBlurb": "Государственные гранты, поддержка сельской молодёжи и партнёрские стипендии с отраслевыми работодателями Западного Казахстана.",
+    "heroImageUrl": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1800&q=72",
+    "tuitionOverview": {
+      "minKzt": 800000,
+      "maxKzt": 2400000,
+      "note": "Региональный контракт; филиал Heriot-Watt — отдельные тарифы partner campus."
+    },
+    "faculties": [
+      {
+        "id": "zhub-natural",
+        "name": "Faculty of Natural Sciences",
+        "nameRu": "Факультет естественных наук",
+        "nameKk": "Жаратылыстану ғылымдары факультеті",
+        "description": "Biology, ecology, chemistry and chemical technology laboratories for applied science.",
+        "descriptionRu": "Биология, экология, химия и химическая технология; прикладные лаборатории для региональных отраслей.",
+        "descriptionKk": "Биология, экология, химия және химиялық технология; қолданбалы зертханалар."
+      },
+      {
+        "id": "zhub-humanities",
+        "name": "Faculty of Humanities and Social Sciences",
+        "nameRu": "Факультет гуманитарных и социальных наук",
+        "nameKk": "Гуманитарлық және қоғамдық ғылымдар факультеті",
+        "description": "History, philosophy, sociology and regional studies for public sector careers.",
+        "descriptionRu": "История, философия, социология и регионоведение; подготовка к госсектору и НКО.",
+        "descriptionKk": "Тарих, философия, социология және аймақтану."
+      },
+      {
+        "id": "zhub-pedagogy",
+        "name": "Faculty of Pedagogy and Management in Education",
+        "nameRu": "Факультет педагогики и управления в образовании",
+        "nameKk": "Педагогика және білім басқару факультеті",
+        "description": "School leadership, educational management and teacher development programmes.",
+        "descriptionRu": "Управление школой, менеджмент в образовании и развитие педагогических кадров.",
+        "descriptionKk": "Мектеп басқаруы, білім менеджменті және мұғалімдерді дамыту."
+      },
+      {
+        "id": "zhub-econ-law",
+        "name": "Faculty of Economics and Law",
+        "nameRu": "Факультет экономики и права",
+        "nameKk": "Экономика және құқық факультеті",
+        "description": "Economics, finance, law and public administration tailored to western Kazakhstan.",
+        "descriptionRu": "Экономика, финансы, право и государственное управление с акцентом на Западный Казахстан.",
+        "descriptionKk": "Экономика, қаржы, құқық және мемлекеттік басқару."
+      },
+      {
+        "id": "zhub-engineering",
+        "name": "Faculty of Engineering",
+        "nameRu": "Инженерный факультет",
+        "nameKk": "Инженерлік факультет",
+        "description": "Mechanical, civil and industrial engineering with TechnoPark and industry projects.",
+        "descriptionRu": "Машиностроение, гражданское и промышленное инженерное дело; проекты с ТехноПарком и предприятиями.",
+        "descriptionKk": "Машина жасау, азаматтық және өнеркәсіптік инженерия; ТехноПарк жобалары."
+      },
+      {
+        "id": "zhub-philology",
+        "name": "Faculty of Philology",
+        "nameRu": "Филологический факультет",
+        "nameKk": "Филология факультеті",
+        "description": "Kazakh and world literature, linguistics and speech communication programmes.",
+        "descriptionRu": "Казахская и мировая литература, лингвистика и коммуникативные компетенции.",
+        "descriptionKk": "Қазақ және әлем әдебиеті, лингвистика."
+      },
+      {
+        "id": "zhub-physmath",
+        "name": "Faculty of Physics and Mathematics",
+        "nameRu": "Факультет физики и математики",
+        "nameKk": "Физика және математика факультеті",
+        "description": "Mathematics, physics and data literacy programmes for engineering pipelines.",
+        "descriptionRu": "Математика, физика и математическая грамотность данных для инженерных траекторий.",
+        "descriptionKk": "Математика, физика және деректер сауаттылығы."
+      },
+      {
+        "id": "zhub-foreign",
+        "name": "Faculty of Foreign Languages",
+        "nameRu": "Факультет иностранных языков",
+        "nameKk": "Шет тілдері факультеті",
+        "description": "English, Chinese and European languages with translation and tourism tracks.",
+        "descriptionRu": "Английский, китайский и европейские языки; перевод и туристические треки.",
+        "descriptionKk": "Ағылшын, қытай және еуропа тілдері; аударма және туризм."
+      },
+      {
+        "id": "zhub-creative",
+        "name": "Faculty of Professional and Creative Studies",
+        "nameRu": "Факультет профессионального и творческого образования",
+        "nameKk": "Кәсіби және шығармашылық білім факультеті",
+        "description": "Design, arts pedagogy and creative industries bridging culture and employment.",
+        "descriptionRu": "Дизайн, педагогика искусств и креативные индустрии; связь культуры и занятости.",
+        "descriptionKk": "Дизайн, өнер педагогикасы және креативті индустриялар."
+      },
+      {
+        "id": "zhub-hw",
+        "name": "Heriot-Watt University Branch Campus (partner programmes)",
+        "nameRu": "Филиал Heriot-Watt University (партнёрские программы)",
+        "nameKk": "Heriot-Watt University филиалы (серіктес бағдарламалар)",
+        "description": "British-style degrees delivered locally with joint quality assurance (partner campus).",
+        "descriptionRu": "Совместные программы с британским университетом; локальная реализация и общее обеспечение качества.",
+        "descriptionKk": "Британдық университетпен бірлескен бағдарламалар; ортақ сапаны қамтамасыз ету."
+      }
+    ],
+    "admissionExpectations": {
+      "gpaScaleMax": 5,
+      "strongGpa": 4,
+      "competitiveGpa": 3.35,
+      "competitiveSat": 960,
+      "targetSat": 1120,
+      "competitiveUnt": 72,
+      "targetUnt": 93,
+      "minIelts": 5,
+      "modelNote": "Крупнейший вуз Западного Казахстана; англоязычные partner-программы могут требовать IELTS выше среднего по вузу."
+    },
+    "scholarships": [
+      {
+        "name": "Государственный образовательный грант",
+        "requirements": "ЕНТ и квоты года для граждан РК.",
+        "aiRelevance": "High"
+      },
+      {
+        "name": "Грант социальной поддержки",
+        "requirements": "Категории по законодательству РК (соц. уязвимость и др.).",
+        "aiRelevance": "Medium"
+      }
+    ],
+    "programs": [
+      {
+        "id": "zhub-bsc-mechanical",
+        "name": "BSc in Mechanical Engineering",
+        "facultyId": "zhub-engineering",
+        "annualTuitionKzt": 1780000,
+        "field": "Engineering",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh",
+        "fitScore": 76,
+        "matchReason": "Инженерная подготовка с опорой на промышленность региона.",
+        "detailedDescription": [
+          "Детали машин, материалы.",
+          "Практика на предприятиях."
+        ],
+        "entryRequirements": [
+          "Математика и физика",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "zhub-ba-economics",
+        "name": "BBA in Economics",
+        "facultyId": "zhub-econ-law",
+        "annualTuitionKzt": 1520000,
+        "field": "Business",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Kazakh / Russian",
+        "fitScore": 72,
+        "matchReason": "Экономика и финансы для малого и среднего бизнеса Западного Казахстана.",
+        "detailedDescription": [
+          "Микро- и макроэкономика.",
+          "Цифровая отчётность."
+        ],
+        "entryRequirements": [
+          "Математика",
+          "ЕНТ"
+        ]
+      },
+      {
+        "id": "zhub-ba-english-tourism",
+        "name": "BA in Foreign Language (Tourism track)",
+        "facultyId": "zhub-foreign",
+        "annualTuitionKzt": 1480000,
+        "field": "Humanities",
+        "degree": "Bachelor",
+        "durationYears": 4,
+        "language": "Russian / Kazakh / English",
+        "fitScore": 71,
+        "matchReason": "Языки и туристический трек для транспортного хаба региона.",
+        "detailedDescription": [
+          "Иностранный язык.",
+          "Туризм и межкультурная коммуникация."
+        ],
+        "entryRequirements": [
+          "Иностранный язык в сертификате",
+          "ЕНТ"
+        ]
+      }
+    ]
+  }
+]

@@ -71,6 +71,8 @@ export function UniversitySearchPanel({
   const [compareLimitHint, setCompareLimitHint] = useState(false);
   const [compareDetailLevel, setCompareDetailLevel] = useState<"full" | "compact">("full");
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const compareTriggerRef = useRef<HTMLButtonElement>(null);
+  const dialogTitleRef = useRef<HTMLHeadingElement>(null);
 
   const cityOptions = useMemo(() => {
     const set = new Set<string>();
@@ -184,10 +186,15 @@ export function UniversitySearchPanel({
   const openCompareDialog = () => {
     if (compareIds.length < 2) return;
     dialogRef.current?.showModal();
+    queueMicrotask(() => dialogTitleRef.current?.focus());
   };
 
   const closeCompareDialog = () => {
     dialogRef.current?.close();
+  };
+
+  const handleCompareDialogClose = () => {
+    compareTriggerRef.current?.focus();
   };
 
   useEffect(() => {
@@ -404,8 +411,10 @@ export function UniversitySearchPanel({
         <div className="fixed bottom-0 left-0 right-0 z-30 flex justify-center border-t border-indigo-200 bg-white/95 px-4 py-3 shadow-[0_-8px_30px_rgba(79,70,229,0.12)] backdrop-blur-md">
           <div className="flex w-full max-w-lg flex-wrap items-center justify-center gap-3">
             <button
+              ref={compareTriggerRef}
               type="button"
               onClick={openCompareDialog}
+              aria-haspopup="dialog"
               className="rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-indigo-700"
             >
               {t("search.compareN", { count: compareIds.length })}
@@ -423,11 +432,20 @@ export function UniversitySearchPanel({
 
       <dialog
         ref={dialogRef}
+        aria-modal="true"
+        aria-labelledby="compare-dialog-title"
         className="z-50 w-[min(100%,1120px)] max-w-[calc(100vw-1rem)] rounded-2xl border border-slate-200 bg-white p-0 text-slate-900 shadow-2xl backdrop:bg-slate-900/50"
-        onClose={closeCompareDialog}
+        onClose={handleCompareDialogClose}
       >
         <div className="border-b border-slate-100 px-5 py-4 sm:px-6">
-          <h2 className="text-lg font-semibold text-slate-900">{t("search.dialogTitle")}</h2>
+          <h2
+            ref={dialogTitleRef}
+            id="compare-dialog-title"
+            tabIndex={-1}
+            className="text-lg font-semibold text-slate-900 outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2"
+          >
+            {t("search.dialogTitle")}
+          </h2>
           <p className="mt-1 text-sm text-slate-600">{t("search.dialogHint")}</p>
         </div>
         <div className="flex flex-col gap-3 border-b border-slate-100 bg-slate-50/50 px-4 py-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:px-6">

@@ -12,7 +12,16 @@
     "checklist": "Checklist",
     "profile": "Profile",
     "catalog": "Catalog",
-    "changeUniversity": "Change university"
+    "changeUniversity": "Change university",
+    "platformRanking": "Universities & Ranking",
+    "platformAbout": "About",
+    "platformApply": "Apply",
+    "platformBlog": "Blog",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "applyTo": "Apply to {{name}}",
+    "avatarAria": "Applicant profile",
+    "mobileMenuLabel": "Mobile navigation menu"
   },
   "lang": {
     "kk": "Kazakh",
@@ -71,7 +80,14 @@
     "programsLink": "Programs",
     "fitRing": "AI fit",
     "execNoKey": "Add `VITE_API_KEY` in `.env.local` (local) or hosting settings (production), then restart the dev server or redeploy — so Qwen 2.5 can build the overview.",
-    "execError": "AI error"
+    "execError": "AI error",
+    "nameEn": "English",
+    "nameRu": "Russian",
+    "aiInsight": "AI Fit: {{label}} — based on your profile",
+    "ctaStart": "Start application",
+    "ctaSave": "Save profile",
+    "ctaCompare": "Compare universities",
+    "badgeAiMatch": "AI Match"
   },
   "program": {
     "notFound": "Program not found",
@@ -96,6 +112,8 @@
     "insightNoKey": "Add `VITE_API_KEY` in `.env.local` or deployment env and rebuild—then Qwen 2.5 can give program-specific advice.",
     "insightEmpty": "Tap the button above so Qwen can analyze your profile for this program.",
     "applySite": "Apply (official site)",
+    "applyChecklist": "Continue application (dashboard)",
+    "emailAdmissions": "Email admissions: {{email}}",
     "addShortlist": "Save",
     "removeShortlist": "Remove from list",
     "degreeLine": "{{field}} · {{degree}} · {{years}} · {{language}}"
@@ -135,7 +153,11 @@
     "achievementsSummary": "Model:",
     "achievementsParseFallback": "Could not read JSON from the model — heuristic levels shown.",
     "achievementsErrEmpty": "Enter a short description or leave this block empty.",
-    "achievementsErrParse": "Could not analyze the text."
+    "achievementsErrParse": "Could not analyze the text.",
+    "guardLoading": "Loading session…",
+    "finishFirst": "Complete the questionnaire on the home page first.",
+    "blockedBanner": "This section opens after you save the questionnaire. You tried to open: {{path}}",
+    "blockedDismiss": "OK"
   },
   "financial": {
     "needFull": "Need full scholarship",
@@ -149,8 +171,8 @@
     "subtitle": "University admissions in Kazakhstan",
     "clear": "Clear",
     "intro": "Ask about deadlines, documents, scores, or your chosen university—Qwen 2.5 uses your profile.",
-    "sugg1": "What to finish before the application deadline?",
-    "sugg2": "How do my scores compare to competition?",
+    "sugg1": "Which program fits me?",
+    "sugg2": "What docs am I missing?",
     "sugg3": "How is a grant different from contract tuition?",
     "placeholder": "Your question…",
     "send": "Send",
@@ -158,7 +180,11 @@
     "errNoKey": "Add VITE_API_KEY or enable proxy VITE_USE_AI_PROXY — otherwise Qwen is unavailable.",
     "envHint": "Set the key in `.env.local` or server proxy — see README.",
     "close": "✕",
-    "requestError": "Request failed"
+    "requestError": "Request failed",
+    "suggestionsGroup": "Suggested questions",
+    "msgYou": "Your message",
+    "msgAssistant": "Assistant reply",
+    "inputLabel": "Message to admissions assistant"
   },
   "search": {
     "searchLabel": "Search universities in Kazakhstan",
@@ -265,7 +291,43 @@
     "refreshOverview": "Refresh overview",
     "overviewNoKey": "Add VITE_API_KEY to the environment—otherwise you’ll see a hint instead of Qwen.",
     "overviewEmpty": "Overview not requested yet. Tap “Get Qwen overview” to generate text without auto-loading.",
-    "overall": "Overall AI fit"
+    "overall": "Overall AI fit",
+    "tier": {
+      "strong": "Strong Match",
+      "qualified": "Qualified",
+      "partial": "Partial Match",
+      "low": "Low Match"
+    },
+    "blockStrengths": "Why it fits",
+    "blockGaps": "Gaps / risks",
+    "blockSteps": "Recommended next steps",
+    "strength": {
+      "gpaStrong": "GPA {{gpa}}/{{scale}} is in the strong range for this university.",
+      "gpaOk": "GPA {{gpa}}/{{scale}} is competitive for many programs here.",
+      "ieltsOk": "IELTS {{score}} meets typical English-taught thresholds.",
+      "untOk": "UNT {{score}} is at or above the competitive guide (~{{threshold}}).",
+      "interests": "Your stated interests overlap with several programs at this university.",
+      "awards": "Extracurricular signal: {{list}}.",
+      "generic": "Your academic profile is close enough to explore detailed program cards."
+    },
+    "gap": {
+      "gpa": "GPA {{gpa}} is below the competitive guide (~{{need}}) for top tracks.",
+      "ielts": "IELTS is below the typical minimum (~{{min}}) for some English programs.",
+      "sat": "SAT {{sat}} is below the competitive guide (~{{need}}) where SAT is considered.",
+      "unt": "UNT {{unt}} is below the competitive guide (~{{need}}).",
+      "docMissing": "Missing document: {{label}}.",
+      "docPending": "Finish or verify: {{label}}.",
+      "interests": "Program interests are broad—narrow your shortlist to raise precision.",
+      "none": "No major risks flagged beyond normal admissions variance."
+    },
+    "step": {
+      "docs": "Upload or verify {{count}} document(s) from the checklist.",
+      "english": "Plan English proof or a prep path if you target English-taught programs.",
+      "grades": "Strengthen transcripts / exams where possible before final submission.",
+      "shortlist": "Pick 2–4 programs and save them to your shortlist.",
+      "deadline": "Lock dates from the deadlines timeline and work backward weekly.",
+      "overview": "Optional: request the Qwen executive summary for a narrative view."
+    }
   },
   "recommend": {
     "fitWithSat": "Average AI Fit across programs at this university — {{pct}}% (using GPA, SAT, UNT, and interests).",
@@ -288,7 +350,122 @@
     "avgFit": "Average AI fit",
     "satUnt": "SAT / UNT",
     "programsInGrid": "Programs in grid:",
-    "aiFitLink": "AI Fit →"
+    "aiFitLink": "AI Fit →",
+    "status": "Status",
+    "pendingActions": "Pending actions",
+    "pendingCount": "{{count}} open items",
+    "miniChecklist": "Application checklist",
+    "quickInfo": "Quick info",
+    "languages": "Languages",
+    "deadline": "Deadline",
+    "contact": "Contacts",
+    "officialSite": "Official website",
+    "email": "Admissions email",
+    "ctaStart": "Start application",
+    "ctaAi": "Ask AI Advisor",
+    "stepProfile": "Profile & questionnaire",
+    "stepDocs": "Documents ready",
+    "stepPrograms": "Programs shortlisted",
+    "stepSubmit": "Ready to submit",
+    "checked": "Done",
+    "unchecked": "Open"
+  },
+  "compareWithOthers": {
+    "kicker": "Comparison",
+    "title": "Compare with other universities",
+    "subtitle": "Quick fit preview for other institutions in the Kazakhstan catalog (mock scores).",
+    "avgFit": "Avg. fit",
+    "open": "Open profile",
+    "favorite": "Save",
+    "favoriteRemove": "Saved",
+    "current": "Current"
+  },
+  "footer": {
+    "tagline": "Admissions intelligence for students in Kazakhstan.",
+    "explore": "Explore",
+    "account": "Your account",
+    "legal": "Legal",
+    "applications": "My Applications",
+    "saved": "Saved",
+    "settings": "Settings",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "contactLine": "QApp · Nur-Sultan / Almaty · hello@qapp.demo",
+    "blogHint": "Blog (demo)"
+  },
+  "blog": {
+    "backHome": "← Home",
+    "toDashboard": "Dashboard",
+    "kicker": "QApp · admissions blog (demo)",
+    "title": "Short reads for applicants",
+    "subtitle": "Prototype posts for the Smart University Profile hackathon—swap for CMS content in production.",
+    "searchLabel": "Search",
+    "searchPlaceholder": "Title or keywords…",
+    "tagsLabel": "Topics",
+    "filterAll": "All",
+    "tags": {
+      "fit": "Fit",
+      "documents": "Documents",
+      "deadlines": "Deadlines",
+      "scholarships": "Scholarships",
+      "strategy": "Strategy"
+    },
+    "tocTitle": "On this page",
+    "postsVisible": "{{count}} of {{total}} posts shown",
+    "emptyFilter": "No posts match your filters. Clear search or pick another topic.",
+    "readTime": "{{min}} min read",
+    "ctaTitle": "Turn reading into action",
+    "ctaSubtitle": "Use the checklist, compare programs with live fit, and keep your profile ready for AI helpers.",
+    "ctaChecklist": "Document checklist",
+    "ctaPrograms": "Program grid",
+    "ctaProfile": "Edit profile",
+    "a1": {
+      "date": "April 2026",
+      "title": "What “AI Fit” adds beyond a GPA line on the website",
+      "lead": "Official pages show thresholds; you still need to see competitiveness for your track and documents.",
+      "body": "Our MVP averages fit across programs, lists gaps (scores + missing files), and anchors deadlines to a checklist—so “Strong Match” is tied to your saved profile, not brochure text."
+    },
+    "a2": {
+      "date": "April 2026",
+      "title": "Three checklist traps before you hit “Submit”",
+      "lead": "Medical certificates, diploma scans, and English proof often expire or need re-uploads.",
+      "body": "Follow the vertical timeline, upload in the demo where enabled, and trigger Qwen only when your profile is saved—fewer surprises on the real admissions portal."
+    },
+    "a3": {
+      "date": "April 2026",
+      "title": "Scholarship essays: one story, many forms",
+      "lead": "Merit and need-based forms reuse the same facts—structure beats starting from a blank page each time.",
+      "body": "Draft a single narrative spine (motivation, obstacle, outcome, why this field). Map bullet answers per prompt, then tighten word counts. Tie claims to evidence already in your profile so reviewers see consistency.",
+      "extra": "In QApp, scholarship tiles highlight gaps vs your GPA, English, and olympiad flags—align essay bullets with those signals."
+    },
+    "a4": {
+      "date": "April 2026",
+      "title": "Deadline math: portal time vs your timezone",
+      "lead": "“23:59 university time” is easy to miss when your clock shows something else.",
+      "body": "Convert once, write it on the timeline, and pad by one day for uploads that fail checksum or antivirus scans. If early rounds exist, note whether documents must arrive earlier than the form submit.",
+      "extra": "Pair each milestone with a checklist row so “almost done” doesn’t drift past close."
+    },
+    "a5": {
+      "date": "April 2026",
+      "title": "Shortlisting without drowning in programs",
+      "lead": "High fit isn’t permission to apply everywhere—focus protects essay quality and fees.",
+      "body": "Lock two safety targets, two matches, and one reach where your gaps are fixable before submit. Re-run fit after every profile edit so the grid reflects fresh scores, not stale optimism.",
+      "extra": "Use shortlist stars on program cards to keep the set visible from the dashboard."
+    }
+  },
+  "demoAnalytics": {
+    "title": "Demo analytics (this browser)",
+    "hint": "Funnel counts and peaks live in localStorage for jury walkthroughs—no backend, no personal data sent.",
+    "refresh": "Refresh",
+    "reset": "Reset stats",
+    "landing": "Landing visits",
+    "intake": "Questionnaire completed",
+    "dashboard": "Dashboard opens",
+    "profile": "Profile opens",
+    "blog": "Blog opens",
+    "checklistPeak": "Checklist ready (peak)",
+    "shortlistPeak": "Programs in shortlist (peak)",
+    "updated": "Last event time: {{iso}}"
   },
   "compareSection": {
     "general": "Overview",
@@ -316,7 +493,15 @@
     "priceMid": "~4–8M ₸",
     "priceHigh": "from ~8M ₸",
     "emptyState": "No programs match these filters. Loosen a few or clear the search.",
-    "detailsLink": "Details →"
+    "detailsLink": "Details →",
+    "fitLabel": "Fit score",
+    "fitAll": "All ranges",
+    "fitHigh": "High (75–100)",
+    "fitMid": "Medium (55–74)",
+    "fitLow": "Low (below 55)",
+    "viewRequirements": "View requirements",
+    "addShortlist": "Add to shortlist",
+    "removeShortlist": "Remove"
   },
   "thisWeek": {
     "kicker": "Weekly plan",
@@ -385,6 +570,7 @@
     "profileLine": "Profile: GPA {{gpa}}, IELTS {{ielts}}, {{fin}}",
     "olympiadVerified": "Olympiad verified",
     "editProfile": "Edit profile →",
+    "ctaPrepare": "Prepare profile for this scholarship",
     "matchLabel": "Match (heur.)",
     "quickChecklist": "Quick checklist",
     "expandAi": "Details & AI breakdown",
@@ -455,6 +641,97 @@
       "Volunteering Leader": "Volunteering leader",
       "Research Project": "Research project",
       "Arts Excellence": "Arts excellence"
+    }
+  },
+  "documentsChecklist": {
+    "kicker": "Admission packet",
+    "title": "Smart document workspace",
+    "subtitle": "Files are grouped by stage so you collect them in a sensible order. Each card includes a quality checklist and accepts drag-and-drop. Stored locally in your browser (IndexedDB) with your profile — always confirm the latest PDF checklist on the university site.",
+    "deadlineLine": "Application deadline (demo)",
+    "daysLeft": "{{count}} d. left",
+    "daysPassed": "Past deadline",
+    "statsReady": "Ready",
+    "statsTodo": "Queue",
+    "statsPending": "Saving",
+    "filterAll": "All",
+    "filterTodo": "In progress",
+    "filterDone": "Done",
+    "filterEmpty": "Nothing matches this filter — try “All”.",
+    "progressLabel": "Packet completeness",
+    "progressAria": "Document packet completeness: {{pct}} percent",
+    "verifyToggleShow": "Pre-upload checklist",
+    "verifyToggleHide": "Hide checklist",
+    "dropHint": "Drag & drop PDF / JPG / PNG here (max 10 MB)",
+    "nextStep": "Recommended next upload",
+    "uploadThis": "Upload this file",
+    "upload": "Upload",
+    "replace": "Replace",
+    "download": "Download",
+    "remove": "Remove",
+    "attach": "Attach file",
+    "saving": "Saving…",
+    "statusMissing": "Not uploaded",
+    "statusPending": "Saving",
+    "statusReady": "Uploaded",
+    "statusOverview": "Quick status map",
+    "packCompleteHint": "Before hitting submit on the portal, keep offline copies and rename files clearly (LastName_Document.pdf).",
+    "insightComplete": "All MVP checklist slots have files. Admissions teams often ask for extras — cross-check their PDF.",
+    "insightDeadlinePassed": "The prototype deadline date has passed with {{missing}} document(s) still missing here. Ask admissions about late intake or the next cycle.",
+    "insightCritical": "Less than a week to go — {{missing}} document(s) still missing. Finish scans tonight; prioritize stamped transcripts and readable IDs.",
+    "insightSoon": "{{days}} days left — {{missing}} document(s) missing. Batch school visits and clinic appointments this week.",
+    "insightSteady": "{{days}} days until the deadline — {{missing}} missing. Work through the lanes: identity → academic proofs → health → portrait.",
+    "insightMedicalLead": "Form 075/у usually needs clinic lead time — book early if you are within ~3 weeks of submitting.",
+    "lanes": {
+      "identity": {
+        "title": "Identity",
+        "blurb": "Legal ID tied to applications, contracts, and exams."
+      },
+      "academicRecords": {
+        "title": "Academic records",
+        "blurb": "Official transcripts and graduation proof — typically issued together."
+      },
+      "health": {
+        "title": "Medical clearance",
+        "blurb": "075/у validity windows differ — confirm exact wording with admissions."
+      },
+      "portrait": {
+        "title": "Portrait photo",
+        "blurb": "Match background, size, and matte paper rules from the handbook."
+      }
+    },
+    "hints": {
+      "passport": "Full spread, readable MRZ (if present), and expiry date visible.",
+      "photo3x4": "Recent color photo on matte paper; no filters or heavy retouching.",
+      "medicalCertificate": "Use the ministry-approved form; note how many months it stays valid.",
+      "academicTranscript": "Ask for an English/Kazakh/Russian version if your target program requires it.",
+      "diploma": "Include supplement pages if grades live on inserts rather than the cover sheet."
+    },
+    "verify": {
+      "passport": [
+        "All corners visible, no glare blocking text",
+        "File under 10 MB; PDF preferred for multi-page spreads",
+        "Expires after your intended enrollment date"
+      ],
+      "photo3x4": [
+        "Neutral background as required by the handbook",
+        "Eyes open, facing camera, no sunglasses",
+        "File name mentions \"photo\" so it is not confused with scans"
+      ],
+      "medicalCertificate": [
+        "Doctor stamps + clinic letterhead legible",
+        "Issued recently enough for the admissions cycle",
+        "Upload the complete form, not only lab extracts"
+      ],
+      "academicTranscript": [
+        "School seal / registrar signature visible",
+        "Grading scale explained if not obvious",
+        "Combine multiple years into one PDF when possible"
+      ],
+      "diploma": [
+        "Front cover + grade supplement if separate",
+        "Translation attached if originals are not in the instruction language",
+        "Same applicant name spelling as in the passport"
+      ]
     }
   },
   "documentEntries": {
